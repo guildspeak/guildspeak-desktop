@@ -1,0 +1,128 @@
+{
+  "name": "guildspeak",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/main.js",
+  "scripts": {
+    "build-main": "cross-env NODE_ENV=production webpack --config webpack.main.prod.config.js",
+    "build-renderer": "cross-env NODE_ENV=production webpack --config webpack.renderer.prod.config.js",
+    "build": "npm run build-main && npm run build-renderer",
+    "renderer-dev": "webpack-dev-server --config webpack.renderer.dev.config.js",
+    "main-dev": "webpack --config webpack.main.config.js && electron ./dist/main.js",
+    "dev": "cross-env START_HOT=1 npm run renderer-dev",
+    "prestart": "npm run build",
+    "start": "electron .",
+    "lint": "tslint '{src,test}/**/*.{ts,tsx}' --project ./tsconfig.json",
+    "precommit": "lint-staged",
+    "test": "jest '(\\/test\\/(?!e2e/)).*'",
+    "pretest:e2e": "npm run build",
+    "test:e2e": "jest '(\\/test\\/e2e/).*'",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "lint-staged": {
+    "{src,test,mocks}/**/*.{js,ts,tsx,json,css,scss,md}": [
+      "prettier --config ./.prettierrc --write",
+      "git add"
+    ],
+    "{src,test,mocks}/**/*.{js,ts,tsx}": [
+      "tslint --project ./tsconfig.json --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/test/.+\\.spec)\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "node"
+    ]
+  },
+  "build": {
+    "productName": "Guildspeak",
+    "appId": "org.guildspeakteam.guildspeakapp",
+    "mac": {
+      "category": "Networking"
+    },
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/",
+      "node_modules/",
+      "package.json"
+    ],
+    "linux": {
+      "target": "deb"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:xdk78/guildspeak-app.git"
+  },
+  "author": {
+    "name": "xdk78",
+    "email": "xdk78888@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xdk78/guildspeak-app/issues"
+  },
+  "homepage": "https://github.com/xdk78/guildspeak-app",
+  "devDependencies": {
+    "@types/electron-devtools-installer": "^2.2.0",
+    "@types/jest": "^23.3.1",
+    "@types/react": "^16.4.10",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-hot-loader": "^4.1.0",
+    "@types/react-redux": "^6.0.6",
+    "@types/react-test-renderer": "^16.0.2",
+    "@types/webdriverio": "^4.10.3",
+    "@types/webpack-env": "^1.13.6",
+    "awesome-typescript-loader": "^5.2.0",
+    "babel-loader": "^7.1.5",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "electron": "^2.0.7",
+    "electron-builder": "^20.28.1",
+    "electron-devtools-installer": "^2.2.4",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.3.1",
+    "jest": "^23.5.0",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2",
+    "react-hot-loader": "^4.3.4",
+    "react-test-renderer": "^16.4.2",
+    "redux-devtools-extension": "^2.13.2",
+    "source-map-loader": "^0.2.4",
+    "spectron": "^3.8.0",
+    "style-loader": "^0.22.1",
+    "ts-jest": "^23.1.3",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.9.2",
+    "tslint-config-prettier": "^1.14.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.0.1",
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
+  }
+}
