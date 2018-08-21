@@ -1,4 +1,6 @@
 import * as React from 'react'
+import Button from './Button'
+import { Container, Row, Column } from 'react-rasta'
 
 export interface Props {
   value: number
@@ -7,13 +9,17 @@ export interface Props {
 }
 
 const Counter: React.SFC<Props> = ({ value, incrementValue, decrementValue }) => (
-  <div>
-    <p>Current value: {value}</p>
-    <p>
-      <button onClick={incrementValue}>Increment</button>
-      <button onClick={decrementValue}>Decrement</button>
-    </p>
-  </div>
+  <Container>
+    <Row>
+      <Column>
+        Current value: {value}
+      </Column>
+      <Column>
+        <Button primary onClick={incrementValue}>Increment</Button>
+        <Button onClick={decrementValue}>Decrement</Button>
+      </Column>
+    </Row>
+  </Container>
 )
 
 export default Counter
