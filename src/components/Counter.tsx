@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from 'react'
 
 export interface Props {
-  value: number;
-  incrementValue: () => any;
-  decrementValue: () => any;
+  value: number
+  incrementValue: () => any
+  decrementValue: () => any
 }
 
 const Counter: React.SFC<Props> = ({ value, incrementValue, decrementValue }) => (
@@ -14,6 +14,6 @@ const Counter: React.SFC<Props> = ({ value, incrementValue, decrementValue }) =>
       <button onClick={decrementValue}>Decrement</button>
     </p>
   </div>
-);
+)
 
-export default Counter;
+export default Counter

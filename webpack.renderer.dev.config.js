@@ -19,7 +19,7 @@ module.exports = merge.smart(baseConfig, {
             loader: 'babel-loader',
             options: {
               babelrc: false,
-              plugins: ['react-hot-loader/babel'],
+              plugins: ['react-hot-loader/babel', 'styled-components'],
             },
           },
           'awesome-typescript-loader',
