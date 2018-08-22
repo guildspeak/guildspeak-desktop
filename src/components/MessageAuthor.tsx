@@ -1,21 +1,21 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Container, Row } from 'react-rasta'
-import MessageAuthor, { MessageAuthorData } from './MessageAuthor'
-
 const Wrapper = styled(Container)`
 `
+export interface MessageAuthorData {
+  id: string,
+  username: string
+}
 
 interface Props {
-  content: string
   author: MessageAuthorData
 }
 
-const Message: React.SFC<Props> = ({ content, author }) => (
+const MessageAuthor: React.SFC<Props> = ({ author }) => (
   <Wrapper>
-    <Row><MessageAuthor author={author} />{content}</Row>
+    {author.username}:
   </Wrapper>
 )
 
-export default Message
-
+export default MessageAuthor

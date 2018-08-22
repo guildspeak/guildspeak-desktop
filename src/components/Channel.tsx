@@ -9,7 +9,6 @@ const ChannelName = styled(Row)`
   padding: 5px;
 `
 
-
 interface Props {
   name: string
 }

@@ -2,19 +2,40 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Container } from 'react-rasta'
 import Message from './Message'
+import gql from 'graphql-tag'
+import { Query, Subscription } from 'react-apollo'
+import autoscroll from 'autoscroll-react'
 
 const Wrapper = styled(Container)`
   overflow: auto;
   height: calc(100vh - 80px);
   background: hsla(240, 1%, 23%, 0.5);
 `
-import Guild from './Guild'
-import { gql } from 'apollo-boost';
-import { Query } from 'react-apollo';
+
+const MESSAGE_SUBSCRIPTION = gql`
+subscription {
+  channelSubscription(channelId:"cjl5gmgip00ga0a18hhttuvan") {
+    node {
+      messages(orderBy: createdAt_ASC, last: 30) {
+        id
+        author {
+          username
+        }
+        content
+      }
+      guildId {
+        users {
+          id
+        }
+      }
+  	}
+  }
+}
+`
 
 const GET_MESSAGES = gql`
 query {
-  channel(id: "cjl2o1xeg00100b18c2r67d3x") {
+  channel(id: "cjl5gmgip00ga0a18hhttuvan") {
     messages(orderBy: createdAt_ASC, last: 30) {
       id
       author {
@@ -30,21 +51,29 @@ query {
   }
 }`
 
-const Messages = () => (
-  <Wrapper>
-    <Query query={GET_MESSAGES}>
-        {({ loading, error, data }) => {
-        if (loading) return <div>Loading...</div>;
-        if (error) return <div>Error :(</div>;
+class Messages extends React.Component {
+  render() {
+    return (
+      <Wrapper>
+        <Query query={GET_MESSAGES}>
+          {({ loading, error, data, subscribeToMore }) => {
+            if (loading) return <div>Loading...</div>
+            if (error) return <div>Error :(</div>
 
-        return (
-          data.channel.messages.map(el => <Message content={el.content} key={el.id} />)
-        )
-      }}
-      </Query>
+            subscribeToMore({
+              document: MESSAGE_SUBSCRIPTION,
+              updateQuery: (prev, data) => {
+                return { channel: data.subscriptionData.data.channelSubscription.node }
+              }
+            })
+            return (
+              data.channel.messages.map(el => <Message author={el.author} content={el.content} key={el.id} />)
+            )
+          }}
+        </Query>
+      </Wrapper>
+    )
+  }
+}
 
-  </Wrapper>
-)
-
-export default Messages
-
+export default autoscroll(Messages)

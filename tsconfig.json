@@ -12,7 +12,6 @@
     "noImplicitAny": false,
     "allowJs": true,
     "jsx": "react",
-    "sourceMap": true,
-    "strict": true
+    "sourceMap": true
   }
 }
