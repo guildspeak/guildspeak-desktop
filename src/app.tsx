@@ -20,6 +20,7 @@ injectGlobal`
     width: 100vw;
     height: 100vh;
     background: #1c1c1c;
+    overflow: hidden;
   }
 `;
 

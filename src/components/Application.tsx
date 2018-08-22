@@ -6,6 +6,7 @@ import Messages from './Messages'
 
 const ChannelInfo = styled(Row)`
   background: #3c3c3c;
+  height: 24px;
 `
 const Wrapper = styled(Container)`
   color: #fff;
@@ -18,6 +19,7 @@ font-size: 16px;;
 padding: 10px 10px 10px 5px;
 display: block;
 width: 100%;
+height: 36px;
 border: none;
 border-radius: 0;
 border-bottom: none;

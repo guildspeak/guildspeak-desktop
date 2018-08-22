@@ -5,7 +5,8 @@ import Message from './Message'
 
 const Wrapper = styled(Container)`
   background: gray;
-  height: 90vh;
+  overflow: auto;
+  height: calc(100vh - 60px);
 `
 
 const messagesData = [
@@ -18,7 +19,237 @@ const messagesData = [
     id: 1,
     username: 'kirito',
     content: 'eluwa'
-  }
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+  {
+    id: 0,
+    username: 'smroot',
+    content: 'hi'
+  },
+  {
+    id: 1,
+    username: 'kirito',
+    content: 'eluwa'
+  },
+
 ]
 
 const Messages = () => (

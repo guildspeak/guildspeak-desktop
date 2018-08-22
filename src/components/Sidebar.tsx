@@ -1,11 +1,16 @@
 import * as React from 'react'
 import { Row, Column } from 'react-rasta'
 import Guilds from './Guilds';
+import styled from 'styled-components'
+
+const Menu = styled(Row)`
+  height: 24px;
+`
 
 const Sidebar = () => (
   <Row>
     <Column>
-      <Row>menu</Row>
+      <Menu>menu</Menu>
     </Column>
     <Column>
       <Row>
