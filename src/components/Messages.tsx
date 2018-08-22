@@ -4,7 +4,6 @@ import { Container } from 'react-rasta'
 import Message from './Message'
 import gql from 'graphql-tag'
 import { Query, Subscription } from 'react-apollo'
-import autoscroll from 'autoscroll-react'
 
 const Wrapper = styled(Container)`
   overflow: auto;
@@ -76,4 +75,4 @@ class Messages extends React.Component {
   }
 }
 
-export default autoscroll(Messages)
+export default Messages

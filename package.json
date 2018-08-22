@@ -126,7 +126,6 @@
     "apollo-link-error": "^1.1.0",
     "apollo-link-http": "^1.5.4",
     "apollo-link-ws": "^1.0.8",
-    "autoscroll-react": "^3.2.0",
     "babel-plugin-styled-components": "^1.5.1",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
