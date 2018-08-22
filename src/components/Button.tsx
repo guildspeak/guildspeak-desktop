@@ -10,7 +10,7 @@ export default styled.button<IButton>`
   color: ${props => props.color};
   background-color: ${props => props.background};
   ${props => props.primary && css`
-  background: #6200EE;
+  background: #105959;
   color: white;
 `}
   display: inline-block;

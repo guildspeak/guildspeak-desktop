@@ -5,46 +5,56 @@ import styled from 'styled-components'
 import Messages from './Messages'
 
 const ChannelInfo = styled(Row)`
-  background: #3c3c3c;
-  height: 24px;
+  height: 40px;
+  padding: 4px;
+  background: hsla(240, 1%, 23%, 0.5);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 `
 const Wrapper = styled(Container)`
   color: #fff;
 `
 
 const Input = styled.input`
-background: #3c3c3c;
-color: #fff;
-font-size: 16px;;
-padding: 10px 10px 10px 5px;
-display: block;
-width: 100%;
-height: 36px;
-border: none;
-border-radius: 0;
-border-bottom: none;
-&:focus {
-  outline: none;
-  border-bottom: 1px solid #fff;
-}
-&:focus ~ label,
-&:valid ~ label {
-  top: -14px;
-  font-size: 12px;
-  color: blue;
-}
+  background: hsla(240, 1%, 23%, 0.5);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 10px 10px 10px;
+  display: block;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 0;
+  border-bottom: none;
+  &:focus {
+    outline: none;
+  }
+  &:focus ~ label,
+  &:valid ~ label {
+    top: -14px;
+    font-size: 12px;
+    color: blue;
+  }
 `
+
+const LeftColumn= styled(Column)`
+  background: hsla(240, 1%, 23%, 0.5);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  `
 
 const Application = () => (
   <Wrapper fluid>
     <Row>
-      <Column size={2}>
+      <LeftColumn size={2}>
         <Sidebar />
-      </Column>
+      </LeftColumn>
 
       <Column size="auto">
         <ChannelInfo>
-          channel info
+          #general
         </ChannelInfo>
         <Row>
           <Messages />
