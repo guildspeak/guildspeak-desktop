@@ -2,6 +2,18 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Container, Row } from 'react-rasta'
 import Guild from './Guild'
+import { gql } from 'apollo-boost';
+import { Query } from 'react-apollo';
+
+const GET_GUILDS = gql`
+query {
+  guilds {
+		name
+    channels {
+      name
+    }
+  }
+}`
 
 const Wrapper = styled(Container)`
   overflow: auto;
@@ -11,39 +23,20 @@ const Wrapper = styled(Container)`
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 `
 
-const guildData = [
-  {
-    id: 0,
-    name: 'smrootguild',
-    channels: [{
-      id: 0,
-      name: 'general'
-    },
-    {
-      id: 1,
-      name: 'offtopic'
-    }]
-  },
-  {
-    id: 1,
-    name: 'nastoletni',
-    channels: [{
-      id: 0,
-      name: 'ogólne'
-    },
-    {
-      id: 1,
-      name: 'javascript'
-    }]
-  }
-]
-
-
 
 const Guilds = () => (
   <Wrapper>
     <Row>Guilds:</Row>
-    {guildData.map(el => <Guild name={el.name} channels={el.channels} />)}
+    <Query query={GET_GUILDS}>
+        {({ loading, error, data }) => {
+        if (loading) return <div>Loading...</div>;
+        if (error) return <div>Error :(</div>;
+
+        return (
+          data.guilds.map((el) => (<Guild name={el.name} channels={el.channels} />))
+        )
+      }}
+      </Query>
   </Wrapper>
 )
 
