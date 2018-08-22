@@ -26,7 +26,15 @@ injectGlobal`
     overflow: hidden;
   }
 `
-const client = new ApolloClient({ uri: 'http://localhost:4000' });
+const client = new ApolloClient({
+  request: async operation => {
+    operation.setContext({
+      headers: { // WIP
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjamwycXh3OW0wMDhtMGIxOGdpOW1jYXJrIiwiaWF0IjoxNTM0OTUyMTcxfQ.AFDlpNS1gWkTA8xDuSZbEZGqcOMcSrJNi5u-3503S7o"
+      }
+    });
+  },
+  uri: 'http://localhost:4000' });
 
 // Render components
 const render = (Component: () => JSX.Element) => {
