@@ -103,8 +103,8 @@ ReactDOM.render(
           <Systembar />
           <Router>
             <Switch>
-              {/* <Route exact path="/" component={Application} /> */}
-              <Route exact path="/" component={Login} />
+              <Route exact path="/" component={Application} />
+              <Route exact path="/login" component={Login} />
             </Switch>
           </Router>
         </AppWrapper>
