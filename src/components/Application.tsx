@@ -3,12 +3,6 @@ import Sidebar from './Sidebar'
 import styled from 'styled-components'
 import Messages from './Messages'
 import MessageInput from './MessageInput'
-import Systembar from './Systembar'
-
-const AppWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
 
 const MainWrapper = styled.div`
   display: flex;
@@ -30,8 +24,6 @@ const RightColumn = styled.div`
   `
 
 const Application: React.SFC = () => (
-  <AppWrapper>
-    <Systembar />
     <MainWrapper>
       <LeftColumn>
         <Sidebar />
@@ -43,7 +35,6 @@ const Application: React.SFC = () => (
         </MessagesColumn>
       </RightColumn>
     </MainWrapper>
-  </AppWrapper>
 )
 
 export default Application

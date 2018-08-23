@@ -85,6 +85,8 @@
     "@types/react-dom": "^16.0.7",
     "@types/react-hot-loader": "^4.1.0",
     "@types/react-redux": "^6.0.6",
+    "@types/react-router": "^4.0.30",
+    "@types/react-router-dom": "^4.3.0",
     "@types/react-test-renderer": "^16.0.2",
     "@types/webdriverio": "^4.10.3",
     "@types/webpack-env": "^1.13.6",
@@ -134,6 +136,8 @@
     "react-dom": "^16.4.2",
     "react-rasta": "^1.0.2",
     "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "styled-components": "^3.4.4",
     "subscriptions-transport-ws": "^0.9.14"

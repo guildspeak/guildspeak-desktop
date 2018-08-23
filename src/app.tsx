@@ -10,10 +10,13 @@ import { onError } from 'apollo-link-error'
 import { ApolloLink } from 'apollo-link'
 import Application from './components/Application'
 import store from './store'
-import { injectGlobal } from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
 import { WebSocketLink } from 'apollo-link-ws'
 import { split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Systembar from './components/Systembar'
+
 // Create main element
 const mainElement = document.createElement('div')
 document.body.appendChild(mainElement)
@@ -65,7 +68,7 @@ const link = split(
   new HttpLink({
     uri: 'http://localhost:4000',
   }),
-);
+)
 
 
 const client = new ApolloClient({
@@ -84,26 +87,24 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
+const AppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 // Render components
-const render = (Component: () => JSX.Element) => {
-  ReactDOM.render(
-    <AppContainer>
-      <ApolloProvider client={client}>
-        <Provider store={store}>
-          <Component />
-        </Provider>
-      </ApolloProvider>
-    </AppContainer>,
-    mainElement
-  )
-}
-
-render(()=><Application/>)
-
-// Hot Module Replacement API
-if (typeof module.hot !== 'undefined') {
-  module.hot.accept('./components/Application', () => {
-    const NewApp = require('./components/Application')
-    render(() => NewApp)
-  })
-}
+ReactDOM.render(
+  <AppContainer>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <Router>
+          <AppWrapper>
+            <Systembar />
+            <Route exact path="/" component={Application} />
+          </AppWrapper>
+        </Router>
+      </Provider>
+    </ApolloProvider>
+  </AppContainer>,
+  mainElement
+)
