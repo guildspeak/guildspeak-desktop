@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   margin-bottom: 56px;
 `
 const Input = styled.input`
+  box-sizing: border-box;
   background: #2e2e38;
   color: #cccccc;
   font-size: 16px;
@@ -31,7 +32,7 @@ const Input = styled.input`
 
 const CREATE_MESSAGE = gql`
   mutation createMessage($content: String!) {
-    createMessage(content: $content, channelId: "cjl6t7x540018086233kbwcz3") {
+    createMessage(content: $content, channelId: "cjl70pho0001008534qtvbqoy") {
       id
       content
     }
@@ -68,7 +69,6 @@ class MessageInput extends React.Component<{}, IState> {
               onSubmit={(e) => this.handleSubmit(e, createMessage)}
             >
               <Input placeholder="write message..." value={this.state.content} onChange={this.handleChange} />
-              {/* <Button type="submit">Submit</Button> */}
             </form>
           )}
         </Mutation>

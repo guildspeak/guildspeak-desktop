@@ -8,15 +8,19 @@ interface IButton {
 
 export default styled.button<IButton>`
   color: ${props => props.color};
-  background-color: ${props => props.background};
+  background: ${props => props.background};
   ${props => props.primary && css`
     background: #149f98;
-    color: white;
+    color: #fff;
   `}
-  display: inline-block;
+  display: flex;
   border:0;
-  border-radius: 2px;
+  border-radius: 3px;
   font-size: 1em;
-  margin-right: 0.25em;
   padding: 0.25em 1em;
+  &::before,
+  &::after {
+    content: '';
+    flex: 1 0 auto;
+}
 `

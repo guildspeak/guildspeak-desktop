@@ -11,6 +11,7 @@ const MessageBubble = styled.div`
   word-break: break-all;
 `
 const MessageContent= styled.p`
+  padding-right: 8px;
 `
 
 interface Props {

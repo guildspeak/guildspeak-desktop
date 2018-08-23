@@ -5,7 +5,13 @@ const Wrapper = styled.div`
 `
 
 const ChannelName = styled.div`
-  padding: 5px;
+  padding: 4px;
+  color: #eeeeee;
+  &:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.24);
+  }
+  cursor: pointer;
 `
 
 interface Props {
