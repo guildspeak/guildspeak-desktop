@@ -37,8 +37,7 @@ injectGlobal`
 
 const authLink = new ApolloLink((operation, forward) => {
   // Retrieve the authorization token from local storage.
-  // const token = localStorage.getItem('auth_token')
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjamwycXh3OW0wMDhtMGIxOGdpOW1jYXJrIiwiaWF0IjoxNTM0OTUyMTcxfQ.AFDlpNS1gWkTA8xDuSZbEZGqcOMcSrJNi5u-3503S7o'
+  const token = localStorage.getItem('token')
   if (!operation) throw new Error('operation error')
   operation.setContext({
     headers: {

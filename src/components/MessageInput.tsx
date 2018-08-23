@@ -8,14 +8,15 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
   justify-content: center;
-  height: 36px;
+  height: 24px;
+  margin-top: 24px;
   margin-right: 28px;
   margin-bottom: 56px;
 `
 
 const CREATE_MESSAGE = gql`
   mutation createMessage($content: String!) {
-    createMessage(content: $content, channelId: "cjl5gmgip00ga0a18hhttuvan") {
+    createMessage(content: $content, channelId: "cjl6t7x540018086233kbwcz3") {
       id
       content
     }
@@ -34,6 +35,7 @@ class MessageInput extends React.Component<{}, IState> {
   handleSubmit = (e, createMessage) => {
     e.preventDefault()
     createMessage({ variables: { content: this.state.content } })
+    this.setState({ content: '' })
   }
 
   handleChange = (e) => {
@@ -50,13 +52,14 @@ class MessageInput extends React.Component<{}, IState> {
             <form
               onSubmit={(e) => this.handleSubmit(e, createMessage)}
             >
-              <Input placeholder="write message..." onChange={this.handleChange} />
+              <Input placeholder="write message..." value={this.state.content} onChange={this.handleChange} />
               {/* <Button type="submit">Submit</Button> */}
             </form>
           )}
         </Mutation>
       </Wrapper>
     )
+
   }
 }
 

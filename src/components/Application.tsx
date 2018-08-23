@@ -23,7 +23,7 @@ const MessagesColumn = styled.div`
 	flex-direction: column;
 `
 const LeftColumn = styled.div`
-  flex: 1;
+  flex: 0.5;
   `
 const RightColumn = styled.div`
   flex: 3;

@@ -3,17 +3,12 @@ import styled from 'styled-components'
 import MessageAuthor, { MessageAuthorData } from './MessageAuthor'
 
 const Wrapper = styled.div`
-  flex:  0 1;
+ flex: 1;
 `
 const MessageBubble = styled.div`
-  flex: 1 1 auto;
-  clear: both;
-  border-radius: 5px;
-  padding: 8px;
-  margin: 8px 12px;
-  width: 90%;
-  background: #27272f;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+  flex: 1;
+  height: auto;
+  word-break: break-all;
 `
 const MessageContent= styled.p`
 `
