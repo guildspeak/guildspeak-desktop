@@ -20,9 +20,8 @@ const createWindow = async () => {
   win = new BrowserWindow(
     {
       width: 1152,
-      height: 720,
+      height: 648,
       minWidth: 800,
-      minHeight: 600,
       title: 'Guildspeak',
       frame: false,
       backgroundColor: '#33333d'

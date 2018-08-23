@@ -14,8 +14,9 @@ import styled, { injectGlobal } from 'styled-components'
 import { WebSocketLink } from 'apollo-link-ws'
 import { split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Systembar from './components/Systembar'
+import Login from './components/Login'
 
 // Create main element
 const mainElement = document.createElement('div')
@@ -37,6 +38,7 @@ injectGlobal`
     overflow: hidden;
   }
 `
+const URI = `${process.env.HOST}:${process.env.PORT}`
 
 const authLink = new ApolloLink((operation, forward) => {
   // Retrieve the authorization token from local storage.
@@ -52,7 +54,7 @@ const authLink = new ApolloLink((operation, forward) => {
 })
 
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/`,
+  uri: `ws://${URI}/`,
   options: {
     reconnect: true
   }
@@ -66,7 +68,7 @@ const link = split(
   },
   wsLink,
   new HttpLink({
-    uri: 'http://localhost:4000',
+    uri: `http://${URI}`,
   }),
 )
 
@@ -97,12 +99,15 @@ ReactDOM.render(
   <AppContainer>
     <ApolloProvider client={client}>
       <Provider store={store}>
-        <Router>
-          <AppWrapper>
-            <Systembar />
-            <Route exact path="/" component={Application} />
-          </AppWrapper>
-        </Router>
+        <AppWrapper>
+          <Systembar />
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Application} />
+              <Route exact path="/login" component={Login} />
+            </Switch>
+          </Router>
+        </AppWrapper>
       </Provider>
     </ApolloProvider>
   </AppContainer>,
