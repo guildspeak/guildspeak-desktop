@@ -1,26 +1,20 @@
 import styled from 'styled-components'
 
 const Input = styled.input`
-  background: hsla(240, 1%, 23%, 0.5);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  color: #fff;
+  background: #373740;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+  color: #cccccc;
   font-size: 16px;
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
   display: block;
+  height: 36px;
   width: 100%;
-  height: 40px;
   border: none;
-  border-radius: 0;
+  border-radius: 12px;
   border-bottom: none;
+  caret-color: #149f98;
   &:focus {
     outline: none;
-  }
-  &:focus ~ label,
-  &:valid ~ label {
-    top: -14px;
-    font-size: 12px;
-    color: blue;
   }
 `
 

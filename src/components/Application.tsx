@@ -1,43 +1,49 @@
 import * as React from 'react'
-import { Container, Row, Column } from 'react-rasta'
 import Sidebar from './Sidebar'
 import styled from 'styled-components'
 import Messages from './Messages'
 import MessageInput from './MessageInput'
+import Systembar from './Systembar'
 
-const ChannelInfo = styled(Row)`
-  height: 40px;
+const AppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
   padding: 4px;
-  background: hsla(240, 1%, 23%, 0.5);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 `
-const Wrapper = styled(Container)`
-  color: #fff;
+const MessagesColumn = styled.div`
+	height: 100vh;
+  min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 `
-
-const LeftColumn = styled(Column)`
-  background: hsla(240, 1%, 23%, 0.5);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+const LeftColumn = styled.div`
+  flex: 1;
+  `
+const RightColumn = styled.div`
+  flex: 3;
   `
 
 const Application: React.SFC = () => (
-  <Wrapper fluid>
-    <Row>
-      <LeftColumn size={2}>
+  <AppWrapper>
+    <Systembar />
+    <MainWrapper>
+      <LeftColumn>
         <Sidebar />
       </LeftColumn>
-      <Column size="auto">
-        <Row>
+      <RightColumn>
+        <MessagesColumn>
           <Messages />
-        </Row>
-        <Row>
           <MessageInput />
-        </Row>
-      </Column>
-    </Row>
-  </Wrapper>
+        </MessagesColumn>
+      </RightColumn>
+    </MainWrapper>
+  </AppWrapper>
 )
 
 export default Application

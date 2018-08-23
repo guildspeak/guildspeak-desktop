@@ -17,7 +17,17 @@ const createWindow = async () => {
     await installExtensions()
   }
 
-  win = new BrowserWindow({ width: 800, height: 600, title: 'Guildspeak' })
+  win = new BrowserWindow(
+    {
+      width: 1152,
+      height: 720,
+      minWidth: 800,
+      minHeight: 600,
+      title: 'Guildspeak',
+      frame: false,
+      backgroundColor: '#33333d'
+    }
+  )
 
   if (process.env.NODE_ENV !== 'production') {
     win.loadURL(`http://localhost:2003`)

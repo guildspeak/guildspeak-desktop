@@ -1,9 +1,8 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Container, Row } from 'react-rasta'
 import Channel from './Channel'
 
-const Wrapper = styled(Container)`
+const Wrapper = styled.div`
 `
 
 interface Props {
@@ -13,8 +12,8 @@ interface Props {
 
 const Guild: React.SFC<Props> = ({ name, channels }) => (
   <Wrapper>
-    <Row>{name}</Row>
-    <Row>{channels.map(el => <Channel name={el.name} key={el.id}></Channel>)}</Row>
+    <div>{name}</div>
+    <div>{channels.map(el => <Channel name={el.name} key={el.id}></Channel>)}</div>
   </Wrapper>
 )
 

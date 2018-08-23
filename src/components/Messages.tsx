@@ -1,14 +1,14 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Container } from 'react-rasta'
 import Message from './Message'
 import gql from 'graphql-tag'
 import { Query, Subscription } from 'react-apollo'
 
-const Wrapper = styled(Container)`
+const Wrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+  flex: 1;
   overflow: auto;
-  height: calc(100vh - 80px);
-  background: hsla(240, 1%, 23%, 0.5);
 `
 
 const MESSAGE_SUBSCRIPTION = gql`
@@ -57,7 +57,7 @@ class Messages extends React.Component {
         <Query query={GET_MESSAGES}>
           {({ loading, error, data, subscribeToMore }) => {
             if (loading) return <div>Loading...</div>
-            if (error) return <div>Error :(</div>
+            if (error) return <div>{error.toString()} messages</div>
 
             subscribeToMore({
               document: MESSAGE_SUBSCRIPTION,

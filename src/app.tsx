@@ -21,13 +21,16 @@ document.title = 'Guildspeak'
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Roboto');
+  @import url('https://fonts.googleapis.com/css?family=Francois+One');
+  @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
   body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100vh;
-    background: #373740;
+    background: #33333d;
+    color: #fff;
     overflow: hidden;
   }
 `

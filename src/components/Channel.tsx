@@ -1,11 +1,10 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Container, Row } from 'react-rasta'
 
-const Wrapper = styled(Container)`
+const Wrapper = styled.div`
 `
 
-const ChannelName = styled(Row)`
+const ChannelName = styled.div`
   padding: 5px;
 `
 
