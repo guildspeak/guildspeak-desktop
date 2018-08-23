@@ -106,7 +106,7 @@ ReactDOM.render(
           <Systembar />
           <Router>
             <Switch>
-            <Route exact path="/register" component={RegisterContainer} />
+              <Route exact path="/register" component={RegisterContainer} />
               <Route exact path="/login" component={LoginContainer} />
               <Route exact path="/" component={StartupContainer} />
             </Switch>

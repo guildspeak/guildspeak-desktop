@@ -22,6 +22,7 @@ const createWindow = async () => {
       width: 1152,
       height: 648,
       minWidth: 800,
+      minHeight: 600,
       title: 'Guildspeak',
       frame: false,
       backgroundColor: '#33333d'
