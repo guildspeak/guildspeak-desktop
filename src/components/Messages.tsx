@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 
 const MESSAGE_SUBSCRIPTION = gql`
 subscription {
-  channelSubscription(channelId:"cjl6t7x540018086233kbwcz3") {
+  channelSubscription(channelId:"cjl70pho0001008534qtvbqoy") {
     node {
       messages(orderBy: createdAt_ASC, last: 30) {
         id
@@ -34,7 +34,7 @@ subscription {
 
 const GET_MESSAGES = gql`
 query {
-  channel(id: "cjl6t7x540018086233kbwcz3") {
+  channel(id: "cjl70pho0001008534qtvbqoy") {
     messages(orderBy: createdAt_ASC, last: 30) {
       id
       author {

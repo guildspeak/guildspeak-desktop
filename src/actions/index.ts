@@ -1,3 +1,3 @@
-import { CounterAction } from './counterActions'
+import { SetTokenAction } from './authActions'
 
-export type RootActions = CounterAction[keyof CounterAction]
+export type RootActions = SetTokenAction[keyof SetTokenAction]

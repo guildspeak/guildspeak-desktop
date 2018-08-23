@@ -31,7 +31,7 @@ const Input = styled.input`
 
 const CREATE_MESSAGE = gql`
   mutation createMessage($content: String!) {
-    createMessage(content: $content, channelId: "cjl6t7x540018086233kbwcz3") {
+    createMessage(content: $content, channelId: "cjl70pho0001008534qtvbqoy") {
       id
       content
     }
