@@ -15,14 +15,8 @@ const Wrapper = styled.div`
   padding: 0;
   margin: 0;
 `
-const SignUp = styled(Link)`
-  color: #cccccc;
-  padding: 14px;
-  margin-top: 4px;
-  text-decoration: none;
-`
 
-const LoginForm = styled.div`
+const RegisterForm = styled.div`
   padding: 0;
   margin: 0;
 `
@@ -64,10 +58,10 @@ const PasswordInput = styled(Input)`
   text-security: disc;
 `
 
-const LoginButton = styled(Button)`
+const RegisterButton = styled(Button)`
   height: 36px;
   margin-top: 12px;
-  width: 48%;
+  width: 100%;
   padding: 8px;
   display: inline-block;
   border-radius: 4px;
@@ -79,20 +73,10 @@ const LoginButton = styled(Button)`
   }
 `
 
-const RegisterButton = styled(LoginButton)`
-  float: right;
-  &:hover {
-    background: #cecece;
-  }
-`
 
-const ContinueButton = styled(LoginButton)`
-  width: 100%;
-`
-
-const LOGIN = gql`
-mutation login($email: String!, $password: String!) {
-  login(email: $email, password: $password) {
+const REGISTER = gql`
+mutation register($email: String!, $password: String!, $username: String!) {
+  register(email: $email, password: $password, username: $username) {
       token,
       user {
         username
@@ -104,6 +88,7 @@ mutation login($email: String!, $password: String!) {
 interface IState {
   email?: string
   password?: string
+  username?: string
 }
 
 interface Props {
@@ -113,39 +98,40 @@ interface Props {
   history: any
 }
 
-class Login extends React.Component<Props, IState> {
+class Register extends React.Component<Props, IState> {
   state = {
     email: '',
-    password: ''
+    password: '',
+    username: ''
   }
 
-  doLogin(loginMutation) {
-    loginMutation({ variables: { email: this.state.email, password: this.state.password } })
+  doRegister(registerMutation) {
+    registerMutation({ variables: { email: this.state.email, password: this.state.password, username: this.state.username } })
   }
 
   render() {
     return (
       <Wrapper>
-        <Mutation mutation={LOGIN}>
-          {(login, { data, error }) => {
+        <Mutation mutation={REGISTER}>
+          {(register, { data, error }) => {
             if (error) {
             }
 
             if (data) {
-              this.props.setToken(data.login.token)
-              return (<LoginForm>
-                <Info>Sup { data.login.user.username }</Info>
-                <ContinueButton primary onClick={ (e) => this.props.history.push('/')}>Continue to Guildspeak</ContinueButton>
-              </LoginForm>)
+              this.props.setToken(data.register.token)
+              return (<RegisterForm>
+                <Info>Sup { data.register.user.username }</Info>
+                <RegisterButton primary onClick={ (e) => this.props.history.push('/')}>Continue to Guildspeak</RegisterButton>
+              </RegisterForm>)
             }
 
-            return (<LoginForm>
-              <Info>Log in to your Guildspeak account</Info>
+            return (<RegisterForm>
+              <Info>Create your Guildspeak account</Info>
+              <Input onChange={(e) => this.setState({ username: e.target.value })} placeholder="Username" />
               <Input onChange={(e) => this.setState({ email: e.target.value })} placeholder="E-mail" />
               <PasswordInput onChange={(e) => this.setState({ password: e.target.value })} placeholder="Password" />
-                <LoginButton primary onClick={ (e) => this.doLogin(login) }>Login</LoginButton>
-                <RegisterButton onClick={ (e) => this.props.history.push('/register')}>Sign Up</RegisterButton>
-            </LoginForm>)
+              <RegisterButton primary onClick={ (e) => this.doRegister(register) }>Register</RegisterButton>
+            </RegisterForm>)
 
           }}
         </Mutation>
@@ -154,4 +140,4 @@ class Login extends React.Component<Props, IState> {
   }
 }
 
-export default withRouter(Login as any)
+export default withRouter(Register as any)

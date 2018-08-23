@@ -7,16 +7,16 @@ export interface AuthState {
 }
 
 const defaultState: AuthState = {
-  token: ''
+  token: localStorage.getItem('token')
 }
 
 export const authReducer: Reducer<AuthState> = (state = defaultState, action: SetTokenAction) => {
   switch (action.type) {
     case SET_TOKEN: {
-      localStorage.setItem('token', action.value)
+      localStorage.setItem('token', action.token)
       return {
         ...state,
-        token: action.value,
+        token: action.token,
       }
     }
     default:

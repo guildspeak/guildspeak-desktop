@@ -5,10 +5,10 @@ export const DECREMENT = 'DECREMENT'
 
 export interface SetTokenAction extends Action {
   type: 'SET_TOKEN',
-  value: string,
+  token: string,
 }
 
 export const setToken: ActionCreator<SetTokenAction> = (token) => ({
   type: SET_TOKEN,
-  value: token,
+  token,
 })

@@ -2,10 +2,11 @@ import { connect } from 'react-redux'
 import { RootState } from '../reducers'
 import { SetTokenAction, setToken } from '../actions/authActions'
 import { Dispatch } from 'redux'
-import AuthTokenComponent from '../components/AuthTokenComponent'
+import Register from '../components/Register'
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state: RootState) => ({
-  value: state.auth.token
+  token: state.auth.token
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<SetTokenAction>) => ({
@@ -15,4 +16,4 @@ const mapDispatchToProps = (dispatch: Dispatch<SetTokenAction>) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AuthTokenComponent)
+)(Register)

@@ -16,8 +16,9 @@ import { split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Systembar from './components/Systembar'
-import Login from './components/Login'
-
+import LoginContainer from './containers/LoginContainer'
+import StartupContainer from './containers/StartupContainer'
+import RegisterContainer from './containers/RegisterContainer'
 // Create main element
 const mainElement = document.createElement('div')
 document.body.appendChild(mainElement)
@@ -94,6 +95,8 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `
 
+
+
 // Render components
 ReactDOM.render(
   <AppContainer>
@@ -103,10 +106,12 @@ ReactDOM.render(
           <Systembar />
           <Router>
             <Switch>
-              {/* <Route exact path="/" component={Application} /> */}
-              <Route exact path="/" component={Login} />
+            <Route exact path="/register" component={RegisterContainer} />
+              <Route exact path="/login" component={LoginContainer} />
+              <Route exact path="/" component={StartupContainer} />
             </Switch>
           </Router>
+
         </AppWrapper>
       </Provider>
     </ApolloProvider>
