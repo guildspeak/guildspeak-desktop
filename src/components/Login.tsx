@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import styled from 'styled-components'
 import Button from './Button'
-import { setToken } from '../actions/authActions'
+import WelcomeContainer from '../containers/WelcomeContainer'
 import { withRouter, Link } from 'react-router-dom'
 
 const Wrapper = styled.div`
@@ -101,6 +101,7 @@ mutation login($email: String!, $password: String!) {
 interface IState {
   email?: string
   password?: string
+  token?: string
 }
 
 interface Props {
@@ -113,10 +114,11 @@ interface Props {
 class Login extends React.Component<Props, IState> {
   state = {
     email: '',
-    password: ''
+    password: '',
+    token: '',
   }
 
-  handleLogin(loginMutation) {
+  handleLogin = loginMutation => () => {
     loginMutation({ variables: { email: this.state.email, password: this.state.password } })
   }
 
@@ -124,8 +126,18 @@ class Login extends React.Component<Props, IState> {
     this.setState({ email: e.target.value })
   }
 
+  handleRegister = () => {
+    this.props.history.push('/register')
+  }
+
   handlePassword = (e) => {
     this.setState({ password: e.target.value })
+  }
+
+  componentDidUpdate(prevProps: Props, prevState: IState) {
+    if (this.state.token !== prevState.token) {
+      this.props.setToken(this.props.token)
+    }
   }
 
   render() {
@@ -137,11 +149,7 @@ class Login extends React.Component<Props, IState> {
             }
 
             if (data) {
-              this.props.setToken(data.login.token)
-              return (<LoginForm>
-                <Info>Sup {data.login.user.username}</Info>
-                <ContinueButton primary={true} onClick={this.props.history.push('/')}>Continue to Guildspeak</ContinueButton>
-              </LoginForm>)
+              return (<WelcomeContainer data={data} />)
             }
 
             return (<LoginForm>
@@ -149,11 +157,10 @@ class Login extends React.Component<Props, IState> {
               <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
               <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
 
-              <LoginButton primary={true}
-
-                // tslint:disable-next-line:jsx-no-lambda
-                onClick={(e) => this.handleLogin(login)}>Login</LoginButton>
-              <RegisterButton onClick={this.props.history.push('/register')}>Sign Up</RegisterButton>
+              <LoginButton
+                primary={true}
+                onClick={this.handleLogin(login)}>Login</LoginButton>
+              <RegisterButton onClick={this.handleRegister}>Sign Up</RegisterButton>
             </LoginForm>)
 
           }}

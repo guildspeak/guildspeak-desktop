@@ -2,26 +2,26 @@ import * as React from 'react'
 import Application from './Application'
 import { withRouter } from 'react-router-dom'
 
-class StartupComponent extends React.Component<{ token: string, history: any }, { logged: boolean }> {
+class Startup extends React.Component<{ token: string, history: any }, { logged: boolean }> {
   state = {
     logged: false
   }
 
   componentDidMount() {
     if (!this.props.token) {
-      this.setState({ logged: true })
+      this.setState({ logged: false })
       this.props.history.push('/login')
     } else {
-      this.setState({ logged: false })
+      this.setState({ logged: true })
     }
   }
 
   render() {
     if (this.state.logged) {
-      return (<p> redirecting to login</p>)
+      return (<Application />)
     }
-    return <Application />
+    return (<p>redirecting to login page</p>)
   }
 }
 
-export default withRouter(StartupComponent as any)
+export default withRouter(Startup as any)

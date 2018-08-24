@@ -3,8 +3,8 @@ import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import styled from 'styled-components'
 import Button from './Button'
-import { setToken } from '../actions/authActions'
-import { withRouter, Link } from 'react-router-dom'
+import WelcomeContainer from '../containers/WelcomeContainer'
+import { withRouter } from 'react-router-dom'
 
 const Wrapper = styled.div`
   display: flex;
@@ -122,22 +122,18 @@ class Register extends React.Component<Props, IState> {
     this.setState({ password: e.target.value })
   }
 
-
   render() {
     return (
       <Wrapper>
         <Mutation mutation={REGISTER}>
           {(register, { data, error }) => {
             if (error) {
+              return (<p>wrong things heppens here</p>)
               console.error(error)
             }
 
             if (data) {
-              this.props.setToken(data.register.token)
-              return (<RegisterForm>
-                <Info>Sup {data.register.user.username}</Info>
-                <RegisterButton primary={true} onClick={this.props.history.push('/')}>Continue to Guildspeak</RegisterButton>
-              </RegisterForm>)
+              return (<WelcomeContainer data={data} />)
             }
 
             return (<RegisterForm>
