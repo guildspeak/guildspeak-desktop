@@ -29,6 +29,7 @@ subscription {
         author {
           username
         }
+        createdAt
         content
       }
       guildId {
@@ -49,6 +50,7 @@ query {
       author {
         username
       }
+      createdAt
       content
     }
     guildId {
@@ -75,7 +77,7 @@ class Messages extends React.Component {
               }
             })
             return (
-              data.channel.messages.map(el => <Message author={el.author} content={el.content} key={el.id} />)
+              data.channel.messages.map(el => <Message author={el.author} content={el.content} key={el.id} time={el.createdAt} />)
             )
           }}
         </Query>

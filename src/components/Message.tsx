@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import MessageAuthor, { MessageAuthorData } from './MessageAuthor'
+import { MessageAuthorData } from './MessageAuthor'
+import MessageHeader from './MessageHeader'
 
 const Wrapper = styled.div`
  flex: 1;
@@ -17,12 +18,13 @@ const MessageContent= styled.p`
 interface Props {
   content: string
   author: MessageAuthorData
+  time: string
 }
 
-const Message: React.SFC<Props> = ({ content, author }) => (
+const Message: React.SFC<Props> = ({ content, author, time }) => (
   <Wrapper>
     <MessageBubble>
-      <MessageAuthor author={author} />
+      <MessageHeader author={author} time={time} />
       <MessageContent>{content}</MessageContent>
       </MessageBubble>
   </Wrapper>
