@@ -3,7 +3,7 @@ import Sidebar from './Sidebar'
 import styled from 'styled-components'
 import Messages from './Messages'
 import MessageInput from './MessageInput'
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 
 const MainWrapper = styled.div`
   display: flex;
@@ -24,6 +24,9 @@ const RightColumn = styled.div`
   flex: 3;
   `
 
+const renderMessages = (params) => {
+  return (<Messages key={params.match.params.channelId} {...params } />)
+}
 const Application: React.SFC = () => (
   <MainWrapper>
     <LeftColumn>
@@ -31,11 +34,11 @@ const Application: React.SFC = () => (
     </LeftColumn>
     <RightColumn>
       <MessagesColumn>
-        <Route path='/channel/:Id' component={Messages} />
+        <Route path='/channel/:channelId' render={renderMessages} />
         <MessageInput />
       </MessagesColumn>
     </RightColumn>
   </MainWrapper>
 )
 
-export default Application
+export default withRouter(Application as any)

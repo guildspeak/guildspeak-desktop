@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 
 const Wrapper = styled.div`
-  overflow: auto;
+  overflow: hidden;
   height: 100%;
 `
 const GET_GUILDS = gql`

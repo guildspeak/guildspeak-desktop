@@ -22,9 +22,9 @@ const Wrapper = styled.div`
   }
 `
 
-const MESSAGE_SUBSCRIPTION = channelId => gql`
-subscription {
-  channelSubscription(channelId: "${channelId}") {
+const MESSAGE_SUBSCRIPTION = gql`
+subscription channelSubscription($channelId: ID!) {
+  channelSubscription(channelId: $channelId) {
     node {
       messages(orderBy: createdAt_ASC, last: 30) {
         id
@@ -44,9 +44,9 @@ subscription {
 }
 `
 
-const GET_MESSAGES = channelId => gql`
-query {
-  channel(id: "${channelId}") {
+const GET_MESSAGES = gql`
+query channel($channelId: ID!){
+  channel(id: $channelId) {
     messages(orderBy: createdAt_ASC, last: 30) {
       id
       author {
@@ -68,6 +68,7 @@ class Messages extends React.Component<{ match: any }, { channelId: string }> {
 
   constructor (props) {
     super(props)
+    // this.setState({ key:  })
     this.state = {channelId: this.props.match.params.channelId}
   }
 
@@ -79,20 +80,25 @@ class Messages extends React.Component<{ match: any }, { channelId: string }> {
   }
 
   messageWillMount = () => {
-    const node = ReactDOM.findDOMNode(this) as any
-    this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight
+    try {
+      const node = ReactDOM.findDOMNode(this) as any
+      this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   render() {
     return (
       <Wrapper>
-        <Query query={GET_MESSAGES(this.state.channelId)}>
+        <Query query={GET_MESSAGES} variables={{ channelId: this.state.channelId }} >
           {({ loading, error, data, subscribeToMore }) => {
             if (loading) return <div>Loading...</div>
             if (error) return <div>{error.toString()} messages</div>
 
             subscribeToMore({
-              document: MESSAGE_SUBSCRIPTION(this.state.channelId),
+              document: MESSAGE_SUBSCRIPTION,
+              variables: { channelId: this.state.channelId },
               updateQuery: (prev, data) => {
                 return { channel: data.subscriptionData.data.channelSubscription.node }
               }

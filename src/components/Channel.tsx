@@ -24,7 +24,7 @@ interface Props {
 
 const Channel: React.SFC<Props & RouteComponentProps<Props>> = ({ id, name }) => (
   <Wrapper>
-    <ChannelName to={`/channels/${id}`}>#{name}</ChannelName>
+    <ChannelName to={`/channel/${id}`}>#{name}</ChannelName>
   </Wrapper>
 )
 
