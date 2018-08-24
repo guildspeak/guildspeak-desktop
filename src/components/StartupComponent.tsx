@@ -4,8 +4,7 @@ import { withRouter } from 'react-router-dom'
 
 class StartupComponent extends React.Component<{ token: string, history: any }, {}> {
   render() {
-    const isNotLoggedIn = this.props.token === ''
-    if (isNotLoggedIn) {
+    if (!this.props.token) {
       this.props.history.push('/login')
       return (<p> redirecting to login</p>)
     }

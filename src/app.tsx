@@ -106,12 +106,11 @@ ReactDOM.render(
           <Systembar />
           <Router>
             <Switch>
-              <Route exact={true} path="/register" component={RegisterContainer} />
-              <Route exact={true} path="/login" component={LoginContainer} />
               <Route exact={true} path="/" component={StartupContainer} />
+              <Route exact={true} path="/login" component={LoginContainer} />
+              <Route exact={true} path="/register" component={RegisterContainer} />
             </Switch>
           </Router>
-
         </AppWrapper>
       </Provider>
     </ApolloProvider>
