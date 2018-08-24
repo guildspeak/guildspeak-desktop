@@ -119,7 +119,7 @@ class Register extends React.Component<Props, IState> {
   }
 
   handlePassword = (e) => {
-    this.setState({ username: e.target.value })
+    this.setState({ password: e.target.value })
   }
 
 
