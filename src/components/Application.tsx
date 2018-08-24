@@ -3,6 +3,7 @@ import Sidebar from './Sidebar'
 import styled from 'styled-components'
 import Messages from './Messages'
 import MessageInput from './MessageInput'
+import { Route } from 'react-router-dom'
 
 const MainWrapper = styled.div`
   display: flex;
@@ -23,10 +24,6 @@ const RightColumn = styled.div`
   flex: 3;
   `
 
-const ref: React.RefObject<any> = React.createRef()
-const dd = () => {
-
-}
 const Application: React.SFC = () => (
   <MainWrapper>
     <LeftColumn>
@@ -34,7 +31,7 @@ const Application: React.SFC = () => (
     </LeftColumn>
     <RightColumn>
       <MessagesColumn>
-        <Messages ref={ ref } parentScroll={ dd }/>
+        <Route path='/channel/:Id' component={Messages} />
         <MessageInput />
       </MessagesColumn>
     </RightColumn>
