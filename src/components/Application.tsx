@@ -19,10 +19,10 @@ const MessagesColumn = styled.div`
 `
 const LeftColumn = styled.div`
   flex: 0.5;
-  `
+`
 const RightColumn = styled.div`
   flex: 3;
-  `
+`
 
 const Application: React.SFC = () => (
   <MainWrapper>
