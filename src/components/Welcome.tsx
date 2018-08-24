@@ -43,7 +43,7 @@ const ContinueButton = styled(Button)`
 interface IProps {
   setToken: (token) => any
   data: any
-  history:any
+  history: any
 }
 
 
