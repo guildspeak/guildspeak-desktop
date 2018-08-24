@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   justify-content: center;
   height: 24px;
   margin-top: 24px;
-  margin-right: 28px;
+  margin-right: 18px;
   margin-bottom: 56px;
 `
 const Input = styled.input`
