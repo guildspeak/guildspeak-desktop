@@ -8,16 +8,16 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { ApolloLink, split } from 'apollo-link'
-import Application from './components/Application'
 import store from './store'
 import styled, { injectGlobal } from 'styled-components'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Systembar from './components/Systembar'
-import LoginContainer from './containers/LoginContainer'
+import Login from './components/Login'
 import StartupContainer from './containers/StartupContainer'
-import RegisterContainer from './containers/RegisterContainer'
+import Register from './components/Register'
+
 // Create main element
 const mainElement = document.createElement('div')
 document.body.appendChild(mainElement)
@@ -107,13 +107,12 @@ ReactDOM.render(
           <Router>
             <Switch>
               <Route exact={true} path="/" component={StartupContainer} />
-              <Route exact={true} path="/login" component={LoginContainer} />
-              <Route exact={true} path="/register" component={RegisterContainer} />
+              <Route exact={true} path="/login" component={Login} />
+              <Route exact={true} path="/register" component={Register} />
             </Switch>
           </Router>
         </AppWrapper>
       </Provider>
     </ApolloProvider>
   </AppContainer>,
-  mainElement
-)
+  mainElement)
