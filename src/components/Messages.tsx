@@ -3,12 +3,14 @@ import styled from 'styled-components'
 import Message from './Message'
 import gql from 'graphql-tag'
 import { Query, Subscription } from 'react-apollo'
-
+import * as ReactDOM from 'react-dom'
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
   flex: 1;
-  overflow: auto;
+  height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 12px;
     background-color:  #2e2e38;
@@ -61,7 +63,27 @@ query {
   }
 }`
 
-class Messages extends React.Component {
+class Messages extends React.Component<{ parentScroll: any }> {
+  listRef: any
+  shouldScrollBottom: boolean
+
+  constructor (props) {
+    super(props)
+    this.listRef = React.createRef()
+  }
+
+  messageMounted = () => {
+    if (this.shouldScrollBottom) {
+      const node = ReactDOM.findDOMNode(this) as any
+      node.scrollTop = node.scrollHeight
+    }
+  }
+
+  messageWillMount = () => {
+    const node = ReactDOM.findDOMNode(this) as any
+    this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight
+  }
+
   render() {
     return (
       <Wrapper>
@@ -77,8 +99,11 @@ class Messages extends React.Component {
               }
             })
             return (
-              data.channel.messages.map(el => <Message author={el.author} content={el.content} key={el.id} time={el.createdAt} />)
-            )
+
+              <div >
+                { data.channel.messages.map(el => <Message author={el.author} content={el.content} key={el.id} time={el.createdAt} mounted={ this.messageMounted } willMount={ this.messageWillMount } />) }
+              </div>
+          )
           }}
         </Query>
       </Wrapper>

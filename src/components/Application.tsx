@@ -23,6 +23,10 @@ const RightColumn = styled.div`
   flex: 3;
   `
 
+const ref: React.RefObject<any> = React.createRef()
+const dd = () => {
+
+}
 const Application: React.SFC = () => (
   <MainWrapper>
     <LeftColumn>
@@ -30,7 +34,7 @@ const Application: React.SFC = () => (
     </LeftColumn>
     <RightColumn>
       <MessagesColumn>
-        <Messages />
+        <Messages ref={ ref } parentScroll={ dd }/>
         <MessageInput />
       </MessagesColumn>
     </RightColumn>

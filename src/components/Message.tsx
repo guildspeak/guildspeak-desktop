@@ -19,16 +19,37 @@ interface Props {
   content: string
   author: MessageAuthorData
   time: string
+  mounted: () => any
+  willMount: () => any
 }
 
-const Message: React.SFC<Props> = ({ content, author, time }) => (
-  <Wrapper>
-    <MessageBubble>
-      <MessageHeader author={author} time={time} />
-      <MessageContent>{content}</MessageContent>
+class Message extends React.Component<Props, {}> {
+  ref: React.RefObject<any>
+  constructor(props) {
+    super(props)
+    this.ref = React.createRef()
+  }
+
+  componentWillMount() {
+    this.props.willMount()
+  }
+
+  componentDidMount() {
+    this.props.mounted()
+  }
+
+  doScroll = (e) => {
+    console.log(
+    this.ref.current.scrollTop)
+  }
+  render() {
+    return (<Wrapper >
+      <MessageBubble>
+      <MessageHeader author={this.props.author} time={this.props.time} />
+      <MessageContent ref={this.ref} onScroll={ this.doScroll }>{this.props.content}</MessageContent>
       </MessageBubble>
-  </Wrapper>
-)
+    </Wrapper>)
+  }
+}
 
 export default Message
-
