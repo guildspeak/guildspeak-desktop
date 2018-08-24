@@ -2,9 +2,9 @@ import * as React from 'react'
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import styled from 'styled-components'
-import Button from './Button';
-import { setToken } from '../actions/authActions';
-import { withRouter, Link } from 'react-router-dom';
+import Button from './Button'
+import { setToken } from '../actions/authActions'
+import { withRouter, Link } from 'react-router-dom'
 
 const Wrapper = styled.div`
   display: flex;
@@ -52,10 +52,11 @@ const Input = styled.input`
 const ButtonsWrapper = styled(Wrapper)`
 `
 
+const UsernameInput = styled(Input)``
+
+const EmailInput = styled(Input)``
+
 const PasswordInput = styled(Input)`
-  -webkit-text-security: disc;
-  -moz-text-security: disc;
-  text-security: disc;
 `
 
 const RegisterButton = styled(Button)`
@@ -94,7 +95,7 @@ interface IState {
 interface Props {
   token: string
   store: any
-  setToken : (token) => any
+  setToken: (token) => any
   history: any
 }
 
@@ -105,9 +106,22 @@ class Register extends React.Component<Props, IState> {
     username: ''
   }
 
-  doRegister(registerMutation) {
+  hangleRegister(e, registerMutation) {
     registerMutation({ variables: { email: this.state.email, password: this.state.password, username: this.state.username } })
   }
+
+  handleEmail = (e) => {
+    this.setState({ email: e.target.value })
+  }
+
+  handleUsername = (e) => {
+    this.setState({ username: e.target.value })
+  }
+
+  handlePassword = (e) => {
+    this.setState({ username: e.target.value })
+  }
+
 
   render() {
     return (
@@ -120,17 +134,19 @@ class Register extends React.Component<Props, IState> {
             if (data) {
               this.props.setToken(data.register.token)
               return (<RegisterForm>
-                <Info>Sup { data.register.user.username }</Info>
-                <RegisterButton primary onClick={ (e) => this.props.history.push('/')}>Continue to Guildspeak</RegisterButton>
+                <Info>Sup {data.register.user.username}</Info>
+                <RegisterButton primary={true} onClick={this.props.history.push('/')}>Continue to Guildspeak</RegisterButton>
               </RegisterForm>)
             }
 
             return (<RegisterForm>
               <Info>Create your Guildspeak account</Info>
-              <Input onChange={(e) => this.setState({ username: e.target.value })} placeholder="Username" />
-              <Input onChange={(e) => this.setState({ email: e.target.value })} placeholder="E-mail" />
-              <PasswordInput onChange={(e) => this.setState({ password: e.target.value })} placeholder="Password" />
-              <RegisterButton primary onClick={ (e) => this.doRegister(register) }>Register</RegisterButton>
+              <UsernameInput onChange={this.handleUsername} placeholder="Username" />
+              <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
+              <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
+              <RegisterButton primary={true}
+                // tslint:disable-next-line:jsx-no-lambda
+                onClick={() => this.hangleRegister}>Register</RegisterButton>
             </RegisterForm>)
 
           }}

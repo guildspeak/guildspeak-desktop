@@ -24,17 +24,17 @@ const RightColumn = styled.div`
   `
 
 const Application: React.SFC = () => (
-    <MainWrapper>
-      <LeftColumn>
-        <Sidebar />
-      </LeftColumn>
-      <RightColumn>
-        <MessagesColumn>
-          <Messages />
-          <MessageInput />
-        </MessagesColumn>
-      </RightColumn>
-    </MainWrapper>
+  <MainWrapper>
+    <LeftColumn>
+      <Sidebar />
+    </LeftColumn>
+    <RightColumn>
+      <MessagesColumn>
+        <Messages />
+        <MessageInput />
+      </MessagesColumn>
+    </RightColumn>
+  </MainWrapper>
 )
 
 export default Application

@@ -8,9 +8,8 @@ class StartupComponent extends React.Component<{ token: string, history: any }, 
     if (isNotLoggedIn) {
       this.props.history.push('/login')
       return (<p> redirecting to login</p>)
-    } else {
-      return <Application/>
     }
+    return <Application />
   }
 }
 

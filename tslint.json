@@ -1,8 +1,17 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint-config-airbnb",
-        "tslint-react",
-        "tslint-config-prettier"
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "semicolon": [
+      true,
+      "never"
     ],
+    "variable-name": false,
+    "import-name": false,
+    "object-shorthand-properties-first": false
+  }
 }

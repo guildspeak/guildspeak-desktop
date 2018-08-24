@@ -8,7 +8,7 @@ export interface Props {
 }
 
 const AuthTokenComponent: React.SFC<Props> = ({ value, setToken }) => (
-  <div></div>
+  <div />
 )
 
 export default AuthTokenComponent

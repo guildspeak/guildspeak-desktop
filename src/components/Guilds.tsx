@@ -23,14 +23,14 @@ query {
 const Guilds = () => (
   <Wrapper>
     <Query query={GET_GUILDS}>
-        {({ loading, error, data }) => {
+      {({ loading, error, data }) => {
         if (loading) return <div>Loading...</div>
         if (error) return <div>{error.toString()} guilds</div>
         return (
           data.guilds.map((el) => (<Guild name={el.name} key={el.id} channels={el.channels} />))
         )
       }}
-      </Query>
+    </Query>
   </Wrapper>
 )
 

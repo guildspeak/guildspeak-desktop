@@ -2,9 +2,9 @@ import * as React from 'react'
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import styled from 'styled-components'
-import Button from './Button';
-import { setToken } from '../actions/authActions';
-import { withRouter, Link } from 'react-router-dom';
+import Button from './Button'
+import { setToken } from '../actions/authActions'
+import { withRouter, Link } from 'react-router-dom'
 
 const Wrapper = styled.div`
   display: flex;
@@ -36,7 +36,7 @@ const Info = styled.div`
   font-size: 18px;
 `
 
-const Input = styled.input`
+const EmailInput = styled.input`
   background: #2e2e38;
   margin-top: 8px;
   box-sizing: border-box;
@@ -58,10 +58,7 @@ const Input = styled.input`
 const ButtonsWrapper = styled(Wrapper)`
 `
 
-const PasswordInput = styled(Input)`
-  -webkit-text-security: disc;
-  -moz-text-security: disc;
-  text-security: disc;
+const PasswordInput = styled(EmailInput)`
 `
 
 const LoginButton = styled(Button)`
@@ -109,7 +106,7 @@ interface IState {
 interface Props {
   token: string
   store: any
-  setToken : (token) => any
+  setToken: (token) => any
   history: any
 }
 
@@ -119,8 +116,16 @@ class Login extends React.Component<Props, IState> {
     password: ''
   }
 
-  doLogin(loginMutation) {
+  handleLogin(e, loginMutation) {
     loginMutation({ variables: { email: this.state.email, password: this.state.password } })
+  }
+
+  handleEmail = (e) => {
+    this.setState({ email: e.target.value })
+  }
+
+  handlePassword = (e) => {
+    this.setState({ password: e.target.value })
   }
 
   render() {
@@ -134,17 +139,21 @@ class Login extends React.Component<Props, IState> {
             if (data) {
               this.props.setToken(data.login.token)
               return (<LoginForm>
-                <Info>Sup { data.login.user.username }</Info>
-                <ContinueButton primary onClick={ (e) => this.props.history.push('/')}>Continue to Guildspeak</ContinueButton>
+                <Info>Sup {data.login.user.username}</Info>
+                <ContinueButton primary={true} onClick={this.props.history.push('/')}>Continue to Guildspeak</ContinueButton>
               </LoginForm>)
             }
 
             return (<LoginForm>
               <Info>Log in to your Guildspeak account</Info>
-              <Input onChange={(e) => this.setState({ email: e.target.value })} placeholder="E-mail" />
-              <PasswordInput onChange={(e) => this.setState({ password: e.target.value })} placeholder="Password" />
-                <LoginButton primary onClick={ (e) => this.doLogin(login) }>Login</LoginButton>
-                <RegisterButton onClick={ (e) => this.props.history.push('/register')}>Sign Up</RegisterButton>
+              <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
+              <PasswordInput  type="password" onChange={this.handlePassword} placeholder="Password" />
+
+              <LoginButton primary={true} onClick={() => {
+                // tslint:disable-next-line:jsx-no-lambda
+                this.handleLogin
+              }}>Login</LoginButton>
+              <RegisterButton onClick={this.props.history.push('/register')}>Sign Up</RegisterButton>
             </LoginForm>)
 
           }}

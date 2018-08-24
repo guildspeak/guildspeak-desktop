@@ -7,12 +7,11 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
-import { ApolloLink } from 'apollo-link'
+import { ApolloLink, split } from 'apollo-link'
 import Application from './components/Application'
 import store from './store'
 import styled, { injectGlobal } from 'styled-components'
 import { WebSocketLink } from 'apollo-link-ws'
-import { split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Systembar from './components/Systembar'
@@ -77,12 +76,13 @@ const link = split(
 const client = new ApolloClient({
   link: ApolloLink.from([
     onError(({ graphQLErrors, networkError }) => {
-      if (graphQLErrors)
+      if (graphQLErrors) {
         graphQLErrors.map(({ message, locations, path }) =>
           console.error(
             `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
           ),
         )
+      }
       if (networkError) console.error(`[Network error]: ${networkError}`)
     }),
     authLink.concat(link),
@@ -106,9 +106,9 @@ ReactDOM.render(
           <Systembar />
           <Router>
             <Switch>
-              <Route exact path="/register" component={RegisterContainer} />
-              <Route exact path="/login" component={LoginContainer} />
-              <Route exact path="/" component={StartupContainer} />
+              <Route exact={true} path="/register" component={RegisterContainer} />
+              <Route exact={true} path="/login" component={LoginContainer} />
+              <Route exact={true} path="/" component={StartupContainer} />
             </Switch>
           </Router>
 

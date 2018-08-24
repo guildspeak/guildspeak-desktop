@@ -22,7 +22,7 @@ interface Props {
 const Guild: React.SFC<Props> = ({ name, channels }) => (
   <Wrapper>
     <GuildName>{name}</GuildName>
-    {channels.map(el => <Channel name={el.name} key={el.id}></Channel>)}
+    {channels.map(el => <Channel name={el.name} key={el.id} />)}
   </Wrapper>
 )
 

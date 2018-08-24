@@ -48,7 +48,7 @@ class MessageInput extends React.Component<{}, IState> {
     content: ''
   }
 
-  handleSubmit = (e, createMessage) => {
+  handleSubmit(e, createMessage) {
     e.preventDefault()
     createMessage({ variables: { content: this.state.content } })
     this.setState({ content: '' })
@@ -66,6 +66,7 @@ class MessageInput extends React.Component<{}, IState> {
           {(createMessage, { data }) => (
 
             <form
+              // tslint:disable-next-line:jsx-no-lambda
               onSubmit={(e) => this.handleSubmit(e, createMessage)}
             >
               <Input placeholder="write message..." value={this.state.content} onChange={this.handleChange} />
