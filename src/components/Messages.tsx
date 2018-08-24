@@ -22,9 +22,9 @@ const Wrapper = styled.div`
   }
 `
 
-const MESSAGE_SUBSCRIPTION = gql`
+const MESSAGE_SUBSCRIPTION = channelID => gql`
 subscription {
-  channelSubscription(channelId:"cjl70pho0001008534qtvbqoy") {
+  channelSubscription(channelId: "${channelID}") {
     node {
       messages(orderBy: createdAt_ASC, last: 30) {
         id
@@ -44,9 +44,9 @@ subscription {
 }
 `
 
-const GET_MESSAGES = gql`
+const GET_MESSAGES = channelID => gql`
 query {
-  channel(id: "cjl70pho0001008534qtvbqoy") {
+  channel(id: "${channelID}") {
     messages(orderBy: createdAt_ASC, last: 30) {
       id
       author {
@@ -63,13 +63,14 @@ query {
   }
 }`
 
-class Messages extends React.Component<{ parentScroll: any }> {
+class Messages extends React.Component<{ parentScroll: any }, { channelID: string }> {
   listRef: any
   shouldScrollBottom: boolean
 
   constructor (props) {
     super(props)
     this.listRef = React.createRef()
+    this.state = {channelID: 'cjl70pho0001008534qtvbqoy'}
   }
 
   messageMounted = () => {
@@ -87,13 +88,13 @@ class Messages extends React.Component<{ parentScroll: any }> {
   render() {
     return (
       <Wrapper>
-        <Query query={GET_MESSAGES}>
+        <Query query={GET_MESSAGES(this.state.channelID)}>
           {({ loading, error, data, subscribeToMore }) => {
             if (loading) return <div>Loading...</div>
             if (error) return <div>{error.toString()} messages</div>
 
             subscribeToMore({
-              document: MESSAGE_SUBSCRIPTION,
+              document: MESSAGE_SUBSCRIPTION(this.state.channelID),
               updateQuery: (prev, data) => {
                 return { channel: data.subscriptionData.data.channelSubscription.node }
               }
