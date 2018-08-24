@@ -1,12 +1,7 @@
 import * as React from 'react'
-import styled from 'styled-components'
-import MessageAuthor, { MessageAuthorData } from './MessageAuthor'
-import MessageTimestamp from './MessageTimestamp'
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`
+import MessageAuthor, { MessageAuthorData } from '../MessageAuthor'
+import MessageTimestamp from '../MessageTimestamp'
+import { Wrapper } from './styles'
 
 interface Props {
   author: MessageAuthorData

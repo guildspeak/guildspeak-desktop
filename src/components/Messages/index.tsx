@@ -1,26 +1,9 @@
 import * as React from 'react'
-import styled from 'styled-components'
-import Message from './Message'
+import Message from '../Message'
 import gql from 'graphql-tag'
-import { Query, Subscription } from 'react-apollo'
+import { Query } from 'react-apollo'
 import * as ReactDOM from 'react-dom'
-const Wrapper = styled.div`
-	display: flex;
-	flex-direction: column;
-  flex: 1;
-  height: 100px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  &::-webkit-scrollbar {
-    width: 12px;
-    background-color:  #2e2e38;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,.3);
-    background-color:  #27272f;
-  }
-`
+import { Wrapper } from './styles'
 
 const MESSAGE_SUBSCRIPTION = gql`
 subscription channelSubscription($channelId: ID!) {

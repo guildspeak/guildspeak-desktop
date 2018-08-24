@@ -1,19 +1,7 @@
 import * as React from 'react'
-import styled from 'styled-components'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { RouteComponentProps } from 'react-router'
-const Wrapper = styled.div`
-`
-
-const ChannelName = styled(Link)`
-  padding: 4px;
-  color: #eeeeee;
-  &:hover {
-    color: #fff;
-    background: rgba(255,255,255,0.24);
-  }
-  cursor: pointer;
-`
+import { Wrapper, ChannelName } from './styles'
 
 interface Props {
   id: string

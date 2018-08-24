@@ -1,19 +1,7 @@
 import * as React from 'react'
-import styled from 'styled-components'
-import { MessageAuthorData } from './MessageAuthor'
-import MessageHeader from './MessageHeader'
-
-const Wrapper = styled.div`
- flex: 1;
-`
-const MessageBubble = styled.div`
-  flex: 1;
-  height: auto;
-  word-break: break-all;
-`
-const MessageContent= styled.p`
-  padding-right: 8px;
-`
+import { MessageAuthorData } from '../MessageAuthor'
+import MessageHeader from '../MessageHeader'
+import { Wrapper, MessageBubble, MessageContent } from './styles'
 
 interface Props {
   content: string

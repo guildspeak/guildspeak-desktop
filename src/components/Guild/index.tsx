@@ -5,21 +5,9 @@
   * @author Bjornskjald <github@bjorn.ml>
 */
 import * as React from 'react'
-import styled from 'styled-components'
-import Channel from './Channel'
+import Channel from '../Channel'
 import { RouteProps } from 'react-router'
-
-const Wrapper = styled.div`
-`
-
-const GuildName = styled.div`
-  padding: 4px;
-  color: #eeeeee;
-  &:hover {
-    color: #fff;
-  }
-  cursor: pointer;
-`
+import { Wrapper, GuildName } from './styles'
 
 interface Props {
   name: string

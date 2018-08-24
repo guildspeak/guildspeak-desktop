@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Application from './Application'
+import Application from '../Application'
 import { withRouter } from 'react-router-dom'
 
 class Startup extends React.Component<{ token: string, history: any }, { logged: boolean }> {

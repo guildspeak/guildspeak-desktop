@@ -1,11 +1,5 @@
 import * as React from 'react'
-import styled from 'styled-components'
-
-const Wrapper = styled.div`
-  color: #aaa;
-  margin-left: 10px;
-  font-size: 90%;
-`
+import { Wrapper } from './styles'
 
 interface Props {
   time: string
