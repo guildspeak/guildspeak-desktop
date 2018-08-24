@@ -116,7 +116,7 @@ class Login extends React.Component<Props, IState> {
     password: ''
   }
 
-  handleLogin(e, loginMutation) {
+  handleLogin(loginMutation) {
     loginMutation({ variables: { email: this.state.email, password: this.state.password } })
   }
 
@@ -147,12 +147,12 @@ class Login extends React.Component<Props, IState> {
             return (<LoginForm>
               <Info>Log in to your Guildspeak account</Info>
               <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
-              <PasswordInput  type="password" onChange={this.handlePassword} placeholder="Password" />
+              <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
 
-              <LoginButton primary={true} onClick={() => {
+              <LoginButton primary={true}
+
                 // tslint:disable-next-line:jsx-no-lambda
-                this.handleLogin
-              }}>Login</LoginButton>
+                onClick={(e) => this.handleLogin(login)}>Login</LoginButton>
               <RegisterButton onClick={this.props.history.push('/register')}>Sign Up</RegisterButton>
             </LoginForm>)
 
