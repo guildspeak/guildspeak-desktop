@@ -1,13 +1,9 @@
 import * as React from 'react'
-import styled from 'styled-components'
-import Guild from './Guild'
+import Guild from '../Guild'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
+import { Wrapper } from './styles'
 
-const Wrapper = styled.div`
-  overflow: auto;
-  height: 100%;
-`
 const GET_GUILDS = gql`
 query {
   guilds {
