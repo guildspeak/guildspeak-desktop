@@ -13,7 +13,11 @@ display: flex;
 flex-direction: column;
 `
 const LeftColumn = styled.div`
-flex: 0.5;
+display: flex;
+flex-flow: column;
+height: 100vh;
+min-height: 100vh;
+flex: 0.4;
 `
 const RightColumn = styled.div`
 flex: 3;

@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-overflow: hidden;
-height: 100%;
+  flex: 1;
+  overflow: hidden;
 `
 
 export { Wrapper }
