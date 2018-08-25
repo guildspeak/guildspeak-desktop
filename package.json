@@ -4,13 +4,13 @@
   "description": "",
   "main": "./dist/main.js",
   "scripts": {
-    "start": "cross-env ENV=development electron .",
+    "start": "cross-env ENV=development electron ./dist/main.js",
     "dev": "env-cmd .env concurrently \"npm run watch-renderer\" \"npm run watch-main\" \"npm run start\"",
     "watch-renderer": "webpack-dev-server --config webpack.config.renderer.dev.js  --watch --mode development",
     "watch-main": "webpack --config webpack.config.main.js --watch --mode development",
     "build-renderer": "webpack --config webpack.config.renderer.prod.js",
     "build-main": "webpack --config webpack.config.main.js --mode production",
-    "build": "env-cmd .env concurrently \"npm run build-renderer\" \"npm run build-main\"",
+    "build": "env-cmd .env concurrently \"npm run build-renderer\" \"npm run build-main\" electron-builder ",
     "build-win": "npm run build && electron-builder -w -p always",
     "build-mac": "npm run build && electron-builder -m -p always",
     "build-linux": "npm run build && electron-builder -l -p always",
@@ -44,7 +44,7 @@
     "productName": "Guildspeak",
     "appId": "org.guildspeakteam.guildspeakapp",
     "mac": {
-      "category": "Networking"
+      "category": "Social"
     },
     "directories": {
       "output": "release"
@@ -63,17 +63,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:xdk78/guildspeak-app.git"
+    "url": "git+ssh://git@github.com:guildspeak/guildspeak-app.git"
   },
   "author": {
     "name": "xdk78",
     "email": "xdk78888@gmail.com"
   },
+  "contributors": [
+    {
+      "name": "feelfreelinux",
+      "email": "rj23@protonmail.com"
+    },
+    {
+      "name": "Bjornskjald",
+      "email": "github@bjorn.ml"
+    }
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xdk78/guildspeak-app/issues"
+    "url": "https://github.com/guildspeak/guildspeak-app/issues"
   },
-  "homepage": "https://github.com/xdk78/guildspeak-app",
+  "homepage": "https://github.com/guildspeak/guildspeak-app",
   "devDependencies": {
     "@types/electron-devtools-installer": "^2.2.0",
     "@types/jest": "^23.3.1",

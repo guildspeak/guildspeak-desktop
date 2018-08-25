@@ -2,12 +2,13 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const { resolve } = require('path')
 const baseConfig = require('./webpack.config.base')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = merge.smart(baseConfig, {
   devtool: 'source-map',
   mode: 'production',
   output: {
-    path: resolve(__dirname, 'build'),
+    path: resolve(__dirname, 'dist'),
     filename: '[name].js',
   },
 
@@ -19,11 +20,11 @@ const config = merge.smart(baseConfig, {
       },
     ],
   },
-
   plugins: [
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
     }),
+    new UglifyJsPlugin()
   ],
 })
 
