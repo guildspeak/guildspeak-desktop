@@ -8,6 +8,7 @@ interface Props {
   name: string
   history: any
   match: any
+  channelId: any
   setChannelId: (channelId) => any
 }
 
@@ -21,7 +22,7 @@ class Channel extends React.PureComponent<Props> {
   render() {
     return (
     <Wrapper>
-      <ChannelName onClick={ this.changeChannel }>#{this.props.name}</ChannelName>
+      <ChannelName {...this.props} onClick={ this.changeChannel }>#{this.props.name}</ChannelName>
     </Wrapper>)
   }
 }
