@@ -68,7 +68,7 @@ const link = split(
   },
   wsLink,
   new HttpLink({
-    uri: `http://${URI}`,
+    uri: `https://${URI}`,
   }),
 )
 
