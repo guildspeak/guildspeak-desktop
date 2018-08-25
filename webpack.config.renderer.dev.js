@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const { resolve } = require('path')
 const baseConfig = require('./webpack.config.base')
-
+const spawn = require('child_process').spawn
 const PORT = 2003
 
 const config = merge.smart(baseConfig, {
@@ -47,6 +47,16 @@ const appConfig = merge.smart(config, {
     },
     hot: true,
     inline: true,
+    before() {
+      console.log('Starting electron process')
+      spawn('npm', ['run', 'start'], {
+        shell: true,
+        env: process.env,
+        stdio: 'inherit'
+      })
+        .on('close', code => process.exit(code))
+        .on('error', spawnError => console.error(spawnError))
+    }
   },
 })
 

@@ -5,7 +5,7 @@
   "main": "./dist/main.js",
   "scripts": {
     "start": "cross-env ENV=development electron ./dist/main.js",
-    "dev": "env-cmd .env concurrently \"npm run watch-renderer\" \"npm run watch-main\" \"npm run start\"",
+    "dev": "env-cmd .env concurrently \"npm run watch-renderer\" \"npm run watch-main\"",
     "watch-renderer": "webpack-dev-server --config webpack.config.renderer.dev.js  --watch --mode development",
     "watch-main": "webpack --config webpack.config.main.js --watch --mode development",
     "build-renderer": "webpack --config webpack.config.renderer.prod.js",
