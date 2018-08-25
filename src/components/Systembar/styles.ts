@@ -5,6 +5,8 @@ const Wrapper = styled.div`
   flex-direction: row;
   height: 18px;
   padding: 4px;
+  padding-left: 6px;
+  padding-bottom: 8px;
   background: #27272f;
   -webkit-app-region: drag !important;
   box-shadow: 0 1px 5px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
