@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Wrapper = styled.div`
 `
 
-const ChannelName = styled(Link)`
+const ChannelName = styled.div`
   padding: 4px;
   color: #eeeeee;
   &:hover {

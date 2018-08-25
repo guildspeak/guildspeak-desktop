@@ -25,7 +25,6 @@ interface IState {
 interface Props {
   token: string
   store: any
-  setToken: (token) => any
   history: any
 }
 
@@ -50,12 +49,6 @@ class Login extends React.Component<Props, IState> {
 
   handlePassword = (e) => {
     this.setState({ password: e.target.value })
-  }
-
-  componentDidUpdate(prevProps: Props, prevState: IState) {
-    if (this.state.token !== prevState.token) {
-      this.props.setToken(this.props.token)
-    }
   }
 
   render() {

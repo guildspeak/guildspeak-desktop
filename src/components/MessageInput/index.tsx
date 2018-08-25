@@ -4,8 +4,8 @@ import { Mutation } from 'react-apollo'
 import { Wrapper, Input } from './styles'
 
 const CREATE_MESSAGE = gql`
-  mutation createMessage($content: String!) {
-    createMessage(content: $content, channelId: "cjl70pho0001008534qtvbqoy") {
+  mutation createMessage($content: String!, $channelId: ID!) {
+    createMessage(content: $content, channelId: $channelId) {
       id
       content
     }
@@ -16,14 +16,18 @@ interface IState {
   content?: string
 }
 
-class MessageInput extends React.Component<{}, IState> {
+interface Props {
+  channelId: string
+}
+
+class MessageInput extends React.PureComponent<Props, IState> {
   state = {
     content: ''
   }
 
   handleSubmit(e, createMessage) {
     e.preventDefault()
-    createMessage({ variables: { content: this.state.content } })
+    createMessage({ variables: { content: this.state.content, channelId: this.props.channelId } })
     this.setState({ content: '' })
   }
 

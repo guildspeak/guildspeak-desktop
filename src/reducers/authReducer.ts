@@ -13,10 +13,10 @@ const defaultState: AuthState = {
 export const authReducer: Reducer<AuthState> = (state = defaultState, action: SetTokenAction) => {
   switch (action.type) {
     case SET_TOKEN: {
-      localStorage.setItem('token', action.token)
+      localStorage.setItem('token', action.payload.token)
       return {
         ...state,
-        token: action.token,
+        token: action.payload.token,
       }
     }
     default:

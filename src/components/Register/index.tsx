@@ -25,7 +25,6 @@ interface IState {
 interface Props {
   token: string
   store: any
-  setToken: (token) => any
   history: any
 }
 

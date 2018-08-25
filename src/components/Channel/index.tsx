@@ -8,12 +8,22 @@ interface Props {
   name: string
   history: any
   match: any
+  setChannelId: (channelId) => any
 }
 
-const Channel: React.SFC<Props & RouteComponentProps<Props>> = ({ id, name }) => (
-  <Wrapper>
-    <ChannelName to={`/channel/${id}`}>#{name}</ChannelName>
-  </Wrapper>
-)
 
-export default withRouter(Channel)
+class Channel extends React.PureComponent<Props> {
+  changeChannel = e => {
+    this.props.setChannelId(this.props.id)
+    this.props.history.push(`/app/channel/${ this.props.id }`)
+  }
+
+  render() {
+    return (
+    <Wrapper>
+      <ChannelName onClick={ this.changeChannel }>#{this.props.name}</ChannelName>
+    </Wrapper>)
+  }
+}
+
+export default withRouter(Channel as any)

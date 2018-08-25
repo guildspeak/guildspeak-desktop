@@ -46,13 +46,17 @@ query channel($channelId: ID!){
   }
 }`
 
-class Messages extends React.Component<{ match: any }, { channelId: string }> {
+class Messages extends React.PureComponent<{ match: any }, { channelId: string }> {
   shouldScrollBottom: boolean
 
   constructor (props) {
     super(props)
-    // this.setState({ key:  })
     this.state = {channelId: this.props.match.params.channelId}
+  }
+
+  componentDidMount() {
+    const node = ReactDOM.findDOMNode(this) as any
+    node.scrollTop = node.scrollHeight
   }
 
   messageMounted = () => {

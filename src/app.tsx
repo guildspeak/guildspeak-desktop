@@ -17,6 +17,7 @@ import Systembar from './components/Systembar'
 import Login from './components/Login'
 import StartupContainer from './containers/StartupContainer'
 import Register from './components/Register'
+import Application from './components/Application'
 
 // Create main element
 const mainElement = document.createElement('div')
@@ -106,7 +107,8 @@ ReactDOM.render(
           <Systembar />
           <Router>
             <Switch>
-              <Route exact={false} path="/" component={StartupContainer} />
+              <Route exact={false} path="/app" component={Application} />
+              <Route exact={true} path="/" component={StartupContainer} />
               <Route exact={true} path="/login" component={Login} />
               <Route exact={true} path="/register" component={Register} />
             </Switch>

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Sidebar from '../Sidebar'
 import Messages from '../Messages'
-import MessageInput from '../MessageInput'
+import MessageInputContainer from '../../containers/MessageInputContainer'
 import { Route, withRouter } from 'react-router-dom'
 import { MainWrapper, MessagesColumn, LeftColumn, RightColumn } from './styles'
 
@@ -15,8 +15,8 @@ const Application: React.SFC = () => (
     </LeftColumn>
     <RightColumn>
       <MessagesColumn>
-        <Route path='/channel/:channelId' render={renderMessages} />
-        <MessageInput />
+        <Route path='/app/channel/:channelId' render={renderMessages} />
+        <MessageInputContainer />
       </MessagesColumn>
     </RightColumn>
   </MainWrapper>

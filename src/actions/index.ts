@@ -1,3 +1,4 @@
+import { CurrentGuildActions } from './currentGuildActions'
 import { SetTokenAction } from './authActions'
 
-export type RootActions = SetTokenAction[keyof SetTokenAction]
+export type RootActions = SetTokenAction | CurrentGuildActions

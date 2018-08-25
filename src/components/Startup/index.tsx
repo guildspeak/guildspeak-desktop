@@ -13,12 +13,13 @@ class Startup extends React.Component<{ token: string, history: any }, { logged:
       this.props.history.push('/login')
     } else {
       this.setState({ logged: true })
+      this.props.history.push('/app')
     }
   }
 
   render() {
     if (this.state.logged) {
-      return (<Application />)
+      return (<p>redirecting app page</p>)
     }
     return (<p>redirecting to login page</p>)
   }
