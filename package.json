@@ -138,6 +138,7 @@
     "apollo-link-http": "^1.5.4",
     "apollo-link-ws": "^1.0.8",
     "babel-plugin-styled-components": "^1.5.1",
+    "dayjs": "^1.7.5",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "react": "^16.4.2",

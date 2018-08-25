@@ -5,6 +5,10 @@ import { onError } from 'apollo-link-error'
 import { ApolloLink, split } from 'apollo-link'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+
+dayjs.extend(relativeTime)
 
 const URI = `${process.env.HOST}:${process.env.PORT}`
 

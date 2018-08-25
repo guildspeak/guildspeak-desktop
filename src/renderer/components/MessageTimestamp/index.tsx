@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Wrapper } from './styles'
+import dayjs from 'dayjs'
 
 interface Props {
   time: string
@@ -7,7 +8,7 @@ interface Props {
 
 const MessageTimestamp: React.SFC<Props> = ({ time }) => (
   <Wrapper>
-    {time.replace('T', ' ').split('.')[0]}
+    { (dayjs as any)(time).fromNow() }
   </Wrapper>
 )
 
