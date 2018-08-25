@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 import { ApolloProvider } from 'react-apollo'
 import store from '../store'
-import styled, { injectGlobal } from 'styled-components'
+import { injectGlobal } from 'styled-components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Systembar from '../components/Systembar'
 import Login from '../components/Login'
@@ -12,27 +12,10 @@ import StartupContainer from '../containers/StartupContainer'
 import Register from '../components/Register'
 import Application from '../components/Application'
 import client from './client'
+import { style, AppWrapper } from './styles'
 
-injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Roboto');
-  @import url('https://fonts.googleapis.com/css?family=Francois+One');
-  @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-  body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #33333d;
-    color: #fff;
-    overflow: hidden;
-  }
-`
+injectGlobal`${style}`
 
-const AppWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
 const render = () => {
   ReactDOM.render(
     <AppContainer>
