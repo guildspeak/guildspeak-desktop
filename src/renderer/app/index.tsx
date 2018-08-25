@@ -8,21 +8,16 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { ApolloLink, split } from 'apollo-link'
-import store from './store'
+import store from '../store'
 import styled, { injectGlobal } from 'styled-components'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Systembar from './components/Systembar'
-import Login from './components/Login'
-import StartupContainer from './containers/StartupContainer'
-import Register from './components/Register'
-import Application from './components/Application'
-
-// Create main element
-const mainElement = document.createElement('div')
-document.body.appendChild(mainElement)
-document.title = 'Guildspeak'
+import Systembar from '../components/Systembar'
+import Login from '../components/Login'
+import StartupContainer from '../containers/StartupContainer'
+import Register from '../components/Register'
+import Application from '../components/Application'
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Roboto');
@@ -73,7 +68,6 @@ const link = split(
   }),
 )
 
-
 const client = new ApolloClient({
   link: ApolloLink.from([
     onError(({ graphQLErrors, networkError }) => {
@@ -96,8 +90,6 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `
 
-
-
 // Render components
 ReactDOM.render(
   <AppContainer>
@@ -117,4 +109,9 @@ ReactDOM.render(
       </Provider>
     </ApolloProvider>
   </AppContainer>,
-  mainElement)
+  document.getElementById('app'))
+
+// react-hot-loader
+if ((module as any).hot) {
+  (module as any).hot.accept()
+}

@@ -1,17 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "lib": [
-      "dom",
-      "es2015",
-      "es2016",
-      "es2017",
-      "esnext.asynciterable"
-    ],
-    "noImplicitAny": false,
-    "allowJs": true,
+    "outDir": "./build/",
+    "module": "es2015",
+    "target": "es2017",
     "jsx": "react",
-    "sourceMap": true
-  }
+    "allowJs": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "lib": ["dom", "esnext"],
+    "experimentalDecorators": true,
+    "baseUrl": "./"
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "reportFiles": ["src/**/*.{ts,tsx}"],
+    "useCache": true
+  },
+  "exclude": ["node_modules", "dist", "build"],
+  "include": ["src/**/*"]
 }
