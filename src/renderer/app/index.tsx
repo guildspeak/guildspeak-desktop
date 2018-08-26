@@ -3,18 +3,37 @@ import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ApolloProvider } from 'react-apollo'
 import store from '../store'
-import ApplicationContainer from '../containers/ApplicationContainer'
 import { injectGlobal } from 'styled-components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Systembar from '../components/Systembar'
-import Login from '../components/Login'
-import StartupContainer from '../containers/StartupContainer'
-import Register from '../components/Register'
 import client from './client'
 import { style, AppWrapper } from './styles'
 import { AppContainer } from 'react-hot-loader'
+import Loadable from 'react-loadable'
+import Loading from '../components/Loading'
 
 injectGlobal`${style}`
+
+const ApplicationContainer = Loadable({
+  loader: () => import('../containers/ApplicationContainer'),
+  loading: Loading,
+})
+
+const StartupContainer = Loadable({
+  loader: () => import('../containers/StartupContainer'),
+  loading: Loading,
+})
+
+const Login = Loadable({
+  loader: () => import('../components/Login'),
+  loading: Loading,
+})
+
+const Register = Loadable({
+  loader: () => import('../components/Register'),
+  loading: Loading,
+})
+
 
 const render = () => {
   ReactDOM.render(
@@ -25,7 +44,7 @@ const render = () => {
             <Systembar />
             <Router>
               <Switch>
-                <Route exact={false} path="/app" component={ApplicationContainer} />
+                <Route path="/app" component={ApplicationContainer} />
                 <Route exact={true} path="/" component={StartupContainer} />
                 <Route exact={true} path="/login" component={Login} />
                 <Route exact={true} path="/register" component={Register} />
