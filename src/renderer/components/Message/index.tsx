@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { MessageAuthorData } from '../MessageAuthor'
 import MessageHeader from '../MessageHeader'
-import { Wrapper, MessageBubble, MessageContent } from './styles'
+import { Wrapper, MessageBubble, MessageContent, Hr } from './styles'
 
 interface Props {
   content: string
@@ -35,6 +35,7 @@ class Message extends React.Component<Props, {}> {
       <MessageBubble>
       <MessageHeader author={this.props.author} time={this.props.time} />
       <MessageContent ref={this.ref} onScroll={ this.doScroll }>{this.props.content}</MessageContent>
+      <Hr></Hr>
       </MessageBubble>
     </Wrapper>)
   }
