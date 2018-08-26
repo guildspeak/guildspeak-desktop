@@ -27,13 +27,12 @@ const FriendButton = styled.button`
     height: 36px;
     margin-top: 18px;
     margin-left: 13rem;
-    maring-right: 0px;
+    margin-right: 0px;
     width: 10rem;
     padding: 8px;
     display: inline-block;
     border-radius: 4px;
     border: none;
-    float: right;
     background-color: #3CA374;
     color: white;
     &:focus {
@@ -62,7 +61,7 @@ const Avatar = styled.div`
     margin-right: 20px;
     border-radius: 20px;
   img {
-    width: 80px; 
+    width: 80px;
     height: 80px;
     border-radius: 60px;
   }
