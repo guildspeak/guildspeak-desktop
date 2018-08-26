@@ -4,6 +4,7 @@ import Modal from 'styled-react-modal'
 const Wrapper = styled.div`
   &:hover {
     color: #149f98;
+    text-decoration: underline;
   }
   cursor: pointer;
 `

@@ -18,7 +18,7 @@ const Hr = styled.hr`
  -webkit-margin-before: 0.5em;
  -webkit-margin-after: 0.5em;
  -webkit-margin-start: auto;
- -webkit-margin-end: auto;
+ -webkit-margin-end: 10px;
  overflow: hidden;
  border-top: 0.5px solid  #454554;
  border-bottom: 0.5px solid  #454554;
