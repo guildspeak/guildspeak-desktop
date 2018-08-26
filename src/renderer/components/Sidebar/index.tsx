@@ -1,13 +1,13 @@
 import * as React from 'react'
 import Guilds from '../Guilds'
 import CurrentUser from '../CurrentUser'
-import { Wrapper, LogButton } from './styles'
+import { Wrapper, LogoutButton } from './styles'
 
 const Sidebar = () => (
   <Wrapper>
-    <Guilds />
     <CurrentUser />
-    <LogButton>Log Out</LogButton>
+    <Guilds />
+    <LogoutButton>Log Out</LogoutButton>
   </Wrapper>
 )
 

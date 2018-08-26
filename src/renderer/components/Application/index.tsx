@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Sidebar from '../Sidebar'
 import Messages from '../Messages'
-import CurrentUser from '../CurrentUser'
 import MessageInputContainer from '../../containers/MessageInputContainer'
 import { Route, withRouter } from 'react-router-dom'
 import { MainWrapper, MessagesColumn, LeftColumn, RightColumn } from './styles'

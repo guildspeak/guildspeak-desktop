@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { withRouter } from 'react-router-dom'
-import { RouteComponentProps } from 'react-router'
-import { Wrapper, ChannelName } from './styles'
+import { Wrapper, Username, Buttons, Button } from './styles'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 
@@ -18,21 +17,24 @@ interface Props {
   history: any
 }
 
-
 class CurrentUser extends React.PureComponent<Props> {
   render() {
     return (
-    <Wrapper>
       <Query query={GET_ME}>
         {({ loading, error, data }) => {
           if (loading) return <div>Loading...</div>
           if (error) return <div>{error.toString()}</div>
           return (
-            <p>{data.me.username}</p>
+            <Wrapper>
+              <Username>@{data.me.username}</Username>
+              <Buttons>
+                <Button className="material-icons">settings</Button>
+              </Buttons>
+            </Wrapper>
           )
         }}
       </Query>
-    </Wrapper>)
+    )
   }
 }
 

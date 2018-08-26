@@ -1,19 +1,27 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 const Wrapper = styled.div`
-
+  height: 36px;
+  display: flex;
+  flex-direction: row;
+  padding: 4px;
 `
 
-const ChannelName = styled.div`
-  padding: 4px;
+const Username = styled.div`
   color: #eeeeee;
-  ${ props => (props as any).channelId === props.id ? 'background: rgba(255,255,255,0.24);' : '' }
   &:hover {
     color: #fff;
-    background: rgba(255,255,255,0.24);
   }
+  cursor: pointer;
+  font-family: 'Francois One', sans-serif;
+`
+
+const Button = styled.div`
   cursor: pointer;
 `
 
-export { Wrapper, ChannelName }
+const Buttons = styled.div`
+  margin-left: auto;
+`
+
+export { Wrapper, Username, Buttons, Button }
