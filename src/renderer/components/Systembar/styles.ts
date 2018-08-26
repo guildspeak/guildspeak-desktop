@@ -3,10 +3,9 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  height: 18px;
-  padding: 4px;
+  height: 25px;
+  padding-right: 4px;
   padding-left: 4px;
-  padding-bottom: 4px;
   background: #27272f;
   -webkit-app-region: drag !important;
   box-shadow: 0 1px 5px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
@@ -16,6 +15,8 @@ const Title = styled.div`
   -webkit-app-region: drag;
   cursor: default;
   font-family: 'Francois One', sans-serif;
+  padding-top: 2px;
+  padding-left: 2px;
 `
 
 const Button = styled.div`
