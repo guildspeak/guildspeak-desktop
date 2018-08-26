@@ -26,7 +26,7 @@ const StyledModal = Modal.styled`
 const FriendButton = styled.button`
     height: 36px;
     margin-top: 18px;
-    margin-left: 10rem;
+    margin-left: 13rem;
     maring-right: 0px;
     width: 10rem;
     padding: 8px;
