@@ -9,12 +9,10 @@ height: 100vh;
 padding: 0;
 margin: 0;
 `
-const mascotGif = require('../../assets/img/loading.gif')
 
-const Mascot = styled.div`
+const Mascot = styled.img`
 width: 128px;
 height: 128px;
-background-image: url(${mascotGif});
 margin-bottom: 8px;
 `
 

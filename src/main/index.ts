@@ -3,6 +3,7 @@ import * as path from 'path'
 import * as url from 'url'
 
 let win: BrowserWindow | null
+let loading: BrowserWindow | null
 
 const installExtensions = async () => {
   const installer = require('electron-devtools-installer')
@@ -24,22 +25,66 @@ const createWindow = async () => {
       minWidth: 800,
       minHeight: 600,
       title: 'Guildspeak',
+      show: false,
       frame: false,
       backgroundColor: '#33333d'
     }
   )
 
+  loading = new BrowserWindow(
+    {
+      width: 350,
+      height: 350,
+      minWidth: 150,
+      minHeight: 150,
+      title: 'Guildspeak',
+      show: false,
+      frame: false,
+      backgroundColor: '#33333d',
+
+    }
+  )
+
+  loading.once('show', () => {
+    win.webContents.once('dom-ready', () => {
+      win.show()
+      loading.hide()
+      loading.close()
+    })
+
+    if (process.env.NODE_ENV !== 'production') {
+      win.loadURL(`http://localhost:2003`)
+    } else {
+      win.loadURL(
+        url.format({
+          pathname: path.join(__dirname, 'index.html'),
+          protocol: 'file:',
+          slashes: true
+        })
+      )
+    }
+
+
+
+  })
+
   if (process.env.NODE_ENV !== 'production') {
-    win.loadURL(`http://localhost:2003`)
+    loading.loadURL(
+      url.format({
+        pathname: path.join(__dirname, '..', 'src', 'loading.html'),          protocol: 'file:',
+        slashes: true
+      })
+    )
   } else {
     win.loadURL(
       url.format({
-        pathname: path.join(__dirname, 'index.html'),
+        pathname: path.join(__dirname, 'loading.html'),
         protocol: 'file:',
         slashes: true
       })
     )
   }
+  loading.show()
 
   if (process.env.NODE_ENV !== 'production') {
     // Open DevTools
