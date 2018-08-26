@@ -44,7 +44,9 @@ class MessageAuthor extends React.Component<Props, { isOpen: boolean, opacity: n
           onBackgroundClick={this.toggleModal}
           onEscapeKeydown={this.toggleModal}
           opacity={this.state.opacity}>
-          <div>modal</div>
+          <div><img  id="avatar" src="https://amp.businessinsider.com/images/5899ffcf6e09a897008b5c04-750-750.jpg" /></div>
+          <div id="username">@{this.props.author.username}</div>
+          <button id="btn">Send Friend Request</button>
         </StyledModal>
 
       </Wrapper >
