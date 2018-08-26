@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { remote } from 'electron'
-import { Wrapper, Title, Button, Buttons } from './styles'
+import { Wrapper, Title, Button, Buttons, CloseButton } from './styles'
 
 const minimize = () => {
   const window = remote.BrowserWindow.getFocusedWindow()
@@ -27,7 +27,7 @@ const Systembar = () => (
     <Buttons>
       <Button className="material-icons" onClick={minimize}>remove</Button>
       <Button className="material-icons" onClick={maximize}>crop_square</Button>
-      <Button className="material-icons" onClick={close}>close</Button>
+      <CloseButton className="material-icons" onClick={close}>close</CloseButton>
     </Buttons>
   </Wrapper>
 )

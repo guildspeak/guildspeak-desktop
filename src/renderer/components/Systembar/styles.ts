@@ -28,8 +28,14 @@ const Button = styled.div`
   padding: 4px;
 `
 
+const CloseButton = styled(Button)`
+&:hover {
+  background: #ed2939;
+}
+`
+
 const Buttons = styled.div`
   margin-left: auto;
 `
 
-export { Wrapper, Title, Button, Buttons }
+export { Wrapper, Title, Button, CloseButton, Buttons }
