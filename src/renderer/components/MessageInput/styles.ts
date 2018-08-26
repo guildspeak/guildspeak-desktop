@@ -9,12 +9,12 @@ const Wrapper = styled.div`
   margin-right: 18px;
   margin-bottom: 56px;
 `
-const Input = styled.input`
+const Input = styled.div`
   box-sizing: border-box;
   background: #2e2e38;
   color: #cccccc;
   font-size: 16px;
-  padding: 12px;
+  padding: 16px;
   display: block;
   height: 52px;
   width: 100%;
@@ -22,9 +22,6 @@ const Input = styled.input`
   border-radius: 12px;
   border-bottom: none;
   caret-color: #149f98;
-  &:focus {
-    outline: none;
-  }
 `
 
 export { Wrapper, Input }

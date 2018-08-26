@@ -18,6 +18,10 @@ const config = merge.smart(baseConfig, {
         test: /\.(png|gif|jpg|woff2|ttf|svg)$/,
         use: ['url-loader'],
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
     ],
   },
   plugins: [
