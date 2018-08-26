@@ -28,14 +28,14 @@ class Message extends React.Component<Props, {}> {
 
   doScroll = (e) => {
     console.log(
-    this.ref.current.scrollTop)
+      this.ref.current.scrollTop)
   }
   render() {
     return (<Wrapper >
       <MessageBubble>
-      <MessageHeader author={this.props.author} time={this.props.time} />
-      <MessageContent ref={this.ref} onScroll={ this.doScroll }>{this.props.content}</MessageContent>
-      <Hr aria-hidden="true"></Hr>
+        <MessageHeader author={this.props.author} time={this.props.time} />
+        <MessageContent ref={this.ref} onScroll={this.doScroll}>{this.props.content}</MessageContent>
+        <Hr aria-hidden="true" />
       </MessageBubble>
     </Wrapper>)
   }

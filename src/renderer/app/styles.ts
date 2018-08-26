@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components"
-import { AppContainer } from 'react-hot-loader'
 
 const fonts = {
   robotoRegular: require('../assets/fonts/Roboto/Roboto-Light.ttf'),
