@@ -11,6 +11,7 @@ import { style, AppWrapper } from './styles'
 import { AppContainer } from 'react-hot-loader'
 import Loadable from 'react-loadable'
 import Loading from '../components/Loading'
+import { ModalProvider } from 'styled-react-modal'
 
 injectGlobal`${style}`
 
@@ -41,14 +42,16 @@ const render = () => {
         <Provider store={store}>
           <AppWrapper>
             <Systembar />
-            <Router>
-              <Switch>
-                <Route path="/app" component={ApplicationContainer} />
-                <Route exact={true} path="/" component={StartupContainer} />
-                <Route exact={true} path="/login" component={Login} />
-                <Route exact={true} path="/register" component={Register} />
-              </Switch>
-            </Router>
+            <ModalProvider>
+              <Router>
+                <Switch>
+                  <Route path="/app" component={ApplicationContainer} />
+                  <Route exact={true} path="/" component={StartupContainer} />
+                  <Route exact={true} path="/login" component={Login} />
+                  <Route exact={true} path="/register" component={Register} />
+                </Switch>
+              </Router>
+            </ModalProvider>
           </AppWrapper>
         </Provider>
       </ApolloProvider>

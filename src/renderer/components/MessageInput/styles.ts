@@ -20,7 +20,6 @@ const Input = styled.div`
   width: 100%;
   border: none;
   border-radius: 12px;
-  border-bottom: none;
   caret-color: #149f98;
 `
 
