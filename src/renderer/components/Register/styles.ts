@@ -65,4 +65,19 @@ border-radius: 4px;
 }
 `
 
-export { Wrapper, RegisterForm, Info, UsernameInput, EmailInput, PasswordInput, RegisterButton }
+const BackButton = styled(Button)`
+height: 36px;
+margin-top: 12px;
+width: 100%;
+padding: 8px;
+display: inline-block;
+border-radius: 4px;
+&:focus {
+  outline: none;
+}
+&:hover {
+  background: #009688;
+}
+`
+
+export { Wrapper, RegisterForm, Info, UsernameInput, EmailInput, PasswordInput, RegisterButton, BackButton }

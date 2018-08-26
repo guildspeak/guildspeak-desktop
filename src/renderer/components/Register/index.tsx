@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import WelcomeContainer from '../../containers/WelcomeContainer'
 import { withRouter } from 'react-router-dom'
-import { Wrapper, RegisterForm, Info, UsernameInput, EmailInput, PasswordInput, RegisterButton } from './styles'
+import { Wrapper, RegisterForm, Info, UsernameInput, EmailInput, PasswordInput, RegisterButton, BackButton } from './styles'
 
 const REGISTER = gql`
 mutation register($email: String!, $password: String!, $username: String!) {
@@ -51,6 +51,10 @@ class Register extends React.Component<Props, IState> {
     this.setState({ password: e.target.value })
   }
 
+  handleLogin = () => {
+    this.props.history.push('login')
+  }
+
   render() {
     return (
       <Wrapper>
@@ -73,6 +77,7 @@ class Register extends React.Component<Props, IState> {
               <RegisterButton primary={true}
                 // tslint:disable-next-line:jsx-no-lambda
                 onClick={(e) => this.hangleRegister(register)}>Register</RegisterButton>
+              <BackButton onClick={this.handleLogin}>I have account! Let's log in.</BackButton>
             </RegisterForm>)
 
           }}
