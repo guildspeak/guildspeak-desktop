@@ -34,7 +34,6 @@ const Register = Loadable({
   loading: Loading,
 })
 
-
 const render = () => {
   ReactDOM.render(
     <AppContainer>
