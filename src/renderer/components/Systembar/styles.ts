@@ -4,7 +4,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   height: 25px;
-  padding-right: 4px;
   padding-left: 4px;
   background: #27272f;
   -webkit-app-region: drag !important;
