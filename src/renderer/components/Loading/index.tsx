@@ -1,2 +1,9 @@
 import * as React from 'react'
-export default () => <div>Loading...</div>
+import { Wrapper, Mascot } from './styles'
+
+export default () => (
+  <Wrapper>
+    <Mascot />
+    Loading...
+  </Wrapper>
+)
