@@ -1,18 +1,18 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { AppContainer } from 'react-hot-loader'
 import { ApolloProvider } from 'react-apollo'
 import store from '../store'
+import ApplicationContainer from '../containers/ApplicationContainer'
 import { injectGlobal } from 'styled-components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Systembar from '../components/Systembar'
 import Login from '../components/Login'
 import StartupContainer from '../containers/StartupContainer'
 import Register from '../components/Register'
-import ApplicationContainer from '../containers/ApplicationContainer'
 import client from './client'
 import { style, AppWrapper } from './styles'
+import { AppContainer } from 'react-hot-loader'
 
 injectGlobal`${style}`
 
