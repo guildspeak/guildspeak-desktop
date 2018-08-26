@@ -21,29 +21,9 @@ const StyledModal = Modal.styled`
   transition: opacity ease 200ms;
   border: none;
   border-radius: 8px;
+`
 
-  #avatar {
-    width: 80px;
-    height: 80px;
-    float: left;
-    margin-top: 0px;
-    margin-bottom: 10px;
-    margin-left: 0px;
-    margin-right: 20px;
-    border-radius: 20px;
-  }
-
-  #username {
-    float: right;
-    margin-left: 5px;
-    margin-right: 50px;
-    margin-top: 28px;
-    height: 1rem;
-    width: 1rem;
-    font-weight: bold;
-  }
-
-  #btn {
+const FriendButton = styled.button`
     height: 36px;
     margin-top: 18px;
     margin-left: 10rem;
@@ -62,6 +42,30 @@ const StyledModal = Modal.styled`
     &:hover {
      background-color: #3ea878;
     }
-}
 `
-export { Wrapper, StyledModal }
+
+const UserName = styled.div`
+    float: right;
+    margin-left: 5px;
+    margin-right: 50px;
+    margin-top: 28px;
+    height: 1rem;
+    width: 1rem;
+`
+const Avatar = styled.div`
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    margin-right: 20px;
+    border-radius: 20px;
+  img {
+    width: 80px; 
+    height: 80px;
+    border-radius: 60px;
+  }
+`
+
+export { Wrapper, StyledModal, FriendButton, UserName, Avatar }
