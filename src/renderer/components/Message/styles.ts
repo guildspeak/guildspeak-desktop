@@ -13,15 +13,14 @@ const MessageContent= styled.p`
 `
 
 const Hr = styled.hr`
- display: block;
  unicode-bidi: isolate;
  -webkit-margin-before: 0.5em;
  -webkit-margin-after: 0.5em;
  -webkit-margin-start: auto;
  -webkit-margin-end: auto;
  overflow: hidden;
- border-style: inset;
- border-width: 1px;
+ border-top: 0.5px solid #8c8b8b;
+ border-bottom: 0.5px solid #8c8b8b;
 `
 
 export { Wrapper, MessageBubble, MessageContent, Hr }

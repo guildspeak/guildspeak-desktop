@@ -35,7 +35,7 @@ class Message extends React.Component<Props, {}> {
       <MessageBubble>
       <MessageHeader author={this.props.author} time={this.props.time} />
       <MessageContent ref={this.ref} onScroll={ this.doScroll }>{this.props.content}</MessageContent>
-      <Hr></Hr>
+      <Hr aria-hidden="true"></Hr>
       </MessageBubble>
     </Wrapper>)
   }
