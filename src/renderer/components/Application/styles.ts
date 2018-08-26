@@ -12,16 +12,22 @@ display: flex;
 flex-direction: column;
 `
 
-const LeftColumn = styled.div`
+const FirstColumn = styled.div`
 display: flex;
 flex-flow: column;
 flex: 0.5;
 `
 
-const RightColumn = styled.div`
+const SecondColumn = styled.div`
 flex: 3;
 display: flex;
 flex-flow: column;
 `
 
-export { MainWrapper, MessagesColumn, LeftColumn, RightColumn }
+const ThirdColumn = styled.div`
+flex: 0.5;
+display: flex;
+flex-flow: column;
+`
+
+export { MainWrapper, MessagesColumn, FirstColumn, SecondColumn, ThirdColumn }

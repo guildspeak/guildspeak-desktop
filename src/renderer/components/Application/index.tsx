@@ -3,11 +3,12 @@ import Sidebar from '../Sidebar'
 import Messages from '../Messages'
 import MessageInputContainer from '../../containers/MessageInputContainer'
 import { Route, withRouter } from 'react-router-dom'
-import { MainWrapper, MessagesColumn, LeftColumn, RightColumn } from './styles'
+import { MainWrapper, MessagesColumn, FirstColumn, SecondColumn, ThirdColumn } from './styles'
+import Users from '../Users'
 
 class Application extends React.PureComponent<{ channelId: string, history: any }> {
   renderMessages = (params) => {
-    return (<Messages key={params.match.params.channelId} {...params } />)
+    return (<Messages key={params.match.params.channelId} {...params} />)
   }
 
   componentDidMount() {
@@ -15,17 +16,22 @@ class Application extends React.PureComponent<{ channelId: string, history: any 
   }
 
   render() {
-    return (<MainWrapper>
-      <LeftColumn>
-        <Sidebar />
-      </LeftColumn>
-      <RightColumn>
-        <MessagesColumn>
-          <Route path='/app/channel/:channelId' render={this.renderMessages} />
-          <MessageInputContainer />
-        </MessagesColumn>
-      </RightColumn>
-    </MainWrapper>)
+    return (
+      <MainWrapper>
+        <FirstColumn>
+          <Sidebar />
+        </FirstColumn>
+        <SecondColumn>
+          <MessagesColumn>
+            <Route path='/app/channel/:channelId' render={this.renderMessages} />
+            <MessageInputContainer />
+          </MessagesColumn>
+        </SecondColumn>
+        <ThirdColumn>
+          <Users />
+        </ThirdColumn>
+      </MainWrapper>
+    )
   }
 }
 
