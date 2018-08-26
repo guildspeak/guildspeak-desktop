@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  padding: 8px;
+  padding-right: 8px;
   display: flex;
   flex-flow: column;
-  height: 96%;
+  flex: 1;
   `
 
 export { Wrapper }

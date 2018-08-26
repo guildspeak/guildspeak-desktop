@@ -4,7 +4,6 @@ const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
 flex: 1;
-height: 100px;
 overflow-y: auto;
 overflow-x: hidden;
 &::-webkit-scrollbar {

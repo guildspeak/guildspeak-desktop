@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   height: 24px;
   margin-top: 24px;
   margin-right: 18px;
-  margin-bottom: 56px;
+  margin-bottom: 24px;
 `
 const Input = styled.input`
   box-sizing: border-box;

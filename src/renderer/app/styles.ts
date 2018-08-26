@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { AppContainer } from 'react-hot-loader'
 
 const fonts = {
   robotoRegular: require('../assets/fonts/Roboto/Roboto-Light.ttf'),
@@ -45,8 +46,18 @@ export const style = css`
     color: #fff;
     overflow: hidden;
   }
+
+  html, body, #reactapp, .App {
+    height: 100%;
+  }
+
+  .App {
+    display: flex;
+  }
 `
 export const AppWrapper = styled.div`
+  flex: 1;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 `
