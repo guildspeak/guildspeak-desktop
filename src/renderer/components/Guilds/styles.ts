@@ -5,7 +5,6 @@ const Wrapper = styled.div`
   overflow: hidden;
   user-select: none;
   text-transform: uppercase;
-  font-weight: bold;
 `
 
 export { Wrapper }
