@@ -69,11 +69,9 @@ class Messages extends React.PureComponent<{ match: any }, { channelId: string }
   }
 
   messageWillMount = () => {
-    try {
-      const node = ReactDOM.findDOMNode(this) as any
+    const node = ReactDOM.findDOMNode(this) as any
+    if (node && node.scrollTop && node.offsetHeight && node.scrollHeight) {
       this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight
-    } catch (e) {
-      console.log(e)
     }
   }
 

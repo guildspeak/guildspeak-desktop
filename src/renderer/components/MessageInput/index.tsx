@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import { Wrapper, Input } from './styles'
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor'
-import { EditorState, DraftHandleValue } from 'draft-js'
+import { EditorState, DraftHandleValue, ContentState } from 'draft-js'
 import 'draft-js/dist/Draft.css'
 import createSingleLinePlugin from 'draft-js-single-line-plugin'
 import createEmojiPlugin from 'draft-js-emoji-plugin'
@@ -15,7 +15,7 @@ const emojiPlugin = createEmojiPlugin({
 })
 
 const { EmojiSelect, EmojiSuggestions } = emojiPlugin
-const plugins = [singleLinePlugin, emojiPlugin]
+const plugins = [emojiPlugin]
 
 const CREATE_MESSAGE = gql`
   mutation createMessage($content: String!, $channelId: ID!) {
@@ -37,7 +37,7 @@ interface Props {
 
 const StyledEmojiSuggestions = {}
 
-class MessageInput extends React.Component<Props, IState> {
+class MessageInput extends React.PureComponent<Props, IState> {
   state = {
     editorState: createEditorStateWithText(''),
     content: ''
@@ -53,9 +53,11 @@ class MessageInput extends React.Component<Props, IState> {
         content
       })
       createMessage({ variables: { content, channelId: this.props.channelId } })
+      const newEditorState = EditorState.push(this.state.editorState, ContentState.createFromText(''), "remove-range")
+
       this.setState({
         content: '',
-        editorState: EditorState.createEmpty()
+        editorState: EditorState.moveFocusToEnd(newEditorState)
       })
       return 'handled'
     }
@@ -73,7 +75,6 @@ class MessageInput extends React.Component<Props, IState> {
             <Input>
               <Editor
                 plugins={plugins}
-                blockRenderMap={singleLinePlugin.blockRenderMap}
                 placeholder="write message..."
                 editorState={this.state.editorState}
                 onChange={this.handleChange}
