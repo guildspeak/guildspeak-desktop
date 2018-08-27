@@ -3,7 +3,6 @@ import { RootState } from '../reducers'
 import { SetChannelId, setChannelId } from '../actions/currentGuildActions'
 import { Dispatch } from 'redux'
 import Application from '../components/Application'
-import Channel from './ChannelContainer'
 
 const mapStateToProps = (state: RootState, props) => ({
   ...props,
