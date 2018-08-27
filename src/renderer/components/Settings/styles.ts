@@ -18,7 +18,7 @@ const LogOutButton = styled(Button)`
   float: left;
   background-color: Transparent;
   color: #ff3333;
-  font-size: 1em;
+  font-size: 20px;
   margin: 2px;
   padding: 0.25em 1em;
   border: none;
@@ -33,7 +33,7 @@ const SettingsButton = styled(Button)`
   float: left;
   background-color: Transparent;
   color: #eaeaeb;
-  font-size: 1em;
+  font-size: 20px;
   margin: 2px;
   padding: 0.25em 1em;
   border: none;
@@ -51,7 +51,7 @@ const BackButton = styled(Button)`
    margin-bottom: 10rem;
    padding: 0.25em 1.5rem;
    background-color: transparent;
-   font-size: 1em;
+   font-size: 20px;
    &:hover {
      background-color: #474750;
    }
@@ -60,7 +60,7 @@ const BackButton = styled(Button)`
 const SettingsOptions = styled.div`
   float: left;
   align-items: center;
-  width: 10rem;
+  width: 15rem;
   height: auto;
   text-align: center;
 `
@@ -77,7 +77,7 @@ const Hr = styled.hr`
   -webkit-margin-before: 0.5em;
   -webkit-margin-after: 0.5em;
   -webkit-margin-start: auto;
-  -webkit-margin-end: 10px;
+  -webkit-margin-end: 2.3em;
   width: 7.5rem;
   overflow: hidden;
   border-top: 0.5px solid #454554;
