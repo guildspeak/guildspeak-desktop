@@ -46,7 +46,7 @@ class MessageAuthor extends React.Component<Props, { isOpen: boolean; opacity: n
           opacity={this.state.opacity}
         >
           <Avatar>
-            <img src="https://amp.businessinsider.com/images/5899ffcf6e09a897008b5c04-750-750.jpg" />
+            <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
           </Avatar>
           <UserName>{this.props.author.username}</UserName>
           <FriendButton>Send Friend Request</FriendButton>
