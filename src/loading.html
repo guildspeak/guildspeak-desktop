@@ -2,14 +2,39 @@
 <html>
 
 <head>
-  <meta charset="UTF-8" />
-  <title>Guildspeak</title>
-</head>
 
-<body style="-webkit-app-region: drag;">
-  <center>
-    <img src="renderer/assets/img/loading.gif"></img>
-  </center>
+</head>
+<style>
+
+.logo {
+  animation: hideshow 3s linear infinite;
+}
+@keyframes hideshow {
+
+  0% {
+    transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03)
+    }
+    100% { transform: scale(1);}
+}
+</style>
+<body>
+    <center>
+        <svg width="300" height="300">
+            <g transform="scale(12 9) translate(3.5,7)" aria-label="G">
+                <path class="logo" stroke-width=".2645833" fill="#fff" transform="translate(3.5,7)" d="M8.4987847 13.2292776q-1.48058 0-2.1741845-1.17475-.6802665-1.17475-.6802665-2.97391 0-1.00542.3201254-1.93675.3334635-.93134 1.0537457-1.53459.7336202-.61383 1.8673985-.61383.9737143 0 1.6139651.381.653589.37042.9603762.99483.3201254.61384.3201254 1.36525l-1.8540592.0953-.0400156-.22225q-.0800314-.62441-.2801098-.99483-.2000783-.37042-.7469596-.37042-.6936046 0-.9870537.889-.2801098.87842-.2801098 2.032 0 .81492.066697 1.38642t.346803 1.00542q.2801097.42333.8670054.42333.4935275 0 .7736372-.48683.2934479-.48684.2934479-1.19592H8.952299l.1600627-1.18533h2.7077278v3.90525l-.7469597.0635-.4535106-1.47109q-.120047.41275-.3067872.74084-.1734009.32808-.6135733.60325-.4401724.27516-1.2004702.27516z" aria-label="G" />
+            </g>
+
+            <path transform="rotate(360 150 150)" d="M 226.6044443118978 214.27876096865393 A 100 100 0 0 0 150 50" id="arc1" stroke-linecap="round" fill="none" stroke="#fff" stroke-width="10">
+                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" additive="sum" dur="3s" repeatDur="indefinite" />
+            </path>
+            <path id="arc2" stroke-linecap="round" fill="none" stroke="#fff" stroke-width="10" d="M 150 230 A 80 80 0 0 0 150 70">
+                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" additive="sum" dur="2s" repeatDur="indefinite" />
+            </path>
+        </svg>
+    </center>
 </body>
 
 </html>
