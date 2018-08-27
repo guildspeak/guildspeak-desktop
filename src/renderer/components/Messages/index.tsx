@@ -4,6 +4,7 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import * as ReactDOM from 'react-dom'
 import { Wrapper } from './styles'
+import {Wrapper as LoadingWrapper} from '../Loading/styles'
 
 const MESSAGE_SUBSCRIPTION = gql`
   subscription channelSubscription($channelId: ID!) {
@@ -81,8 +82,8 @@ class Messages extends React.PureComponent<{ match: any }, { channelId: string }
       <Wrapper>
         <Query query={GET_MESSAGES} variables={{ channelId: this.state.channelId }}>
           {({ loading, error, data, subscribeToMore }) => {
-            if (loading) return <div>Loading...</div>
-            if (error) return <div>{error.toString()} messages</div>
+            if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
+            if (error) return <LoadingWrapper>{error.toString()} messages</LoadingWrapper>
 
             subscribeToMore({
               document: MESSAGE_SUBSCRIPTION,
