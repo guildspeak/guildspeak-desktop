@@ -2,7 +2,7 @@ import * as React from 'react'
 import Application from '../Application'
 import { withRouter } from 'react-router-dom'
 
-class Startup extends React.Component<{ token: string, history: any }, { logged: boolean }> {
+class Startup extends React.Component<{ token: string; history: any }, { logged: boolean }> {
   state = {
     logged: false
   }
@@ -19,9 +19,9 @@ class Startup extends React.Component<{ token: string, history: any }, { logged:
 
   render() {
     if (this.state.logged) {
-      return (<p>redirecting app page</p>)
+      return <p>redirecting app page</p>
     }
-    return (<p>redirecting to login page</p>)
+    return <p>redirecting to login page</p>
   }
 }
 

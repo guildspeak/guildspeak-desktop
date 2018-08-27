@@ -6,11 +6,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-flow: column;
   flex: 1;
-  `
-
-const LogoutButton = styled(Button)`
-  background: #33333d;
-  color: #eeeeee;
 `
 
-export { Wrapper, LogoutButton }
+export { Wrapper }

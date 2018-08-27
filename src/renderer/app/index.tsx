@@ -12,27 +12,33 @@ import { AppContainer } from 'react-hot-loader'
 import Loadable from 'react-loadable'
 import Loading from '../components/Loading'
 import { ModalProvider } from 'styled-react-modal'
+import {Wrapper as LoadingWrapper} from '../components/Loading/styles'
 
 injectGlobal`${style}`
 
 const ApplicationContainer = Loadable({
   loader: () => import('../containers/ApplicationContainer'),
-  loading: Loading,
+  loading: ()=><LoadingWrapper>Starting GuildSpeak...</LoadingWrapper>
 })
 
 const StartupContainer = Loadable({
   loader: () => import('../containers/StartupContainer'),
-  loading: Loading,
+  loading: Loading
 })
 
 const Login = Loadable({
   loader: () => import('../components/Login'),
-  loading: Loading,
+  loading: Loading
 })
 
 const Register = Loadable({
   loader: () => import('../components/Register'),
-  loading: Loading,
+  loading: Loading
+})
+
+const Settings = Loadable({
+  loader: () => import('../components/Settings'),
+  loading: Loading
 })
 
 const render = () => {
@@ -49,6 +55,7 @@ const render = () => {
                   <Route exact={true} path="/" component={StartupContainer} />
                   <Route exact={true} path="/login" component={Login} />
                   <Route exact={true} path="/register" component={Register} />
+                  <Route exact={true} path="/settings" component={Settings} />
                 </Switch>
               </Router>
             </ModalProvider>
@@ -56,7 +63,7 @@ const render = () => {
         </Provider>
       </ApolloProvider>
     </AppContainer>,
-    document.getElementById('app'),
+    document.getElementById('app')
   )
 }
 

@@ -16,7 +16,7 @@ export const authReducer: Reducer<AuthState> = (state = defaultState, action: Se
       localStorage.setItem('token', action.payload.token)
       return {
         ...state,
-        token: action.payload.token,
+        token: action.payload.token
       }
     }
     default:

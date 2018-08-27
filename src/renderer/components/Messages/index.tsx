@@ -4,11 +4,33 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import * as ReactDOM from 'react-dom'
 import { Wrapper } from './styles'
+import {Wrapper as LoadingWrapper} from '../Loading/styles'
 
 const MESSAGE_SUBSCRIPTION = gql`
-subscription channelSubscription($channelId: ID!) {
-  channelSubscription(channelId: $channelId) {
-    node {
+  subscription channelSubscription($channelId: ID!) {
+    channelSubscription(channelId: $channelId) {
+      node {
+        messages(orderBy: createdAt_ASC, last: 30) {
+          id
+          author {
+            username
+          }
+          createdAt
+          content
+        }
+        guildId {
+          users {
+            id
+          }
+        }
+      }
+    }
+  }
+`
+
+const GET_MESSAGES = gql`
+  query channel($channelId: ID!) {
+    channel(id: $channelId) {
       messages(orderBy: createdAt_ASC, last: 30) {
         id
         author {
@@ -22,36 +44,16 @@ subscription channelSubscription($channelId: ID!) {
           id
         }
       }
-  	}
+    }
   }
-}
 `
-
-const GET_MESSAGES = gql`
-query channel($channelId: ID!){
-  channel(id: $channelId) {
-    messages(orderBy: createdAt_ASC, last: 30) {
-      id
-      author {
-        username
-      }
-      createdAt
-      content
-    }
-    guildId {
-      users {
-        id
-      }
-    }
-  }
-}`
 
 class Messages extends React.PureComponent<{ match: any }, { channelId: string }> {
   shouldScrollBottom: boolean
 
-  constructor (props) {
+  constructor(props) {
     super(props)
-    this.state = {channelId: this.props.match.params.channelId}
+    this.state = { channelId: this.props.match.params.channelId }
   }
 
   componentDidMount() {
@@ -78,24 +80,25 @@ class Messages extends React.PureComponent<{ match: any }, { channelId: string }
   render() {
     return (
       <Wrapper>
-        <Query query={GET_MESSAGES} variables={{ channelId: this.state.channelId }} >
+        <Query query={GET_MESSAGES} variables={{ channelId: this.state.channelId }}>
           {({ loading, error, data, subscribeToMore }) => {
-            if (loading) return <div>Loading...</div>
-            if (error) return <div>{error.toString()} messages</div>
+            if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
+            if (error) return <LoadingWrapper>{error.toString()} messages</LoadingWrapper>
 
             subscribeToMore({
               document: MESSAGE_SUBSCRIPTION,
               variables: { channelId: this.state.channelId },
-              updateQuery: (prev, data) => {
+              updateQuery: (_prev, data) => {
                 return { channel: data.subscriptionData.data.channelSubscription.node }
               }
             })
             return (
-
-              <div >
-                { data.channel.messages.map(el => <Message author={el.author} content={el.content} key={el.id} time={el.createdAt} mounted={ this.messageMounted } willMount={ this.messageWillMount } />) }
+              <div>
+                {data.channel.messages.map(el => (
+                  <Message author={el.author} content={el.content} key={el.id} time={el.createdAt} mounted={this.messageMounted} willMount={this.messageWillMount} />
+                ))}
               </div>
-          )
+            )
           }}
         </Query>
       </Wrapper>

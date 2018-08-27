@@ -10,7 +10,8 @@ interface Props {
 
 const MessageHeader: React.SFC<Props> = ({ author, time }) => (
   <Wrapper>
-    <MessageAuthor author={author} /><MessageTimestamp time={time} />
+    <MessageAuthor author={author} />
+    <MessageTimestamp time={time} />
   </Wrapper>
 )
 

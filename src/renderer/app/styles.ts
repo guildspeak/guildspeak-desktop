@@ -1,10 +1,10 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
 const fonts = {
   robotoRegular: require('../assets/fonts/Roboto/Roboto-Light.ttf'),
   robotoMedium: require('../assets/fonts/Roboto/Roboto-Medium.ttf'),
   robotoLight: require('../assets/fonts/Roboto/Roboto-Light.ttf'),
-  francoisOneRegular: require('../assets/fonts/Francois_One/FrancoisOne-Regular.ttf'),
+  francoisOneRegular: require('../assets/fonts/Francois_One/FrancoisOne-Regular.ttf')
 }
 
 export const style = css`
@@ -46,7 +46,10 @@ export const style = css`
     overflow: hidden;
   }
 
-  html, body, #reactapp, .App {
+  html,
+  body,
+  #reactapp,
+  .App {
     height: 100%;
   }
 

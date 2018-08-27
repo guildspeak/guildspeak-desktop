@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import { Wrapper, Input } from './styles'
 import { EditorState, Editor, DraftHandleValue } from 'draft-js'
-import  '../../../../node_modules/draft-js/dist/Draft.css'
+import '../../../../node_modules/draft-js/dist/Draft.css'
 
 const CREATE_MESSAGE = gql`
   mutation createMessage($content: String!, $channelId: ID!) {
@@ -37,12 +37,12 @@ class MessageInput extends React.Component<Props, IState> {
     createMessage({ variables: { content, channelId: this.props.channelId } })
     this.setState({
       content: '',
-      editorState: EditorState.createEmpty(),
+      editorState: EditorState.createEmpty()
     })
     return 'handled'
   }
 
-  handleChange = (editorState) => {
+  handleChange = editorState => {
     this.setState({ editorState })
   }
 
@@ -50,10 +50,10 @@ class MessageInput extends React.Component<Props, IState> {
     return (
       <Wrapper>
         <Mutation mutation={CREATE_MESSAGE}>
-          {(createMessage) => (
+          {createMessage => (
             <Input>
               <Editor
-              placeholder="write message..."
+                placeholder="write message..."
                 editorState={this.state.editorState}
                 onChange={this.handleChange}
                 // tslint:disable-next-line:jsx-no-lambda
@@ -64,7 +64,6 @@ class MessageInput extends React.Component<Props, IState> {
         </Mutation>
       </Wrapper>
     )
-
   }
 }
 

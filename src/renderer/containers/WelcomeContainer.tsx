@@ -10,7 +10,7 @@ const mapStateToProps = (state: RootState, props) => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<SetTokenAction>) => ({
-  setToken: (token) => dispatch(setToken(token))
+  setToken: token => dispatch(setToken(token))
 })
 
 export default connect(

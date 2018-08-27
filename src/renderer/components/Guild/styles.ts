@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
-`
+const Wrapper = styled.div``
 
 const GuildName = styled.div`
   padding: 4px;
   color: #eeeeee;
+  border-radius: 12px;
   &:hover {
     color: #fff;
   }

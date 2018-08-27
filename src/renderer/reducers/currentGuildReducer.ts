@@ -16,7 +16,7 @@ export const currentGuildReducer: Reducer<CurrentGuildState> = (state = defaultS
       localStorage.setItem('currentChannelId', action.payload.channelId)
       return {
         ...state,
-        channelId: action.payload.channelId,
+        channelId: action.payload.channelId
       }
     }
     default:

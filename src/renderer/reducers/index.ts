@@ -3,7 +3,6 @@ import { Reducer, combineReducers } from 'redux'
 import { AuthState, authReducer } from './authReducer'
 import { CurrentGuildState, currentGuildReducer } from './currentGuildReducer'
 
-
 export interface RootState {
   auth: AuthState
   currentGuild: CurrentGuildState

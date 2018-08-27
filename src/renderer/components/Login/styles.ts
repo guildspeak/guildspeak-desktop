@@ -45,8 +45,7 @@ const EmailInput = styled.input`
   }
 `
 
-const PasswordInput = styled(EmailInput)`
-`
+const PasswordInput = styled(EmailInput)``
 
 const LoginButton = styled(Button)`
   height: 36px;

@@ -5,11 +5,12 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 
 const GET_ME = gql`
-query {
-  me {
-    username
+  query {
+    me {
+      username
+    }
   }
-}`
+`
 
 interface Props {
   id: string
@@ -18,6 +19,10 @@ interface Props {
 }
 
 class CurrentUser extends React.PureComponent<Props> {
+  handleSettings = () => {
+    this.props.history.push('/settings')
+  }
+
   render() {
     return (
       <Query query={GET_ME}>
@@ -26,9 +31,11 @@ class CurrentUser extends React.PureComponent<Props> {
           if (error) return <div>{error.toString()}</div>
           return (
             <Wrapper>
-              <Username>@{data.me.username}</Username>
+              <Username>{data.me.username.toUpperCase()}</Username>
               <Buttons>
-                <Button className="material-icons">settings</Button>
+                <Button onClick={this.handleSettings} className="material-icons">
+                  settings
+                </Button>
               </Buttons>
             </Wrapper>
           )

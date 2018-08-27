@@ -10,7 +10,7 @@ const mapStateToProps = (state: RootState, props) => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<SetChannelId>) => ({
-  setChannelId: (channelId) => dispatch(setChannelId(channelId)),
+  setChannelId: channelId => dispatch(setChannelId(channelId))
 })
 
 export default connect(
