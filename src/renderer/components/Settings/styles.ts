@@ -5,6 +5,13 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: #33333d;
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+  }
 `
 
 const LogOutButton = styled(Button)`
@@ -12,7 +19,7 @@ const LogOutButton = styled(Button)`
   background-color: Transparent;
   color: #ff3333;
   font-size: 1em;
-  margin: 1em;
+  margin: 2px;
   padding: 0.25em 1em;
   border: none;
   &:hover {
@@ -24,11 +31,10 @@ const LogOutButton = styled(Button)`
 
 const SettingsButton = styled(Button)`
   float: left;
-  align-content: center;
   background-color: Transparent;
   color: #eaeaeb;
   font-size: 1em;
-  margin: 1em;
+  margin: 2px;
   padding: 0.25em 1em;
   border: none;
   &:hover {
@@ -41,11 +47,11 @@ const SettingsButton = styled(Button)`
 const BackButton = styled(Button)`
    color: #eaeaeb;
    float: left;
-   margin: 1em;
+   margin: 2px;
+   margin-bottom: 10rem;
    padding: 0.25em 1.5rem;
    background-color: transparent;
    font-size: 1em;
-   
    &:hover {
      background-color: #474750;
    }
@@ -54,14 +60,36 @@ const BackButton = styled(Button)`
 const SettingsOptions = styled.div`
   float: left;
   align-items: center;
-  width: 20%;
-  height: 96%;
+  width: 10rem;
+  height: auto;
+  text-align: center;
 `
 
 const UserSettings = styled.div`
   float: right;
-  width: 80%;
-  height: 96%;
+  width: 90rem;
+  height: auto;
 `
 
-export { Wrapper, LogOutButton, UserSettings, SettingsOptions, SettingsButton, BackButton  }
+const Hr = styled.hr`
+  display: block;
+  unicode-bidi: isolate;
+  -webkit-margin-before: 0.5em;
+  -webkit-margin-after: 0.5em;
+  -webkit-margin-start: auto;
+  -webkit-margin-end: 10px;
+  width: 7.5rem;
+  overflow: hidden;
+  border-top: 0.5px solid #454554;
+  border-bottom: 0.5px solid #454554;
+`
+
+const Description = styled.div`
+ color: #5b5b63;
+ font-weight: bold;
+ text-transform: uppercase;
+ font-size: 14px;
+ margin-bottom: 6px;
+`
+
+export { Wrapper, LogOutButton, UserSettings, SettingsOptions, SettingsButton, BackButton, Hr, Description  }
