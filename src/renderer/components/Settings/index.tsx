@@ -9,11 +9,11 @@ interface Props {
 class Settings extends React.Component<Props> {
   handleLogin = () => {
     this.props.history.push('/login')
+    localStorage.removeItem('token')
   }
 
   handleBack = () => {
     this.props.history.push('/app')
-    localStorage.removeItem('token')
   }
 
   render() {
