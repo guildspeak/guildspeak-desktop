@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Button from '../Button'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -6,7 +7,8 @@ const Wrapper = styled.div`
   background-color: #33333d;
 `
 
-const Button = styled.button`
+const LogOutButton = styled(Button)`
+  float: left;
   background-color: Transparent;
   color: #ff3333;
   font-size: 1em;
@@ -20,4 +22,31 @@ const Button = styled.button`
   }
 `
 
-export { Wrapper, Button }
+const SettingsButton = styled(Button)`
+
+`
+
+const BackButton = styled(Button)`
+   color: #eaeaeb;
+   float: left;
+   margin: 1em;
+   background-color: transparent;
+   &:hover {
+     background-color: #474750;
+   }
+`
+
+const SettingsOptions = styled.div`
+  float: left;
+  align-items: center;
+  width: 20%;
+  height: 96%;
+`
+
+const UserSettings = styled.div`
+  float: right;
+  width: 80%;
+  height: 96%;
+`
+
+export { Wrapper, LogOutButton, UserSettings, SettingsOptions, SettingsButton, BackButton  }
