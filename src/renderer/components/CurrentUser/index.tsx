@@ -20,7 +20,7 @@ interface Props {
 
 class CurrentUser extends React.PureComponent<Props> {
   handleSettings = () => {
-    this.props.history.push('/setting')
+    this.props.history.push('/settings')
   }
 
   render() {
