@@ -4,15 +4,22 @@ import styled from 'styled-components'
 const Settings = styled.div`
 width: 100%;
 height: 100%;
-background-color: #fff;
+background-color: #33333D;
 `
 
 const Button = styled.button`
-    width: 5rem;
-    height: 1,5rem;
-    border: none;
-    border-radius: 5px;
-`
+  background-color: Transparent;
+  color:  #ff3333;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: none;
+  &:hover {
+    background-color: #ff3333;
+    color: #fff;
+    border-radius: 6px;
+  }
+`;
 
 
 export { Settings, Button }
