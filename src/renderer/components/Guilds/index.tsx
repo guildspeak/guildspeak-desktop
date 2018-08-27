@@ -5,16 +5,17 @@ import { Query } from 'react-apollo'
 import { Wrapper } from './styles'
 
 const GET_GUILDS = gql`
-query {
-  guilds {
-		name
-    id
-    channels {
+  query {
+    guilds {
       name
       id
+      channels {
+        name
+        id
+      }
     }
   }
-}`
+`
 
 const Guilds = () => (
   <Wrapper>
@@ -22,13 +23,10 @@ const Guilds = () => (
       {({ loading, error, data }) => {
         if (loading) return <div>Loading...</div>
         if (error) return <div>{error.toString()} guilds</div>
-        return (
-          data.guilds.map((el) => (<Guild name={el.name} key={el.id} channels={el.channels} />))
-        )
+        return data.guilds.map(el => <Guild name={el.name} key={el.id} channels={el.channels} />)
       }}
     </Query>
   </Wrapper>
 )
 
 export default Guilds
-

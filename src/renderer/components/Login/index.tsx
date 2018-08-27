@@ -6,14 +6,14 @@ import { withRouter } from 'react-router-dom'
 import { Wrapper, LoginForm, Info, EmailInput, PasswordInput, LoginButton, RegisterButton } from './styles'
 
 const LOGIN = gql`
-mutation login($email: String!, $password: String!) {
-  login(email: $email, password: $password) {
-      token,
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
       user {
         username
       }
+    }
   }
-}
 `
 
 interface IState {
@@ -32,14 +32,14 @@ class Login extends React.Component<Props, IState> {
   state = {
     email: '',
     password: '',
-    token: '',
+    token: ''
   }
 
   handleLogin = loginMutation => () => {
     loginMutation({ variables: { email: this.state.email, password: this.state.password } })
   }
 
-  handleEmail = (e) => {
+  handleEmail = e => {
     this.setState({ email: e.target.value })
   }
 
@@ -47,7 +47,7 @@ class Login extends React.Component<Props, IState> {
     this.props.history.push('/register')
   }
 
-  handlePassword = (e) => {
+  handlePassword = e => {
     this.setState({ password: e.target.value })
   }
 
@@ -60,20 +60,21 @@ class Login extends React.Component<Props, IState> {
             }
 
             if (data) {
-              return (<WelcomeContainer data={data} />)
+              return <WelcomeContainer data={data} />
             }
 
-            return (<LoginForm>
-              <Info>Log in to your Guildspeak account</Info>
-              <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
-              <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
+            return (
+              <LoginForm>
+                <Info>Log in to your Guildspeak account</Info>
+                <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
+                <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
 
-              <LoginButton
-                primary={true}
-                onClick={this.handleLogin(login)}>Login</LoginButton>
-              <RegisterButton onClick={this.handleRegister}>Sign Up</RegisterButton>
-            </LoginForm>)
-
+                <LoginButton primary={true} onClick={this.handleLogin(login)}>
+                  Login
+                </LoginButton>
+                <RegisterButton onClick={this.handleRegister}>Sign Up</RegisterButton>
+              </LoginForm>
+            )
           }}
         </Mutation>
       </Wrapper>

@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   height: 26px;
   padding-left: 4px;
   background: #27272f;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
   user-select: none;
 `
 
@@ -37,7 +37,7 @@ const Button = styled.div`
   cursor: pointer;
   -webkit-app-region: no-drag;
   &:hover {
-    background: rgba(255,255,255,0.24);
+    background: rgba(255, 255, 255, 0.24);
   }
   font-size: 18px;
   margin-top: -1px;
@@ -45,9 +45,9 @@ const Button = styled.div`
 `
 
 const CloseButton = styled(Button)`
-&:hover {
-  background: #ed2939;
-}
+  &:hover {
+    background: #ed2939;
+  }
 `
 
 const Buttons = styled.div`

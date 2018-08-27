@@ -3,14 +3,14 @@ import { withRouter } from 'react-router-dom'
 import { Wrapper, Username, Buttons, Button } from './styles'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
-import { settings } from 'cluster';
 
 const GET_ME = gql`
-query {
-  me {
-    username
+  query {
+    me {
+      username
+    }
   }
-}`
+`
 
 interface Props {
   id: string
@@ -19,7 +19,6 @@ interface Props {
 }
 
 class CurrentUser extends React.PureComponent<Props> {
-
   handleSettings = () => {
     this.props.history.push('/setting')
   }
@@ -34,7 +33,9 @@ class CurrentUser extends React.PureComponent<Props> {
             <Wrapper>
               <Username>{data.me.username.toUpperCase()}</Username>
               <Buttons>
-                <Button onClick={this.handleSettings} className="material-icons">settings</Button>
+                <Button onClick={this.handleSettings} className="material-icons">
+                  settings
+                </Button>
               </Buttons>
             </Wrapper>
           )

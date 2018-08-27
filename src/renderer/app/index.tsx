@@ -17,22 +17,22 @@ injectGlobal`${style}`
 
 const ApplicationContainer = Loadable({
   loader: () => import('../containers/ApplicationContainer'),
-  loading: Loading,
+  loading: Loading
 })
 
 const StartupContainer = Loadable({
   loader: () => import('../containers/StartupContainer'),
-  loading: Loading,
+  loading: Loading
 })
 
 const Login = Loadable({
   loader: () => import('../components/Login'),
-  loading: Loading,
+  loading: Loading
 })
 
 const Register = Loadable({
   loader: () => import('../components/Register'),
-  loading: Loading,
+  loading: Loading
 })
 
 const Settings = Loadable({
@@ -62,7 +62,7 @@ const render = () => {
         </Provider>
       </ApolloProvider>
     </AppContainer>,
-    document.getElementById('app'),
+    document.getElementById('app')
   )
 }
 

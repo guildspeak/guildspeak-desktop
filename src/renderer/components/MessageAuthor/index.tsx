@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Wrapper, StyledModal, FriendButton, UserName, Avatar } from './styles'
 
 export interface MessageAuthorData {
-  id: string,
+  id: string
   username: string
 }
 
@@ -10,13 +10,13 @@ interface Props {
   author: MessageAuthorData
 }
 
-class MessageAuthor extends React.Component<Props, { isOpen: boolean, opacity: number }> {
+class MessageAuthor extends React.Component<Props, { isOpen: boolean; opacity: number }> {
   state = {
     isOpen: false,
     opacity: 0
   }
 
-  toggleModal = (e) => {
+  toggleModal = () => {
     this.setState({ isOpen: !this.state.isOpen })
   }
 
@@ -35,7 +35,7 @@ class MessageAuthor extends React.Component<Props, { isOpen: boolean, opacity: n
 
   render() {
     return (
-      < Wrapper >
+      <Wrapper>
         <div onClick={this.toggleModal}>@{this.props.author.username}</div>
         <StyledModal
           isOpen={this.state.isOpen}
@@ -43,16 +43,17 @@ class MessageAuthor extends React.Component<Props, { isOpen: boolean, opacity: n
           beforeClose={this.beforeClose}
           onBackgroundClick={this.toggleModal}
           onEscapeKeydown={this.toggleModal}
-          opacity={this.state.opacity}>
-          <Avatar><img src="https://amp.businessinsider.com/images/5899ffcf6e09a897008b5c04-750-750.jpg" /></Avatar>
+          opacity={this.state.opacity}
+        >
+          <Avatar>
+            <img src="https://amp.businessinsider.com/images/5899ffcf6e09a897008b5c04-750-750.jpg" />
+          </Avatar>
           <UserName>@{this.props.author.username}</UserName>
           <FriendButton>Send Friend Request</FriendButton>
         </StyledModal>
-
-      </Wrapper >
+      </Wrapper>
     )
   }
-
 }
 
 export default MessageAuthor

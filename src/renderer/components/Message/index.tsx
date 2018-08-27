@@ -26,18 +26,22 @@ class Message extends React.Component<Props, {}> {
     this.props.mounted()
   }
 
-  doScroll = (e) => {
-    console.log(
-      this.ref.current.scrollTop)
+  doScroll = () => {
+    console.log(this.ref.current.scrollTop)
   }
+
   render() {
-    return (<Wrapper >
-      <MessageBubble>
-        <MessageHeader author={this.props.author} time={this.props.time} />
-        <MessageContent ref={this.ref} onScroll={this.doScroll}>{this.props.content}</MessageContent>
-        <Hr aria-hidden="true" />
-      </MessageBubble>
-    </Wrapper>)
+    return (
+      <Wrapper>
+        <MessageBubble>
+          <MessageHeader author={this.props.author} time={this.props.time} />
+          <MessageContent ref={this.ref} onScroll={this.doScroll}>
+            {this.props.content}
+          </MessageContent>
+          <Hr aria-hidden="true" />
+        </MessageBubble>
+      </Wrapper>
+    )
   }
 }
 

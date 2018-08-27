@@ -6,6 +6,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-flow: column;
   flex: 1;
-  `
+`
 
 export { Wrapper }

@@ -3,6 +3,7 @@ import { RootState } from '../reducers'
 import { SetChannelId, setChannelId } from '../actions/currentGuildActions'
 import { Dispatch } from 'redux'
 import Application from '../components/Application'
+import Channel from './ChannelContainer'
 
 const mapStateToProps = (state: RootState, props) => ({
   ...props,
@@ -10,7 +11,7 @@ const mapStateToProps = (state: RootState, props) => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<SetChannelId>) => ({
-  setChannelId: (channelId) => dispatch(setChannelId(channelId)),
+  setChannelId: channelId => dispatch(setChannelId(channelId))
 })
 
 export default connect(

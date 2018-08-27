@@ -27,9 +27,15 @@ const Systembar = () => (
     <WrapperItems>
       <Title>GUILDSPEAK</Title>
       <Buttons>
-        <Button className="material-icons" onClick={minimize}>remove</Button>
-        <Button className="material-icons" onClick={maximize}>crop_square</Button>
-        <CloseButton className="material-icons" onClick={close}>close</CloseButton>
+        <Button className="material-icons" onClick={minimize}>
+          remove
+        </Button>
+        <Button className="material-icons" onClick={maximize}>
+          crop_square
+        </Button>
+        <CloseButton className="material-icons" onClick={close}>
+          close
+        </CloseButton>
       </Buttons>
     </WrapperItems>
   </Wrapper>

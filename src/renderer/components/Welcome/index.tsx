@@ -8,9 +8,7 @@ interface IProps {
   history: any
 }
 
-
 class Welcome extends React.Component<IProps, any> {
-
   componentDidMount() {
     this.props.setToken(this.props.data.login.token)
   }
@@ -20,12 +18,13 @@ class Welcome extends React.Component<IProps, any> {
       <Wrapper>
         <LoginForm>
           <Info>Sup {this.props.data.login.user.username}</Info>
-          <ContinueButton primary={true} onClick={this.props.history.push('/app')}>Continue to Guildspeak</ContinueButton>
+          <ContinueButton primary={true} onClick={this.props.history.push('/app')}>
+            Continue to Guildspeak
+          </ContinueButton>
         </LoginForm>
       </Wrapper>
     )
   }
 }
-
 
 export default withRouter(Welcome as any)

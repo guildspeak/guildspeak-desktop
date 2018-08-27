@@ -18,32 +18,27 @@ const createWindow = async () => {
     await installExtensions()
   }
 
-  win = new BrowserWindow(
-    {
-      width: 1152,
-      height: 648,
-      minWidth: 800,
-      minHeight: 600,
-      title: 'Guildspeak',
-      show: false,
-      frame: false,
-      backgroundColor: '#33333d'
-    }
-  )
+  win = new BrowserWindow({
+    width: 1152,
+    height: 648,
+    minWidth: 800,
+    minHeight: 600,
+    title: 'Guildspeak',
+    show: false,
+    frame: false,
+    backgroundColor: '#33333d'
+  })
 
-  loading = new BrowserWindow(
-    {
-      width: 350,
-      height: 350,
-      minWidth: 150,
-      minHeight: 150,
-      title: 'Guildspeak',
-      show: false,
-      frame: false,
-      backgroundColor: '#33333d',
-
-    }
-  )
+  loading = new BrowserWindow({
+    width: 350,
+    height: 350,
+    minWidth: 150,
+    minHeight: 150,
+    title: 'Guildspeak',
+    show: false,
+    frame: false,
+    backgroundColor: '#33333d'
+  })
 
   loading.once('show', () => {
     win.webContents.once('dom-ready', () => {
@@ -63,15 +58,13 @@ const createWindow = async () => {
         })
       )
     }
-
-
-
   })
 
   if (process.env.NODE_ENV !== 'production') {
     loading.loadURL(
       url.format({
-        pathname: path.join(__dirname, '..', 'src', 'loading.html'),          protocol: 'file:',
+        pathname: path.join(__dirname, '..', 'src', 'loading.html'),
+        protocol: 'file:',
         slashes: true
       })
     )

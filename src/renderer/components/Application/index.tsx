@@ -6,10 +6,8 @@ import { Route, withRouter } from 'react-router-dom'
 import { MainWrapper, MessagesColumn, FirstColumn, SecondColumn, ThirdColumn } from './styles'
 import Users from '../Users'
 
-class Application extends React.PureComponent<{ channelId: string, history: any }> {
-  renderMessages = (params) => {
-    return (<Messages key={params.match.params.channelId} {...params} />)
-  }
+class Application extends React.PureComponent<{ channelId: string; history: any }> {
+  renderMessages = params => <Messages key={params.match.params.channelId} {...params} />
 
   componentDidMount() {
     this.props.history.push(`/app/channel/${this.props.channelId}`)
@@ -23,7 +21,7 @@ class Application extends React.PureComponent<{ channelId: string, history: any 
         </FirstColumn>
         <SecondColumn>
           <MessagesColumn>
-            <Route path='/app/channel/:channelId' render={this.renderMessages} />
+            <Route path="/app/channel/:channelId" render={this.renderMessages} />
             <MessageInputContainer />
           </MessagesColumn>
         </SecondColumn>

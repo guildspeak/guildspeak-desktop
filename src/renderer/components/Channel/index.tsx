@@ -12,18 +12,20 @@ interface Props {
   setChannelId: (channelId) => any
 }
 
-
 class Channel extends React.PureComponent<Props> {
-  changeChannel = e => {
+  changeChannel = () => {
     this.props.setChannelId(this.props.id)
-    this.props.history.push(`/app/channel/${ this.props.id }`)
+    this.props.history.push(`/app/channel/${this.props.id}`)
   }
 
   render() {
     return (
-    <Wrapper>
-      <ChannelName {...this.props} onClick={ this.changeChannel }>#{this.props.name}</ChannelName>
-    </Wrapper>)
+      <Wrapper>
+        <ChannelName {...this.props} onClick={this.changeChannel}>
+          #{this.props.name}
+        </ChannelName>
+      </Wrapper>
+    )
   }
 }
 
