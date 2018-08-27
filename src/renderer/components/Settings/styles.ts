@@ -23,7 +23,19 @@ const LogOutButton = styled(Button)`
 `
 
 const SettingsButton = styled(Button)`
-
+  float: left;
+  align-content: center;
+  background-color: Transparent;
+  color: #eaeaeb;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: none;
+  &:hover {
+    background-color: #474750;
+    color: #eaeaeb;
+    border-radius: 6px;
+  }
 `
 
 const BackButton = styled(Button)`

@@ -36,7 +36,7 @@ class MessageAuthor extends React.Component<Props, { isOpen: boolean; opacity: n
   render() {
     return (
       <Wrapper>
-        <div onClick={this.toggleModal}>@{this.props.author.username}</div>
+        <div onClick={this.toggleModal}>{this.props.author.username}</div>
         <StyledModal
           isOpen={this.state.isOpen}
           afterOpen={this.afterOpen}
@@ -48,7 +48,7 @@ class MessageAuthor extends React.Component<Props, { isOpen: boolean; opacity: n
           <Avatar>
             <img src="https://amp.businessinsider.com/images/5899ffcf6e09a897008b5c04-750-750.jpg" />
           </Avatar>
-          <UserName>@{this.props.author.username}</UserName>
+          <UserName>{this.props.author.username}</UserName>
           <FriendButton>Send Friend Request</FriendButton>
         </StyledModal>
       </Wrapper>

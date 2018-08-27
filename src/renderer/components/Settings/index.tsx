@@ -22,7 +22,14 @@ class Settings extends React.Component<Props> {
         <SettingsOptions>
 
           <BackButton onClick={this.handleBack}>Back</BackButton>
-
+          <SettingsButton>Test Button</SettingsButton>
+          <SettingsButton>Test Button</SettingsButton>
+          <SettingsButton>Test Button</SettingsButton>
+          <SettingsButton>Test Button</SettingsButton>
+          <SettingsButton>Test Button</SettingsButton>
+          <SettingsButton>Test Button</SettingsButton>
+          <SettingsButton>Test Button</SettingsButton>
+          <SettingsButton>Test Button</SettingsButton>
           <LogOutButton onClick={this.handleLogin}>Log Out</LogOutButton>
 
         </SettingsOptions>
