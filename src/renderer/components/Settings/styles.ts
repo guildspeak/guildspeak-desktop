@@ -30,7 +30,10 @@ const BackButton = styled(Button)`
    color: #eaeaeb;
    float: left;
    margin: 1em;
+   padding: 0.25em 1.5rem;
    background-color: transparent;
+   font-size: 1em;
+   
    &:hover {
      background-color: #474750;
    }
