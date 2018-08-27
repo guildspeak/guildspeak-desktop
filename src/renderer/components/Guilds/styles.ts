@@ -4,7 +4,8 @@ const Wrapper = styled.div`
   flex: 1;
   overflow: hidden;
   user-select: none;
-  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
 `
 
 export { Wrapper }
