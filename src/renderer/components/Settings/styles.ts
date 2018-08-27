@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 
-const Settings = styled.div`
+const Wrapper = styled.div`
 width: 100%;
 height: 100%;
 background-color: #33333D;
@@ -19,7 +19,7 @@ const Button = styled.button`
     color: #fff;
     border-radius: 6px;
   }
-`;
+`
 
 
-export { Settings, Button }
+export { Wrapper, Button }
