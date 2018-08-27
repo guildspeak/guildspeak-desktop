@@ -8,9 +8,4 @@ const Wrapper = styled.div`
   flex: 1;
   `
 
-const LogoutButton = styled(Button)`
-  background: #33333d;
-  color: #eeeeee;
-`
-
-export { Wrapper, LogoutButton }
+export { Wrapper }

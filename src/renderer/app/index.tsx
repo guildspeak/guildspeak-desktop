@@ -35,6 +35,11 @@ const Register = Loadable({
   loading: Loading,
 })
 
+const Setting = Loadable({
+  loader: () => import('../components/Setting'),
+  loading: Loading
+})
+
 const render = () => {
   ReactDOM.render(
     <AppContainer>
@@ -49,6 +54,7 @@ const render = () => {
                   <Route exact={true} path="/" component={StartupContainer} />
                   <Route exact={true} path="/login" component={Login} />
                   <Route exact={true} path="/register" component={Register} />
+                  <Route exact={true} path="/setting" component={Setting} />
                 </Switch>
               </Router>
             </ModalProvider>
