@@ -1,4 +1,4 @@
 import * as React from 'react'
 import { Wrapper } from './styles'
 
-export default () => <Wrapper>Starting Guildspeak...</Wrapper>
+export default () => <Wrapper>Loading....</Wrapper>
