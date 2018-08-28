@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  height: 36px;
+  flex: 1;
   overflow: hidden;
   user-select: none;
   font-size: 16px;

@@ -2,9 +2,14 @@ import styled from 'styled-components'
 
 const MainWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex: 1;
   padding: 4px;
+`
+const InnerWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex: 1;
 `
 const MessagesColumn = styled.div`
   flex: 1;
@@ -30,4 +35,4 @@ const ThirdColumn = styled.div`
   flex-flow: column;
 `
 
-export { MainWrapper, MessagesColumn, FirstColumn, SecondColumn, ThirdColumn }
+export { MainWrapper, InnerWrapper, MessagesColumn, FirstColumn, SecondColumn, ThirdColumn }
