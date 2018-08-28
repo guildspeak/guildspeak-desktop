@@ -5,6 +5,7 @@ import { Query } from 'react-apollo'
 import * as ReactDOM from 'react-dom'
 import { Wrapper } from './styles'
 import { Wrapper as LoadingWrapper } from '../Loading/styles'
+import { RouteComponentProps, RouteProps } from 'react-router'
 
 const MESSAGE_SUBSCRIPTION = gql`
   subscription channelSubscription($channelId: ID!) {
@@ -48,12 +49,20 @@ const GET_MESSAGES = gql`
   }
 `
 
-class Messages extends React.PureComponent<{ match: any }, { channelId: string }> {
-  shouldScrollBottom: boolean
+interface IProps {
+  readonly channelId: string
+}
 
-  constructor(props) {
-    super(props)
-    this.state = { channelId: this.props.match.params.channelId }
+interface IState {
+  channelId: string
+  shouldScrollBottom: boolean
+}
+
+class Messages extends React.Component<IProps & RouteComponentProps<RouteProps & IProps>, IState> {
+  shouldScrollBottom: boolean
+  // @ts-ignore
+  state = {
+    channelId: this.props.match.params.channelId
   }
 
   componentDidMount() {

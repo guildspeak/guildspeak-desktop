@@ -24,7 +24,7 @@ interface IProps {
   setGuildId: (guildId) => any
 }
 
-class Guilds extends React.Component<IProps & RouteComponentProps<RouteProps>> {
+class Guilds extends React.Component<IProps & RouteComponentProps<RouteProps & IProps>> {
   changeGuild = id => {
     this.props.setGuildId(id)
   }

@@ -1,11 +1,11 @@
 import * as React from 'react'
 import CurrentUser from '../CurrentUser'
 import { Wrapper } from './styles'
-import CurrentGuild from '../CurrentGuild'
+import CurrentGuildContainer from '../../containers/CurrentGuildContainer'
 
 const Sidebar = () => (
   <Wrapper>
-    <CurrentGuild />
+    <CurrentGuildContainer />
     <CurrentUser />
   </Wrapper>
 )

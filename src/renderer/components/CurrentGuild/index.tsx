@@ -4,10 +4,11 @@ import { Query } from 'react-apollo'
 import { Wrapper } from './styles'
 import { Wrapper as LoadingWrapper } from '../Loading/styles'
 import ChannelContainer from '../../containers/ChannelContainer'
+import { RouteComponentProps, RouteProps } from 'react-router'
 
-const GET_GUILDS = gql`
-  query {
-    guilds {
+const GET_GUILD = gql`
+  query guild($id: ID!) {
+    guild(id: $id) {
       name
       id
       channels {
@@ -17,23 +18,29 @@ const GET_GUILDS = gql`
     }
   }
 `
+interface IProps {
+  readonly guildId: string
+}
 
-const CurrentGuild = () => (
-  <Wrapper>
-    <Query query={GET_GUILDS}>
-      {({ loading, error, data }) => {
-        if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
-        if (error) return <LoadingWrapper>{error.toString()} guilds</LoadingWrapper>
-        return data.guilds.map(el => (
-          <div key={el.id}>
-            {el.channels.map(el => (
-              <ChannelContainer name={el.name} id={el.id} key={el.id} />
-            ))}
-          </div>
-        ))
-      }}
-    </Query>
-  </Wrapper>
-)
-
+class CurrentGuild extends React.PureComponent<IProps & RouteComponentProps<RouteProps & IProps>> {
+  render() {
+    return (
+      <Wrapper>
+        <Query query={GET_GUILD} variables={{ id: this.props.guildId }}>
+          {({ loading, error, data }) => {
+            if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
+            if (error) return <LoadingWrapper>{error.toString()} guilds</LoadingWrapper>
+            return (
+              <div>
+                {data.guild.channels.map(el => (
+                  <ChannelContainer name={el.name} id={el.id} key={el.id} />
+                ))}
+              </div>
+            )
+          }}
+        </Query>
+      </Wrapper>
+    )
+  }
+}
 export default CurrentGuild
