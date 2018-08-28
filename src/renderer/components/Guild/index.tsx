@@ -1,9 +1,3 @@
-/**
- * @author rlot <rj23@protonmail.com>
- * @author alufers <alufers@wp.pl>
- * @author xdk78 <xdk78888@gmail.com>
- * @author Bjornskjald <github@bjorn.ml>
- */
 import * as React from 'react'
 import ChannelContainer from '../../containers/ChannelContainer'
 import { RouteProps } from 'react-router'
@@ -14,7 +8,7 @@ interface Props {
   channels: any[]
 }
 
-const GuildBar: React.SFC<Props & RouteProps> = ({ name, channels }) => (
+const Guild: React.SFC<Props & RouteProps> = ({ name, channels }) => (
   <Wrapper>
     <GuildName>{name}</GuildName>
     {channels.map(el => (
@@ -23,4 +17,4 @@ const GuildBar: React.SFC<Props & RouteProps> = ({ name, channels }) => (
   </Wrapper>
 )
 
-export default GuildBar
+export default Guild

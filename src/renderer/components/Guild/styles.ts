@@ -3,14 +3,15 @@ import styled from 'styled-components'
 const Wrapper = styled.div``
 
 const GuildName = styled.div`
-  padding: 4px;
-  color: #5b5b63;
-  border-radius: 2px;
-  background-color: #3b3b46;
+  padding: 8px;
+  color: #eeeeee;
   &:hover {
     color: #fff;
   }
   cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
 `
 
 export { Wrapper, GuildName }
