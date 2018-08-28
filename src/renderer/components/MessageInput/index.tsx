@@ -41,8 +41,7 @@ const CREATE_MESSAGE = gql`
 `
 
 interface IState {
-  editorState: EditorState
-  content: string
+  editorState: EditorState | string
 }
 
 interface Props {
@@ -51,24 +50,22 @@ interface Props {
 
 class MessageInput extends React.PureComponent<Props, IState> {
   state = {
-    editorState: EditorState.createEmpty(),
-    content: ''
+    editorState: EditorState.createEmpty()
   }
 
   handleReturn(createMessage): DraftHandleValue {
-    const content = this.state.editorState
+    const content = Object.assign(this.state.editorState, {})
       .getCurrentContent()
       .getPlainText()
       .trim()
     if (content && content.length > 0) {
       this.setState({
-        content
+        editorState: content
       })
       createMessage({ variables: { content, channelId: this.props.channelId } })
       const newEditorState = EditorState.push(this.state.editorState, ContentState.createFromText(''), 'remove-range')
 
       this.setState({
-        content: '',
         editorState: EditorState.moveFocusToEnd(newEditorState)
       })
       return 'handled'
