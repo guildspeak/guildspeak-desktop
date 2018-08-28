@@ -1,18 +1,15 @@
 import * as React from 'react'
-import { withRouter } from 'react-router-dom'
-import { RouteComponentProps } from 'react-router'
+import { withRouter, RouteProps, RouteComponentProps } from 'react-router-dom'
 import { Wrapper, ChannelName } from './styles'
 
-interface Props {
+interface IProps {
   id: string
   name: string
-  history: any
-  match: any
   channelId: any
   setChannelId: (channelId) => any
 }
 
-class Channel extends React.PureComponent<Props> {
+class Channel extends React.Component<IProps & RouteComponentProps<RouteProps>> {
   changeChannel = () => {
     this.props.setChannelId(this.props.id)
     this.props.history.push(`/app/channel/${this.props.id}`)

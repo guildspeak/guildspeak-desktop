@@ -5,9 +5,9 @@ import MessageInputContainer from '../../containers/MessageInputContainer'
 import { Route, withRouter } from 'react-router-dom'
 import { MainWrapper, MessagesColumn, FirstColumn, SecondColumn, ThirdColumn, InnerWrapper } from './styles'
 import Users from '../Users'
-import Guilds from '../Guilds'
+import GuildContainer from '../../containers/GuildContainer'
 
-class Application extends React.PureComponent<{ channelId: string; history: any }> {
+class Application extends React.Component<{ channelId: string; history: any }> {
   renderMessages = params => <Messages key={params.match.params.channelId} {...params} />
 
   componentDidMount() {
@@ -17,7 +17,7 @@ class Application extends React.PureComponent<{ channelId: string; history: any 
   render() {
     return (
       <MainWrapper>
-        <Guilds />
+        <GuildContainer />
         <InnerWrapper>
           <FirstColumn>
             <Sidebar />

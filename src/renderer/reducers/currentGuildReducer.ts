@@ -1,22 +1,22 @@
 import { Reducer } from 'redux'
 
-import { CurrentGuildActions, SET_CHANNELID } from '../actions/currentGuildActions'
+import { SET_GUILDID, CurrentGuildActions } from '../actions/currentGuildActions'
 
 export interface CurrentGuildState {
-  readonly channelId: string
+  readonly guildId: string
 }
 
 const defaultState: CurrentGuildState = {
-  channelId: localStorage.getItem('currentChannelId')
+  guildId: localStorage.getItem('currentGuildId')
 }
 
 export const currentGuildReducer: Reducer<CurrentGuildState> = (state = defaultState, action: CurrentGuildActions) => {
   switch (action.type) {
-    case SET_CHANNELID: {
-      localStorage.setItem('currentChannelId', action.payload.channelId)
+    case SET_GUILDID: {
+      localStorage.setItem('currentGuildId', action.payload.guildId)
       return {
         ...state,
-        channelId: action.payload.channelId
+        guildId: action.payload.guildId
       }
     }
     default:
