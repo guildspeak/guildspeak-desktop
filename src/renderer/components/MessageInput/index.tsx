@@ -9,7 +9,7 @@ import createSingleLinePlugin from 'draft-js-single-line-plugin'
 // import createEmojiPlugin from 'draft-js-emoji-plugin'
 // import 'draft-js-emoji-plugin/lib/plugin.css'
 
-const singleLinePlugin = createSingleLinePlugin()
+const singleLinePlugin = createSingleLinePlugin({ stripEntities: false })
 // const emojiPlugin = createEmojiPlugin({
 //   useNativeArt: true,
 //   positionSuggestions: settings => {
@@ -84,6 +84,7 @@ class MessageInput extends React.PureComponent<Props, IState> {
             <Input>
               {/* <EmojiSuggestions /> */}
               <Editor
+                blockRenderMap={singleLinePlugin.blockRenderMap}
                 plugins={plugins}
                 placeholder="write message..."
                 editorState={this.state.editorState}
