@@ -31,7 +31,7 @@ class CurrentUser extends React.PureComponent<Props> {
           if (error) return <div>{error.toString()}</div>
           return (
             <Wrapper>
-              <Username>{data.me.username.toUpperCase()}</Username>
+              <Username>{data.me.username}</Username>
               <Buttons>
                 <Button onClick={this.handleSettings} className="material-icons">
                   settings

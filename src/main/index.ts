@@ -32,8 +32,7 @@ const createWindow = async () => {
   loading = new BrowserWindow({
     width: 350,
     height: 350,
-    minWidth: 150,
-    minHeight: 150,
+    resizable: false,
     title: 'Guildspeak',
     show: false,
     frame: false,

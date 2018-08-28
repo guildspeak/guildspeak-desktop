@@ -3,7 +3,7 @@ import Guild from '../Guild'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import { Wrapper } from './styles'
-import {Wrapper as LoadingWrapper} from '../Loading/styles'
+import { Wrapper as LoadingWrapper } from '../Loading/styles'
 
 const GET_GUILDS = gql`
   query {

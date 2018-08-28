@@ -4,8 +4,7 @@ const Wrapper = styled.div``
 
 const GuildName = styled.div`
   padding: 4px;
-  color: #5b5b63;
-  border-radius: 12px;
+  color: #eeeeee;
   &:hover {
     color: #fff;
   }

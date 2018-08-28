@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { withRouter } from 'react-router-dom'
-import { Wrapper, LogOutButton,  UserSettings, SettingsOptions, SettingsButton, BackButton, Hr, Description  } from './styles'
+import { Wrapper, LogOutButton, UserSettings, SettingsOptions, SettingsButton, BackButton, Hr, Description } from './styles'
 
 interface Props {
   history: any
@@ -21,25 +21,35 @@ class Settings extends React.Component<Props> {
       <Wrapper>
         <SettingsOptions>
           <ul>
-            <li><BackButton onClick={this.handleBack}>Back</BackButton></li>
-            
+            <li>
+              <BackButton onClick={this.handleBack}>Back</BackButton>
+            </li>
+
             <Description>User Settings</Description>
-            <li><SettingsButton>Test Button</SettingsButton></li>
-            <li><SettingsButton>Test Button</SettingsButton></li>
+            <li>
+              <SettingsButton>Test Button</SettingsButton>
+            </li>
+            <li>
+              <SettingsButton>Test Button</SettingsButton>
+            </li>
             <Hr aria-hidden="true" />
             <Description>App Settings</Description>
-            <li><SettingsButton>Test Button</SettingsButton></li>
-            <li><SettingsButton>Test Button</SettingsButton></li>
-            <li><SettingsButton>Test Button</SettingsButton></li>
+            <li>
+              <SettingsButton>Test Button</SettingsButton>
+            </li>
+            <li>
+              <SettingsButton>Test Button</SettingsButton>
+            </li>
+            <li>
+              <SettingsButton>Test Button</SettingsButton>
+            </li>
             <Hr aria-hidden="true" />
-            <li><LogOutButton onClick={this.handleLogin}>Log Out</LogOutButton></li>
+            <li>
+              <LogOutButton onClick={this.handleLogin}>Log Out</LogOutButton>
+            </li>
           </ul>
-          
-          
-          
-
         </SettingsOptions>
-        <UserSettings></UserSettings>
+        <UserSettings />
       </Wrapper>
     )
   }

@@ -14,6 +14,7 @@ const Username = styled.div`
   }
   cursor: pointer;
   font-family: 'Francois One', sans-serif;
+  text-transform: uppercase;
 `
 
 const Button = styled.div`
