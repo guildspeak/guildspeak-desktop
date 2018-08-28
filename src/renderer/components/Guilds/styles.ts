@@ -4,8 +4,7 @@ const Wrapper = styled.div`
   flex: 1;
   overflow: hidden;
   user-select: none;
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 16px;
 `
 
 export { Wrapper }
