@@ -12,13 +12,13 @@ import { AppContainer } from 'react-hot-loader'
 import Loadable from 'react-loadable'
 import Loading from '../components/Loading'
 import { ModalProvider } from 'styled-react-modal'
-import {Wrapper as LoadingWrapper} from '../components/Loading/styles'
+import { Wrapper as LoadingWrapper } from '../components/Loading/styles'
 
 injectGlobal`${style}`
 
 const ApplicationContainer = Loadable({
   loader: () => import('../containers/ApplicationContainer'),
-  loading: ()=><LoadingWrapper>Starting GuildSpeak...</LoadingWrapper>
+  loading: () => <LoadingWrapper>Starting GuildSpeak...</LoadingWrapper>
 })
 
 const StartupContainer = Loadable({

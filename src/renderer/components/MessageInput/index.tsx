@@ -53,7 +53,7 @@ class MessageInput extends React.PureComponent<Props, IState> {
         content
       })
       createMessage({ variables: { content, channelId: this.props.channelId } })
-      const newEditorState = EditorState.push(this.state.editorState, ContentState.createFromText(''), "remove-range")
+      const newEditorState = EditorState.push(this.state.editorState, ContentState.createFromText(''), 'remove-range')
 
       this.setState({
         content: '',

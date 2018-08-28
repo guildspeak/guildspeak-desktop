@@ -4,7 +4,7 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import * as ReactDOM from 'react-dom'
 import { Wrapper } from './styles'
-import {Wrapper as LoadingWrapper} from '../Loading/styles'
+import { Wrapper as LoadingWrapper } from '../Loading/styles'
 
 const MESSAGE_SUBSCRIPTION = gql`
   subscription channelSubscription($channelId: ID!) {
