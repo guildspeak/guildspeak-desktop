@@ -1,12 +1,8 @@
 import * as React from 'react'
-import { withRouter } from 'react-router-dom'
-import { Wrapper, LogOutButton, UserSettings, SettingsOptions, SettingsButton, BackButton, Hr, Description } from './styles'
+import { withRouter, RouteComponentProps, RouteProps } from 'react-router-dom'
+import { Wrapper, LogOutButton, UserSettings, SettingsOptionsList, SettingsButton, BackButton, Hr, Description } from './styles'
 
-interface Props {
-  history: any
-}
-
-class Settings extends React.Component<Props> {
+class SettingsList extends React.Component<RouteComponentProps<RouteProps>> {
   handleLogout = () => {
     localStorage.removeItem('token')
     this.props.history.push('/login')
@@ -19,12 +15,11 @@ class Settings extends React.Component<Props> {
   render() {
     return (
       <Wrapper>
-        <SettingsOptions>
+        <SettingsOptionsList>
           <ul>
             <li>
               <BackButton onClick={this.handleBack}>Back</BackButton>
             </li>
-
             <Description>User Settings</Description>
             <li>
               <SettingsButton>My Settings</SettingsButton>
@@ -60,11 +55,12 @@ class Settings extends React.Component<Props> {
               <LogOutButton onClick={this.handleLogout}>Log Out</LogOutButton>
             </li>
           </ul>
-        </SettingsOptions>
+        </SettingsOptionsList>
         <UserSettings />
       </Wrapper>
     )
   }
 }
 
-export default withRouter(Settings as any)
+
+export default withRouter(SettingsList as any)

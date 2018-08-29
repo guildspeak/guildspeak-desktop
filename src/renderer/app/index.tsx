@@ -13,7 +13,7 @@ import Loadable from 'react-loadable'
 import Loading from '../components/Loading'
 import { ModalProvider } from 'styled-react-modal'
 import { Wrapper as LoadingWrapper } from '../components/Loading/styles'
-import Settings from '../components/Settings'
+import Settings from '../views/Settings'
 
 injectGlobal`${style}`
 
@@ -28,12 +28,12 @@ const StartupContainer = Loadable({
 })
 
 const Login = Loadable({
-  loader: () => import('../components/Login'),
+  loader: () => import('../views/Login'),
   loading: Loading
 })
 
 const Register = Loadable({
-  loader: () => import('../components/Register'),
+  loader: () => import('../views/Register'),
   loading: Loading
 })
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import Button from '../Button'
+import { Link } from 'react-router-dom'
+import Button from '../../components/Button'
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
   margin: 0;
 `
 
-const RegisterForm = styled.div`
+const LoginForm = styled.div`
   padding: 0;
   margin: 0;
 `
@@ -25,7 +26,7 @@ const Info = styled.div`
   font-size: 18px;
 `
 
-const Input = styled.input`
+const EmailInput = styled.input`
   background: #2e2e38;
   margin-top: 8px;
   box-sizing: border-box;
@@ -44,16 +45,12 @@ const Input = styled.input`
   }
 `
 
-const UsernameInput = styled(Input)``
+const PasswordInput = styled(EmailInput)``
 
-const EmailInput = styled(Input)``
-
-const PasswordInput = styled(Input)``
-
-const RegisterButton = styled(Button)`
+const LoginButton = styled(Button)`
   height: 36px;
   margin-top: 12px;
-  width: 100%;
+  width: 48%;
   padding: 8px;
   display: inline-block;
   border-radius: 4px;
@@ -65,19 +62,11 @@ const RegisterButton = styled(Button)`
   }
 `
 
-const BackButton = styled(Button)`
-  height: 36px;
-  margin-top: 12px;
-  width: 100%;
-  padding: 8px;
-  display: inline-block;
-  border-radius: 4px;
-  &:focus {
-    outline: none;
-  }
+const RegisterButton = styled(LoginButton)`
+  float: right;
   &:hover {
-    background: #009688;
+    background: #cecece;
   }
 `
 
-export { Wrapper, RegisterForm, Info, UsernameInput, EmailInput, PasswordInput, RegisterButton, BackButton }
+export { Wrapper, LoginForm, Info, EmailInput, PasswordInput, LoginButton, RegisterButton }

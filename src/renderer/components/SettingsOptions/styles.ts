@@ -57,7 +57,7 @@ const BackButton = styled(Button)`
   }
 `
 
-const SettingsOptions = styled.div`
+const SettingsOptionsList = styled.div`
   float: left;
   align-items: center;
   width: 15rem;
@@ -92,4 +92,4 @@ const Description = styled.div`
   margin-bottom: 6px;
 `
 
-export { Wrapper, LogOutButton, UserSettings, SettingsOptions, SettingsButton, BackButton, Hr, Description }
+export { Wrapper, LogOutButton, UserSettings, SettingsOptionsList, SettingsButton, BackButton, Hr, Description }

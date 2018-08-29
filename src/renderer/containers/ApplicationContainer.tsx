@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { RootState } from '../reducers'
 import { SetChannelId, setChannelId } from '../actions/currentChannelActions'
 import { Dispatch } from 'redux'
-import Application from '../components/Application'
+import Application from '../views/Application'
 
 const mapStateToProps = (state: RootState, props) => ({
   ...props,

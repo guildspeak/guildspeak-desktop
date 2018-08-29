@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { RootState } from '../reducers'
 import { SetTokenAction, setToken } from '../actions/authActions'
 import { Dispatch } from 'redux'
-import Welcome from '../components/Welcome'
+import Welcome from '../views/Welcome'
 
 const mapStateToProps = (state: RootState, props) => ({
   token: state.auth.token,

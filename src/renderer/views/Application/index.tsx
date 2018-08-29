@@ -1,11 +1,11 @@
 import * as React from 'react'
-import Sidebar from '../Sidebar'
-import Messages from '../Messages'
+import Sidebar from '../../components/Sidebar'
+import Messages from '../../components/Messages'
 import MessageInputContainer from '../../containers/MessageInputContainer'
 import { Route, withRouter } from 'react-router-dom'
 import { MainWrapper, MessagesColumn, FirstColumn, SecondColumn, ThirdColumn, InnerWrapper } from './styles'
 import CurrentUsersContainer from '../../containers/CurrentUsersContainer'
-import Guilds from '../Guilds'
+import Guilds from '../../components/Guilds'
 
 class Application extends React.Component<{ channelId: string; history: any }> {
   renderMessages = params => <Messages key={params.match.params.channelId} {...params} />
