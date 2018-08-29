@@ -19,9 +19,7 @@ const GET_GUILDS = gql`
   }
 `
 
-interface IProps {}
-
-class Guilds extends React.PureComponent<IProps & RouteComponentProps<RouteProps & IProps>> {
+class Guilds extends React.PureComponent<RouteComponentProps<RouteProps>> {
   render() {
     return (
       <Wrapper>
