@@ -35,7 +35,7 @@ class Register extends React.Component<Props, IState> {
     username: ''
   }
 
-  hangleRegister(registerMutation) {
+  hangleRegister = registerMutation => () => {
     registerMutation({ variables: { email: this.state.email, password: this.state.password, username: this.state.username } })
   }
 
@@ -74,11 +74,7 @@ class Register extends React.Component<Props, IState> {
                 <UsernameInput onChange={this.handleUsername} placeholder="Username" />
                 <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
                 <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
-                <RegisterButton
-                  primary={true}
-                  // tslint:disable-next-line:jsx-no-lambda
-                  onClick={() => this.hangleRegister(register)}
-                >
+                <RegisterButton primary={true} onClick={this.hangleRegister(register)}>
                   Register
                 </RegisterButton>
                 <BackButton onClick={this.handleLogin}>I have account! Let's log in.</BackButton>

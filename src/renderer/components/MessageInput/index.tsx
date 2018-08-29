@@ -53,7 +53,7 @@ class MessageInput extends React.PureComponent<Props, IState> {
     editorState: EditorState.createEmpty()
   }
 
-  handleReturn(createMessage): DraftHandleValue {
+  handleReturn = createMessage => (): DraftHandleValue => {
     const content = Object.assign(this.state.editorState, {})
       .getCurrentContent()
       .getPlainText()
@@ -89,8 +89,7 @@ class MessageInput extends React.PureComponent<Props, IState> {
                 placeholder="write message..."
                 editorState={this.state.editorState}
                 onChange={this.handleChange}
-                // tslint:disable-next-line:jsx-no-lambda
-                handleReturn={() => this.handleReturn(createMessage)}
+                handleReturn={this.handleReturn(createMessage)}
               />
             </Input>
             {/* <EmojiSelect /> */}

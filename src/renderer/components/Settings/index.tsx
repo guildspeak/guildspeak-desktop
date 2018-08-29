@@ -7,9 +7,9 @@ interface Props {
 }
 
 class Settings extends React.Component<Props> {
-  handleLogin = () => {
-    this.props.history.push('/login')
+  handleLogout = () => {
     localStorage.removeItem('token')
+    this.props.history.push('/login')
   }
 
   handleBack = () => {
@@ -45,7 +45,7 @@ class Settings extends React.Component<Props> {
             </li>
             <Hr aria-hidden="true" />
             <li>
-              <LogOutButton onClick={this.handleLogin}>Log Out</LogOutButton>
+              <LogOutButton onClick={this.handleLogout}>Log Out</LogOutButton>
             </li>
           </ul>
         </SettingsOptions>
