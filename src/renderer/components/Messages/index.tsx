@@ -59,10 +59,9 @@ interface IState {
 }
 
 class Messages extends React.Component<IProps & RouteComponentProps<RouteProps & IProps>, IState> {
-  shouldScrollBottom: boolean
-  // @ts-ignore
   state = {
-    channelId: this.props.match.params.channelId
+    channelId: this.props.match.params.channelId,
+    shouldScrollBottom: true
   }
 
   componentDidMount() {
@@ -71,7 +70,7 @@ class Messages extends React.Component<IProps & RouteComponentProps<RouteProps &
   }
 
   messageMounted = () => {
-    if (this.shouldScrollBottom) {
+    if (this.state.shouldScrollBottom) {
       const node = ReactDOM.findDOMNode(this) as any
       node.scrollTop = node.scrollHeight
     }
@@ -79,8 +78,8 @@ class Messages extends React.Component<IProps & RouteComponentProps<RouteProps &
 
   messageWillMount = () => {
     const node = ReactDOM.findDOMNode(this) as any
-    if (node && node.scrollTop && node.offsetHeight && node.scrollHeight) {
-      this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight
+    if (node) {
+      this.state.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight
     }
   }
 
