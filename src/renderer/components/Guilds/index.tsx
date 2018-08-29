@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Guild from '../Guild'
+import GuildContainer from '../../containers/GuildContainer'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import { Wrapper } from './styles'
@@ -19,16 +19,9 @@ const GET_GUILDS = gql`
   }
 `
 
-interface IProps {
-  guildId: any
-  setGuildId: (guildId) => any
-}
+interface IProps {}
 
-class Guilds extends React.Component<IProps & RouteComponentProps<RouteProps & IProps>> {
-  changeGuild = id => () => {
-    this.props.setGuildId(id)
-  }
-
+class Guilds extends React.PureComponent<IProps & RouteComponentProps<RouteProps & IProps>> {
   render() {
     return (
       <Wrapper>
@@ -36,14 +29,7 @@ class Guilds extends React.Component<IProps & RouteComponentProps<RouteProps & I
           {({ loading, error, data }) => {
             if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
             if (error) return <LoadingWrapper>{error.toString()} guilds</LoadingWrapper>
-            return data.guilds.map(el => (
-              <Guild
-                name={el.name}
-                key={el.id}
-                // @ts-ignore
-                onClick={this.changeGuild(el.id)}
-              />
-            ))
+            return data.guilds.map(el => <GuildContainer key={el.id} name={el.name} />)
           }}
         </Query>
       </Wrapper>

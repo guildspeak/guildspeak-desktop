@@ -2,14 +2,24 @@ import * as React from 'react'
 import { RouteProps } from 'react-router'
 import { Wrapper, GuildName } from './styles'
 
-interface Props {
+interface IProps {
   name: string
+  guildId: any
+  setGuildId: (guildId) => any
 }
 
-const Guild: React.SFC<Props & RouteProps> = ({ name }) => (
-  <Wrapper>
-    <GuildName>{name}</GuildName>
-  </Wrapper>
-)
+class Guild extends React.PureComponent<IProps, {}> {
+  changeGuild = id => () => {
+    this.props.setGuildId(id)
+  }
+
+  render() {
+    return (
+      <Wrapper onClick={this.changeGuild}>
+        <GuildName>{this.props.name}</GuildName>
+      </Wrapper>
+    )
+  }
+}
 
 export default Guild
