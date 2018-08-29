@@ -1,11 +1,9 @@
 import * as React from 'react'
-import { RouteProps } from 'react-router'
 import { Wrapper, GuildName } from './styles'
 
 interface IProps {
   name: string
   guildId: any
-  currentGuildId: any
   setGuildId: (guildId) => any
 }
 
