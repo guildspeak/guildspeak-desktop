@@ -6,7 +6,7 @@ import Guild from '../components/Guild'
 
 const mapStateToProps = (state: RootState, props) => ({
   ...props,
-  guildId: state.currentGuild.guildId
+  currentGuildId: state.currentGuild.guildId
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<SetGuildId>) => ({

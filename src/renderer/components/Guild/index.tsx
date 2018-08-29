@@ -5,12 +5,13 @@ import { Wrapper, GuildName } from './styles'
 interface IProps {
   name: string
   guildId: any
+  currentGuildId: any
   setGuildId: (guildId) => any
 }
 
 class Guild extends React.PureComponent<IProps, {}> {
-  changeGuild = id => () => {
-    this.props.setGuildId(id)
+  changeGuild = () => {
+    this.props.setGuildId(this.props.guildId)
   }
 
   render() {
