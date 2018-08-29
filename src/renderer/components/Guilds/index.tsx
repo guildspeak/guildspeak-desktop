@@ -29,7 +29,6 @@ class Guilds extends React.PureComponent<IProps & RouteComponentProps<RouteProps
           {({ loading, error, data }) => {
             if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
             if (error) return <LoadingWrapper>{error.toString()} guilds</LoadingWrapper>
-            console.log('guilds', data)
             return data.guilds.map(el => <GuildContainer key={el.id} name={el.name} guildId={el.id} />)
           }}
         </Query>
