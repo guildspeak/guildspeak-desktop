@@ -27,21 +27,24 @@ class Settings extends React.Component<Props> {
 
             <Description>User Settings</Description>
             <li>
-              <SettingsButton>Test Button</SettingsButton>
+              <SettingsButton>Authorized Apps</SettingsButton>
             </li>
             <li>
-              <SettingsButton>Test Button</SettingsButton>
+              <SettingsButton>Privacy & Sefety</SettingsButton>
             </li>
             <Hr aria-hidden="true" />
             <Description>App Settings</Description>
             <li>
-              <SettingsButton>Test Button</SettingsButton>
+              <SettingsButton>KeyBinds</SettingsButton>
             </li>
             <li>
-              <SettingsButton>Test Button</SettingsButton>
+              <SettingsButton>Notifications</SettingsButton>
             </li>
             <li>
-              <SettingsButton>Test Button</SettingsButton>
+              <SettingsButton>Language</SettingsButton>
+            </li>
+            <li>
+              <SettingsButton>Voice Settings</SettingsButton>
             </li>
             <Hr aria-hidden="true" />
             <li>

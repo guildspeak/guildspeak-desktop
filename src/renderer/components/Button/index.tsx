@@ -25,4 +25,7 @@ export default styled.button<IButton>`
     content: '';
     flex: 1 0 auto;
   }
+  &:focus {
+    outline: none;
+  }
 `
