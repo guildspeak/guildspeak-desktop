@@ -6,6 +6,7 @@
     "max-line-length": false,
     "variable-name": false,
     "import-name": false,
-    "object-shorthand-properties-first": false
+    "object-shorthand-properties-first": false,
+    "quotemark": [true, "single", "jsx-double"]
   }
 }
