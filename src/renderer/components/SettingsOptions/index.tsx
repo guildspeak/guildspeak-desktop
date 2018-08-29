@@ -36,7 +36,7 @@ class SettingsList extends React.Component<RouteComponentProps<RouteProps>> {
           <Hr aria-hidden="true" />
           <LogOutButton onClick={this.handleLogout}>Log Out</LogOutButton>
         </SettingsOptionsList>
-        <UserSettings />
+        <UserSettings >test</UserSettings>
       </Wrapper>
     )
   }

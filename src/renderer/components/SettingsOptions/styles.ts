@@ -2,9 +2,10 @@ import styled from 'styled-components'
 import Button from '../Button'
 
 const Wrapper = styled.div`
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  background-color: #27272f;
+  flex-direction: row;
+  background: #27272f;
 `
 
 const LogOutButton = styled(Button)`
@@ -47,10 +48,14 @@ const SettingsOptionsList = styled.div`
   align-items: center;
   flex: 1;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 `
 
 const UserSettings = styled.div`
+  display: flex;
   flex: 3;
+  flex-direction: column;
 `
 
 const Hr = styled.hr`
