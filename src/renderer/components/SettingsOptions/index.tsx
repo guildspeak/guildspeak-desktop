@@ -12,49 +12,29 @@ class SettingsList extends React.Component<RouteComponentProps<RouteProps>> {
     this.props.history.push('/app')
   }
 
+  handleUser = () => {
+    this.props.history.push('/usersettings')
+  }
+
   render() {
     return (
       <Wrapper>
         <SettingsOptionsList>
-          <ul>
-            <li>
-              <BackButton onClick={this.handleBack}>Back</BackButton>
-            </li>
-            <Description>User Settings</Description>
-            <li>
-              <SettingsButton>My Settings</SettingsButton>
-            </li>
-            <li>
-              <SettingsButton>Authorized Apps</SettingsButton>
-            </li>
-            <li>
-              <SettingsButton>Privacy & Sefety</SettingsButton>
-            </li>
-            <Hr aria-hidden="true" />
-            <Description>App Settings</Description>
-            <li>
-              <SettingsButton>KeyBinds</SettingsButton>
-            </li>
-            <li>
-              <SettingsButton>Appearance</SettingsButton>
-            </li>
-            <li>
-              <SettingsButton>Notifications</SettingsButton>
-            </li>
-            <li>
-              <SettingsButton>Language</SettingsButton>
-            </li>
-            <li>
-              <SettingsButton>Voice Settings</SettingsButton>
-            </li>
-            <li>
-              <SettingsButton>Overlay</SettingsButton>
-            </li>
-            <Hr aria-hidden="true" />
-            <li>
-              <LogOutButton onClick={this.handleLogout}>Log Out</LogOutButton>
-            </li>
-          </ul>
+          <BackButton onClick={this.handleBack}>Back</BackButton>
+          <Description>User Settings</Description>
+          <SettingsButton onClick={this.handleUser}>My Settings</SettingsButton>
+          <SettingsButton>Authorized Apps</SettingsButton>
+          <SettingsButton>Privacy & Safety</SettingsButton>
+          <Hr aria-hidden="true" />
+          <Description>App Settings</Description>
+          <SettingsButton>KeyBinds</SettingsButton>
+          <SettingsButton>Appearance</SettingsButton>
+          <SettingsButton>Notifications</SettingsButton>
+          <SettingsButton>Language</SettingsButton>
+          <SettingsButton>Voice Settings</SettingsButton>
+          <SettingsButton>Overlay</SettingsButton>
+          <Hr aria-hidden="true" />
+          <LogOutButton onClick={this.handleLogout}>Log Out</LogOutButton>
         </SettingsOptionsList>
         <UserSettings />
       </Wrapper>
