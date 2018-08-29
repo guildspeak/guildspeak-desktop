@@ -62,5 +62,4 @@ class SettingsList extends React.Component<RouteComponentProps<RouteProps>> {
   }
 }
 
-
 export default withRouter(SettingsList as any)
