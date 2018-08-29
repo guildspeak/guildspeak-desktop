@@ -7,4 +7,11 @@ const Wrapper = styled.div`
   user-select: none;
 `
 
-export { Wrapper }
+const Username = styled.div`
+  padding: 8px;
+  flex: 1;
+  overflow: hidden;
+  user-select: none;
+`
+
+export { Wrapper, Username }

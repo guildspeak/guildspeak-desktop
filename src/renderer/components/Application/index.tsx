@@ -4,7 +4,7 @@ import Messages from '../Messages'
 import MessageInputContainer from '../../containers/MessageInputContainer'
 import { Route, withRouter } from 'react-router-dom'
 import { MainWrapper, MessagesColumn, FirstColumn, SecondColumn, ThirdColumn, InnerWrapper } from './styles'
-import Users from '../Users'
+import CurrentUsersContainer from '../../containers/CurrentUsersContainer'
 import GuildsContainer from '../../containers/GuildsContainer'
 
 class Application extends React.Component<{ channelId: string; history: any }> {
@@ -29,7 +29,7 @@ class Application extends React.Component<{ channelId: string; history: any }> {
             </MessagesColumn>
           </SecondColumn>
           <ThirdColumn>
-            <Users />
+            <CurrentUsersContainer />
           </ThirdColumn>
         </InnerWrapper>
       </MainWrapper>
