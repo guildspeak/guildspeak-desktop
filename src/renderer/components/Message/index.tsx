@@ -1,9 +1,11 @@
 import * as React from 'react'
+import marked from '../../utils/markdown'
+import { highlightAuto } from 'highlight.js'
 import { MessageAuthorData } from '../MessageAuthor'
 import MessageHeader from '../MessageHeader'
 import { Wrapper, MessageBubble, MessageContent, Hr } from './styles'
 
-interface Props {
+interface IProps {
   content: string
   author: MessageAuthorData
   time: string
@@ -11,7 +13,7 @@ interface Props {
   willMount: () => any
 }
 
-class Message extends React.Component<Props, {}> {
+class Message extends React.Component<IProps, {}> {
   ref: React.RefObject<any>
   constructor(props) {
     super(props)
@@ -35,9 +37,7 @@ class Message extends React.Component<Props, {}> {
       <Wrapper>
         <MessageBubble>
           <MessageHeader author={this.props.author} time={this.props.time} />
-          <MessageContent ref={this.ref} onScroll={this.doScroll}>
-            {this.props.content}
-          </MessageContent>
+          <MessageContent ref={this.ref} onScroll={this.doScroll} dangerouslySetInnerHTML={{ __html: marked(this.props.content) }} />
           <Hr aria-hidden="true" />
         </MessageBubble>
       </Wrapper>
