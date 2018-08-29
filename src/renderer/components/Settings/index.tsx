@@ -27,6 +27,9 @@ class Settings extends React.Component<Props> {
 
             <Description>User Settings</Description>
             <li>
+              <SettingsButton>My Settings</SettingsButton>
+            </li>
+            <li>
               <SettingsButton>Authorized Apps</SettingsButton>
             </li>
             <li>
@@ -38,6 +41,9 @@ class Settings extends React.Component<Props> {
               <SettingsButton>KeyBinds</SettingsButton>
             </li>
             <li>
+              <SettingsButton>Appearance</SettingsButton>
+            </li>
+            <li>
               <SettingsButton>Notifications</SettingsButton>
             </li>
             <li>
@@ -45,6 +51,9 @@ class Settings extends React.Component<Props> {
             </li>
             <li>
               <SettingsButton>Voice Settings</SettingsButton>
+            </li>
+            <li>
+              <SettingsButton>Overlay</SettingsButton>
             </li>
             <Hr aria-hidden="true" />
             <li>

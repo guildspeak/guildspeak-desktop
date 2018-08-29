@@ -48,7 +48,7 @@ const BackButton = styled(Button)`
   color: #eaeaeb;
   float: left;
   margin: 2px;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   padding: 0.25em 1.5rem;
   background-color: transparent;
   font-size: 20px;
