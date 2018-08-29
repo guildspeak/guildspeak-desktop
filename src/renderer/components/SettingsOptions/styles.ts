@@ -52,12 +52,6 @@ const SettingsOptionsList = styled.div`
   flex-direction: column;
 `
 
-const UserSettings = styled.div`
-  display: flex;
-  flex: 3;
-  flex-direction: column;
-`
-
 const Hr = styled.hr`
   unicode-bidi: isolate;
   -webkit-margin-before: 0.5em;
@@ -76,4 +70,4 @@ const Description = styled.div`
   font-size: 14px;
 `
 
-export { Wrapper, LogOutButton, UserSettings, SettingsOptionsList, SettingsButton, BackButton, Hr, Description }
+export { Wrapper, LogOutButton, SettingsOptionsList, SettingsButton, BackButton, Hr, Description }

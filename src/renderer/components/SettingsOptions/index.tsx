@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { withRouter, RouteComponentProps, RouteProps } from 'react-router-dom'
-import { Wrapper, LogOutButton, UserSettings, SettingsOptionsList, SettingsButton, BackButton, Hr, Description } from './styles'
+import { Wrapper, LogOutButton, SettingsOptionsList, SettingsButton, BackButton, Hr, Description } from './styles'
+import UserSettings from '../UserSettings'
 
 class SettingsList extends React.Component<RouteComponentProps<RouteProps>> {
   handleLogout = () => {
