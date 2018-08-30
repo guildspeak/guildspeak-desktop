@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 const LogOutButton = styled(Button)`
   background: transparent;
   color: #ff3333;
-  font-size: 18px;
+  font-size: 22px;
   padding: 0.25em 1em;
   border: none;
   &:hover {
@@ -24,7 +24,7 @@ const LogOutButton = styled(Button)`
 const SettingsButton = styled(Button)`
   background: transparent;
   color: #eaeaeb;
-  font-size: 18px;
+  font-size: 22px;
   padding: 0.25em 1em;
   border: none;
   &:hover {
@@ -36,12 +36,9 @@ const SettingsButton = styled(Button)`
 
 const BackButton = styled(Button)`
   color: #eaeaeb;
-  padding: 0.25em 1.5rem;
+  padding: 2em;
   background: transparent;
   font-size: 18px;
-  &:hover {
-    background: #474750;
-  }
 `
 
 const SettingsOptionsList = styled.div`
@@ -59,6 +56,7 @@ const Hr = styled.hr`
   overflow: hidden;
   border-top: 0.5px solid #454554;
   border-bottom: 0.5px solid #454554;
+  width: 75%;
 `
 
 const Description = styled.div`
