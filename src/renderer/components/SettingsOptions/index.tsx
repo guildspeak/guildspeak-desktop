@@ -21,7 +21,9 @@ class SettingsList extends React.Component<RouteComponentProps<RouteProps>> {
     return (
       <Wrapper>
         <SettingsOptionsList>
-          <BackButton onClick={this.handleBack}><img src="../renderer/assets/icons/arrow_back.svg" /></BackButton>
+          <BackButton className="material-icons" onClick={this.handleBack}>
+            arrow_back
+          </BackButton>
           <Description>User Settings</Description>
           <SettingsButton onClick={this.handleUser}>My Settings</SettingsButton>
           <SettingsButton>Authorized Apps</SettingsButton>
@@ -37,7 +39,7 @@ class SettingsList extends React.Component<RouteComponentProps<RouteProps>> {
           <Hr aria-hidden="true" />
           <LogOutButton onClick={this.handleLogout}>Log Out</LogOutButton>
         </SettingsOptionsList>
-        <UserSettings >test</UserSettings>
+        <UserSettings>test</UserSettings>
       </Wrapper>
     )
   }

@@ -5,40 +5,40 @@ const Wrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: row;
-  background: #27272f;
+  background: #33333d;
+  font-size: 18px;
+  user-select: none;
 `
 
 const LogOutButton = styled(Button)`
-  background: transparent;
+  background: #33333d;
   color: #ff3333;
-  font-size: 22px;
-  padding: 0.25em 1em;
-  border: none;
+  font-size: 18px;
   &:hover {
-    background: #ff3333;
-    color: #fff;
-    border-radius: 4px;
+    background: #474750;
   }
 `
 
 const SettingsButton = styled(Button)`
-  background: transparent;
+  background: #33333d;
   color: #eaeaeb;
-  font-size: 22px;
-  padding: 0.25em 1em;
-  border: none;
+  font-size: 18px;
   &:hover {
     background: #474750;
-    color: #eaeaeb;
-    border-radius: 6px;
+    color: #fff;
   }
 `
 
-const BackButton = styled(Button)`
-  color: #eaeaeb;
-  padding: 2em;
-  background: transparent;
-  font-size: 18px;
+const BackButton = styled.div`
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+  &:hover {
+    font-weight: 600;
+  }
+  width: 24px;
+  font-size: 24px;
+  padding: 12px;
+  text-align: left;
 `
 
 const SettingsOptionsList = styled.div`
@@ -61,7 +61,7 @@ const Hr = styled.hr`
 
 const Description = styled.div`
   color: #5b5b63;
-  font-weight: bold;
+  font-weight: 600;
   text-transform: uppercase;
   font-size: 14px;
   text-align: center;

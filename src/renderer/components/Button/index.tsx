@@ -15,10 +15,10 @@ export default styled.button<IButton>`
       background: #149f98;
       color: #fff;
     `} display: flex;
-  border: 0;
-  border-radius: 3px;
-  font-size: 1em;
-  padding: 0.25em 1em;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 8px;;
   cursor: pointer;
   &::before,
   &::after {
