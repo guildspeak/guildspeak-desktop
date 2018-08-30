@@ -11,20 +11,20 @@ const Wrapper = styled.div`
 const LogOutButton = styled(Button)`
   background: transparent;
   color: #ff3333;
-  font-size: 20px;
+  font-size: 18px;
   padding: 0.25em 1em;
   border: none;
   &:hover {
     background: #ff3333;
     color: #fff;
-    border-radius: 6px;
+    border-radius: 4px;
   }
 `
 
 const SettingsButton = styled(Button)`
-  background-color: transparent;
+  background: transparent;
   color: #eaeaeb;
-  font-size: 20px;
+  font-size: 18px;
   padding: 0.25em 1em;
   border: none;
   &:hover {
@@ -38,16 +38,14 @@ const BackButton = styled(Button)`
   color: #eaeaeb;
   padding: 0.25em 1.5rem;
   background: transparent;
-  font-size: 20px;
+  font-size: 18px;
   &:hover {
     background: #474750;
   }
 `
 
 const SettingsOptionsList = styled.div`
-  align-items: center;
-  flex: 1;
-  text-align: center;
+  flex: 0.3;
   display: flex;
   flex-direction: column;
 `
@@ -68,6 +66,7 @@ const Description = styled.div`
   font-weight: bold;
   text-transform: uppercase;
   font-size: 14px;
+  text-align: center;
 `
 
 export { Wrapper, LogOutButton, SettingsOptionsList, SettingsButton, BackButton, Hr, Description }

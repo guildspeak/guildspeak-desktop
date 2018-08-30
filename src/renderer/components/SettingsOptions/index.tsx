@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { withRouter, RouteComponentProps, RouteProps } from 'react-router-dom'
+import { RouteComponentProps, RouteProps } from 'react-router-dom'
 import { Wrapper, LogOutButton, SettingsOptionsList, SettingsButton, BackButton, Hr, Description } from './styles'
 import UserSettings from '../UserSettings'
 
@@ -43,4 +43,4 @@ class SettingsList extends React.Component<RouteComponentProps<RouteProps>> {
   }
 }
 
-export default withRouter(SettingsList as any)
+export default SettingsList

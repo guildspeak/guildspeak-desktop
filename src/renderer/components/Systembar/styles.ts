@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   height: 26px;
   padding-left: 4px;
-  background: #27272f;
+  background: #202020;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
   user-select: none;
 `
@@ -14,7 +14,7 @@ const WrapperLine = styled.div`
   display: flex;
   flex-direction: row;
   height: 1px;
-  background: #27272f;
+  background: #202020;
   -webkit-app-region: no-drag;
 `
 
@@ -31,6 +31,7 @@ const Title = styled.div`
   font-family: 'Francois One', sans-serif;
   padding-top: 2px;
   padding-left: 2px;
+  font-size: 16px;
 `
 
 const Button = styled.div`
