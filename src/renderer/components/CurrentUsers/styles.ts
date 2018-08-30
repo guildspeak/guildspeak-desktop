@@ -12,6 +12,11 @@ const Username = styled.div`
   flex: 1;
   overflow: hidden;
   user-select: none;
+  &:hover {
+    color: #149f98;
+    text-decoration: underline;
+  }
+  cursor: pointer;
 `
 
 export { Wrapper, Username }

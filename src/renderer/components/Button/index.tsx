@@ -18,7 +18,7 @@ export default styled.button<IButton>`
   border: none;
   border-radius: 4px;
   font-size: 14px;
-  padding: 8px;;
+  padding: 8px;
   cursor: pointer;
   &::before,
   &::after {
