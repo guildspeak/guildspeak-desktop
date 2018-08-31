@@ -41,7 +41,7 @@ export const style = css`
     padding: 0;
     width: 100vw;
     height: 100vh;
-    background: #33333d;
+    background: #202020;
     color: #fff;
     overflow: hidden;
   }

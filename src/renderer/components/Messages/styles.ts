@@ -8,12 +8,12 @@ const Wrapper = styled.div`
   overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 12px;
-    background-color: #2e2e38;
+    background-color: #2d2d31;
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 8px;
     -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
-    background-color: #27272f;
+    background-color: #44444c;
   }
 `
 

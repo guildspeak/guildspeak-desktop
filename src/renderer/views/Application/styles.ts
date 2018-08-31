@@ -20,7 +20,7 @@ const MessagesColumn = styled.div`
 const FirstColumn = styled.div`
   display: flex;
   flex-flow: column;
-  flex: 0.5;
+  flex: 0.6;
 `
 
 const SecondColumn = styled.div`
@@ -30,7 +30,7 @@ const SecondColumn = styled.div`
 `
 
 const ThirdColumn = styled.div`
-  flex: 0.5;
+  flex: 0.6;
   display: flex;
   flex-flow: column;
 `

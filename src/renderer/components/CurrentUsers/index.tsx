@@ -29,7 +29,7 @@ class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<Rout
           if (error) return <LoadingWrapper>{error.toString()} users</LoadingWrapper>
           return (
             <Wrapper>
-              <div>Guild members</div>
+              <div>Members</div>
               {data.guild.users.map(el => (
                 <Username key={el.id}>{el.username}</Username>
               ))}

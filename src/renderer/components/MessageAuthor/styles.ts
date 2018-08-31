@@ -3,7 +3,7 @@ import Modal from 'styled-react-modal'
 
 const Wrapper = styled.div`
   &:hover {
-    color: #149f98;
+    color: #14bca3;
     text-decoration: underline;
   }
   cursor: pointer;
@@ -13,7 +13,7 @@ const StyledModal = Modal.styled`
   width: 35rem;
   height: 15rem;
   display: flex;
-  background: #2e2e38;
+  background: #202020;
   color: #cccccc;
   font-size: 16px;
   padding: 16px;
@@ -33,13 +33,13 @@ const FriendButton = styled.button`
   display: inline-block;
   border-radius: 4px;
   border: none;
-  background-color: #3ca374;
+  background: #10b59c;
   color: white;
   &:focus {
     outline: none;
   }
   &:hover {
-    background-color: #3ea878;
+    background: #14bca3;
   }
 `
 

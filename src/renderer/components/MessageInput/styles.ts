@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 
 const Input = styled.div`
   box-sizing: border-box;
-  background: #2e2e38;
+  background: #2d2d31;
   color: #cccccc;
   font-size: 16px;
   padding: 16px;
@@ -21,7 +21,7 @@ const Input = styled.div`
   width: 100%;
   border: none;
   border-radius: 8px;
-  caret-color: #149f98;
+  caret-color: #14bca3;
 `
 
 export { Wrapper, Input }

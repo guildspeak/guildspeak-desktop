@@ -26,7 +26,7 @@ const createWindow = async () => {
     title: 'Guildspeak',
     show: false,
     frame: false,
-    backgroundColor: '#33333d'
+    backgroundColor: '#202020'
   })
 
   loading = new BrowserWindow({
@@ -36,7 +36,7 @@ const createWindow = async () => {
     title: 'Guildspeak',
     show: false,
     frame: false,
-    backgroundColor: '#33333d'
+    backgroundColor: '#202020'
   })
 
   loading.once('show', () => {

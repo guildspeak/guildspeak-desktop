@@ -13,8 +13,8 @@ const Username = styled.div`
   overflow: hidden;
   user-select: none;
   &:hover {
-    color: #149f98;
-    text-decoration: underline;
+    color: #14bca3;
+    background: #2d2d31;
   }
   cursor: pointer;
 `

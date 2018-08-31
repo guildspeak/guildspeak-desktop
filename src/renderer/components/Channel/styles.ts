@@ -3,15 +3,12 @@ import styled from 'styled-components'
 const Wrapper = styled.div``
 
 const ChannelName = styled.div`
-  margin-left: 4px;
-  padding: 4px;
+  padding: 8px;
   color: #eeeeee;
-  border-radius: 4px;
-  margin-top: 1px;
   font-size: 16px;
-  ${props => ((props as any).channelId === props.id ? 'background: rgba(255,255,255,0.24);' : '')} &:hover {
+  ${props => ((props as any).channelId === props.id ? 'background: #2d2d31;font-weight: 500;' : '')} &:hover {
     color: #fff;
-    background: rgba(255, 255, 255, 0.24);
+    background: #2d2d31;
   }
   cursor: pointer;
   text-transform: none;
