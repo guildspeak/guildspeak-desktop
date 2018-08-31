@@ -30,7 +30,7 @@ const Title = styled.div`
   cursor: default;
   font-family: 'Francois One', sans-serif;
   padding-top: 2px;
-  padding-left: 2px;
+  padding-left: 4px;
   font-size: 16px;
 `
 

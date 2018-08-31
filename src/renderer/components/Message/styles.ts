@@ -20,8 +20,7 @@ const Hr = styled.hr`
   -webkit-margin-start: auto;
   -webkit-margin-end: 10px;
   overflow: hidden;
-  border-top: 0.5px solid #454554;
-  border-bottom: 0.5px solid #454554;
+  border: 0.5px solid #2d2d31;
 `
 
 export { Wrapper, MessageBubble, MessageContent, Hr }

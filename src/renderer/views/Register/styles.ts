@@ -26,7 +26,7 @@ const Info = styled.div`
 `
 
 const Input = styled.input`
-  background: #2e2e38;
+  background: #2d2d31;
   margin-top: 8px;
   box-sizing: border-box;
   color: #cccccc;
@@ -38,7 +38,7 @@ const Input = styled.input`
   border: none;
   border-radius: 8px;
   border-bottom: none;
-  caret-color: #149f98;
+  caret-color: #14bca3;
   &:focus {
     outline: none;
   }
