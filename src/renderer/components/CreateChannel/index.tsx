@@ -5,14 +5,19 @@ import { Wrapper, CreateButton, NameInput } from './styles'
 import { StyledModal } from '../MessageAuthor/styles'
 import Button from '../Button'
 
-const CREATE_GUILD = gql`
-  mutation createGuild($name: String!) {
-    createGuild(name: $name) {
+const CREATE_CHANNEL = gql`
+  mutation createChannel($name: String!, $guildId: ID!) {
+    createChannel(name: $name, guildId: $guildId) {
       name
       id
     }
   }
 `
+
+interface IProps {
+  readonly guildId: string
+  readonly guildName: string
+}
 
 interface IState {
   name: string
@@ -20,7 +25,7 @@ interface IState {
   opacity: number
 }
 
-class CreateGuild extends React.PureComponent<{}, IState> {
+class CreateChannel extends React.PureComponent<IProps, IState> {
   state = {
     name: '',
     isOpen: false,
@@ -44,8 +49,8 @@ class CreateGuild extends React.PureComponent<{}, IState> {
     })
   }
 
-  handleCreateGuild = createGuild => () => {
-    createGuild({ variables: { name: this.state.name } })
+  handleCreateChannel = createChannel => () => {
+    createChannel({ variables: { name: this.state.name, guildId: this.props.guildId } })
     this.toggleModal()
   }
 
@@ -67,8 +72,8 @@ class CreateGuild extends React.PureComponent<{}, IState> {
           onEscapeKeydown={this.toggleModal}
           opacity={this.state.opacity}
         >
-          <Mutation mutation={CREATE_GUILD}>
-            {(createGuild, { data, error }) => {
+          <Mutation mutation={CREATE_CHANNEL}>
+            {(createChannel, { data, error }) => {
               if (error) {
               }
 
@@ -76,10 +81,10 @@ class CreateGuild extends React.PureComponent<{}, IState> {
               }
               return (
                 <div>
-                  Create your own guild
+                  Create channel for {this.props.guildName}
                   <NameInput onChange={this.handleName} placeholder="name" />
                   <div>
-                    <Button primary={true} onClick={this.handleCreateGuild(createGuild)}>
+                    <Button primary={true} onClick={this.handleCreateChannel(createChannel)}>
                       Create
                     </Button>
                   </div>
@@ -92,4 +97,4 @@ class CreateGuild extends React.PureComponent<{}, IState> {
     )
   }
 }
-export default CreateGuild
+export default CreateChannel

@@ -5,6 +5,7 @@ import { Wrapper } from './styles'
 import { Wrapper as LoadingWrapper } from '../Loading/styles'
 import ChannelContainer from '../../containers/ChannelContainer'
 import { RouteComponentProps, RouteProps } from 'react-router'
+import CreateChannel from '../CreateChannel'
 
 const GET_GUILD = gql`
   query guild($id: ID!) {
@@ -22,7 +23,7 @@ interface IProps {
   readonly guildId: string
 }
 
-class CurrentGuild extends React.PureComponent<IProps & RouteComponentProps<RouteProps & IProps>> {
+class CurrentGuild extends React.Component<IProps & RouteComponentProps<RouteProps & IProps>> {
   render() {
     return (
       <Wrapper>
@@ -35,6 +36,7 @@ class CurrentGuild extends React.PureComponent<IProps & RouteComponentProps<Rout
                 {data.guild.channels.map(el => (
                   <ChannelContainer name={el.name} id={el.id} key={el.id} />
                 ))}
+                <CreateChannel guildId={this.props.guildId} guildName={data.guild.name} />
               </div>
             )
           }}
