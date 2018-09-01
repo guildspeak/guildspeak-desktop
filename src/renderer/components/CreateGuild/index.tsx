@@ -14,17 +14,8 @@ const CREATE_GUILD = gql`
   }
 `
 
-const JOIN_GUILD = gql`
-  mutation joinGuild($id: ID!) {
-    joinGuild(id: $id) {
-      id
-    }
-  }
-`
-
 interface IState {
   name: string
-  guildId: string
   isOpen: boolean
   opacity: number
 }
@@ -32,7 +23,6 @@ interface IState {
 class CreateGuild extends React.PureComponent<{}, IState> {
   state = {
     name: '',
-    guildId: '',
     isOpen: false,
     opacity: 0
   }
@@ -82,15 +72,6 @@ class CreateGuild extends React.PureComponent<{}, IState> {
               }
 
               if (data) {
-                return (
-                  <Mutation mutation={JOIN_GUILD}>
-                    {(joinGuild, {}) => {
-                      if (error) {
-                      }
-                      return joinGuild({ variables: { id: data.createGuild.id } })
-                    }}
-                  </Mutation>
-                )
               }
               return (
                 <div>
