@@ -140,7 +140,7 @@
     "apollo-link-ws": "^1.0.8",
     "dayjs": "^1.7.5",
     "draft-js": "^0.10.5",
-    "draft-js-emoji-plugin": "^2.0.6",
+    "draft-js-emoji-plugin": "^2.1.1",
     "draft-js-plugins-editor": "^2.1.1",
     "draft-js-single-line-plugin": "^2.0.2",
     "graphql": "^0.13.2",
