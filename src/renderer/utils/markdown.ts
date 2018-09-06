@@ -1,4 +1,4 @@
-import marked, { Renderer, Lexer, TokensList, Token } from 'marked'
+import marked, { TokensList, Token } from 'marked'
 import { highlightAuto } from 'highlight.js'
 
 const enabled = ['code', 'blockquote', 'strong', 'em', 'paragraph', 'br', 'strikethrough', 'text', 'codespan', 'del']

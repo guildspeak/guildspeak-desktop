@@ -14,7 +14,9 @@ const emojiPlugin = createEmojiPlugin({
   useNativeArt: true,
   positionSuggestions: settings => {
     return {
+      // tslint:disable-next-line:prefer-template
       left: settings.decoratorRect.left - 14 + 'px',
+      // tslint:disable-next-line:prefer-template
       top: settings.decoratorRect.top - 46 + 'px',
       display: 'block',
       transform: 'scale(1) translateY(-100%)',
