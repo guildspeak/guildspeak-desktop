@@ -23,16 +23,20 @@ const GET_GUILDS = gql`
 class Guilds extends React.PureComponent<RouteComponentProps<RouteProps>> {
   render() {
     return (
-      <Wrapper>
-        <Query query={GET_GUILDS}>
-          {({ loading, error, data }) => {
-            if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
-            if (error) return <LoadingWrapper>{error.toString()} guilds</LoadingWrapper>
-            return data.guilds.map(el => <GuildContainer key={el.id} name={el.name} guildId={el.id} />)
-          }}
-        </Query>
-        <CreateGuild />
-      </Wrapper>
+      <Query query={GET_GUILDS}>
+        {({ loading, error, data }) => {
+          if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
+          if (error) return <LoadingWrapper>{error.toString()} guilds</LoadingWrapper>
+          return (
+            <Wrapper>
+              {data.guilds.map(el => (
+                <GuildContainer key={el.id} name={el.name} guildId={el.id} />
+              ))}
+              <CreateGuild />
+            </Wrapper>
+          )
+        }}
+      </Query>
     )
   }
 }
