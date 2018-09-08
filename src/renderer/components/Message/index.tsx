@@ -37,7 +37,7 @@ class Message extends React.Component<IProps, IState> {
   }
 
   componentWillUnmount() {
-    document.addEventListener('mousedown', this.handleOpenCloseDropdown, false)
+    document.removeEventListener('mousedown', this.handleOpenCloseDropdown, false)
   }
 
   doScroll = () => {
