@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   display: flex;
   justify-items: left;
-  flex-direction: row; 
+  flex-direction: row;
 `
 
 const ChannelName = styled.div`
