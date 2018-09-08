@@ -8,8 +8,16 @@ const MessageBubble = styled.div`
   height: auto;
   word-break: break-all;
 `
-const MessageContent = styled.p`
+
+const MessageContentWrapper = styled.div`
+  flex-direction: row;
+  display: flex;
+`
+
+const MessageContent = styled.div`
   padding-right: 8px;
+  margin-right: auto;
+  display: flex;
 `
 
 const Hr = styled.hr`
@@ -23,4 +31,14 @@ const Hr = styled.hr`
   border: 0.5px solid #2d2d31;
 `
 
-export { Wrapper, MessageBubble, MessageContent, Hr }
+const DropdownButton = styled.div`
+  cursor: pointer;
+  &:hover {
+    background: rgba(255, 255, 255, 0.24);
+  }
+  font-size: 18px;
+  padding: 4px;
+  border-radius: 2px;
+`
+
+export { Wrapper, MessageContentWrapper, MessageBubble, MessageContent, Hr, DropdownButton }
