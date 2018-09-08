@@ -4,6 +4,20 @@ import { Wrapper } from './styles'
 import SettingsList from '../../components/SettingsOptions/index'
 
 class Settings extends React.Component<RouteComponentProps<RouteProps>> {
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleEsc, false)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleEsc, false)
+  }
+
+  handleEsc = (e: KeyboardEvent) => {
+    if (e.keyCode === 27) {
+      this.props.history.push('/app')
+    }
+  }
+
   render() {
     return (
       <Wrapper>

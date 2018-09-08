@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, RouteComponentProps, RouteProps } from 'react-router-dom'
 import { Wrapper, Username, Buttons, Button } from './styles'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
@@ -12,13 +12,12 @@ const GET_ME = gql`
   }
 `
 
-interface Props {
-  id: string
-  name: string
-  history: any
+interface IProps {
+  readonly id: string
+  readonly name: string
 }
 
-class CurrentUser extends React.PureComponent<Props> {
+class CurrentUser extends React.PureComponent<IProps & RouteComponentProps<RouteProps & IProps>> {
   handleSettings = () => {
     this.props.history.push('/settings')
   }

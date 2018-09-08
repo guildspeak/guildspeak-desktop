@@ -4,7 +4,7 @@ const Wrapper = styled.div`
   height: 36px;
   display: flex;
   flex-direction: row;
-  padding: 4px;
+  padding: 8px;
 `
 
 const Username = styled.div`
