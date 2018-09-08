@@ -45,7 +45,7 @@ class Message extends React.Component<IProps, IState> {
   }
 
   handleOpenCloseDropdown = e => {
-    if (this.wrapperRef && this.wrapperRef.contains(event.target)) {
+    if (this.wrapperRef && this.wrapperRef.contains(e.target)) {
       this.setState({
         hidden: false
       })
