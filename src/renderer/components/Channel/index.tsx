@@ -7,6 +7,7 @@ interface IProps {
   name: string
   channelId: any
   setChannelId: (channelId) => any
+  setChannelName: (channelName) => any
 }
 
 class Channel extends React.Component<IProps & RouteComponentProps<RouteProps>> {
