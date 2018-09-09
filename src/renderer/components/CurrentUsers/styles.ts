@@ -76,5 +76,4 @@ const Avatar = styled.div`
   }
 `
 
-
 export { Wrapper, Username, StyledModal, FriendButton, UserName, Avatar }

@@ -53,26 +53,24 @@ class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<Rout
             <Wrapper>
               <div>Members</div>
               {data.guild.users.map(el => (
-                <Username key={el.id} onClick={this.toggleModal}>{el.username}</Username>
+                <Username key={el.id} onClick={this.toggleModal}>
+                  {el.username}
+                </Username>
               ))}
               <StyledModal
-              isOpen={this.state.isOpen}
-              afterOpen={this.afterOpen}
-              beforeClose={this.beforeClose}
-              onBackgroundClick={this.toggleModal}
-              onEscapeKeydown={this.toggleModal}
-              opacity={this.state.opacity}
+                isOpen={this.state.isOpen}
+                afterOpen={this.afterOpen}
+                beforeClose={this.beforeClose}
+                onBackgroundClick={this.toggleModal}
+                onEscapeKeydown={this.toggleModal}
+                opacity={this.state.opacity}
               >
-                  <Avatar>
-                    <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
-                  </Avatar>
-                      <UserName>
-                        ddd #2137
-                      </UserName>
-                  <FriendButton>
-                    Send Friend Request
-                  </FriendButton>
-                </StyledModal>
+                <Avatar>
+                  <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
+                </Avatar>
+                <UserName>ddd #2137</UserName>
+                <FriendButton>Send Friend Request</FriendButton>
+              </StyledModal>
             </Wrapper>
           )
         }}
