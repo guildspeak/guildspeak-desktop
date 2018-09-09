@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
-`
+const Wrapper = styled.div``
 
 const ChannelName = styled.div`
   padding: 8px;
@@ -18,7 +17,7 @@ const Button = styled.div`
 `
 
 const Channels = styled.div`
-    display: flex;
+  display: flex;
   justify-items: left;
   flex-direction: row;
   ${props => ((props as any).channelId === props.id ? 'background: #2d2d31;font-weight: 500;' : '')} &:hover + Button {

@@ -19,10 +19,8 @@ class Channel extends React.Component<IProps & RouteComponentProps<RouteProps>> 
     return (
       <Wrapper>
         <Channels {...this.props}>
-        <ChannelName onClick={this.changeChannel}>
-          #{this.props.name}
-        </ChannelName>
-        <Button className="material-icons">more_vert</Button>
+          <ChannelName onClick={this.changeChannel}>#{this.props.name}</ChannelName>
+          <Button className="material-icons">more_vert</Button>
         </Channels>
       </Wrapper>
     )
