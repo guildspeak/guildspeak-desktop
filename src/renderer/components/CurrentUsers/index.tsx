@@ -56,19 +56,23 @@ class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<Rout
                 <Username key={el.id} onClick={this.toggleModal}>{el.username}</Username>
               ))}
               <StyledModal
-          isOpen={this.state.isOpen}
-          afterOpen={this.afterOpen}
-          beforeClose={this.beforeClose}
-          onBackgroundClick={this.toggleModal}
-          onEscapeKeydown={this.toggleModal}
-          opacity={this.state.opacity}
-        >
-          <Avatar>
-            <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
-          </Avatar>
-          <UserName>User Name</UserName>
-          <FriendButton>Send Friend Request</FriendButton>
-        </StyledModal>
+              isOpen={this.state.isOpen}
+              afterOpen={this.afterOpen}
+              beforeClose={this.beforeClose}
+              onBackgroundClick={this.toggleModal}
+              onEscapeKeydown={this.toggleModal}
+              opacity={this.state.opacity}
+              >
+                  <Avatar>
+                    <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
+                  </Avatar>
+                      <UserName>
+                        ddd #2137
+                      </UserName>
+                  <FriendButton>
+                    Send Friend Request
+                  </FriendButton>
+                </StyledModal>
             </Wrapper>
           )
         }}
