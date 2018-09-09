@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { withRouter, RouteProps, RouteComponentProps } from 'react-router-dom'
-import { Wrapper, ChannelName, Button } from './styles'
+import { Wrapper, ChannelName, Button, Channels } from './styles'
 
 interface IProps {
   id: string
@@ -18,10 +18,12 @@ class Channel extends React.Component<IProps & RouteComponentProps<RouteProps>> 
   render() {
     return (
       <Wrapper>
-        <ChannelName {...this.props} onClick={this.changeChannel}>
+        <Channels {...this.props}>
+        <ChannelName onClick={this.changeChannel}>
           #{this.props.name}
         </ChannelName>
         <Button className="material-icons">more_vert</Button>
+        </Channels>
       </Wrapper>
     )
   }
