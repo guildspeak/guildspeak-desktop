@@ -37,7 +37,7 @@ class MessageAuthor extends React.Component<IProps, IState> {
       setTimeout(resolve, 200)
     })
   }
-  
+
   render() {
     return (
       <Wrapper>

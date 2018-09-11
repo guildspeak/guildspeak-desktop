@@ -40,6 +40,9 @@ const Channels = styled.div`
     color: #fff;
     background: #2d2d31;
   }
+  &:hover {
+    background: #2d2d31;
+  }
 `
 
 export { Wrapper, ChannelName, IconButton, Channels }
