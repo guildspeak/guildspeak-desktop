@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { withRouter, RouteProps, RouteComponentProps } from 'react-router-dom'
-import { Wrapper, ChannelName, Button, Channels } from './styles'
+import { Wrapper, ChannelName, IconButton, Channels } from './styles'
 
 interface IProps {
-  id: string
-  name: string
-  channelId: any
-  setChannelId: (channelId) => any
-  setChannelName: (channelName) => any
+  readonly id: string
+  readonly name: string
+  readonly channelId: string
+  readonly setChannelId: (channelId: string) => any
+  readonly setChannelName: (channelName: string) => any
 }
 
 class Channel extends React.Component<IProps & RouteComponentProps<RouteProps>> {
@@ -21,7 +21,9 @@ class Channel extends React.Component<IProps & RouteComponentProps<RouteProps>> 
       <Wrapper>
         <Channels {...this.props}>
           <ChannelName onClick={this.changeChannel}>#{this.props.name}</ChannelName>
-          <Button className="material-icons">more_vert</Button>
+          <IconButton {...this.props} className="material-icons">
+            settings
+          </IconButton>
         </Channels>
       </Wrapper>
     )

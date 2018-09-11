@@ -6,11 +6,16 @@ export interface MessageAuthorData {
   username: string
 }
 
-interface Props {
-  author: MessageAuthorData
+interface IProps {
+  readonly author: MessageAuthorData
 }
 
-class MessageAuthor extends React.Component<Props, { isOpen: boolean; opacity: number }> {
+interface IState {
+  isOpen: boolean
+  opacity: number
+}
+
+class MessageAuthor extends React.Component<IProps, IState> {
   state = {
     isOpen: false,
     opacity: 0
@@ -32,7 +37,7 @@ class MessageAuthor extends React.Component<Props, { isOpen: boolean; opacity: n
       setTimeout(resolve, 200)
     })
   }
-
+  
   render() {
     return (
       <Wrapper>
