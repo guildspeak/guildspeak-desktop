@@ -1,4 +1,4 @@
-# Guild Speak App 
+# Guildspeak App 
 
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![GitHub issues](https://img.shields.io/github/issues/guildspeak/guildspeak-app.svg)](https://github.com/guildspeak/guildspeak-app/issues)
