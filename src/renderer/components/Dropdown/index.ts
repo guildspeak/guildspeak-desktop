@@ -12,6 +12,7 @@ const Dropdown = styled.div`
   position: relative;
   color: #eeeeee;
   user-select: none;
+  z-index: 9999;
 `
 
 const DropdownMenu = styled.div<IDropdownMenu>`

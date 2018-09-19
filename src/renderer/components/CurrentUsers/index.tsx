@@ -20,14 +20,29 @@ interface IProps {
   readonly guildId: string
 }
 
-class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<RouteProps & IProps>> {
+interface IState {
+  isOpen: boolean
+  opacity: number
+  selectedUser: string
+}
+
+class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<RouteProps & IProps>, IState> {
   state = {
     isOpen: false,
-    opacity: 0
+    opacity: 0,
+    selectedUser: ''
   }
 
   toggleModal = () => {
-    this.setState({ isOpen: !this.state.isOpen })
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+
+  selectCurrentUser = (username: string) => e => {
+    this.setState({
+      selectedUser: username
+    })
   }
 
   afterOpen = () => {
@@ -43,6 +58,22 @@ class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<Rout
     })
   }
 
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleEsc, false)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleEsc, false)
+  }
+
+  handleEsc = (e: KeyboardEvent) => {
+    if (e.keyCode === 27) {
+      this.setState({
+        isOpen: !this.state.isOpen
+      })
+    }
+  }
+
   render() {
     return (
       <Query query={GET_USERS} variables={{ id: this.props.guildId }}>
@@ -53,9 +84,9 @@ class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<Rout
             <Wrapper>
               <div>Members</div>
               {data.guild.users.map(el => (
-                <Username key={el.id} onClick={this.toggleModal}>
-                  {el.username}
-                </Username>
+                <div onClick={this.toggleModal} key={el.id}>
+                  <Username onClick={this.selectCurrentUser(el.username)}>{el.username}</Username>
+                </div>
               ))}
               <StyledModal
                 isOpen={this.state.isOpen}
@@ -68,7 +99,7 @@ class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<Rout
                 <Avatar>
                   <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
                 </Avatar>
-                <UserName>ddd #2137</UserName>
+                <UserName>{this.state.selectedUser}</UserName>
                 <FriendButton>Send Friend Request</FriendButton>
               </StyledModal>
             </Wrapper>

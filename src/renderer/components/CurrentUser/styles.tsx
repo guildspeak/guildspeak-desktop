@@ -16,12 +16,13 @@ const Username = styled.div`
   font-family: 'Francois One', sans-serif;
 `
 
-const Button = styled.div`
+const IconButton = styled.div`
   cursor: pointer;
+  font-size: 18px;
 `
 
 const Buttons = styled.div`
   margin-left: auto;
 `
 
-export { Wrapper, Username, Buttons, Button }
+export { Wrapper, Username, Buttons, IconButton }

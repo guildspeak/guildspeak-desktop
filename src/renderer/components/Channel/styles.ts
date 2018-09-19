@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Wrapper = styled.div``
 
@@ -11,9 +11,26 @@ const ChannelName = styled.div`
   text-transform: none;
 `
 
-const Button = styled.div`
+const IconButton = styled.div`
   cursor: pointer;
-  padding-top: 0.3rem;
+  color: #bdbdbd;
+  ${props =>
+    (props as any).channelId === props.id
+      ? css`
+          color: #bdbdbd;
+        `
+      : css`
+          color: transparent;
+        `};
+  &:hover {
+    color: #fff;
+  }
+
+  font-size: 18px;
+  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
 `
 
 const Channels = styled.div`
@@ -23,6 +40,9 @@ const Channels = styled.div`
     color: #fff;
     background: #2d2d31;
   }
+  &:hover {
+    background: #2d2d31;
+  }
 `
 
-export { Wrapper, ChannelName, Button, Channels }
+export { Wrapper, ChannelName, IconButton, Channels }

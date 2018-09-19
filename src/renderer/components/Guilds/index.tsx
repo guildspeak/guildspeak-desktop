@@ -8,8 +8,19 @@ import { RouteComponentProps, RouteProps, withRouter } from 'react-router'
 import CreateGuild from '../CreateGuild'
 
 const GET_GUILDS = gql`
-  query {
-    guilds {
+  query guilds {
+    name
+    id
+    channels {
+      name
+      id
+    }
+  }
+`
+
+const GUILDS_SUBSCRIPTION = gql`
+  subscription guildsSubscription {
+    node {
       name
       id
       channels {
@@ -24,9 +35,15 @@ class Guilds extends React.PureComponent<RouteComponentProps<RouteProps>> {
   render() {
     return (
       <Query query={GET_GUILDS}>
-        {({ loading, error, data }) => {
+        {({ loading, error, data, subscribeToMore }) => {
           if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
           if (error) return <LoadingWrapper>{error.toString()} guilds</LoadingWrapper>
+          subscribeToMore({
+            document: GUILDS_SUBSCRIPTION,
+            updateQuery: (_prev, data) => {
+              return { guilds: data.subscriptionData.data.guildsSubscription.node }
+            }
+          })
           return (
             <Wrapper>
               {data.guilds.map(el => (

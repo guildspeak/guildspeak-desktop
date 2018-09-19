@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { withRouter, RouteComponentProps, RouteProps } from 'react-router-dom'
-import { Wrapper, Username, Buttons, Button } from './styles'
+import { Wrapper, Username, Buttons, IconButton } from './styles'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 
@@ -32,9 +32,9 @@ class CurrentUser extends React.PureComponent<IProps & RouteComponentProps<Route
             <Wrapper>
               <Username>{data.me.username}</Username>
               <Buttons>
-                <Button onClick={this.handleSettings} className="material-icons">
+                <IconButton onClick={this.handleSettings} className="material-icons">
                   settings
-                </Button>
+                </IconButton>
               </Buttons>
             </Wrapper>
           )
