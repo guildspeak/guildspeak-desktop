@@ -76,4 +76,8 @@ const LoginLogo = styled.div`
   margin-left: 4.4rem;
 `
 
-export { Wrapper, LoginForm, Info, EmailInput, PasswordInput, LoginButton, RegisterButton, LoginLogo }
+const ErrorLogin = styled.div`
+  
+`
+
+export { Wrapper, LoginForm, Info, EmailInput, PasswordInput, LoginButton, RegisterButton, LoginLogo, ErrorLogin }
