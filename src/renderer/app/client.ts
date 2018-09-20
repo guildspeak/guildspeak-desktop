@@ -26,7 +26,7 @@ const authLink = new ApolloLink((operation, forward) => {
 })
 
 const wsLink = new WebSocketLink({
-  uri: `ws://${URI}/`,
+  uri: `wss://${URI}/`,
   options: {
     reconnect: true
   }
@@ -40,7 +40,7 @@ const link = split(
   },
   wsLink,
   new HttpLink({
-    uri: `http://${URI}`
+    uri: `https://${URI}`
   })
 )
 
