@@ -72,7 +72,7 @@ class Login extends React.Component<Props, IState> {
                 <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
                 <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
 
-                <ErrorLogin></ErrorLogin>
+                <ErrorLogin />
 
                 <LoginButton primary={true} onClick={this.handleLogin(login)}>
                   Login
