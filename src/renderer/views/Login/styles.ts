@@ -70,7 +70,7 @@ const RegisterButton = styled(LoginButton)`
 `
 
 const LoginLogo = styled.div`
-  background: url("renderer/assets/img/icon-gradient-transparent.svg") no-repeat;
+  background: url('renderer/assets/img/icon-gradient-transparent.svg') no-repeat;
   width: 10rem;
   height: 10rem;
   margin-left: 4.4rem;

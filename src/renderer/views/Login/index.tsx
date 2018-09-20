@@ -65,10 +65,8 @@ class Login extends React.Component<Props, IState> {
 
             return (
               <LoginForm>
-                <LoginLogo></LoginLogo>
-                <Info>
-                  Log in to your Guildspeak account
-                </Info>
+                <LoginLogo />
+                <Info>Log in to your Guildspeak account</Info>
 
                 <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
                 <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
