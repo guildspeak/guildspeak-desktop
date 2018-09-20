@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import WelcomeContainer from '../../containers/WelcomeContainer'
 import { withRouter } from 'react-router-dom'
-import { Wrapper, LoginForm, Info, EmailInput, PasswordInput, LoginButton, RegisterButton } from './styles'
+import { Wrapper, LoginForm, Info, EmailInput, PasswordInput, LoginButton, RegisterButton, LoginLogo } from './styles'
 
 const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -65,7 +65,11 @@ class Login extends React.Component<Props, IState> {
 
             return (
               <LoginForm>
-                <Info>Log in to your Guildspeak account</Info>
+                <LoginLogo></LoginLogo>
+                <Info>
+                  Log in to your Guildspeak account
+                </Info>
+
                 <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
                 <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
 
