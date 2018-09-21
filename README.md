@@ -18,7 +18,7 @@ $ npm install
 git clone https://github.com/guildspeak/desktop; cd desktop; npm install
 ```
 ##  🚧 Running the app in development mode
-:warning: Don't forget to create **`.env`** file ([example file](./.env.example) in repository)! Otherwise application will not work properly.
+:warning: Don't forget to create a **`.env`** file (example file in the repository)! Otherwise, the application will not work properly.
 ```bash
 $ npm run dev
 ```
