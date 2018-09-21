@@ -9,11 +9,13 @@ import CreateGuild from '../CreateGuild'
 
 const GET_GUILDS = gql`
   query guilds {
-    name
-    id
-    channels {
+    guilds {
       name
       id
+      channels {
+        name
+        id
+      }
     }
   }
 `
