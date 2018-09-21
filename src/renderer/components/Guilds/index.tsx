@@ -22,12 +22,14 @@ const GET_GUILDS = gql`
 
 const GUILDS_SUBSCRIPTION = gql`
   subscription guildsSubscription {
-    node {
-      name
-      id
-      channels {
+    guildsSubscription {
+      node {
         name
         id
+        channels {
+          name
+          id
+        }
       }
     }
   }
