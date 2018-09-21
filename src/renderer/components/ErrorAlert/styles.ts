@@ -10,7 +10,6 @@ const ErrorNotify = styled.div`
   text-align: center;
   background: rgba(0, 0, 0, 0.6);
   overflow: hidden;
-  box-sizing: border-box;
   transition: height 0.2s;
 `
 

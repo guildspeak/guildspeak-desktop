@@ -4,7 +4,8 @@ import { Mutation } from 'react-apollo'
 import WelcomeContainer from '../../containers/WelcomeContainer'
 import { withRouter } from 'react-router-dom'
 import { Wrapper, LoginForm, Info, EmailInput, PasswordInput, LoginButton, RegisterButton, LoginLogo, ErrorLogin } from './styles'
-import ErrorAlert from '../../components/ErrorAlert/index'
+import ErrorAlert from '../../components/ErrorAlert'
+import { Formik } from 'formik'
 
 const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
