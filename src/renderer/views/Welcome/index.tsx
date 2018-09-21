@@ -10,15 +10,19 @@ interface IProps {
 
 class Welcome extends React.Component<IProps, any> {
   componentDidMount() {
-    this.props.setToken(this.props.data.login.token)
+    this.props.setToken((this.props.data.login || this.props.data.register).token)
+  }
+
+  continue = () => {
+    this.props.history.push('/app')
   }
 
   render() {
     return (
       <Wrapper>
         <LoginForm>
-          <Info>Sup {this.props.data.login.user.username}</Info>
-          <ContinueButton primary={true} onClick={this.props.history.push('/app')}>
+          <Info>Sup, {(this.props.data.login || this.props.data.register).user.username}?</Info>
+          <ContinueButton primary={true} onClick={this.continue}>
             Continue to Guildspeak
           </ContinueButton>
         </LoginForm>
