@@ -69,7 +69,6 @@ class Register extends React.Component<Props, IState> {
               return <WelcomeContainer data={data} />
             }
 
-
             return (
               <RegisterForm>
                 <Info>Create your Guildspeak account</Info>

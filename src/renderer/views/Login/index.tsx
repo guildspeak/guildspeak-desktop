@@ -52,7 +52,6 @@ class Login extends React.Component<Props, IState> {
     this.setState({ password: e.target.value })
   }
 
-
   render() {
     return (
       <Wrapper>
@@ -71,8 +70,8 @@ class Login extends React.Component<Props, IState> {
               <LoginForm>
                 <LoginLogo />
                 <Info>Log in to your Guildspeak account</Info>
-                
-                <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail"/>
+
+                <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
                 <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
 
                 <ErrorLogin />
