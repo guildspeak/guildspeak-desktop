@@ -80,4 +80,11 @@ const BackButton = styled(Button)`
   }
 `
 
-export { Wrapper, RegisterForm, Info, UsernameInput, EmailInput, PasswordInput, RegisterButton, BackButton }
+const RegisterLogo = styled.div`
+  background: url('renderer/assets/img/icon-gradient-transparent.svg') no-repeat;
+  width: 6rem;
+  height: 6rem;
+  margin-left: 5.7rem;
+`
+
+export { Wrapper, RegisterForm, Info, UsernameInput, EmailInput, PasswordInput, RegisterButton, BackButton, RegisterLogo }

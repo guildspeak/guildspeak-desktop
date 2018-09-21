@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import WelcomeContainer from '../../containers/WelcomeContainer'
 import { withRouter } from 'react-router-dom'
-import { Wrapper, RegisterForm, Info, UsernameInput, EmailInput, PasswordInput, RegisterButton, BackButton } from './styles'
+import { Wrapper, RegisterForm, Info, UsernameInput, EmailInput, PasswordInput, RegisterButton, BackButton,RegisterLogo } from './styles'
 
 const REGISTER = gql`
   mutation register($email: String!, $password: String!, $username: String!) {
@@ -71,6 +71,7 @@ class Register extends React.Component<Props, IState> {
 
             return (
               <RegisterForm>
+                <RegisterLogo></RegisterLogo>
                 <Info>Create your Guildspeak account</Info>
                 <UsernameInput onChange={this.handleUsername} placeholder="Username" />
                 <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
