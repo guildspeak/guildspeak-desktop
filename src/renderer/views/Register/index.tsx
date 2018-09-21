@@ -61,12 +61,14 @@ class Register extends React.Component<Props, IState> {
         <Mutation mutation={REGISTER}>
           {(register, { data, error }) => {
             if (error) {
-              return <p>wrong things heppens here</p>
+              console.log(error.toString())
+              alert('This username or email is arleady taken!')
             }
 
             if (data) {
               return <WelcomeContainer data={data} />
             }
+
 
             return (
               <RegisterForm>

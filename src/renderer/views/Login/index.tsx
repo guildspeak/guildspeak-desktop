@@ -4,6 +4,7 @@ import { Mutation } from 'react-apollo'
 import WelcomeContainer from '../../containers/WelcomeContainer'
 import { withRouter } from 'react-router-dom'
 import { Wrapper, LoginForm, Info, EmailInput, PasswordInput, LoginButton, RegisterButton, LoginLogo, ErrorLogin } from './styles'
+import Popup from 'react-popup'
 
 const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -51,6 +52,7 @@ class Login extends React.Component<Props, IState> {
     this.setState({ password: e.target.value })
   }
 
+
   render() {
     return (
       <Wrapper>
@@ -58,6 +60,7 @@ class Login extends React.Component<Props, IState> {
           {(login, { data, error }) => {
             if (error) {
               console.log(error.toString())
+              alert('Wrong email or password!')
             }
 
             if (data) {
@@ -68,8 +71,8 @@ class Login extends React.Component<Props, IState> {
               <LoginForm>
                 <LoginLogo />
                 <Info>Log in to your Guildspeak account</Info>
-
-                <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
+                
+                <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail"/>
                 <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
 
                 <ErrorLogin />
