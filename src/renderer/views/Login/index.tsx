@@ -4,6 +4,7 @@ import { Mutation } from 'react-apollo'
 import WelcomeContainer from '../../containers/WelcomeContainer'
 import { withRouter } from 'react-router-dom'
 import { Wrapper, LoginForm, Info, EmailInput, PasswordInput, LoginButton, RegisterButton, LoginLogo, ErrorLogin } from './styles'
+import ErrorAlert from '../../components/ErrorAlert/index'
 
 const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -57,8 +58,7 @@ class Login extends React.Component<Props, IState> {
         <Mutation mutation={LOGIN}>
           {(login, { data, error }) => {
             if (error) {
-              console.log(error.toString())
-              alert('Wrong email or password!')
+              <ErrorAlert>{error.toString()}</ErrorAlert>
             }
 
             if (data) {
