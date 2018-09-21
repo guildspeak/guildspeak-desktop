@@ -149,7 +149,6 @@
     "react-apollo": "^2.1.11",
     "react-dom": "^16.5.0",
     "react-loadable": "^5.5.0",
-    "react-popup": "^0.9.3",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
