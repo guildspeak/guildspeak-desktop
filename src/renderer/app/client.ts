@@ -11,6 +11,7 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.extend(relativeTime)
 
 const URI = `${process.env.HOST}:${process.env.PORT}`
+const USE_SSL = process.env.PORT === '443' ? 's' : ''
 
 const authLink = new ApolloLink((operation, forward) => {
   // Retrieve the authorization token from local storage.
@@ -26,7 +27,7 @@ const authLink = new ApolloLink((operation, forward) => {
 })
 
 const wsLink = new WebSocketLink({
-  uri: `wss://${URI}/`,
+  uri: `ws${USE_SSL}://${URI}/`,
   options: {
     reconnect: true
   }
@@ -40,7 +41,7 @@ const link = split(
   },
   wsLink,
   new HttpLink({
-    uri: `https://${URI}`
+    uri: `http${USE_SSL}://${URI}`
   })
 )
 
