@@ -1,7 +1,7 @@
 import * as React from 'react'
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
-import { Wrapper, CreateButton, NameInput } from './styles'
+import { Wrapper, CreateButton, NameInput, ChannelInput } from './styles'
 import { StyledModal } from '../MessageAuthor/styles'
 import Button from '../Button'
 
@@ -82,12 +82,12 @@ class CreateChannel extends React.PureComponent<IProps, IState> {
               return (
                 <div>
                   Create channel for {this.props.guildName}
+                  <ChannelInput>
                   <NameInput onChange={this.handleName} placeholder="name" />
-                  <div>
                     <Button primary={true} onClick={this.handleCreateChannel(createChannel)}>
                       Create
                     </Button>
-                  </div>
+                  </ChannelInput>
                 </div>
               )
             }}

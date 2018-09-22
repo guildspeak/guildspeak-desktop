@@ -4,9 +4,14 @@ const Wrapper = styled.div`
   flex: 1;
   user-select: none;
   font-size: 16px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 `
 const CreateButton = styled.div`
   cursor: pointer;
+  float: right;
+  margin: 0;
   &:hover {
     font-weight: 500;
     background: #2d2d31;
@@ -18,14 +23,16 @@ const CreateButton = styled.div`
 
 const NameInput = styled.input`
   background: #2d2d31;
-  margin-top: 8px;
+  float: left;
+  margin: 0;
+  margin-top: -3px;
+  margin-right: 4px;
   box-sizing: border-box;
   color: #cccccc;
   font-size: 18px;
   padding: 14px;
-  display: block;
   height: 40px;
-  width: 100%;
+  width: 70%;
   border: none;
   border-radius: 8px;
   border-bottom: none;
@@ -35,4 +42,8 @@ const NameInput = styled.input`
   }
 `
 
-export { Wrapper, CreateButton, NameInput }
+const ChannelInput = styled.div`
+  padding-top: 10px;
+`
+
+export { Wrapper, CreateButton, NameInput, ChannelInput }
