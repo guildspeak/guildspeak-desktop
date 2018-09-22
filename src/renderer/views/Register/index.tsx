@@ -61,8 +61,9 @@ class Register extends React.Component<Props, IState> {
         <Mutation mutation={REGISTER}>
           {(register, { data, error }) => {
             if (error) {
-              console.log(error.toString())
-              alert('This username or email is arleady taken!')
+              console.error(error)
+              if (error.toString().includes('unique')) alert('This username or email is already taken!')
+              else alert('Unknown error. Check console for more details')
             }
 
             if (data) {
