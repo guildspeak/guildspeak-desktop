@@ -83,7 +83,7 @@ class CreateChannel extends React.PureComponent<IProps, IState> {
                 <div>
                   Create channel for {this.props.guildName}
                   <ChannelInput>
-                  <NameInput onChange={this.handleName} placeholder="name" />
+                    <NameInput onChange={this.handleName} placeholder="name" />
                     <Button primary={true} onClick={this.handleCreateChannel(createChannel)}>
                       Create
                     </Button>
