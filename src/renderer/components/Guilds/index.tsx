@@ -31,6 +31,10 @@ const GUILDS_SUBSCRIPTION = gql`
           id
         }
       }
+      previousValues {
+        id
+      }
+      mutation
     }
   }
 `
@@ -44,8 +48,16 @@ class Guilds extends React.PureComponent<RouteComponentProps> {
           if (error) return <LoadingWrapper>{error.toString()} guilds</LoadingWrapper>
           subscribeToMore({
             document: GUILDS_SUBSCRIPTION,
-            updateQuery: (_prev, newData) => {
-              return { guilds: [...data.guilds, newData.subscriptionData.data.guildsSubscription.node] }
+            updateQuery: (_prev, received) => {
+              const newData = received.subscriptionData.data.guildsSubscription
+              switch (newData.mutation) {
+                case 'CREATED':
+                  return { guilds: [...data.guilds, newData.node] }
+                case 'UPDATED':
+                  return { guilds: data.guilds.map(g => (g.id === newData.node.id ? newData.node : g)) }
+                case 'DELETED':
+                  return { guilds: data.guilds.filter(g => g.id !== newData.previousValues.id) }
+              }
             }
           })
           return (
