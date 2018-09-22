@@ -89,7 +89,11 @@ class Messages extends React.Component<IProps & RouteComponentProps<RouteProps &
         <Query query={GET_MESSAGES} variables={{ channelId: this.state.channelId }}>
           {({ loading, error, data, subscribeToMore }) => {
             if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
-            if (error) return <LoadingWrapper>{error.toString()} messages</LoadingWrapper>
+            if (error) {
+              console.error(error)
+              if (error.toString().includes('\'guildId\' of null')) return <LoadingWrapper>No guilds found. Join a guild or create a new one using "+" button above.</LoadingWrapper>
+              return <LoadingWrapper>{error.toString()}</LoadingWrapper>
+            }
 
             subscribeToMore({
               document: MESSAGE_SUBSCRIPTION,
