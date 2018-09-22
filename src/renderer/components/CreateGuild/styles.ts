@@ -13,7 +13,10 @@ const CreateButton = styled.div`
   }
   width: 24px;
   font-size: 24px;
-  padding: 4px;
+  margin-left: 5px;
+  padding: 6px 5px 5px 5px;
+  background: #252529;
+  border-radius: 2px;
 `
 
 const NameInput = styled.input`
