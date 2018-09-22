@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { RouteComponentProps, RouteProps } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router-dom'
 import { Wrapper, LogOutButton, SettingsOptionsList, SettingsButton, BackButton, Hr, Description } from './styles'
 import UserSettings from '../UserSettings'
 
-class SettingsList extends React.Component<RouteComponentProps<RouteProps>> {
+class SettingsList extends React.Component<RouteComponentProps> {
   handleLogout = () => {
     localStorage.removeItem('token')
     this.props.history.push('/login')

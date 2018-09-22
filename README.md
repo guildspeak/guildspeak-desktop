@@ -10,12 +10,12 @@
 Beautiful, cross-platform application for Guildspeak!
 ##  📦 Installation
 ```bash
-$ git clone https://github.com/guildspeak/desktop
-$ cd desktop
+$ git clone https://github.com/guildspeak/guildspeak-app
+$ cd guildspeak-app
 $ npm install
 ```
 ```powershell
-git clone https://github.com/guildspeak/desktop; cd desktop; npm install
+git clone https://github.com/guildspeak/guildspeak-app; cd guildspeak-app; npm install
 ```
 ##  🚧 Running the app in development mode
 :warning: Don't forget to create a **`.env`** file (example file in the repository)! Otherwise, the application will not work properly.

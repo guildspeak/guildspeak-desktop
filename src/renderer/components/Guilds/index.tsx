@@ -35,7 +35,7 @@ const GUILDS_SUBSCRIPTION = gql`
   }
 `
 
-class Guilds extends React.PureComponent<RouteComponentProps<RouteProps>> {
+class Guilds extends React.PureComponent<RouteComponentProps> {
   render() {
     return (
       <Query query={GET_GUILDS}>

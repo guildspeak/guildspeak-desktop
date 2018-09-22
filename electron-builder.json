@@ -3,7 +3,7 @@
   "appId": "org.guildspeak.guildspeakapp",
   "asar": true,
   "directories": {
-    "output": "dist"
+    "output": "build"
   },
   "linux": {
     "category": "Network",

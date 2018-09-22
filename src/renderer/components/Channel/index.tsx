@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { withRouter, RouteProps, RouteComponentProps } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Wrapper, ChannelName, IconButton, Channels } from './styles'
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
   readonly setChannelName: (channelName: string) => any
 }
 
-class Channel extends React.Component<IProps & RouteComponentProps<RouteProps>> {
+class Channel extends React.Component<IProps & RouteComponentProps> {
   changeChannel = () => {
     this.props.setChannelId(this.props.id)
     this.props.history.push(`/app/channel/${this.props.id}`)
