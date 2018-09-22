@@ -67,10 +67,8 @@ class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<Rout
   }
 
   handleEsc = (e: KeyboardEvent) => {
-    if (e.keyCode === 27) {
-      this.setState({
-        isOpen: !this.state.isOpen
-      })
+    if (e.keyCode === 27 && this.state.isOpen) {
+      this.setState({ isOpen: false })
     }
   }
 
