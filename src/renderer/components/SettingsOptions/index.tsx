@@ -30,7 +30,7 @@ class SettingsList extends React.Component<RouteComponentProps> {
           <SettingsButton>Privacy & Safety</SettingsButton>
           <Hr aria-hidden="true" />
           <Description>App Settings</Description>
-          <SettingsButton>KeyBinds</SettingsButton>
+          <SettingsButton>Keybinds</SettingsButton>
           <SettingsButton>Appearance</SettingsButton>
           <SettingsButton>Notifications</SettingsButton>
           <SettingsButton>Language</SettingsButton>
