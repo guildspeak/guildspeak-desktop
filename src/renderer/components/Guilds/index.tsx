@@ -5,7 +5,7 @@ import { Query } from 'react-apollo'
 import { Wrapper } from './styles'
 import { Wrapper as LoadingWrapper } from '../Loading/styles'
 import { RouteComponentProps, RouteProps, withRouter } from 'react-router'
-import CreateGuild from '../CreateGuild'
+import CreateGuildContainer from '../../containers/CreateGuildContainer'
 
 const GET_GUILDS = gql`
   query guilds {
@@ -53,7 +53,7 @@ class Guilds extends React.PureComponent<RouteComponentProps> {
               {data.guilds.map(el => (
                 <GuildContainer key={el.id} name={el.name} guildId={el.id} />
               ))}
-              <CreateGuild />
+              <CreateGuildContainer />
             </Wrapper>
           )
         }}

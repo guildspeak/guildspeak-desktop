@@ -10,9 +10,17 @@ const CREATE_GUILD = gql`
     createGuild(name: $name) {
       name
       id
+      channels {
+        id
+      }
     }
   }
 `
+
+interface IProps {
+  setGuildId: (guildId) => any
+  setChannelId: (channelId) => any
+}
 
 interface IState {
   name: string
@@ -20,7 +28,7 @@ interface IState {
   opacity: number
 }
 
-class CreateGuild extends React.PureComponent<{}, IState> {
+class CreateGuild extends React.PureComponent<IProps, IState> {
   state = {
     name: '',
     isOpen: false,
@@ -44,9 +52,12 @@ class CreateGuild extends React.PureComponent<{}, IState> {
     })
   }
 
-  handleCreateGuild = createGuild => () => {
-    createGuild({ variables: { name: this.state.name } })
+  handleCreateGuild = createGuild => async () => {
     this.toggleModal()
+    const response = await createGuild({ variables: { name: this.state.name } })
+    console.log(response.data.createGuild)
+    this.props.setGuildId(response.data.createGuild.id)
+    this.props.setChannelId(response.data.createGuild.channels[0].id)
   }
 
   handleName = e => {
