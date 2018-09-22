@@ -32,7 +32,7 @@ class CurrentGuild extends React.Component<IProps & RouteComponentProps<RoutePro
             if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
             if (error) {
               console.error(error)
-              if (error.toString().includes('Cannot return null for non-nullable field')) return <LoadingWrapper></LoadingWrapper>
+              if (error.toString().includes('Cannot return null for non-nullable field')) return <LoadingWrapper />
               return <LoadingWrapper>{error.toString()}</LoadingWrapper>
             }
             return (

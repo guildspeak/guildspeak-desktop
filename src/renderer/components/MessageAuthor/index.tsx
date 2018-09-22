@@ -50,7 +50,9 @@ class MessageAuthor extends React.Component<IProps, IState> {
           onEscapeKeydown={this.toggleModal}
           opacity={this.state.opacity}
         >
-          <UserName>{this.props.author.username.charAt(0).toUpperCase() + this.props.author.username.slice(1)}#{this.props.author.id}</UserName>
+          <UserName>
+            {this.props.author.username.charAt(0).toUpperCase() + this.props.author.username.slice(1)}#{this.props.author.id}
+          </UserName>
           <FriendButton>Send Friend Request</FriendButton>
         </StyledModal>
       </Wrapper>
