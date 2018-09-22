@@ -44,8 +44,8 @@ class Guilds extends React.PureComponent<RouteComponentProps> {
           if (error) return <LoadingWrapper>{error.toString()} guilds</LoadingWrapper>
           subscribeToMore({
             document: GUILDS_SUBSCRIPTION,
-            updateQuery: (_prev, data) => {
-              return { guilds: data.subscriptionData.data.guildsSubscription.node }
+            updateQuery: (_prev, newData) => {
+              return { guilds: [...data.guilds, newData.subscriptionData.data.guildsSubscription.node] }
             }
           })
           return (
