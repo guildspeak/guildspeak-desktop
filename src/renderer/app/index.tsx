@@ -19,7 +19,7 @@ injectGlobal`${style}`
 
 const ApplicationContainer = Loadable({
   loader: () => import('../containers/ApplicationContainer'),
-  loading: () => <LoadingWrapper>Starting GuildSpeak...</LoadingWrapper>
+  loading: () => <LoadingWrapper>Starting Guildspeak...</LoadingWrapper>
 })
 
 const StartupContainer = Loadable({
