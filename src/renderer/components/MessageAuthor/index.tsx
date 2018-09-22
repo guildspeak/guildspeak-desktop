@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Wrapper, StyledModal, FriendButton, UserName, Avatar } from './styles'
+import { Wrapper, StyledModal, FriendButton, UserName } from './styles'
 
 export interface MessageAuthorData {
   id: string
@@ -50,10 +50,7 @@ class MessageAuthor extends React.Component<IProps, IState> {
           onEscapeKeydown={this.toggleModal}
           opacity={this.state.opacity}
         >
-          <Avatar>
-            <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
-          </Avatar>
-          <UserName>{this.props.author.username}</UserName>
+          <UserName>{this.props.author.username.charAt(0).toUpperCase() + this.props.author.username.slice(1)}#{this.props.author.id}</UserName>
           <FriendButton>Send Friend Request</FriendButton>
         </StyledModal>
       </Wrapper>

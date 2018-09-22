@@ -10,8 +10,8 @@ const Wrapper = styled.div`
 `
 
 const StyledModal = Modal.styled`
-  width: 35rem;
-  height: 15rem;
+  width: 20rem;
+  height: 5rem;
   display: flex;
   background: #202020;
   color: #cccccc;
@@ -26,7 +26,7 @@ const StyledModal = Modal.styled`
 const FriendButton = styled.button`
   height: 36px;
   margin-top: 18px;
-  margin-left: 13rem;
+  margin-left: 1rem;
   margin-right: 0px;
   width: 10rem;
   padding: 8px;
@@ -44,27 +44,12 @@ const FriendButton = styled.button`
 `
 
 const UserName = styled.div`
-  float: right;
+  float: left;
   margin-left: 5px;
   margin-right: 50px;
   margin-top: 28px;
   height: 1rem;
-  width: 1rem;
-`
-const Avatar = styled.div`
-  width: 80px;
-  height: 80px;
-  float: left;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  margin-left: 0px;
-  margin-right: 20px;
-  border-radius: 20px;
-  img {
-    width: 80px;
-    height: 80px;
-    border-radius: 60px;
-  }
+  width: 3rem;
 `
 
-export { Wrapper, StyledModal, FriendButton, UserName, Avatar }
+export { Wrapper, StyledModal, FriendButton, UserName }
