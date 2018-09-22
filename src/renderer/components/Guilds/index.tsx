@@ -12,10 +12,6 @@ const GET_GUILDS = gql`
     guilds {
       name
       id
-      channels {
-        name
-        id
-      }
     }
   }
 `
@@ -26,10 +22,6 @@ const GUILDS_SUBSCRIPTION = gql`
       node {
         name
         id
-        channels {
-          name
-          id
-        }
       }
       previousValues {
         id
