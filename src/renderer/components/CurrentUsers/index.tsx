@@ -79,7 +79,11 @@ class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<Rout
       <Query query={GET_USERS} variables={{ id: this.props.guildId }}>
         {({ loading, error, data }) => {
           if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
-          if (error) return <LoadingWrapper>{error.toString()} users</LoadingWrapper>
+          if (error) {
+            console.error(error)
+            if (error.toString().includes('Cannot return null for non-nullable field')) return <LoadingWrapper></LoadingWrapper>
+            return <LoadingWrapper>{error.toString()}</LoadingWrapper>
+          }
           return (
             <Wrapper>
               <div>Members</div>

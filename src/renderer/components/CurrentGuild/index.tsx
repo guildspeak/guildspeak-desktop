@@ -30,7 +30,11 @@ class CurrentGuild extends React.Component<IProps & RouteComponentProps<RoutePro
         <Query query={GET_GUILD} variables={{ id: this.props.guildId }}>
           {({ loading, error, data }) => {
             if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
-            if (error) return <LoadingWrapper>{error.toString()} guilds</LoadingWrapper>
+            if (error) {
+              console.error(error)
+              if (error.toString().includes('Cannot return null for non-nullable field')) return <LoadingWrapper></LoadingWrapper>
+              return <LoadingWrapper>{error.toString()}</LoadingWrapper>
+            }
             return (
               <div>
                 {data.guild.channels.map(el => (
