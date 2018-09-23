@@ -12,7 +12,7 @@ const config = merge.smart(baseConfig, {
     hotUpdateChunkFilename: 'hot/hot-update.js',
     hotUpdateMainFilename: 'hot/hot-update.json',
     publicPath: `http://localhost:${PORT}/`,
-    path: resolve(__dirname, 'dist'),
+    path: resolve(__dirname, 'build'),
     filename: '[name].js',
   },
 

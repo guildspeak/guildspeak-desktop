@@ -12,7 +12,7 @@ module.exports = (env, argv) =>
 
     output: {
       path: __dirname,
-      filename: './dist/main.js',
+      filename: './build/main.js',
     },
 
   })

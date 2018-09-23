@@ -26,7 +26,10 @@ const createWindow = async () => {
     title: 'Guildspeak',
     show: false,
     frame: false,
-    backgroundColor: '#202020'
+    backgroundColor: '#202020',
+    webPreferences: {
+      webSecurity: false
+    }
   })
 
   loading = new BrowserWindow({
@@ -36,7 +39,10 @@ const createWindow = async () => {
     title: 'Guildspeak',
     show: false,
     frame: false,
-    backgroundColor: '#202020'
+    backgroundColor: '#202020',
+    webPreferences: {
+      webSecurity: false
+    }
   })
 
   loading.once('show', () => {
@@ -49,39 +55,22 @@ const createWindow = async () => {
     if (process.env.NODE_ENV !== 'production') {
       win.loadURL(`http://localhost:2003`)
     } else {
-      win.loadURL(
-        url.format({
-          pathname: path.join(__dirname, 'index.html'),
-          protocol: 'file:',
-          slashes: true
-        })
-      )
+      win.loadURL(path.join('file://', __dirname, 'src/index.html'))
     }
   })
 
   if (process.env.NODE_ENV !== 'production') {
-    loading.loadURL(
-      url.format({
-        pathname: path.join(__dirname, '..', 'src', 'loading.html'),
-        protocol: 'file:',
-        slashes: true
-      })
-    )
+    loading.loadURL(path.join('file://', __dirname, 'src/loading.html'))
   } else {
-    win.loadURL(
-      url.format({
-        pathname: path.join(__dirname, 'loading.html'),
-        protocol: 'file:',
-        slashes: true
-      })
-    )
+    loading.loadURL(path.join('file://', __dirname, 'src/loading.html'))
   }
+
   loading.show()
 
-  if (process.env.NODE_ENV !== 'production') {
-    // Open DevTools
-    win.webContents.openDevTools()
-  }
+  // if (process.env.NODE_ENV !== 'production') {
+  // Open DevTools
+  win.webContents.openDevTools()
+  // }
 
   win.on('closed', () => {
     win = null

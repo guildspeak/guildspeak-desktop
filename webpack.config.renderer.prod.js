@@ -5,10 +5,14 @@ const baseConfig = require('./webpack.config.base')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = merge.smart(baseConfig, {
+  target: 'electron-renderer',
   devtool: 'source-map',
   mode: 'production',
+  entry: {
+    app: ['./src/renderer/app'],
+  },
   output: {
-    path: resolve(__dirname, 'dist'),
+    path: resolve(__dirname, 'build'),
     filename: '[name].js',
   },
 
@@ -32,12 +36,4 @@ const config = merge.smart(baseConfig, {
   ],
 })
 
-const appConfig = merge.smart(config, {
-  target: 'electron-renderer',
-
-  entry: {
-    app: ['./src/renderer/app'],
-  },
-})
-
-module.exports = [appConfig]
+module.exports = config
