@@ -1,9 +1,11 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, protocol } from 'electron'
 import * as path from 'path'
 import * as url from 'url'
 
 let win: BrowserWindow | null
 let loading: BrowserWindow | null
+
+const PROTOCOL_PREFIX = 'guildspeak'
 
 const installExtensions = async () => {
   const installer = require('electron-devtools-installer')
@@ -85,6 +87,10 @@ const createWindow = async () => {
 
   win.on('closed', () => {
     win = null
+  })
+
+  protocol.registerHttpProtocol(PROTOCOL_PREFIX, (req, cb) => {
+    console.log(`got ${req.url}`)
   })
 }
 

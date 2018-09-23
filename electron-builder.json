@@ -23,5 +23,10 @@
   },
   "mac": {
     "category": "public.app-category.navigation"
-  }
+  },
+  "protocols": [{
+    "name": "guildspeak",
+    "role": "Viewer",
+    "schemes": ["guildspeak"]
+  }]
 }
