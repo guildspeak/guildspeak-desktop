@@ -26,7 +26,11 @@ const createWindow = async () => {
     title: 'Guildspeak',
     show: false,
     frame: false,
-    backgroundColor: '#202020'
+    backgroundColor: '#202020',
+    webPreferences: {
+      nodeIntegration: false,
+      preload: './preload.js'
+    }
   })
 
   loading = new BrowserWindow({
@@ -36,7 +40,11 @@ const createWindow = async () => {
     title: 'Guildspeak',
     show: false,
     frame: false,
-    backgroundColor: '#202020'
+    backgroundColor: '#202020',
+    webPreferences: {
+      nodeIntegration: false,
+      preload: './preload.js'
+    }
   })
 
   loading.once('show', () => {
@@ -67,6 +75,7 @@ const createWindow = async () => {
         slashes: true
       })
     )
+    
   } else {
     win.loadURL(
       url.format({
