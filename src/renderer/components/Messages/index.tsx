@@ -105,7 +105,7 @@ class Messages extends React.Component<IProps & RouteComponentProps<RouteProps &
             return (
               <div>
                 {data.channel.messages.map(el => (
-                  <Message author={el.author} content={el.content} key={el.id} time={el.createdAt} mounted={this.messageMounted} willMount={this.messageWillMount} />
+                  <Message messageId={el.id} author={el.author} content={el.content} key={el.id} time={el.createdAt} mounted={this.messageMounted} willMount={this.messageWillMount} />
                 ))}
               </div>
             )
