@@ -1,8 +1,8 @@
 <p align="center">
   <h1 align="center">
     <img src="https://cdn.rawgit.com/guildspeak/branding/cdn/SVG/icon-app.svg" width="200px" alt="Guildspeak Backend"/><br/><br/>
-     <img src="https://img.shields.io/github/license/guildspeak/guildspeak-app.svg?style=for-the-badge" alt="GitHub"/>
-     <a href="https://github.com/guildspeak/guildspeak-app/issues"><img src="https://img.shields.io/github/issues/guildspeak/guildspeak-app.svg?style=for-the-badge" alt="GitHub issues" /></a>
+     <img src="https://img.shields.io/github/license/guildspeak/guildspeak-desktop.svg?style=for-the-badge" alt="GitHub"/>
+     <a href="https://github.com/guildspeak/guildspeak-app/issues"><img src="https://img.shields.io/github/issues/guildspeak/guildspeak-desktop.svg?style=for-the-badge" alt="GitHub issues" /></a>
      <img src="https://img.shields.io/badge/Built%20with-%E2%9D%A4%20LOVE-red.svg?longCache=true&amp;style=for-the-badge" alt="LOVE" />
   </h1>
 </p>
