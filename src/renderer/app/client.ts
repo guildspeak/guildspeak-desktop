@@ -7,6 +7,7 @@ import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import { uncrunch } from 'graphql-crunch'
 
 dayjs.extend(relativeTime)
 
@@ -23,7 +24,10 @@ const authLink = new ApolloLink((operation, forward) => {
     }
   })
   // @ts-ignore
-  return forward(operation)
+  return forward(operation).map((response) => {
+    response.data = uncrunch(response.data)
+    return response
+  })
 })
 
 const wsLink = new WebSocketLink({
