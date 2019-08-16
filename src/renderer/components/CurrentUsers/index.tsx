@@ -26,7 +26,10 @@ interface IState {
   selectedUser: string
 }
 
-class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<RouteProps & IProps>, IState> {
+class CurrentUsers extends React.PureComponent<
+  IProps & RouteComponentProps<RouteProps & IProps>,
+  IState
+> {
   state = {
     isOpen: false,
     opacity: 0,
@@ -79,7 +82,9 @@ class CurrentUsers extends React.PureComponent<IProps & RouteComponentProps<Rout
           if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
           if (error) {
             console.error(error)
-            if (error.toString().includes('Cannot return null for non-nullable field')) return <LoadingWrapper />
+            if (error.toString().includes('Cannot return null for non-nullable field')) {
+              return <LoadingWrapper />
+            }
             return <LoadingWrapper>{error.toString()}</LoadingWrapper>
           }
           return (

@@ -10,7 +10,10 @@ const defaultState: CurrentGuildState = {
   guildId: localStorage.getItem('currentGuildId')
 }
 
-export const currentGuildReducer: Reducer<CurrentGuildState> = (state = defaultState, action: CurrentGuildActions) => {
+export const currentGuildReducer: Reducer<CurrentGuildState> = (
+  state = defaultState,
+  action: CurrentGuildActions
+) => {
   switch (action.type) {
     case SET_GUILDID: {
       localStorage.setItem('currentGuildId', action.payload.guildId)

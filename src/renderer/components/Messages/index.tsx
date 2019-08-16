@@ -10,19 +10,17 @@ import { RouteComponentProps, RouteProps } from 'react-router'
 const MESSAGE_SUBSCRIPTION = gql`
   subscription channelSubscription($channelId: ID!) {
     channelSubscription(channelId: $channelId) {
-      node {
-        messages(orderBy: createdAt_ASC, last: 30) {
-          id
-          author {
-            username
-          }
-          createdAt
-          content
+      messages(orderBy: createdAt_ASC, last: 30) {
+        id
+        author {
+          username
         }
-        guildId {
-          users {
-            id
-          }
+        createdAt
+        content
+      }
+      guildId {
+        users {
+          id
         }
       }
     }
@@ -90,22 +88,32 @@ class Messages extends React.Component<IProps & RouteComponentProps<RouteProps &
           {({ loading, error, data, subscribeToMore }) => {
             if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
             if (error) {
-              console.error(error)
-              if (error.toString().includes('\'guildId\' of null')) return <LoadingWrapper>No guilds found. Join a guild or create a new one using "+" button above.</LoadingWrapper>
-              return <LoadingWrapper>{error.toString()}</LoadingWrapper>
+              return (
+                <LoadingWrapper>
+                  No guilds found. Join a guild or create a new one using "+" button above.
+                  {error.toString()}
+                </LoadingWrapper>
+              )
             }
 
             subscribeToMore({
               document: MESSAGE_SUBSCRIPTION,
               variables: { channelId: this.state.channelId },
               updateQuery: (_prev, data) => {
-                return { channel: data.subscriptionData.data.channelSubscription.node }
+                return { channel: data.subscriptionData.data.channelSubscription }
               }
             })
             return (
               <div>
                 {data.channel.messages.map(el => (
-                  <Message author={el.author} content={el.content} key={el.id} time={el.createdAt} mounted={this.messageMounted} willMount={this.messageWillMount} />
+                  <Message
+                    author={el.author}
+                    content={el.content}
+                    key={el.id}
+                    time={el.createdAt}
+                    mounted={this.messageMounted}
+                    willMount={this.messageWillMount}
+                  />
                 ))}
               </div>
             )

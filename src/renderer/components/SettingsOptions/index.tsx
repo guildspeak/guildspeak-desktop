@@ -1,6 +1,14 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import { Wrapper, LogOutButton, SettingsOptionsList, SettingsButton, BackButton, Hr, Description } from './styles'
+import {
+  Wrapper,
+  LogOutButton,
+  SettingsOptionsList,
+  SettingsButton,
+  BackButton,
+  Hr,
+  Description
+} from './styles'
 import UserSettings from '../UserSettings'
 
 class SettingsList extends React.Component<RouteComponentProps> {

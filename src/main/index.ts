@@ -1,87 +1,40 @@
 import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
-import * as url from 'url'
+import { config } from 'dotenv'
 
-let win: BrowserWindow | null
-let loading: BrowserWindow | null
-
-const installExtensions = async () => {
-  const installer = require('electron-devtools-installer')
-  const forceDownload = !!process.env.UPGRADE_EXTENSIONS
-  const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS', 'APOLLO_DEVELOPER_TOOLS']
-
-  return Promise.all(extensions.map(name => installer.default(installer[name], forceDownload))).catch(console.log)
+if (process.env.ENV === 'dev') {
+  config()
 }
 
-const createWindow = async () => {
-  if (process.env.NODE_ENV !== 'production') {
-    await installExtensions()
-  }
+let win: BrowserWindow | null
 
+const createWindow = async () => {
   win = new BrowserWindow({
     width: 1152,
     height: 648,
     minWidth: 800,
     minHeight: 600,
     title: 'Guildspeak',
-    show: false,
     frame: false,
-    backgroundColor: '#202020'
-  })
-
-  loading = new BrowserWindow({
-    width: 350,
-    height: 350,
-    resizable: false,
-    title: 'Guildspeak',
-    show: false,
-    frame: false,
-    backgroundColor: '#202020'
-  })
-
-  loading.once('show', () => {
-    win.webContents.once('dom-ready', () => {
-      win.show()
-      loading.hide()
-      loading.close()
-    })
-
-    if (process.env.NODE_ENV !== 'production') {
-      win.loadURL(`http://localhost:2003`)
-    } else {
-      win.loadURL(
-        url.format({
-          pathname: path.join(__dirname, 'index.html'),
-          protocol: 'file:',
-          slashes: true
-        })
-      )
+    backgroundColor: '#202020',
+    webPreferences: {
+      nodeIntegration: true,
+      webSecurity: false
     }
   })
 
-  if (process.env.NODE_ENV !== 'production') {
-    loading.loadURL(
-      url.format({
-        pathname: path.join(__dirname, '..', 'src', 'loading.html'),
-        protocol: 'file:',
-        slashes: true
-      })
-    )
-  } else {
-    win.loadURL(
-      url.format({
-        pathname: path.join(__dirname, 'loading.html'),
-        protocol: 'file:',
-        slashes: true
-      })
-    )
-  }
-  loading.show()
+  // win.webContents.once('dom-ready', () => {
+  //   win.show()
+  // })
 
-  if (process.env.NODE_ENV !== 'production') {
-    // Open DevTools
+  if (process.env.ENV === 'dev') {
     win.webContents.openDevTools()
+    win.loadURL('http://localhost:4444/app.html')
+  } else {
+    win.loadURL(path.join('file://', app.getAppPath(), 'build/app.html'))
   }
+
+  win.show()
 
   win.on('closed', () => {
     win = null

@@ -3,7 +3,14 @@ import Sidebar from '../../components/Sidebar'
 import Messages from '../../components/Messages'
 import MessageInputContainer from '../../containers/MessageInputContainer'
 import { Route, withRouter } from 'react-router-dom'
-import { MainWrapper, MessagesColumn, FirstColumn, SecondColumn, ThirdColumn, InnerWrapper } from './styles'
+import {
+  MainWrapper,
+  MessagesColumn,
+  FirstColumn,
+  SecondColumn,
+  ThirdColumn,
+  InnerWrapper
+} from './styles'
 import CurrentUsersContainer from '../../containers/CurrentUsersContainer'
 import Guilds from '../../components/Guilds'
 

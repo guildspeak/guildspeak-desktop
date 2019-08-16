@@ -3,7 +3,17 @@ import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import WelcomeContainer from '../../containers/WelcomeContainer'
 import { withRouter } from 'react-router-dom'
-import { Wrapper, RegisterForm, Info, UsernameInput, EmailInput, PasswordInput, RegisterButton, BackButton, RegisterLogo } from './styles'
+import {
+  Wrapper,
+  RegisterForm,
+  Info,
+  UsernameInput,
+  EmailInput,
+  PasswordInput,
+  RegisterButton,
+  BackButton,
+  RegisterLogo
+} from './styles'
 
 const REGISTER = gql`
   mutation register($email: String!, $password: String!, $username: String!) {
@@ -36,7 +46,13 @@ class Register extends React.Component<Props, IState> {
   }
 
   hangleRegister = registerMutation => () => {
-    registerMutation({ variables: { email: this.state.email, password: this.state.password, username: this.state.username } })
+    registerMutation({
+      variables: {
+        email: this.state.email,
+        password: this.state.password,
+        username: this.state.username
+      }
+    })
   }
 
   handleEmail = e => {
@@ -62,7 +78,9 @@ class Register extends React.Component<Props, IState> {
           {(register, { data, error }) => {
             if (error) {
               console.error(error)
-              if (error.toString().includes('unique')) alert('This username or email is already taken!')
+              if (error.toString().includes('unique')) {
+                alert('This username or email is already taken!')
+              }
               else alert('Unknown error. Check console for more details')
             }
 
@@ -76,7 +94,11 @@ class Register extends React.Component<Props, IState> {
                 <Info>Create your Guildspeak account</Info>
                 <UsernameInput onChange={this.handleUsername} placeholder="Username" />
                 <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
-                <PasswordInput type="password" onChange={this.handlePassword} placeholder="Password" />
+                <PasswordInput
+                  type="password"
+                  onChange={this.handlePassword}
+                  placeholder="Password"
+                />
                 <RegisterButton primary={true} onClick={this.hangleRegister(register)}>
                   Register
                 </RegisterButton>

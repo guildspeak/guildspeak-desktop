@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 const fonts = {
-  robotoRegular: require('../assets/fonts/Roboto/Roboto-Light.ttf'),
+  robotoRegular: require('../assets/fonts/Roboto/Roboto-Regular.ttf'),
   robotoMedium: require('../assets/fonts/Roboto/Roboto-Medium.ttf'),
   robotoLight: require('../assets/fonts/Roboto/Roboto-Light.ttf'),
   francoisOneRegular: require('../assets/fonts/Francois_One/FrancoisOne-Regular.ttf')

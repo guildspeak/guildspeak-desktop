@@ -23,15 +23,8 @@ const GET_GUILD = gql`
 const CHANNELS_SUBSCRIPTION = gql`
   subscription guildChannelsSubscription($guildId: ID!) {
     guildChannelsSubscription(guildId: $guildId) {
-      node {
-        id
-        name
-      }
-      previousValues {
-        id
-        name
-      }
-      mutation
+      id
+      name
     }
   }
 `
@@ -49,7 +42,9 @@ class CurrentGuild extends React.Component<IProps & RouteComponentProps<RoutePro
             if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
             if (error) {
               console.error(error)
-              if (error.toString().includes('Cannot return null for non-nullable field')) return <LoadingWrapper />
+              if (error.toString().includes('Cannot return null for non-nullable field')) {
+                return <LoadingWrapper />
+              }
               return <LoadingWrapper>{error.toString()}</LoadingWrapper>
             }
             subscribeToMore({
@@ -58,14 +53,14 @@ class CurrentGuild extends React.Component<IProps & RouteComponentProps<RoutePro
               updateQuery: (_prev, received) => {
                 console.log(received)
                 const newData = received.subscriptionData.data.guildChannelsSubscription
-                switch (newData.mutation) {
-                  case 'CREATED':
-                    return { guild: { ...data.guild, channels: [...data.guild.channels, newData.node] } }
-                  case 'UPDATED':
-                    return { guild: { ...data.guild, channels: data.guild.channels.map(c => (c.id === newData.node.id ? newData.node : c)) } }
-                  case 'DELETED':
-                    return { guild: { ...data.guild, channels: data.guild.channels.filter(c => c.id !== newData.previousValues.id) } }
-                }
+                // switch (newData.mutation) {
+                //   case 'CREATED':
+                return { guild: { ...data.guild, channels: [...data.guild.channels, newData] } }
+                // case 'UPDATED':
+                //   return { guild: { ...data.guild, channels: data.guild.channels.map(c => (c.id === newData.node.id ? newData.node : c)) } }
+                //   case 'DELETED':
+                //     return { guild: { ...data.guild, channels: data.guild.channels.filter(c => c.id !== newData.previousValues.id) } }
+                // }
               }
             })
             return (

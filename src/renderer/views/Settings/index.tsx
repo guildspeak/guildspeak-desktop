@@ -21,7 +21,11 @@ class Settings extends React.Component<RouteComponentProps> {
   render() {
     return (
       <Wrapper>
-        <SettingsList history={this.props.history} location={this.props.location} match={this.props.match} />
+        <SettingsList
+          history={this.props.history}
+          location={this.props.location}
+          match={this.props.match}
+        />
       </Wrapper>
     )
   }

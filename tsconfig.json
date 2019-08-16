@@ -2,20 +2,22 @@
   "compilerOptions": {
     "outDir": "./build/",
     "module": "esnext",
-    "target": "es2017",
+    "target": "es2019",
     "jsx": "react",
     "allowJs": true,
     "sourceMap": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "lib": ["dom", "esnext"],
+    "baseUrl": "./",
+    // "removeComments": true,
+    // "isolatedModules": false,
     "experimentalDecorators": true,
-    "baseUrl": "./"
-  },
-  "awesomeTypescriptLoaderOptions": {
-    "reportFiles": ["src/**/*.{ts,tsx}"],
-    "useCache": true
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules", "dist", "build"],
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "static/load-scripts.js"]
 }

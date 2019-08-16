@@ -36,7 +36,10 @@ const IconButton = styled.div`
 const Channels = styled.div`
   display: flex;
   flex-direction: row;
-  ${props => ((props as any).channelId === props.id ? 'background: #2d2d31;font-weight: 500;' : '')} &:hover + Button {
+  ${props =>
+    (props as any).channelId === props.id
+      ? 'background: #2d2d31;font-weight: 500;'
+      : ''} &:hover + Button {
     color: #fff;
     background: #2d2d31;
   }

@@ -3,8 +3,8 @@ import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ApolloProvider } from 'react-apollo'
 import store from '../store'
-import { injectGlobal } from 'styled-components'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { createGlobalStyle } from 'styled-components'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Systembar from '../components/Systembar'
 import client from './client'
 import { style, AppWrapper } from './styles'
@@ -15,7 +15,7 @@ import { ModalProvider } from 'styled-react-modal'
 import { Wrapper as LoadingWrapper } from '../components/Loading/styles'
 import Settings from '../views/Settings'
 
-injectGlobal`${style}`
+const GlobalStyle = createGlobalStyle`${style}`
 
 const ApplicationContainer = Loadable({
   loader: () => import('../containers/ApplicationContainer'),
@@ -42,17 +42,16 @@ const render = () => {
     <AppContainer>
       <ApolloProvider client={client}>
         <Provider store={store}>
+          <GlobalStyle />
           <AppWrapper>
             <Systembar />
             <ModalProvider>
               <Router>
-                <Switch>
-                  <Route path="/app" component={ApplicationContainer} />
-                  <Route exact={true} path="/" component={StartupContainer} />
-                  <Route exact={true} path="/login" component={Login} />
-                  <Route exact={true} path="/register" component={Register} />
-                  <Route exact={true} path="/settings" component={Settings} />
-                </Switch>
+                <Route exact={true} path="/" component={StartupContainer} />
+                <Route exact={true} path="/app" component={ApplicationContainer} />
+                <Route exact={true} path="/login" component={Login} />
+                <Route exact={true} path="/register" component={Register} />
+                <Route exact={true} path="/settings" component={Settings} />
               </Router>
             </ModalProvider>
           </AppWrapper>
@@ -66,6 +65,8 @@ const render = () => {
 render()
 
 // react-hot-loader
-if ((module as any).hot) {
-  (module as any).hot.accept()
+// @ts-ignore
+if (module.hot) {
+  // @ts-ignore
+  module.hot.accept()
 }

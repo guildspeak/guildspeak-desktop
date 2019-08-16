@@ -87,4 +87,14 @@ const RegisterLogo = styled.div`
   margin-left: 5.7rem;
 `
 
-export { Wrapper, RegisterForm, Info, UsernameInput, EmailInput, PasswordInput, RegisterButton, BackButton, RegisterLogo }
+export {
+  Wrapper,
+  RegisterForm,
+  Info,
+  UsernameInput,
+  EmailInput,
+  PasswordInput,
+  RegisterButton,
+  BackButton,
+  RegisterLogo
+}

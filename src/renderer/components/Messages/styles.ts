@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 8px;
-    -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
     background-color: #44444c;
   }
 `

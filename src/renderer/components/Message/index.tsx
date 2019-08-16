@@ -2,7 +2,14 @@ import * as React from 'react'
 import marked from '../../utils/markdown'
 import { MessageAuthorData } from '../MessageAuthor'
 import MessageHeader from '../MessageHeader'
-import { Wrapper, MessageBubble, MessageContent, Hr, DropdownButton, MessageContentWrapper } from './styles'
+import {
+  Wrapper,
+  MessageBubble,
+  MessageContent,
+  Hr,
+  DropdownButton,
+  MessageContentWrapper
+} from './styles'
 import Button from '../Button'
 import { DropdownMenu, Dropdown, DropdownItem } from '../Dropdown'
 
@@ -63,7 +70,11 @@ class Message extends React.Component<IProps, IState> {
         <MessageBubble>
           <MessageHeader author={this.props.author} time={this.props.time} />
           <MessageContentWrapper>
-            <MessageContent ref={this.ref} onScroll={this.doScroll} dangerouslySetInnerHTML={{ __html: marked(this.props.content) }} />
+            <MessageContent
+              ref={this.ref}
+              onScroll={this.doScroll}
+              dangerouslySetInnerHTML={{ __html: marked(this.props.content) }}
+            />
             <Dropdown innerRef={this.setWrapperRef}>
               <DropdownButton className="material-icons" onClick={this.handleOpenCloseDropdown}>
                 more_vert

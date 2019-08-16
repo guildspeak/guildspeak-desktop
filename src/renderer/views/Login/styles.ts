@@ -78,4 +78,14 @@ const LoginLogo = styled.div`
 
 const ErrorLogin = styled.div``
 
-export { Wrapper, LoginForm, Info, EmailInput, PasswordInput, LoginButton, RegisterButton, LoginLogo, ErrorLogin }
+export {
+  Wrapper,
+  LoginForm,
+  Info,
+  EmailInput,
+  PasswordInput,
+  LoginButton,
+  RegisterButton,
+  LoginLogo,
+  ErrorLogin
+}

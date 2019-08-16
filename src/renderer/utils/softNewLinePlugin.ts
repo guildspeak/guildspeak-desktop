@@ -9,7 +9,11 @@ export default function() {
         return SOFT_NEWLINE_COMMAND
       }
     },
-    handleKeyCommand: function handleKeyCommand(command, editorState, { setEditorState }): DraftHandleValue {
+    handleKeyCommand: function handleKeyCommand(
+      command,
+      editorState,
+      { setEditorState }
+    ): DraftHandleValue {
       if (command === SOFT_NEWLINE_COMMAND) {
         setEditorState(RichUtils.insertSoftNewline(editorState))
         return 'handled'

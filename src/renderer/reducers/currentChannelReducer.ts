@@ -10,7 +10,10 @@ const defaultState: CurrentChannelState = {
   channelId: localStorage.getItem('currentChannelId')
 }
 
-export const currentChannelReducer: Reducer<CurrentChannelState> = (state = defaultState, action: CurrentChannelActions) => {
+export const currentChannelReducer: Reducer<CurrentChannelState> = (
+  state = defaultState,
+  action: CurrentChannelActions
+) => {
   switch (action.type) {
     case SET_CHANNELID: {
       localStorage.setItem('currentChannelId', action.payload.channelId)
