@@ -15,7 +15,6 @@ import {
   ErrorLogin
 } from './styles'
 import ErrorAlert from '../../components/ErrorAlert'
-import { Formik } from 'formik'
 
 const LOGIN = gql`
   mutation login($email: String!, $password: String!) {

@@ -13,7 +13,6 @@ import Loadable from 'react-loadable'
 import Loading from '../components/Loading'
 import { ModalProvider } from 'styled-react-modal'
 import { Wrapper as LoadingWrapper } from '../components/Loading/styles'
-import Settings from '../views/Settings'
 
 const GlobalStyle = createGlobalStyle`${style}`
 
@@ -37,7 +36,12 @@ const Register = Loadable({
   loading: Loading
 })
 
-const render = () => {
+const Settings = Loadable({
+  loader: () => import('../views/Settings'),
+  loading: Loading
+})
+
+const render = () =>
   ReactDOM.render(
     <AppContainer>
       <ApolloProvider client={client}>
@@ -47,11 +51,11 @@ const render = () => {
             <Systembar />
             <ModalProvider>
               <Router>
-                <Route exact={true} path="/" component={StartupContainer} />
-                <Route exact={true} path="/app" component={ApplicationContainer} />
-                <Route exact={true} path="/login" component={Login} />
-                <Route exact={true} path="/register" component={Register} />
-                <Route exact={true} path="/settings" component={Settings} />
+                <Route path="/" component={StartupContainer} />
+                <Route path="/app" component={ApplicationContainer} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+                <Route path="/settings" component={Settings} />
               </Router>
             </ModalProvider>
           </AppWrapper>
@@ -60,7 +64,6 @@ const render = () => {
     </AppContainer>,
     document.getElementById('app')
   )
-}
 
 render()
 

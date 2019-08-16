@@ -17,10 +17,11 @@ class Startup extends React.Component<{ token: string; history: any }, { logged:
   }
 
   render() {
-    if (this.state.logged) {
-      return <p>redirecting app page</p>
-    }
-    return <p>redirecting to login page</p>
+    return null
+    // if (this.state.logged) {
+    //   return <p>redirecting app page</p>
+    // }
+    // return <p>redirecting to login page</p>
   }
 }
 
