@@ -15,11 +15,11 @@ import CurrentUsersContainer from '../../containers/CurrentUsersContainer'
 import Guilds from '../../components/Guilds'
 
 class Application extends React.Component<{ channelId: string; history: any }> {
-  renderMessages = params => <Messages key={params.match.params.channelId} {...params} />
+  // renderMessages = params => <Messages key={params.match.params.channelId} {...params} />
 
-  componentDidMount() {
-    this.props.history.push(`/app/channel/${this.props.channelId}`)
-  }
+  // componentDidMount() {
+  //   this.props.history.push(`/app/channel/${this.props.channelId}`)
+  // }
 
   render() {
     return (
@@ -31,7 +31,7 @@ class Application extends React.Component<{ channelId: string; history: any }> {
           </FirstColumn>
           <SecondColumn>
             <MessagesColumn>
-              <Route path="/app/channel/:channelId" render={this.renderMessages} />
+              {/* <Route path="/app/channel/:channelId" render={this.renderMessages} /> */}
               <MessageInputContainer />
             </MessagesColumn>
           </SecondColumn>

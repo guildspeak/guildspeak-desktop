@@ -9,7 +9,7 @@ const PORT = 4444
 const getHtml = (scope, name) => {
   return new HtmlWebpackPlugin({
     title: 'Guildspeak',
-    template: 'static/pages/app.html',
+    template: 'static/pages/index.html',
     filename: `${name}.html`,
     chunks: [`vendor.${scope}`, name]
   })
@@ -17,7 +17,7 @@ const getHtml = (scope, name) => {
 
 const applyEntries = (scope, config, entries) => {
   for (const entry of entries) {
-    config.entry[entry] = [`./src/renderer/${entry}`]
+    config.entry[entry] = [`./src/renderer/app`]
     config.plugins.push(getHtml(scope, entry))
 
     if (dev) {
@@ -35,10 +35,6 @@ const getBaseConfig = name => {
 
     module: {
       rules: [
-        // {
-        //   test: /\.(png|gif|jpg|woff2|ttf|svg)$/,
-        //   use: ['file-loader']
-        // },
         {
           test: /\.(png|gif|jpg|woff2|ttf|svg)$/,
           use: ['url-loader']
@@ -81,6 +77,6 @@ const appConfig = getConfig(getBaseConfig('app'), {
   }
 })
 
-applyEntries('app', appConfig, ['app'])
+applyEntries('app', appConfig, ['index'])
 
 module.exports = [appConfig]

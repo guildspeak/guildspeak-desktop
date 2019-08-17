@@ -38,7 +38,8 @@ class CurrentGuild extends React.Component<IProps & RouteComponentProps<RoutePro
     return (
       <Wrapper>
         <Query query={GET_GUILD} variables={{ id: this.props.guildId }}>
-          {({ loading, error, data, subscribeToMore }) => {
+          {
+            ({ loading, error, data, subscribeToMore }) => {
             if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
             if (error) {
               console.error(error)
@@ -71,7 +72,8 @@ class CurrentGuild extends React.Component<IProps & RouteComponentProps<RoutePro
                 <CreateChannel guildId={this.props.guildId} guildName={data.guild.name} />
               </div>
             )
-          }}
+          }
+          }
         </Query>
       </Wrapper>
     )
