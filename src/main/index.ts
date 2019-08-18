@@ -29,7 +29,7 @@ const createWindow = async () => {
 
   if (process.env.ENV === 'dev') {
     win.webContents.openDevTools()
-    win.loadURL('http://localhost:4444/index.html')
+    win.loadURL('http://localhost:5000/index.html')
   } else {
     win.loadURL(path.join('file://', app.getAppPath(), 'build/index.html'))
   }

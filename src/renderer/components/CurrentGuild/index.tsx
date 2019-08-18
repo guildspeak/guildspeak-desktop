@@ -10,19 +10,19 @@ import CreateChannel from '../CreateChannel'
 const GET_GUILD = gql`
   query guild($id: ID!) {
     guild(id: $id) {
-      name
       id
+      name
       channels {
-        name
         id
+        name
       }
     }
   }
 `
 
 const CHANNELS_SUBSCRIPTION = gql`
-  subscription guildChannelsSubscription($guildId: ID!) {
-    guildChannelsSubscription(guildId: $guildId) {
+  subscription guildChannelsSubscription($id: ID!) {
+    guildChannelsSubscription(id: $id) {
       id
       name
     }
@@ -33,13 +33,12 @@ interface IProps {
   readonly guildId: string
 }
 
-class CurrentGuild extends React.Component<IProps & RouteComponentProps<RouteProps & IProps>> {
+class CurrentGuild extends React.PureComponent<IProps & RouteComponentProps<RouteProps & IProps>> {
   render() {
     return (
       <Wrapper>
         <Query query={GET_GUILD} variables={{ id: this.props.guildId }}>
-          {
-            ({ loading, error, data, subscribeToMore }) => {
+          {({ loading, error, data, subscribeToMore }) => {
             if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
             if (error) {
               console.error(error)
@@ -50,18 +49,11 @@ class CurrentGuild extends React.Component<IProps & RouteComponentProps<RoutePro
             }
             subscribeToMore({
               document: CHANNELS_SUBSCRIPTION,
-              variables: { guildId: data.guild.id },
+              variables: { id: data.guild.id },
               updateQuery: (_prev, received) => {
-                console.log(received)
                 const newData = received.subscriptionData.data.guildChannelsSubscription
-                // switch (newData.mutation) {
-                //   case 'CREATED':
+
                 return { guild: { ...data.guild, channels: [...data.guild.channels, newData] } }
-                // case 'UPDATED':
-                //   return { guild: { ...data.guild, channels: data.guild.channels.map(c => (c.id === newData.node.id ? newData.node : c)) } }
-                //   case 'DELETED':
-                //     return { guild: { ...data.guild, channels: data.guild.channels.filter(c => c.id !== newData.previousValues.id) } }
-                // }
               }
             })
             return (
@@ -72,11 +64,11 @@ class CurrentGuild extends React.Component<IProps & RouteComponentProps<RoutePro
                 <CreateChannel guildId={this.props.guildId} guildName={data.guild.name} />
               </div>
             )
-          }
-          }
+          }}
         </Query>
       </Wrapper>
     )
   }
 }
+
 export default CurrentGuild

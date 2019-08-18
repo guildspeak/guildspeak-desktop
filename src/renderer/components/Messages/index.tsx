@@ -8,8 +8,8 @@ import { Wrapper as LoadingWrapper } from '../Loading/styles'
 import { RouteComponentProps, RouteProps } from 'react-router'
 
 const MESSAGE_SUBSCRIPTION = gql`
-  subscription channelSubscription($channelId: ID!) {
-    channelSubscription(channelId: $channelId) {
+  subscription channelSubscription($id: ID!) {
+    channelSubscription(id: $id) {
       messages(orderBy: createdAt_ASC, last: 30) {
         id
         author {
@@ -28,8 +28,8 @@ const MESSAGE_SUBSCRIPTION = gql`
 `
 
 const GET_MESSAGES = gql`
-  query channel($channelId: ID!) {
-    channel(id: $channelId) {
+  query channel($id: ID!) {
+    channel(id: $id) {
       messages(orderBy: createdAt_ASC, last: 30) {
         id
         author {
@@ -84,7 +84,7 @@ class Messages extends React.Component<IProps & RouteComponentProps<RouteProps &
   render() {
     return (
       <Wrapper>
-        <Query query={GET_MESSAGES} variables={{ channelId: this.state.channelId }}>
+        <Query query={GET_MESSAGES} variables={{ id: this.state.channelId }}>
           {({ loading, error, data, subscribeToMore }) => {
             if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
             if (error) {
@@ -98,7 +98,7 @@ class Messages extends React.Component<IProps & RouteComponentProps<RouteProps &
 
             subscribeToMore({
               document: MESSAGE_SUBSCRIPTION,
-              variables: { channelId: this.state.channelId },
+              variables: { id: this.state.channelId },
               updateQuery: (_prev, data) => {
                 return { channel: data.subscriptionData.data.channelSubscription }
               }

@@ -4,7 +4,7 @@ const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
 const { getConfig, dev } = require('./webpack.config.base')
 
-const PORT = 4444
+const PORT = 5000
 
 const getHtml = (scope, name) => {
   return new HtmlWebpackPlugin({

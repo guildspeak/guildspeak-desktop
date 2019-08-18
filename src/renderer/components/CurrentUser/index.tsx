@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { withRouter, RouteComponentProps, RouteProps } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Wrapper, Username, Buttons, IconButton } from './styles'
 import gql from 'graphql-tag'
-import { Query } from 'react-apollo'
+import { useQuery } from 'react-apollo'
 
 const GET_ME = gql`
   query {
@@ -12,36 +12,26 @@ const GET_ME = gql`
   }
 `
 
-interface IProps {
-  readonly id: string
-  readonly name: string
-}
-
-class CurrentUser extends React.PureComponent<IProps & RouteComponentProps<RouteProps & IProps>> {
-  handleSettings = () => {
-    this.props.history.push('/settings')
+const CurrentUser = ({ history }: RouteComponentProps) => {
+  const handleSettings = () => {
+    history.push('/settings')
   }
 
-  render() {
-    return (
-      <Query query={GET_ME}>
-        {({ loading, error, data }) => {
-          if (loading) return <div>Loading...</div>
-          if (error) return <div>{error.toString()}</div>
-          return (
-            <Wrapper>
-              <Username>{data.me.username}</Username>
-              <Buttons>
-                <IconButton onClick={this.handleSettings} className="material-icons">
-                  settings
-                </IconButton>
-              </Buttons>
-            </Wrapper>
-          )
-        }}
-      </Query>
-    )
-  }
+  const { loading, error, data } = useQuery(GET_ME)
+
+  if (loading) return <div>Loading...</div>
+  if (error) return `Error! ${error.message}`
+
+  return (
+    <Wrapper>
+      <Username>{data.me.username}</Username>
+      <Buttons>
+        <IconButton onClick={handleSettings} className="material-icons">
+          settings
+        </IconButton>
+      </Buttons>
+    </Wrapper>
+  )
 }
 
-export default withRouter(CurrentUser as any)
+export default withRouter(CurrentUser as React.FunctionComponent)
