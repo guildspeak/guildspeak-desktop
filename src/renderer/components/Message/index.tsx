@@ -75,7 +75,7 @@ class Message extends React.Component<IProps, IState> {
               onScroll={this.doScroll}
               dangerouslySetInnerHTML={{ __html: marked(this.props.content) }}
             />
-            <Dropdown innerRef={this.setWrapperRef}>
+            <Dropdown ref={this.setWrapperRef}>
               <DropdownButton className="material-icons" onClick={this.handleOpenCloseDropdown}>
                 more_vert
               </DropdownButton>

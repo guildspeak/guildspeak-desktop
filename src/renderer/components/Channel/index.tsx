@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Wrapper, ChannelName, IconButton, Channels } from './styles'
 
@@ -10,24 +10,22 @@ interface IProps {
   readonly setChannelName: (channelName: string) => any
 }
 
-class Channel extends React.Component<IProps & RouteComponentProps> {
-  changeChannel = () => {
-    this.props.setChannelId(this.props.id)
-    this.props.history.push(`/app/channel/${this.props.id}`)
+const Channel = ({ id, name, channelId, history, setChannelId }: RouteComponentProps & IProps) => {
+  const changeChannel = () => {
+    setChannelId(id)
+    history.push(`/app/channel/${id}`)
   }
 
-  render() {
-    return (
-      <Wrapper>
-        <Channels {...this.props}>
-          <ChannelName onClick={this.changeChannel}>#{this.props.name}</ChannelName>
-          <IconButton {...this.props} className="material-icons">
-            settings
-          </IconButton>
-        </Channels>
-      </Wrapper>
-    )
-  }
+  return (
+    <Wrapper>
+      <Channels id={id} channelId={channelId}>
+        <ChannelName onClick={changeChannel}>#{name}</ChannelName>
+        <IconButton id={id} channelId={channelId} className="material-icons">
+          settings
+        </IconButton>
+      </Channels>
+    </Wrapper>
+  )
 }
 
-export default withRouter(Channel as any)
+export default withRouter(Channel)

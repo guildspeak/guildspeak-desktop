@@ -1,9 +1,9 @@
-import * as React from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import gql from 'graphql-tag'
-import { Query } from 'react-apollo'
+import { useQuery } from 'react-apollo'
 import { Wrapper, Username, StyledModal, FriendButton, UserName, Avatar } from './styles'
 import { Wrapper as LoadingWrapper } from '../Loading/styles'
-import { RouteComponentProps, RouteProps } from 'react-router'
+import { RouteComponentProps } from 'react-router'
 
 const GET_USERS = gql`
   query guild($id: ID!) {
@@ -26,94 +26,68 @@ interface IState {
   selectedUser: string
 }
 
-class CurrentUsers extends React.PureComponent<
-  IProps & RouteComponentProps<RouteProps & IProps>,
-  IState
-> {
-  state = {
+const CurrentUsers = ({ guildId }: IProps & RouteComponentProps) => {
+  const [state, setState] = useState<IState>({
     isOpen: false,
     opacity: 0,
     selectedUser: ''
-  }
+  })
 
-  toggleModal = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
-  }
-
-  selectCurrentUser = (username: string) => e => {
-    this.setState({
-      selectedUser: username
-    })
-  }
-
-  afterOpen = () => {
-    setTimeout(() => {
-      this.setState({ opacity: 1 })
-    })
-  }
-
-  beforeClose = () => {
-    return new Promise(resolve => {
-      this.setState({ opacity: 0 })
-      setTimeout(resolve, 200)
-    })
-  }
-
-  componentDidMount() {
-    document.addEventListener('keydown', this.handleEsc, false)
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleEsc, false)
-  }
-
-  handleEsc = (e: KeyboardEvent) => {
+  const handleEsc = useCallback((e: KeyboardEvent) => {
     if (e.keyCode === 27 && this.state.isOpen) {
-      this.setState({ isOpen: false })
+      setState({ ...state, isOpen: false })
     }
+  }, [])
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleEsc, false)
+    return () => document.removeEventListener('keydown', handleEsc, false)
+  }, [handleEsc])
+
+  const toggleModal = () => {
+    setState({ ...state, isOpen: !state.isOpen })
   }
 
-  render() {
-    return (
-      <Query query={GET_USERS} variables={{ id: this.props.guildId }}>
-        {({ loading, error, data }) => {
-          if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
-          if (error) {
-            console.error(error)
-            if (error.toString().includes('Cannot return null for non-nullable field')) {
-              return <LoadingWrapper />
-            }
-            return <LoadingWrapper>{error.toString()}</LoadingWrapper>
-          }
-          return (
-            <Wrapper>
-              <div>Members</div>
-              {data.guild.users.map(el => (
-                <div onClick={this.toggleModal} key={el.id}>
-                  <Username onClick={this.selectCurrentUser(el.username)}>{el.username}</Username>
-                </div>
-              ))}
-              <StyledModal
-                isOpen={this.state.isOpen}
-                afterOpen={this.afterOpen}
-                beforeClose={this.beforeClose}
-                onBackgroundClick={this.toggleModal}
-                onEscapeKeydown={this.toggleModal}
-                opacity={this.state.opacity}
-              >
-                <Avatar>
-                  <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
-                </Avatar>
-                <UserName>{this.state.selectedUser}</UserName>
-                <FriendButton>Send Friend Request</FriendButton>
-              </StyledModal>
-            </Wrapper>
-          )
-        }}
-      </Query>
-    )
+  const selectCurrentUser = (username: string) => () => {
+    setState({ ...state, selectedUser: username })
   }
+
+  const afterOpen = () => {
+    setState({ ...state, opacity: 1 })
+  }
+
+  const beforeClose = () => {
+    setState({ ...state, opacity: 0 })
+  }
+
+  const { loading, error, data } = useQuery(GET_USERS, { variables: { id: guildId } })
+
+  if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
+  if (error) return `Error! ${error.message}`
+
+  return (
+    <Wrapper>
+      <div>Members</div>
+      {data.guild.users.map(el => (
+        <div onClick={toggleModal} key={el.id}>
+          <Username onClick={selectCurrentUser(el.username)}>{el.username}</Username>
+        </div>
+      ))}
+      <StyledModal
+        isOpen={state.isOpen}
+        afterOpen={afterOpen}
+        beforeClose={beforeClose}
+        onBackgroundClick={toggleModal}
+        onEscapeKeydown={toggleModal}
+        opacity={state.opacity}
+      >
+        <Avatar>
+          <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
+        </Avatar>
+        <UserName>{state.selectedUser}</UserName>
+        <FriendButton>Send Friend Request</FriendButton>
+      </StyledModal>
+    </Wrapper>
+  )
 }
 export default CurrentUsers

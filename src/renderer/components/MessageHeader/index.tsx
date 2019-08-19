@@ -3,12 +3,12 @@ import MessageAuthor, { MessageAuthorData } from '../MessageAuthor'
 import MessageTimestamp from '../MessageTimestamp'
 import { Wrapper } from './styles'
 
-interface Props {
-  author: MessageAuthorData
-  time: string
+interface IProps {
+  readonly author: MessageAuthorData
+  readonly time: string
 }
 
-const MessageHeader: React.SFC<Props> = ({ author, time }) => (
+const MessageHeader = ({ author, time }: IProps) => (
   <Wrapper>
     <MessageAuthor author={author} />
     <MessageTimestamp time={time} />

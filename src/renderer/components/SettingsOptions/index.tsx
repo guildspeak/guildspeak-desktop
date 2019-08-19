@@ -11,46 +11,44 @@ import {
 } from './styles'
 import UserSettings from '../UserSettings'
 
-class SettingsList extends React.Component<RouteComponentProps> {
-  handleLogout = () => {
+const SettingsList = ({ history }: RouteComponentProps) => {
+  const handleLogout = () => {
     localStorage.removeItem('token')
-    this.props.history.push('/login')
+    history.push('/login')
   }
 
-  handleBack = () => {
-    this.props.history.push('/app')
+  const handleBack = () => {
+    history.push('/app')
   }
 
-  handleUser = () => {
-    this.props.history.push('/usersettings')
+  const handleUser = () => {
+    history.push('/usersettings')
   }
 
-  render() {
-    return (
-      <Wrapper>
-        <SettingsOptionsList>
-          <BackButton className="material-icons" onClick={this.handleBack}>
-            arrow_back
-          </BackButton>
-          <Description>User Settings</Description>
-          <SettingsButton onClick={this.handleUser}>My Settings</SettingsButton>
-          <SettingsButton>Authorized Apps</SettingsButton>
-          <SettingsButton>Privacy & Safety</SettingsButton>
-          <Hr aria-hidden="true" />
-          <Description>App Settings</Description>
-          <SettingsButton>Keybinds</SettingsButton>
-          <SettingsButton>Appearance</SettingsButton>
-          <SettingsButton>Notifications</SettingsButton>
-          <SettingsButton>Language</SettingsButton>
-          <SettingsButton>Voice Settings</SettingsButton>
-          <SettingsButton>Overlay</SettingsButton>
-          <Hr aria-hidden="true" />
-          <LogOutButton onClick={this.handleLogout}>Log Out</LogOutButton>
-        </SettingsOptionsList>
-        <UserSettings>test</UserSettings>
-      </Wrapper>
-    )
-  }
+  return (
+    <Wrapper>
+      <SettingsOptionsList>
+        <BackButton className="material-icons" onClick={handleBack}>
+          arrow_back
+        </BackButton>
+        <Description>User Settings</Description>
+        <SettingsButton onClick={handleUser}>My Settings</SettingsButton>
+        <SettingsButton>Authorized Apps</SettingsButton>
+        <SettingsButton>Privacy & Safety</SettingsButton>
+        <Hr aria-hidden="true" />
+        <Description>App Settings</Description>
+        <SettingsButton>Keybinds</SettingsButton>
+        <SettingsButton>Appearance</SettingsButton>
+        <SettingsButton>Notifications</SettingsButton>
+        <SettingsButton>Language</SettingsButton>
+        <SettingsButton>Voice Settings</SettingsButton>
+        <SettingsButton>Overlay</SettingsButton>
+        <Hr aria-hidden="true" />
+        <LogOutButton onClick={handleLogout}>Log Out</LogOutButton>
+      </SettingsOptionsList>
+      <UserSettings>test</UserSettings>
+    </Wrapper>
+  )
 }
 
 export default SettingsList

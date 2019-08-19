@@ -2,23 +2,21 @@ import * as React from 'react'
 import { Wrapper, GuildName } from './styles'
 
 interface IProps {
-  name: string
-  guildId: any
-  setGuildId: (guildId) => any
+  readonly name: string
+  readonly guildId: string
+  readonly setGuildId: (guildId: string) => void
 }
 
-class Guild extends React.PureComponent<IProps, {}> {
-  changeGuild = () => {
-    this.props.setGuildId(this.props.guildId)
+const Guild = ({ name, guildId, setGuildId }: IProps) => {
+  const changeGuild = () => {
+    setGuildId(guildId)
   }
 
-  render() {
-    return (
-      <Wrapper onClick={this.changeGuild}>
-        <GuildName>{this.props.name}</GuildName>
-      </Wrapper>
-    )
-  }
+  return (
+    <Wrapper onClick={changeGuild}>
+      <GuildName>{name}</GuildName>
+    </Wrapper>
+  )
 }
 
 export default Guild

@@ -11,11 +11,11 @@ const ChannelName = styled.div`
   text-transform: none;
 `
 
-const IconButton = styled.div`
+const IconButton = styled.div<{ id?: string; channelId?: string }>`
   cursor: pointer;
   color: #bdbdbd;
   ${props =>
-    (props as any).channelId === props.id
+    props.channelId === props.id
       ? css`
           color: #bdbdbd;
         `
@@ -33,13 +33,11 @@ const IconButton = styled.div`
   margin-left: auto;
 `
 
-const Channels = styled.div`
+const Channels = styled.div<{ id?: string; channelId?: string }>`
   display: flex;
   flex-direction: row;
   ${props =>
-    (props as any).channelId === props.id
-      ? 'background: #2d2d31;font-weight: 500;'
-      : ''} &:hover + Button {
+    props.channelId === props.id ? 'background: #2d2d31;font-weight: 500;' : ''} &:hover + Button {
     color: #fff;
     background: #2d2d31;
   }

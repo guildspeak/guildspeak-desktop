@@ -30,20 +30,16 @@ const LOGIN = gql`
 interface IState {
   email?: string
   password?: string
-  token?: string
 }
 
-interface Props {
-  token: string
-  store: any
-  history: any
+interface IProps {
+  readonly history: any
 }
 
-class Login extends React.Component<Props, IState> {
+class Login extends React.Component<IProps, IState> {
   state = {
     email: '',
-    password: '',
-    token: ''
+    password: ''
   }
 
   handleLogin = loginMutation => () => {
@@ -68,7 +64,7 @@ class Login extends React.Component<Props, IState> {
         <Mutation mutation={LOGIN}>
           {(login, { data, error }) => {
             if (error) {
-              <ErrorAlert>{error.toString()}</ErrorAlert>
+              return <ErrorAlert>{error.toString()}</ErrorAlert>
             }
 
             if (data) {

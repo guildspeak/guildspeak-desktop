@@ -1,28 +1,16 @@
-import * as React from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 
-class Startup extends React.Component<{ token: string; history: any }, { logged: boolean }> {
-  state = {
-    logged: false
-  }
-
-  componentDidMount() {
-    if (!this.props.token) {
-      this.setState({ logged: false })
-      this.props.history.push('/login')
+const Startup = ({ token, history }: RouteComponentProps & { token: string }) => {
+  useEffect(() => {
+    if (!token) {
+      history.push('/login')
     } else {
-      this.setState({ logged: true })
-      this.props.history.push('/app')
+      history.push('/app')
     }
-  }
+  }, [])
 
-  render() {
-    return null
-    // if (this.state.logged) {
-    //   return <p>redirecting app page</p>
-    // }
-    // return <p>redirecting to login page</p>
-  }
+  return null
 }
 
-export default withRouter(Startup as any)
+export default withRouter(Startup)
