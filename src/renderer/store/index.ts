@@ -14,8 +14,9 @@ const configureStore = (initialState?: RootState): Store<RootState | undefined> 
 }
 
 const store = configureStore()
-
+// @ts-ignore
 if (typeof module.hot !== 'undefined') {
+  // @ts-ignore
   module.hot.accept('../reducers', () => store.replaceReducer(require('../reducers').rootReducer))
 }
 

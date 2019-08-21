@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  flex: 1;
   flex-direction: column;
   display: flex;
+  flex: 1;
   overflow-y: auto;
-  overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 12px;
     background-color: #2d2d31;

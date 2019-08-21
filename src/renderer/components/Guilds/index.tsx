@@ -12,6 +12,9 @@ const GET_GUILDS = gql`
     guilds {
       name
       id
+      channels {
+        id
+      }
     }
   }
 `
@@ -42,7 +45,12 @@ class Guilds extends React.PureComponent<RouteComponentProps> {
           return (
             <Wrapper>
               {data.guilds.map(el => (
-                <GuildContainer key={el.id} name={el.name} guildId={el.id} />
+                <GuildContainer
+                  key={el.id}
+                  name={el.name}
+                  guildId={el.id}
+                  defaultChannelId={el.channels[0].id}
+                />
               ))}
               <CreateGuildContainer />
             </Wrapper>

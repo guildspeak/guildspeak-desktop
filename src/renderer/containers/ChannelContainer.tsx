@@ -1,16 +1,16 @@
 import { connect } from 'react-redux'
 import { RootState } from '../reducers'
-import { SetChannelId, setChannelId } from '../actions/currentChannelActions'
+import { SetCurrentChannelId, setCurrentChannelId } from '../actions/currentGuildActions'
 import { Dispatch } from 'redux'
 import Channel from '../components/Channel'
 
 const mapStateToProps = (state: RootState, props) => ({
   ...props,
-  channelId: state.currentChannel.channelId
+  channelId: state.currentGuild.channelId
 })
 
-const mapDispatchToProps = (dispatch: Dispatch<SetChannelId>) => ({
-  setChannelId: channelId => dispatch(setChannelId(channelId))
+const mapDispatchToProps = (dispatch: Dispatch<SetCurrentChannelId>) => ({
+  setChannelId: channelId => dispatch(setCurrentChannelId(channelId))
 })
 
 export default connect(

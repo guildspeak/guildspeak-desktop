@@ -1,6 +1,11 @@
 import { connect } from 'react-redux'
 import { RootState } from '../reducers'
-import { SetGuildId, setGuildId } from '../actions/currentGuildActions'
+import {
+  SetCurrentGuildId,
+  setCurrentGuildId,
+  SetCurrentChannelId,
+  setCurrentChannelId
+} from '../actions/currentGuildActions'
 import { Dispatch } from 'redux'
 import CurrentGuild from '../components/CurrentGuild'
 
@@ -9,8 +14,9 @@ const mapStateToProps = (state: RootState, props) => ({
   guildId: state.currentGuild.guildId
 })
 
-const mapDispatchToProps = (dispatch: Dispatch<SetGuildId>) => ({
-  setGuildId: guildId => dispatch(setGuildId(guildId))
+const mapDispatchToProps = (dispatch: Dispatch<SetCurrentGuildId | SetCurrentChannelId>) => ({
+  setGuildId: guildId => dispatch(setCurrentGuildId(guildId)),
+  setChannelId: channelId => dispatch(setCurrentChannelId(channelId))
 })
 
 export default connect(

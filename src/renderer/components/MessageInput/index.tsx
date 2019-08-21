@@ -46,16 +46,16 @@ interface IState {
   editorState: EditorState | string
 }
 
-interface Props {
-  channelId: string
+interface IProps {
+  readonly channelId: string
 }
 
-class MessageInput extends React.PureComponent<Props, IState> {
+class MessageInput extends React.PureComponent<IProps, IState> {
   state = {
     editorState: EditorState.createEmpty()
   }
 
-  handleReturn = createMessage => (): DraftHandleValue => {
+  handleReturn = createMessage => (e: React.SyntheticEvent): DraftHandleValue => {
     const content = Object.assign(this.state.editorState, {})
       .getCurrentContent()
       .getPlainText()

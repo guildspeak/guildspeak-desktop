@@ -16,28 +16,36 @@ import Guilds from '../../components/Guilds'
 
 const renderMessages = params => <Messages key={params.match.params.channelId} {...params} />
 
-const Application = ({ channelId, history }: RouteComponentProps & { channelId: string }) => {
+const Application = ({
+  channelId,
+  guildId,
+  history
+}: RouteComponentProps & { channelId: string; guildId: string }) => {
   useEffect(() => {
-    history.push(`/app/channel/${channelId}`)
-  }, [])
+    if (guildId && channelId) {
+      history.push(`/app/channel/${channelId}`)
+    }
+  }, [channelId])
 
   return (
     <MainWrapper>
       <Guilds />
-      <InnerWrapper>
-        <FirstColumn>
-          <Sidebar />
-        </FirstColumn>
-        <SecondColumn>
-          <MessagesColumn>
-            <Route path="/app/channel/:channelId" render={renderMessages} />
-            <MessageInputContainer />
-          </MessagesColumn>
-        </SecondColumn>
-        <ThirdColumn>
-          <CurrentUsersContainer />
-        </ThirdColumn>
-      </InnerWrapper>
+      {guildId && channelId ? (
+        <InnerWrapper>
+          <FirstColumn>
+            <Sidebar />
+          </FirstColumn>
+          <SecondColumn>
+            <MessagesColumn>
+              <Route path="/app/channel/:channelId" render={renderMessages} />
+              <MessageInputContainer />
+            </MessagesColumn>
+          </SecondColumn>
+          <ThirdColumn>{guildId && channelId && <CurrentUsersContainer />}</ThirdColumn>
+        </InnerWrapper>
+      ) : (
+        <InnerWrapper>Create or select Guild</InnerWrapper>
+      )}
     </MainWrapper>
   )
 }

@@ -1,21 +1,26 @@
 import { Action, ActionCreator } from 'redux'
 
-export const SET_GUILDID = 'SET_GUILDID'
-export const GET_GUILDID = 'GET_GUILDID'
+export const SET_CURRENT_GUILD_ID = 'SET_CURRENT_GUILD_ID'
+export const SET_CURRENT_CHANNEL_ID = 'SET_CURRENT_CHANNEL_ID'
 
-export interface SetGuildId extends Action {
-  type: 'SET_GUILDID'
+export interface SetCurrentGuildId extends Action {
+  type: 'SET_CURRENT_GUILD_ID'
   payload: { guildId: string }
 }
 
-export interface GetGuildId extends Action {
-  type: 'GET_GUILDID'
-  payload: {}
-}
-
-export const setGuildId: ActionCreator<SetGuildId> = guildId => ({
-  type: SET_GUILDID,
+export const setCurrentGuildId: ActionCreator<SetCurrentGuildId> = guildId => ({
+  type: SET_CURRENT_GUILD_ID,
   payload: { guildId }
 })
 
-export type CurrentGuildActions = SetGuildId
+export interface SetCurrentChannelId extends Action {
+  type: 'SET_CURRENT_CHANNEL_ID'
+  payload: { channelId: string }
+}
+
+export const setCurrentChannelId: ActionCreator<SetCurrentChannelId> = channelId => ({
+  type: SET_CURRENT_CHANNEL_ID,
+  payload: { channelId }
+})
+
+export type CurrentGuildActions = SetCurrentGuildId | SetCurrentChannelId

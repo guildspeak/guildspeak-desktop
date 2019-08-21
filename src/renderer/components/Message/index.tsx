@@ -30,7 +30,9 @@ class Message extends React.Component<IProps, IState> {
   state = { hidden: true }
   wrapperRef: any = React.createRef()
 
-  componentWillMount() {
+  // TODO: refactor to componentDidMount ?
+  // tslint:disable-next-line: function-name
+  UNSAFE_componentWillMount() {
     this.props.willMount()
   }
 

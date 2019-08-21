@@ -1,45 +1,39 @@
+import { AppContainer } from 'react-hot-loader'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ApolloProvider } from 'react-apollo'
 import store from '../store'
 import { createGlobalStyle } from 'styled-components'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Systembar from '../components/Systembar'
 import client from './client'
 import { style, AppWrapper } from './styles'
-import { AppContainer } from 'react-hot-loader'
-import Loadable from 'react-loadable'
-import Loading from '../components/Loading'
 import { ModalProvider } from 'styled-react-modal'
 import { Wrapper as LoadingWrapper } from '../components/Loading/styles'
+import { withLazyLoading } from '../utils/hoc'
 
 const GlobalStyle = createGlobalStyle`${style}`
 
-const ApplicationContainer = Loadable({
-  loader: () => import('../containers/ApplicationContainer'),
-  loading: () => <LoadingWrapper>Starting Guildspeak...</LoadingWrapper>
-})
+const LazyApplicationContainer = React.lazy(() => import('../containers/ApplicationContainer'))
 
-const StartupContainer = Loadable({
-  loader: () => import('../containers/StartupContainer'),
-  loading: Loading
-})
+const ApplicationContainer = props => {
+  return (
+    <React.Suspense fallback={<LoadingWrapper>Starting Guildspeak...</LoadingWrapper>}>
+      <LazyApplicationContainer {...props} />
+    </React.Suspense>
+  )
+}
 
-const Login = Loadable({
-  loader: () => import('../views/Login'),
-  loading: Loading
-})
+const LazyStartupContainer = React.lazy(() => import('../containers/StartupContainer'))
+const LazyLogin = React.lazy(() => import('../views/Login'))
+const LazyRegister = React.lazy(() => import('../views/Register'))
+const LazySettings = React.lazy(() => import('../views/Settings'))
 
-const Register = Loadable({
-  loader: () => import('../views/Register'),
-  loading: Loading
-})
-
-const Settings = Loadable({
-  loader: () => import('../views/Settings'),
-  loading: Loading
-})
+const StartupContainer = props => withLazyLoading(props)(LazyStartupContainer)
+const Login = props => withLazyLoading(props)(LazyLogin)
+const Register = props => withLazyLoading(props)(LazyRegister)
+const Settings = props => withLazyLoading(props)(LazySettings)
 
 const render = () =>
   ReactDOM.render(
