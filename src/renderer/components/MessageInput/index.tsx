@@ -55,7 +55,7 @@ class MessageInput extends React.PureComponent<IProps, IState> {
     editorState: EditorState.createEmpty()
   }
 
-  handleReturn = createMessage => (e: React.SyntheticEvent): DraftHandleValue => {
+  handleReturn = createMessage => (e): DraftHandleValue => {
     const content = Object.assign(this.state.editorState, {})
       .getCurrentContent()
       .getPlainText()

@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
     "outDir": "./build/",
+    "target": "esnext",
     "module": "esnext",
-    "target": "es2019",
-    "jsx": "react",
+    "jsx": "preserve",
     "allowJs": true,
+    "noEmit": true,
     "sourceMap": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
     "lib": ["dom", "esnext"],
     "baseUrl": "./",
-    // "removeComments": true,
-    // "isolatedModules": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -19,5 +20,5 @@
     "resolveJsonModule": true
   },
   "exclude": ["node_modules", "dist", "build"],
-  "include": ["src/**/*", "static/load-scripts.js"]
+  "include": ["src/**/*"]
 }

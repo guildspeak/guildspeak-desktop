@@ -2,7 +2,7 @@ import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { config } from 'dotenv'
 
-if (process.env.ENV === 'dev') {
+if (process.env.NODE_ENV === 'development') {
   config()
 }
 
@@ -23,11 +23,7 @@ const createWindow = async () => {
     }
   })
 
-  // win.webContents.once('dom-ready', () => {
-  //   win.show()
-  // })
-
-  if (process.env.ENV === 'dev') {
+  if (process.env.NODE_ENV === 'development') {
     win.webContents.openDevTools()
     win.loadURL('http://localhost:5000/index.html')
   } else {

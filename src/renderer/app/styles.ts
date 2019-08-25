@@ -8,7 +8,9 @@ const fonts = {
 }
 
 export const style = css`
-  @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+  * {
+    box-sizing: border-box;
+  }
 
   @font-face {
     font-family: 'Roboto';
@@ -35,16 +37,16 @@ export const style = css`
     src: url(${fonts.francoisOneRegular}) format('truetype');
   }
 
-  html {
+  html,
+  body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background: #202020;
-    color: #fff;
+    color: #ffffff;
     overflow: hidden;
-    font-family: 'Roboto';
   }
 `
 

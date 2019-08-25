@@ -1,7 +1,7 @@
 const { resolve } = require('path')
 const merge = require('webpack-merge')
 
-const dev = process.env.ENV === 'dev'
+const dev = process.env.NODE_ENV  === 'development'
 
 const config = {
   mode: dev ? 'development' : 'production',
@@ -9,23 +9,18 @@ const config = {
   output: {
     path: resolve(__dirname, 'build'),
     filename: '[name].bundle.js',
-    libraryTarget: 'commonjs2'
   },
   module: {
     rules: [
       {
-        test: /\.tsx|ts$/,
+        test: [/\.jsx?$/, /\.tsx?$/],
         use: [
           'cache-loader',
           {
-            loader: 'ts-loader',
-            options: {
-              experimentalWatchApi: true,
-              transpileOnly: true
-            }
+            loader: 'babel-loader',
           }
         ],
-
+        exclude: /node_modules/,
         include: resolve(__dirname, 'src')
       }
     ]
