@@ -6,7 +6,10 @@ import { Route, withRouter, RouteComponentProps } from 'react-router-dom'
 import { MainWrapper, FirstColumn, SecondColumn, ThirdColumn, Column, Row } from './styles'
 import CurrentUsersContainer from '../../containers/CurrentUsersContainer'
 import Guilds from '../../components/Guilds'
-const renderMessages = params => <Messages key={params.match.params.channelId} {...params} />
+const renderMessages = params => (
+  // @ts-ignore
+  <Messages key={params.match.params.channelId} channelId={params.match.params.channelId} />
+)
 
 const Application = ({
   channelId,

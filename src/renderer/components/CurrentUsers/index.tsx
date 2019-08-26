@@ -4,6 +4,7 @@ import { useQuery } from 'react-apollo'
 import { Wrapper, Username, StyledModal, FriendButton, UserName, Avatar } from './styles'
 import { Wrapper as LoadingWrapper } from '../Loading/styles'
 import { RouteComponentProps } from 'react-router'
+import Loading from '../Loading';
 
 const GET_USERS = gql`
   query guild($id: ID!) {
@@ -62,8 +63,8 @@ const CurrentUsers = ({ guildId }: IProps & RouteComponentProps) => {
 
   const { loading, error, data } = useQuery(GET_USERS, { variables: { id: guildId } })
 
-  if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
-  if (error) return `Error! ${error.message}`
+  if (loading) return <Loading />
+  if (error) return <div>Error! {error.message}</div>
 
   return (
     <Wrapper>

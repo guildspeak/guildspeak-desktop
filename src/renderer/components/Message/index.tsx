@@ -10,15 +10,12 @@ import {
   DropdownButton,
   MessageContentWrapper
 } from './styles'
-import Button from '../Button'
 import { DropdownMenu, Dropdown, DropdownItem } from '../Dropdown'
 
 interface IProps {
   readonly content: string
   readonly author: MessageAuthorData
   readonly time: string
-  readonly mounted: () => any
-  readonly willMount: () => any
 }
 
 interface IState {
@@ -26,31 +23,19 @@ interface IState {
 }
 
 class Message extends React.Component<IProps, IState> {
-  ref: React.RefObject<any> = React.createRef()
   state = { hidden: true }
   wrapperRef: any = React.createRef()
-
-  // TODO: refactor to componentDidMount ?
-  // tslint:disable-next-line: function-name
-  UNSAFE_componentWillMount() {
-    this.props.willMount()
-  }
 
   setWrapperRef = node => {
     this.wrapperRef = node
   }
 
   componentDidMount() {
-    this.props.mounted()
     document.addEventListener('mousedown', this.handleOpenCloseDropdown, false)
   }
 
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleOpenCloseDropdown, false)
-  }
-
-  doScroll = () => {
-    console.log(this.ref.current.scrollTop)
   }
 
   handleOpenCloseDropdown = e => {
@@ -72,11 +57,7 @@ class Message extends React.Component<IProps, IState> {
         <MessageBubble>
           <MessageHeader author={this.props.author} time={this.props.time} />
           <MessageContentWrapper>
-            <MessageContent
-              ref={this.ref}
-              onScroll={this.doScroll}
-              dangerouslySetInnerHTML={{ __html: marked(this.props.content) }}
-            />
+            <MessageContent dangerouslySetInnerHTML={{ __html: marked(this.props.content) }} />
             <Dropdown ref={this.setWrapperRef}>
               <DropdownButton className="material-icons" onClick={this.handleOpenCloseDropdown}>
                 more_vert

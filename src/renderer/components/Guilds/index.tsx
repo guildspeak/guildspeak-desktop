@@ -1,11 +1,10 @@
-import * as React from 'react'
+import React, { useEffect } from 'react'
 import GuildContainer from '../../containers/GuildContainer'
 import gql from 'graphql-tag'
-import { Query } from 'react-apollo'
+import { useQuery } from 'react-apollo'
 import { Wrapper } from './styles'
-import { Wrapper as LoadingWrapper } from '../Loading/styles'
-import { RouteComponentProps, RouteProps, withRouter } from 'react-router'
 import CreateGuildContainer from '../../containers/CreateGuildContainer'
+import Loading from '../Loading'
 
 const GET_GUILDS = gql`
   query guilds {
@@ -28,37 +27,44 @@ const GUILDS_SUBSCRIPTION = gql`
   }
 `
 
-class Guilds extends React.PureComponent<RouteComponentProps> {
-  render() {
-    return (
-      <Query query={GET_GUILDS}>
-        {({ loading, error, data, subscribeToMore }) => {
-          if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
-          if (error) return <LoadingWrapper>{error.toString()} guilds</LoadingWrapper>
-          subscribeToMore({
-            document: GUILDS_SUBSCRIPTION,
-            updateQuery: (_prev, received) => {
-              const newData = received.subscriptionData.data.guildsSubscription
-              return { guilds: [...data.guilds, newData] }
-            }
-          })
-          return (
-            <Wrapper>
-              {data.guilds.map(el => (
-                <GuildContainer
-                  key={el.id}
-                  name={el.name}
-                  guildId={el.id}
-                  defaultChannelId={el.channels[0].id}
-                />
-              ))}
-              <CreateGuildContainer />
-            </Wrapper>
-          )
-        }}
-      </Query>
-    )
-  }
+const Guilds = () => {
+  const { loading, error, data, subscribeToMore } = useQuery(GET_GUILDS)
+
+  useEffect(() => {
+    const unsubscribe = subscribeToMore({
+      document: GUILDS_SUBSCRIPTION,
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev
+        const newGuild = subscriptionData.data.guildsSubscription
+
+        const alreadyExist = prev.guilds.some(guild => guild.id === newGuild.id)
+        if (alreadyExist) return prev
+
+        return {
+          ...prev,
+          guilds: [...prev.guilds, newGuild]
+        }
+      }
+    })
+    return () => unsubscribe()
+  }, [])
+
+  if (loading) return <Loading />
+  if (error) return <div>Error! {error.message}</div>
+
+  return (
+    <Wrapper>
+      {data.guilds.map(el => (
+        <GuildContainer
+          key={el.id}
+          name={el.name}
+          guildId={el.id}
+          defaultChannelId={el.channels[0].id}
+        />
+      ))}
+      <CreateGuildContainer />
+    </Wrapper>
+  )
 }
 
-export default withRouter(Guilds as any)
+export default Guilds
