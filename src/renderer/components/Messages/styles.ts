@@ -2,8 +2,14 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
+`
+
+const InnerWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
   &::-webkit-scrollbar {
@@ -17,4 +23,4 @@ const Wrapper = styled.div`
   }
 `
 
-export { Wrapper }
+export { Wrapper, InnerWrapper }

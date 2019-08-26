@@ -3,9 +3,10 @@ import Message from '../Message'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import * as ReactDOM from 'react-dom'
-import { Wrapper } from './styles'
+import { Wrapper, InnerWrapper } from './styles'
 import { Wrapper as LoadingWrapper } from '../Loading/styles'
 import { RouteComponentProps, RouteProps } from 'react-router'
+import MessageInputContainer from '../../containers/MessageInputContainer'
 
 const MESSAGE_SUBSCRIPTION = gql`
   subscription channelSubscription($id: ID!) {
@@ -83,28 +84,28 @@ class Messages extends React.Component<IProps & RouteComponentProps<RouteProps &
 
   render() {
     return (
-      <Wrapper>
-        <Query query={GET_MESSAGES} variables={{ id: this.state.channelId }}>
-          {({ loading, error, data, subscribeToMore }) => {
-            if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
-            if (error) {
-              return (
-                <LoadingWrapper>
-                  No guilds found. Join a guild or create a new one using "+" button above.
-                  {error.toString()}
-                </LoadingWrapper>
-              )
-            }
-
-            subscribeToMore({
-              document: MESSAGE_SUBSCRIPTION,
-              variables: { id: this.state.channelId },
-              updateQuery: (_prev, data) => {
-                return { channel: data.subscriptionData.data.channelSubscription }
-              }
-            })
+      <Query query={GET_MESSAGES} variables={{ id: this.state.channelId }}>
+        {({ loading, error, data, subscribeToMore }) => {
+          if (loading) return <LoadingWrapper>Loading...</LoadingWrapper>
+          if (error) {
             return (
-              <div>
+              <LoadingWrapper>
+                No guilds found. Join a guild or create a new one using "+" button above.
+                {error.toString()}
+              </LoadingWrapper>
+            )
+          }
+
+          subscribeToMore({
+            document: MESSAGE_SUBSCRIPTION,
+            variables: { id: this.state.channelId },
+            updateQuery: (_prev, data) => {
+              return { channel: data.subscriptionData.data.channelSubscription }
+            }
+          })
+          return (
+            <Wrapper>
+              <InnerWrapper>
                 {data.channel.messages.map(el => (
                   <Message
                     author={el.author}
@@ -115,11 +116,12 @@ class Messages extends React.Component<IProps & RouteComponentProps<RouteProps &
                     willMount={this.messageWillMount}
                   />
                 ))}
-              </div>
-            )
-          }}
-        </Query>
-      </Wrapper>
+              </InnerWrapper>
+              <MessageInputContainer />
+            </Wrapper>
+          )
+        }}
+      </Query>
     )
   }
 }

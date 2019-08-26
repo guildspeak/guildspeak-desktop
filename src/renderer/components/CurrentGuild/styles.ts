@@ -1,10 +1,19 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  flex-direction: column;
   display: flex;
   flex: 1;
+  flex-direction: column;
+  user-select: none;
+  font-size: 16px;
+`
+
+const ChannelsWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 12px;
     background-color: #2d2d31;
@@ -14,8 +23,7 @@ const Wrapper = styled.div`
     box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
     background-color: #44444c;
   }
-  user-select: none;
   font-size: 16px;
 `
 
-export { Wrapper }
+export { Wrapper, ChannelsWrapper }

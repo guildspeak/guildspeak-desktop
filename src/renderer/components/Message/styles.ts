@@ -1,11 +1,14 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 16px 0px 16px;
 `
 const MessageBubble = styled.div`
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  height: auto;
   word-break: break-all;
 `
 
@@ -15,13 +18,12 @@ const MessageContentWrapper = styled.div`
 `
 
 const MessageContent = styled.div`
-  padding-right: 8px;
   margin-right: auto;
   display: flex;
 `
 
 const Hr = styled.hr`
-  display: block;
+  display: flex;
   unicode-bidi: isolate;
   -webkit-margin-before: 0.5em;
   -webkit-margin-after: 0.5em;

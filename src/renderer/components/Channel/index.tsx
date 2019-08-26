@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
-import { Wrapper, ChannelName, IconButton, Channels } from './styles'
+import { Wrapper, ChannelName, IconButton } from './styles'
 
 interface IProps {
   readonly id: string
@@ -17,13 +17,11 @@ const Channel = ({ id, name, channelId, history, setChannelId }: RouteComponentP
   }
 
   return (
-    <Wrapper>
-      <Channels id={id} channelId={channelId}>
-        <ChannelName onClick={changeChannel}>#{name}</ChannelName>
-        <IconButton id={id} channelId={channelId} className="material-icons">
-          settings
-        </IconButton>
-      </Channels>
+    <Wrapper id={id} channelId={channelId}>
+      <ChannelName onClick={changeChannel}>#{name}</ChannelName>
+      <IconButton id={id} channelId={channelId} className="material-icons">
+        settings
+      </IconButton>
     </Wrapper>
   )
 }

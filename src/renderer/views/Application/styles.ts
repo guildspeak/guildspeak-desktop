@@ -6,16 +6,17 @@ const MainWrapper = styled.div`
   flex-direction: column;
   padding: 4px;
 `
-const InnerWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-`
 
-const MessagesColumn = styled.div`
+const Column = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+`
+
+const Row = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: row;
 `
 
 const FirstColumn = styled.div`
@@ -36,4 +37,4 @@ const ThirdColumn = styled.div`
   flex-direction: column;
 `
 
-export { MainWrapper, InnerWrapper, MessagesColumn, FirstColumn, SecondColumn, ThirdColumn }
+export { Column, Row, MainWrapper, FirstColumn, SecondColumn, ThirdColumn }

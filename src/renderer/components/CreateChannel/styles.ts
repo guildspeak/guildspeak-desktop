@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  flex: 1;
   user-select: none;
   font-size: 16px;
   display: flex;
@@ -10,13 +9,10 @@ const Wrapper = styled.div`
 `
 const CreateButton = styled.div`
   cursor: pointer;
-  float: right;
-  margin: 0;
   &:hover {
     font-weight: 500;
     background: #2d2d31;
   }
-  width: 24px;
   font-size: 24px;
   padding: 4px;
 `

@@ -1,6 +1,17 @@
 import styled, { css } from 'styled-components'
 
-const Wrapper = styled.div``
+const Wrapper = styled.div<{ id?: string; channelId?: string }>`
+  display: flex;
+  flex-direction: row;
+  ${props =>
+    props.channelId === props.id ? 'background: #2d2d31;font-weight: 500;' : ''} &:hover + Button {
+    color: #fff;
+    background: #2d2d31;
+  }
+  &:hover {
+    background: #2d2d31;
+  }
+`
 
 const ChannelName = styled.div`
   padding: 8px;
@@ -33,17 +44,4 @@ const IconButton = styled.div<{ id?: string; channelId?: string }>`
   margin-left: auto;
 `
 
-const Channels = styled.div<{ id?: string; channelId?: string }>`
-  display: flex;
-  flex-direction: row;
-  ${props =>
-    props.channelId === props.id ? 'background: #2d2d31;font-weight: 500;' : ''} &:hover + Button {
-    color: #fff;
-    background: #2d2d31;
-  }
-  &:hover {
-    background: #2d2d31;
-  }
-`
-
-export { Wrapper, ChannelName, IconButton, Channels }
+export { Wrapper, ChannelName, IconButton }

@@ -8,7 +8,9 @@ const fonts = {
 }
 
 export const style = css`
-  * {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
@@ -43,7 +45,7 @@ export const style = css`
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     background: #202020;
     color: #ffffff;
     overflow: hidden;
