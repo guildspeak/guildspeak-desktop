@@ -10,9 +10,6 @@ const Wrapper = styled.div`
 `
 
 const StyledModal = Modal.styled`
-  width: 20rem;
-  height: 5rem;
-  display: flex;
   background: #202020;
   color: #cccccc;
   font-size: 16px;

@@ -3,9 +3,12 @@ import Sidebar from '../../components/Sidebar'
 import Messages from '../../components/Messages'
 import MessageInputContainer from '../../containers/MessageInputContainer'
 import { Route, withRouter, RouteComponentProps } from 'react-router-dom'
-import { MainWrapper, FirstColumn, SecondColumn, ThirdColumn, Column, Row } from './styles'
+import { MainWrapper, SecondColumn, ThirdColumn, Column, Row } from './styles'
 import CurrentUsersContainer from '../../containers/CurrentUsersContainer'
 import Guilds from '../../components/Guilds'
+import CurrentGuildContainer from '../../containers/CurrentGuildContainer'
+import Systembar from '../../components/Systembar'
+
 const renderMessages = params => (
   // @ts-ignore
   <Messages key={params.match.params.channelId} channelId={params.match.params.channelId} />
@@ -26,15 +29,13 @@ const Application = ({
     <MainWrapper>
       <Guilds />
       {guildId && channelId ? (
-        <Column>
-          <Row>
-            <Sidebar />
-            <SecondColumn>
-              <Route path="/app/channel/:channelId" render={renderMessages} />
-            </SecondColumn>
-            <ThirdColumn>{guildId && channelId && <CurrentUsersContainer />}</ThirdColumn>
-          </Row>
-        </Column>
+        <Row>
+          <Sidebar />
+          <SecondColumn>
+            <Route path="/app/channel/:channelId" render={renderMessages} />
+          </SecondColumn>
+          <ThirdColumn>{guildId && channelId && <CurrentUsersContainer />}</ThirdColumn>
+        </Row>
       ) : (
         <Row>Create or select Guild</Row>
       )}

@@ -1,10 +1,17 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import gql from 'graphql-tag'
 import { useQuery } from 'react-apollo'
-import { Wrapper, Username, StyledModal, FriendButton, UserName, Avatar } from './styles'
-import { Wrapper as LoadingWrapper } from '../Loading/styles'
+import {
+  Wrapper,
+  Username,
+  StyledModal,
+  FriendButton,
+  UserName,
+  Avatar,
+  InnerWrapper
+} from './styles'
 import { RouteComponentProps } from 'react-router'
-import Loading from '../Loading';
+import Loading from '../Loading'
 
 const GET_USERS = gql`
   query guild($id: ID!) {
@@ -69,25 +76,27 @@ const CurrentUsers = ({ guildId }: IProps & RouteComponentProps) => {
   return (
     <Wrapper>
       <div>Members</div>
-      {data.guild.users.map(el => (
-        <div onClick={toggleModal} key={el.id}>
-          <Username onClick={selectCurrentUser(el.username)}>{el.username}</Username>
-        </div>
-      ))}
-      <StyledModal
-        isOpen={state.isOpen}
-        afterOpen={afterOpen}
-        beforeClose={beforeClose}
-        onBackgroundClick={toggleModal}
-        onEscapeKeydown={toggleModal}
-        opacity={state.opacity}
-      >
-        <Avatar>
-          <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
-        </Avatar>
-        <UserName>{state.selectedUser}</UserName>
-        <FriendButton>Send Friend Request</FriendButton>
-      </StyledModal>
+      <InnerWrapper>
+        {data.guild.users.map(el => (
+          <div onClick={toggleModal} key={el.id}>
+            <Username onClick={selectCurrentUser(el.username)}>{el.username}</Username>
+          </div>
+        ))}
+        <StyledModal
+          isOpen={state.isOpen}
+          afterOpen={afterOpen}
+          beforeClose={beforeClose}
+          onBackgroundClick={toggleModal}
+          onEscapeKeydown={toggleModal}
+          opacity={state.opacity}
+        >
+          <Avatar>
+            <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
+          </Avatar>
+          <UserName>{state.selectedUser}</UserName>
+          <FriendButton>Send Friend Request</FriendButton>
+        </StyledModal>
+      </InnerWrapper>
     </Wrapper>
   )
 }

@@ -74,11 +74,6 @@ class CreateChannel extends React.PureComponent<IProps, IState> {
         >
           <Mutation mutation={CREATE_CHANNEL}>
             {(createChannel, { data, error }) => {
-              if (error) {
-              }
-
-              if (data) {
-              }
               return (
                 <div>
                   Create channel for {this.props.guildName}

@@ -2,7 +2,9 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   display: flex;
-  flex: 1;
+  position: relative;
+  height: 100%;
+  min-height: 0px;
   flex-direction: column;
   user-select: none;
   font-size: 16px;
@@ -10,7 +12,6 @@ const Wrapper = styled.div`
 
 const ChannelsWrapper = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;

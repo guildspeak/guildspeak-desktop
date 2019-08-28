@@ -2,7 +2,9 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   display: flex;
-  flex: 1;
+  position: relative;
+  height: 100%;
+  min-height: 0px;
   flex-direction: column;
 `
 

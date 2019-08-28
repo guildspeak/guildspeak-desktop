@@ -1,9 +1,11 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  flex: 1;
   user-select: none;
   font-size: 16px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 `
 const CreateButton = styled.div`
   cursor: pointer;
@@ -11,11 +13,9 @@ const CreateButton = styled.div`
     font-weight: 500;
     background: #2d2d31;
   }
-  width: 24px;
   font-size: 24px;
   margin-left: 5px;
   padding: 6px 5px 5px 5px;
-  background: #252529;
   border-radius: 2px;
 `
 

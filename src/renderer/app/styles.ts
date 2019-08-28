@@ -39,7 +39,6 @@ export const style = css`
     src: url(${fonts.francoisOneRegular}) format('truetype');
   }
 
-  html,
   body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -54,7 +53,8 @@ export const style = css`
 
 export const AppWrapper = styled.div`
   display: flex;
-  flex: 1;
+  width: 100vw;
   height: 100vh;
+  position: absolute;
   flex-direction: column;
 `

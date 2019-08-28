@@ -3,9 +3,32 @@ import Modal from 'styled-react-modal'
 
 const Wrapper = styled.div`
   padding: 8px;
-  flex: 1;
-  overflow: hidden;
+  display: flex;
+  position: relative;
+  height: 100%;
+  min-height: 0px;
   user-select: none;
+  flex-direction: column;
+`
+
+const InnerWrapper = styled.div`
+  display: flex;
+  user-select: none;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  min-height: 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 12px;
+    background-color: #2d2d31;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+    background-color: #44444c;
+  }
 `
 
 const Username = styled.div`
@@ -60,6 +83,7 @@ const UserName = styled.div`
   height: 1rem;
   width: 1rem;
 `
+
 const Avatar = styled.div`
   width: 80px;
   height: 80px;
@@ -76,4 +100,4 @@ const Avatar = styled.div`
   }
 `
 
-export { Wrapper, Username, StyledModal, FriendButton, UserName, Avatar }
+export { Wrapper, InnerWrapper, Username, StyledModal, FriendButton, UserName, Avatar }

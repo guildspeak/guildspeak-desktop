@@ -2,11 +2,9 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: row;
   justify-content: center;
-  height: 56px;
-  padding: 16px;
+  padding: 16px 16px 12px 16px;
 `
 
 const Input = styled.div`
