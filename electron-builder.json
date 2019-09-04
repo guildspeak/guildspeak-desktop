@@ -5,6 +5,7 @@
   "directories": {
     "output": "dist"
   },
+  "files": ["build/**/*", "package.json"],
   "linux": {
     "category": "Network",
     "target": [
@@ -19,7 +20,7 @@
     ]
   },
   "win": {
-    "target": ["zip", "nsis"]
+    "target": ["zip"]
   },
   "mac": {
     "category": "public.app-category.navigation"

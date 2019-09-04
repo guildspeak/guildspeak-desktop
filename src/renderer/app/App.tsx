@@ -1,5 +1,6 @@
 import { hot } from 'react-hot-loader/root'
 import React from 'react'
+import loadable from '@loadable/component'
 import { Provider } from 'react-redux'
 import { ApolloProvider } from 'react-apollo'
 import store from '../store'
@@ -10,29 +11,30 @@ import client from './client'
 import { style, AppWrapper } from './styles'
 import { ModalProvider } from 'styled-react-modal'
 import { Wrapper as LoadingWrapper } from '../components/Loading/styles'
-import { withLazyLoading } from '../utils/hoc'
+import { ErrorBoundary } from '../utils/hoc'
+import Loading from '../components/Loading'
 
 const GlobalStyle = createGlobalStyle`${style}`
 
-const LazyApplicationContainer = React.lazy(() => import('../containers/ApplicationContainer'))
+const StartupContainer = loadable(() => import('../containers/StartupContainer'), {
+  fallback: <Loading />
+})
 
-const ApplicationContainer = props => {
-  return (
-    <React.Suspense fallback={<LoadingWrapper>Starting Guildspeak...</LoadingWrapper>}>
-      <LazyApplicationContainer {...props} />
-    </React.Suspense>
-  )
-}
+const ApplicationContainer = loadable(() => import('../containers/ApplicationContainer'), {
+  fallback: <LoadingWrapper>Starting Guildspeak...</LoadingWrapper>
+})
 
-const LazyStartupContainer = React.lazy(() => import('../containers/StartupContainer'))
-const LazyLogin = React.lazy(() => import('../views/Login'))
-const LazyRegister = React.lazy(() => import('../views/Register'))
-const LazySettings = React.lazy(() => import('../views/Settings'))
+const Login = loadable(() => import('../views/Login'), {
+  fallback: <Loading />
+})
 
-const StartupContainer = props => withLazyLoading(props)(LazyStartupContainer)
-const Login = props => withLazyLoading(props)(LazyLogin)
-const Register = props => withLazyLoading(props)(LazyRegister)
-const Settings = props => withLazyLoading(props)(LazySettings)
+const Register = loadable(() => import('../views/Register'), {
+  fallback: <Loading />
+})
+
+const Settings = loadable(() => import('../views/Settings'), {
+  fallback: <Loading />
+})
 
 const App = () => (
   <ApolloProvider client={client}>
@@ -41,13 +43,15 @@ const App = () => (
       <AppWrapper>
         <Systembar />
         <ModalProvider>
-          <Router>
-            <Route path="/" component={StartupContainer} />
-            <Route path="/app" component={ApplicationContainer} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/settings" component={Settings} />
-          </Router>
+          <ErrorBoundary>
+            <Router>
+              <Route path="/" component={StartupContainer} />
+              <Route path="/app" component={ApplicationContainer} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route path="/settings" component={Settings} />
+            </Router>
+          </ErrorBoundary>
         </ModalProvider>
       </AppWrapper>
     </Provider>

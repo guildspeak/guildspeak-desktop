@@ -1,7 +1,8 @@
 const { resolve } = require('path')
 const merge = require('webpack-merge')
+const Dotenv = require('dotenv-webpack')
 
-const dev = process.env.NODE_ENV  === 'development'
+const dev = process.env.NODE_ENV === 'development'
 
 const config = {
   mode: dev ? 'development' : 'production',
@@ -9,15 +10,16 @@ const config = {
   output: {
     path: resolve(__dirname, 'build'),
     filename: '[name].bundle.js',
+    chunkFilename: '[name].[chunkhash].js',
+    libraryTarget: 'commonjs2'
   },
   module: {
     rules: [
       {
         test: [/\.jsx?$/, /\.tsx?$/],
         use: [
-          'cache-loader',
           {
-            loader: 'babel-loader',
+            loader: 'babel-loader'
           }
         ],
         exclude: /node_modules/,
@@ -25,6 +27,7 @@ const config = {
       }
     ]
   },
+  plugins: [new Dotenv()],
 
   node: {
     __dirname: false,
