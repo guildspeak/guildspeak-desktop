@@ -20,7 +20,7 @@
     ]
   },
   "win": {
-    "target": ["zip"]
+    "target": ["zip", "nsis"]
   },
   "mac": {
     "category": "public.app-category.navigation"
