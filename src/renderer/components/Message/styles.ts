@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '../../utils/styled-components'
 
 const Wrapper = styled.div`
   display: flex;
@@ -41,7 +41,7 @@ const DropdownButton = styled.div`
   }
   font-size: 18px;
   padding: 4px;
-  border-radius: 2px;
+  border-radius: 12px;
 `
 
 export { Wrapper, MessageContentWrapper, MessageBubble, MessageContent, Hr, DropdownButton }

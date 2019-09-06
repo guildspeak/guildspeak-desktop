@@ -1,24 +1,33 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from '../../utils/styled-components'
 
 const Wrapper = styled.div<{ id?: string; channelId?: string }>`
   display: flex;
   flex-direction: row;
+  cursor: pointer;
+  border: 1px solid #9e80a2;
+  border-radius: 24px;
+  margin: 0px 0px 8px 0px;
   ${props =>
-    props.channelId === props.id ? 'background: #2d2d31;font-weight: 500;' : ''} &:hover + Button {
-    color: #fff;
-    background: #2d2d31;
-  }
+    props.channelId === props.id &&
+    css`
+      background: #2d2d31;
+      color: ${props.theme.textColor};
+    `}
+
   &:hover {
+    color: ${({ theme }) => theme.textColor};
     background: #2d2d31;
   }
 `
 
 const ChannelName = styled.div`
+  &::before {
+    content: '#';
+    color: ${({ theme }) => theme.accentColor};
+  }
   padding: 8px;
-  color: #eeeeee;
   font-size: 16px;
   padding-top: 0.5rem;
-  cursor: pointer;
   text-transform: none;
 `
 

@@ -11,11 +11,11 @@
     "target": [
       {
         "target": "deb",
-        "arch": ["ia32", "x64"]
+        "arch": ["x64"]
       },
       {
         "target": "AppImage",
-        "arch": ["ia32", "x64"]
+        "arch": ["x64"]
       }
     ]
   },

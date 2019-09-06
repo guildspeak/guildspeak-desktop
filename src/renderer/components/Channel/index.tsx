@@ -17,11 +17,11 @@ const Channel = ({ id, name, channelId, history, setChannelId }: RouteComponentP
   }
 
   return (
-    <Wrapper id={id} channelId={channelId}>
-      <ChannelName onClick={changeChannel}>#{name}</ChannelName>
-      <IconButton id={id} channelId={channelId} className="material-icons">
-        settings
-      </IconButton>
+    <Wrapper id={id} channelId={channelId} onClick={changeChannel}>
+      <ChannelName>{name}</ChannelName>
+      {/* <IconButton id={id} channelId={channelId} className="material-icons">
+        expand_more
+      </IconButton> */}
     </Wrapper>
   )
 }

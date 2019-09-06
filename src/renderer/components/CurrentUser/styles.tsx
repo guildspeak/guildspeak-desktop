@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '../../utils/styled-components'
 
 const Wrapper = styled.div`
   height: 36px;
@@ -9,10 +9,6 @@ const Wrapper = styled.div`
 `
 
 const Username = styled.div`
-  color: #eeeeee;
-  &:hover {
-    color: #fff;
-  }
   cursor: pointer;
   font-family: 'Francois One', sans-serif;
 `
@@ -20,6 +16,7 @@ const Username = styled.div`
 const IconButton = styled.div`
   cursor: pointer;
   font-size: 18px;
+  color: ${({ theme }) => theme.accentColor};
 `
 
 const Buttons = styled.div`

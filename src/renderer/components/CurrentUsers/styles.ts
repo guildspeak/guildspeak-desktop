@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '../../utils/styled-components'
 import Modal from 'styled-react-modal'
 
 const Wrapper = styled.div`
@@ -46,7 +46,7 @@ const StyledModal = Modal.styled`
   width: 35rem;
   height: 15rem;
   display: flex;
-  background: #202020;
+  background: #151716;
   color: #cccccc;
   font-size: 16px;
   padding: 16px;

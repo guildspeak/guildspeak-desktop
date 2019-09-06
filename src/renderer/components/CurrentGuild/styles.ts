@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled from '../../utils/styled-components'
+import { Scrollbar } from '../shared'
 
 const Wrapper = styled.div`
   display: flex;
@@ -8,23 +9,17 @@ const Wrapper = styled.div`
   flex-direction: column;
   user-select: none;
   font-size: 16px;
+  box-shadow: 0px 1px 1px #9e80a2;
+  border-radius: 12px;
 `
 
-const ChannelsWrapper = styled.div`
+const ChannelsWrapper = styled(Scrollbar)`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
-  &::-webkit-scrollbar {
-    width: 12px;
-    background-color: #2d2d31;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
-    background-color: #44444c;
-  }
   font-size: 16px;
+  padding: 8px;
 `
 
 export { Wrapper, ChannelsWrapper }

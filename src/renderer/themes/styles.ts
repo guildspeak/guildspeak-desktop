@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from '../utils/styled-components'
 
 const fonts = {
   robotoRegular: require('../assets/fonts/Roboto/Roboto-Regular.ttf'),
@@ -12,6 +12,8 @@ export const style = css`
   *::before,
   *::after {
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   @font-face {
@@ -45,8 +47,9 @@ export const style = css`
     padding: 0;
     width: 100vw;
     height: 100vh;
-    background: #202020;
-    color: #ffffff;
+    background: ${({ theme }) => theme.backgroundColor};
+    color: ${({ theme }) => theme.textColor};
+    caret-color: ${({ theme }) => theme.accentColor};
     overflow: hidden;
   }
 `

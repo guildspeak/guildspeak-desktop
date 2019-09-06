@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '../../utils/styled-components'
 
 const Wrapper = styled.div`
   user-select: none;
@@ -8,15 +8,23 @@ const Wrapper = styled.div`
   flex-direction: row;
 `
 const CreateButton = styled.div`
-  cursor: pointer;
+  display: flex;
+  height: 48px;
+  width: 48px;
+  background: ${({ theme }) => theme.accentColor};
   &:hover {
-    font-weight: 500;
-    background: #2d2d31;
+    background: ${({ theme }) => theme.accentHoverColor};
+    transition: all 0.25s ease-in-out;
   }
+  color: ${({ theme }) => theme.backgroundColor};
+  border-radius: 48px;
+  margin: 0px 8px 0px 0px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
   font-size: 24px;
-  margin-left: 5px;
-  padding: 6px 5px 5px 5px;
-  border-radius: 2px;
 `
 
 const NameInput = styled.input`

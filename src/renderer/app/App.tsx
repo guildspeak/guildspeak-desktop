@@ -4,15 +4,16 @@ import loadable from '@loadable/component'
 import { Provider } from 'react-redux'
 import { ApolloProvider } from 'react-apollo'
 import store from '../store'
-import { createGlobalStyle } from 'styled-components'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Systembar from '../components/Systembar'
 import client from './client'
-import { style, AppWrapper } from './styles'
+import { style, AppWrapper } from '../themes/styles'
 import { ModalProvider } from 'styled-react-modal'
 import { Wrapper as LoadingWrapper } from '../components/Loading/styles'
 import { ErrorBoundary } from '../utils/hoc'
 import Loading from '../components/Loading'
+import { ThemeProvider, createGlobalStyle } from '../utils/styled-components'
+import darkTheme from '../themes/dark'
 
 const GlobalStyle = createGlobalStyle`${style}`
 
@@ -39,21 +40,25 @@ const Settings = loadable(() => import('../views/Settings'), {
 const App = () => (
   <ApolloProvider client={client}>
     <Provider store={store}>
-      <GlobalStyle />
-      <AppWrapper>
-        <Systembar />
-        <ModalProvider>
-          <ErrorBoundary>
-            <Router>
-              <Route path="/" component={StartupContainer} />
-              <Route path="/app" component={ApplicationContainer} />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-              <Route path="/settings" component={Settings} />
-            </Router>
-          </ErrorBoundary>
-        </ModalProvider>
-      </AppWrapper>
+      <ThemeProvider theme={darkTheme}>
+        <>
+          <GlobalStyle />
+          <AppWrapper>
+            <Systembar />
+            <ModalProvider>
+              <ErrorBoundary>
+                <Router>
+                  <Route path="/" component={StartupContainer} />
+                  <Route path="/app" component={ApplicationContainer} />
+                  <Route path="/login" component={Login} />
+                  <Route path="/register" component={Register} />
+                  <Route path="/settings" component={Settings} />
+                </Router>
+              </ErrorBoundary>
+            </ModalProvider>
+          </AppWrapper>
+        </>
+      </ThemeProvider>
     </Provider>
   </ApolloProvider>
 )

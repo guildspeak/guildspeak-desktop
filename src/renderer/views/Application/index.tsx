@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react'
 import Sidebar from '../../components/Sidebar'
 import Messages from '../../components/Messages'
-import MessageInputContainer from '../../containers/MessageInputContainer'
 import { Route, withRouter, RouteComponentProps } from 'react-router-dom'
-import { MainWrapper, SecondColumn, ThirdColumn, Column, Row } from './styles'
+import { MainWrapper, SecondColumn, ThirdColumn, Row } from './styles'
 import CurrentUsersContainer from '../../containers/CurrentUsersContainer'
 import Guilds from '../../components/Guilds'
-import CurrentGuildContainer from '../../containers/CurrentGuildContainer'
-import Systembar from '../../components/Systembar'
 
 const renderMessages = params => (
   // @ts-ignore

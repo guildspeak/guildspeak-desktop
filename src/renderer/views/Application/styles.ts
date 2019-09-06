@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '../../utils/styled-components'
 
 const MainWrapper = styled.div`
   display: flex;
@@ -6,7 +6,7 @@ const MainWrapper = styled.div`
   height: 100%;
   min-height: 0px;
   flex-direction: column;
-  padding: 4px;
+  padding: 16px;
 `
 
 const Column = styled.div`
@@ -33,6 +33,7 @@ const SecondColumn = styled.div`
 
 const ThirdColumn = styled.div`
   flex: 0.6;
+  min-width: 180px;
   display: flex;
   position: relative;
   height: 100%;

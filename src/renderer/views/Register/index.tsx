@@ -80,8 +80,7 @@ class Register extends React.Component<Props, IState> {
               console.error(error)
               if (error.toString().includes('unique')) {
                 alert('This username or email is already taken!')
-              }
-              else alert('Unknown error. Check console for more details')
+              } else alert('Unknown error. Check console for more details')
             }
 
             if (data) {

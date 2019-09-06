@@ -1,18 +1,18 @@
-import styled from 'styled-components'
+import styled from '../../utils/styled-components'
 import Button from '../Button'
 
 const Wrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: row;
-  background: #202020;
+  background: #151716;
   font-size: 18px;
   user-select: none;
   cursor: default;
 `
 
 const LogOutButton = styled(Button)`
-  background: #202020;
+  background: #151716;
   color: #ff3333;
   font-size: 18px;
   &:hover {
@@ -21,7 +21,7 @@ const LogOutButton = styled(Button)`
 `
 
 const SettingsButton = styled(Button)`
-  background: #202020;
+  background: #151716;
   color: #eaeaeb;
   font-size: 18px;
   &:hover {

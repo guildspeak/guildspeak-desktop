@@ -13,7 +13,7 @@ function createWindow() {
     minHeight: 504,
     title: 'Guildspeak',
     frame: false,
-    backgroundColor: '#202020',
+    backgroundColor: '#151716',
     webPreferences: {
       nodeIntegration: true,
       webSecurity: false

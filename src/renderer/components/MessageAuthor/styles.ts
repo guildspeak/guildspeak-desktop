@@ -1,16 +1,16 @@
-import styled from 'styled-components'
+import styled from '../../utils/styled-components'
 import Modal from 'styled-react-modal'
 
 const Wrapper = styled.div`
   &:hover {
-    color: #14bca3;
+    color: ${({ theme }) => theme.accentColor};
     text-decoration: underline;
   }
   cursor: pointer;
 `
 
 const StyledModal = Modal.styled`
-  background: #202020;
+  background: #151716;
   color: #cccccc;
   font-size: 16px;
   padding: 16px;

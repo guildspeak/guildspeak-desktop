@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled from '../../utils/styled-components'
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 26px;
-  padding-left: 4px;
-  background: #202020;
+  height: 18px;
+  padding: 8px 8px 0px 16px;
+  background: ${({ theme }) => theme.backgroundColor};
   user-select: none;
 `
 
@@ -13,23 +13,21 @@ const WrapperLine = styled.div`
   display: flex;
   flex-direction: row;
   height: 1px;
-  background: #202020;
+  background: ${({ theme }) => theme.backgroundColor};
   -webkit-app-region: no-drag;
 `
 
 const WrapperItems = styled.div`
   display: flex;
   flex-direction: row;
-  height: 24;
   -webkit-app-region: drag;
 `
 
 const Title = styled.div`
   -webkit-app-region: drag;
   cursor: default;
-  font-family: 'Francois One', sans-serif;
-  padding-top: 2px;
-  padding-left: 4px;
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 2px 0px 0px 4px;
   font-size: 16px;
 `
 
@@ -40,7 +38,6 @@ const Button = styled.div`
     background: rgba(255, 255, 255, 0.24);
   }
   font-size: 18px;
-  margin-top: -1px;
   padding: 4px;
 `
 

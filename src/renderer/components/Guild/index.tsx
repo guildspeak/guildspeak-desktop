@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Wrapper, GuildName } from './styles'
+import { Wrapper } from './styles'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 
 interface IProps {
@@ -25,8 +25,8 @@ const Guild = ({
   }
 
   return (
-    <Wrapper onClick={changeGuild}>
-      <GuildName>{name}</GuildName>
+    <Wrapper onClick={changeGuild} title={name}>
+      {name.slice(1, 2)}
     </Wrapper>
   )
 }

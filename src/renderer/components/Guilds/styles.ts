@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '../../utils/styled-components'
 
 const Wrapper = styled.div`
   display: flex;
@@ -6,7 +6,9 @@ const Wrapper = styled.div`
   overflow: hidden;
   user-select: none;
   font-size: 16px;
-  padding: 2px 0px 5px 0px;
+  height: 72px;
+  align-items: center;
+  box-shadow: inset 0px -1px 0px rgba(158, 128, 162, 0.25);
 `
 
 export { Wrapper }

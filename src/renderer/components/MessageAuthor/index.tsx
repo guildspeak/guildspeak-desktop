@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Wrapper, StyledModal, FriendButton, UserName } from './styles'
 
 export interface MessageAuthorData {
@@ -6,39 +6,28 @@ export interface MessageAuthorData {
   username: string
 }
 
-interface IProps {
+interface Props {
   readonly author: MessageAuthorData
 }
 
-interface IState {
-  isOpen: boolean
-  opacity: number
-}
+const MessageAuthor = ({ author }: Props) => {
+  const [isOpen, setOpen] = useState<boolean>(false)
+  const [opacity, setOpacity] = useState<number>(0)
 
-const MessageAuthor = ({ author }: IProps) => {
-  const [state, setState] = useState<IState>({
-    isOpen: false,
-    opacity: 0
-  })
-
-  const toggleModal = () => setState({ ...state, isOpen: !state.isOpen })
-
-  const afterOpen = () => setState({ ...state, opacity: 1 })
-
-  const beforeClose = () => {
-    setState({ ...state, opacity: 0 })
-  }
+  const toggleModal = () => setOpen(!isOpen)
+  const afterOpen = () => setOpacity(1)
+  const beforeClose = () => setOpacity(0)
 
   return (
     <Wrapper>
       <div onClick={toggleModal}>{author.username}</div>
       <StyledModal
-        isOpen={state.isOpen}
+        isOpen={isOpen}
         afterOpen={afterOpen}
         beforeClose={beforeClose}
         onBackgroundClick={toggleModal}
         onEscapeKeydown={toggleModal}
-        opacity={state.opacity}
+        opacity={opacity}
       >
         <UserName>{author.username}</UserName>
         <FriendButton>Send Friend Request</FriendButton>
