@@ -3,8 +3,8 @@ import styled from '../../utils/styled-components'
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 18px;
-  padding: 8px 8px 0px 16px;
+  flex: 1;
+  padding: 8px 8px 0px 12px;
   background: ${({ theme }) => theme.backgroundColor};
   user-select: none;
 `
@@ -25,9 +25,8 @@ const WrapperItems = styled.div`
 
 const Title = styled.div`
   -webkit-app-region: drag;
-  cursor: default;
   font-family: 'Roboto Condensed', sans-serif;
-  padding: 2px 0px 0px 4px;
+  padding: 4px 0px 0px 4px;
   font-size: 16px;
 `
 

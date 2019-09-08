@@ -26,7 +26,7 @@ const Guild = ({
 
   return (
     <Wrapper onClick={changeGuild} title={name}>
-      {name.slice(1, 2)}
+      {name.slice(0, 1)}
     </Wrapper>
   )
 }

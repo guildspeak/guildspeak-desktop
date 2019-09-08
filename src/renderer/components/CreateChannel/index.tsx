@@ -1,8 +1,7 @@
 import * as React from 'react'
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
-import { Wrapper, CreateButton, NameInput, ChannelInput } from './styles'
-import { StyledModal } from '../MessageAuthor/styles'
+import { Wrapper, CreateButton, NameInput, ChannelInput, StyledModal } from './styles'
 import Button from '../Button'
 
 const CREATE_CHANNEL = gql`

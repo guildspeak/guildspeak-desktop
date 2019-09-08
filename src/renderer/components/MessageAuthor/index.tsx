@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Wrapper, StyledModal, FriendButton, UserName } from './styles'
+import { Wrapper, FriendButton, UserName, StyledModal } from './styles'
 
 export interface MessageAuthorData {
   id: string

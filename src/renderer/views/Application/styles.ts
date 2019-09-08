@@ -39,6 +39,7 @@ const ThirdColumn = styled.div`
   height: 100%;
   min-height: 0px;
   flex-direction: column;
+  padding: 0px 0px 12px 0px;
 `
 
 export { Column, Row, MainWrapper, SecondColumn, ThirdColumn }

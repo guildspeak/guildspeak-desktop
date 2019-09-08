@@ -4,14 +4,15 @@ import { useQuery } from 'react-apollo'
 import {
   Wrapper,
   Username,
-  StyledModal,
   FriendButton,
-  UserName,
-  Avatar,
-  InnerWrapper
+  InnerWrapper,
+  UserWrapper,
+  UserStatus,
+  StyledModal
 } from './styles'
 import { RouteComponentProps } from 'react-router'
 import Loading from '../Loading'
+import Avatar from '../Avatar'
 
 const GET_USERS = gql`
   query guild($id: ID!) {
@@ -28,22 +29,19 @@ interface IProps {
   readonly guildId: string
 }
 
-interface IState {
-  isOpen: boolean
-  opacity: number
-  selectedUser: string
-}
-
 const CurrentUsers = ({ guildId }: IProps & RouteComponentProps) => {
-  const [state, setState] = useState<IState>({
-    isOpen: false,
-    opacity: 0,
-    selectedUser: ''
-  })
+  const [isOpen, setOpen] = useState<boolean>(false)
+  const [opacity, setOpacity] = useState<number>(0)
+  const [selectedUser, setSelectedUser] = useState<string>('')
+
+  const toggleModal = () => setOpen(!isOpen)
+  const afterOpen = () => setOpacity(1)
+  const beforeClose = () => setOpacity(0)
+  const selectCurrentUser = (username: string) => () => setSelectedUser(username)
 
   const handleEsc = useCallback((e: KeyboardEvent) => {
-    if (e.keyCode === 27 && this.state.isOpen) {
-      setState({ ...state, isOpen: false })
+    if (e.keyCode === 27 && isOpen) {
+      setOpen(false)
     }
   }, [])
 
@@ -52,22 +50,6 @@ const CurrentUsers = ({ guildId }: IProps & RouteComponentProps) => {
     return () => document.removeEventListener('keydown', handleEsc, false)
   }, [handleEsc])
 
-  const toggleModal = () => {
-    setState({ ...state, isOpen: !state.isOpen })
-  }
-
-  const selectCurrentUser = (username: string) => () => {
-    setState({ ...state, selectedUser: username })
-  }
-
-  const afterOpen = () => {
-    setState({ ...state, opacity: 1 })
-  }
-
-  const beforeClose = () => {
-    setState({ ...state, opacity: 0 })
-  }
-
   const { loading, error, data } = useQuery(GET_USERS, { variables: { id: guildId } })
 
   if (loading) return <Loading />
@@ -75,25 +57,24 @@ const CurrentUsers = ({ guildId }: IProps & RouteComponentProps) => {
 
   return (
     <Wrapper>
-      <div>Members</div>
       <InnerWrapper>
-        {data.guild.users.map(el => (
-          <div onClick={toggleModal} key={el.id}>
-            <Username onClick={selectCurrentUser(el.username)}>{el.username}</Username>
-          </div>
+        {data.guild.users.map(user => (
+          <UserWrapper onClick={toggleModal} key={user.id}>
+            <Avatar size={36}>{user.username.slice(0, 1)}</Avatar>
+            <UserStatus status={user.status} />
+            <Username onClick={selectCurrentUser(user.username)}>{user.username}</Username>
+          </UserWrapper>
         ))}
         <StyledModal
-          isOpen={state.isOpen}
+          isOpen={isOpen}
           afterOpen={afterOpen}
           beforeClose={beforeClose}
           onBackgroundClick={toggleModal}
           onEscapeKeydown={toggleModal}
-          opacity={state.opacity}
+          opacity={opacity}
         >
-          <Avatar>
-            <img src="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
-          </Avatar>
-          <UserName>{state.selectedUser}</UserName>
+          <Avatar url="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
+          <Username>{selectedUser}</Username>
           <FriendButton>Send Friend Request</FriendButton>
         </StyledModal>
       </InnerWrapper>

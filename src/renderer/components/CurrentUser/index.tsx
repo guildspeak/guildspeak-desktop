@@ -1,14 +1,17 @@
-import * as React from 'react'
+import React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Wrapper, Username, Buttons, IconButton } from './styles'
+import Status from '../Status'
 import gql from 'graphql-tag'
 import { useQuery } from 'react-apollo'
 import Loading from '../Loading'
+import Avatar from '../Avatar'
 
 const GET_ME = gql`
   query {
     me {
       username
+      status
     }
   }
 `
@@ -25,6 +28,8 @@ const CurrentUser = ({ history }: RouteComponentProps) => {
 
   return (
     <Wrapper>
+      <Avatar>{data.me.username.slice(0, 1)}</Avatar>
+      <Status status={data.me.status} />
       <Username>{data.me.username}</Username>
       <Buttons>
         <IconButton onClick={handleSettings} className="material-icons">
@@ -35,4 +40,4 @@ const CurrentUser = ({ history }: RouteComponentProps) => {
   )
 }
 
-export default withRouter(CurrentUser as React.FunctionComponent)
+export default withRouter(CurrentUser)

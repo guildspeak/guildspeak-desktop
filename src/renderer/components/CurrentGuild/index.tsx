@@ -71,7 +71,6 @@ const CurrentGuild = ({ guildId }: IProps & RouteComponentProps) => {
         ))}
       </ChannelsWrapper>
       <CreateChannel guildId={guildId} guildName={data.guild.name} />
-      <CurrentUser />
     </Wrapper>
   )
 }

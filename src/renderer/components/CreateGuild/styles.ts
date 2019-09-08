@@ -1,4 +1,5 @@
 import styled from '../../utils/styled-components'
+import Modal from 'styled-react-modal'
 
 const Wrapper = styled.div`
   user-select: none;
@@ -45,5 +46,13 @@ const NameInput = styled.input`
     outline: none;
   }
 `
-
+export const StyledModal = Modal.styled`
+  background: ${({ theme }) => theme.backgroundColor};
+  opacity: ${(props: { opacity: number }) => props.opacity};
+  font-size: 16px;
+  padding: 16px;
+  transition: opacity ease 200ms;
+  border: none;
+  border-radius: 8px;
+`
 export { Wrapper, CreateButton, NameInput }

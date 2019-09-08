@@ -1,4 +1,5 @@
 import styled from '../../utils/styled-components'
+import Modal from 'styled-react-modal'
 
 const Wrapper = styled.div`
   user-select: none;
@@ -6,17 +7,24 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: row;
+  padding: 4px;
 `
+
 const CreateButton = styled.div`
-  cursor: pointer;
+  display: flex;
+  height: 24px;
+  width: 24px;
   &:hover {
-    font-weight: 500;
-    background: #2d2d31;
+    background: ${({ theme }) => theme.accentHoverColor};
+    transition: all 0.25s ease-in-out;
   }
-  font-size: 24px;
-  margin-left: 5px;
-  padding: 6px 5px 5px 5px;
-  border-radius: 2px;
+  border-radius: 24px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
 `
 
 const NameInput = styled.input`
@@ -40,6 +48,16 @@ const NameInput = styled.input`
 
 const ChannelInput = styled.div`
   padding-top: 10px;
+`
+
+export const StyledModal = Modal.styled`
+  background: ${({ theme }) => theme.backgroundColor};
+  opacity: ${(props: { opacity: number }) => props.opacity};
+  font-size: 16px;
+  padding: 16px;
+  transition: opacity ease 200ms;
+  border: none;
+  border-radius: 8px;
 `
 
 export { Wrapper, CreateButton, NameInput, ChannelInput }

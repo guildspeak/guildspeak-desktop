@@ -1,7 +1,7 @@
 import * as React from 'react'
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
-import { Wrapper, Input } from './styles'
+import { Wrapper, Input, Button, Buttons } from './styles'
 import Editor from 'draft-js-plugins-editor'
 import { EditorState, DraftHandleValue, ContentState } from 'draft-js'
 import 'draft-js/dist/Draft.css'
@@ -98,6 +98,10 @@ class MessageInput extends React.PureComponent<IProps, IState> {
                 handleReturn={this.handleReturn(createMessage)}
               />
             </Input>
+            <Buttons>
+              <Button className="material-icons">image</Button>
+              <Button className="material-icons">insert_emoticon</Button>
+            </Buttons>
             {/* <EmojiSelect /> */}
           </Wrapper>
         )}

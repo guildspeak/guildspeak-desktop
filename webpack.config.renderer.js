@@ -1,6 +1,5 @@
 const { join, resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 const webpack = require('webpack')
 const { getConfig, dev } = require('./webpack.config.base')
 

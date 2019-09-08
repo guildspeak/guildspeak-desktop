@@ -9,17 +9,6 @@ const Wrapper = styled.div`
   cursor: pointer;
 `
 
-const StyledModal = Modal.styled`
-  background: #151716;
-  color: #cccccc;
-  font-size: 16px;
-  padding: 16px;
-  opacity: ${props => props.opacity};
-  transition: opacity ease 200ms;
-  border: none;
-  border-radius: 8px;
-`
-
 const FriendButton = styled.button`
   height: 36px;
   margin-top: 18px;
@@ -49,4 +38,14 @@ const UserName = styled.div`
   width: 3rem;
 `
 
-export { Wrapper, StyledModal, FriendButton, UserName }
+export const StyledModal = Modal.styled`
+  background: ${({ theme }) => theme.backgroundColor};
+  opacity: ${(props: { opacity: number }) => props.opacity};
+  font-size: 16px;
+  padding: 16px;
+  transition: opacity ease 200ms;
+  border: none;
+  border-radius: 8px;
+`
+
+export { Wrapper, FriendButton, UserName }

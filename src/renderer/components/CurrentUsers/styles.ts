@@ -1,61 +1,55 @@
 import styled from '../../utils/styled-components'
+import { Scrollbar } from '../shared'
+import Status from '../Status'
 import Modal from 'styled-react-modal'
 
-const Wrapper = styled.div`
-  padding: 8px;
+export const Wrapper = styled.div`
+  padding: 12px;
   display: flex;
   position: relative;
   height: 100%;
   min-height: 0px;
   user-select: none;
   flex-direction: column;
+  box-shadow: 0.25px 0.5px 0px #9e80a2;
+  border-radius: 12px;
 `
 
-const InnerWrapper = styled.div`
+export const InnerWrapper = styled(Scrollbar)`
   display: flex;
   user-select: none;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
   height: 100%;
   min-height: 0px;
   overflow-y: auto;
   overflow-x: hidden;
-  &::-webkit-scrollbar {
-    width: 12px;
-    background-color: #2d2d31;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
-    background-color: #44444c;
-  }
 `
 
-const Username = styled.div`
-  padding: 8px;
+export const UserWrapper = styled.div`
+  height: 48px;
   flex: 1;
-  overflow: hidden;
-  user-select: none;
-  &:hover {
-    color: #14bca3;
-    background: #2d2d31;
-  }
-  cursor: pointer;
-`
-const StyledModal = Modal.styled`
-  width: 35rem;
-  height: 15rem;
   display: flex;
-  background: #151716;
-  color: #cccccc;
-  font-size: 16px;
-  padding: 16px;
-  transition: opacity ease 200ms;
-  border: none;
-  border-radius: 8px;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+  position: relative;
+  cursor: pointer;
+  background: ${({ theme }) => theme.borderColor};
+  border-radius: 45px;
 `
 
-const FriendButton = styled.button`
+export const Username = styled.div`
+  display: flex;
+  font-size: 14px;
+`
+
+export const UserStatus = styled(Status)`
+  left: 33px;
+  top: 32px;
+`
+
+export const FriendButton = styled.button`
   height: 36px;
   margin-top: 18px;
   margin-left: 13rem;
@@ -75,29 +69,12 @@ const FriendButton = styled.button`
   }
 `
 
-const UserName = styled.div`
-  float: right;
-  margin-left: 5px;
-  margin-right: 50px;
-  margin-top: 28px;
-  height: 1rem;
-  width: 1rem;
+export const StyledModal = Modal.styled`
+  background: ${({ theme }) => theme.backgroundColor};
+  opacity: ${(props: { opacity: number }) => props.opacity};
+  font-size: 16px;
+  padding: 16px;
+  transition: opacity ease 200ms;
+  border: none;
+  border-radius: 8px;
 `
-
-const Avatar = styled.div`
-  width: 80px;
-  height: 80px;
-  float: left;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  margin-left: 0px;
-  margin-right: 20px;
-  border-radius: 20px;
-  img {
-    width: 80px;
-    height: 80px;
-    border-radius: 60px;
-  }
-`
-
-export { Wrapper, InnerWrapper, Username, StyledModal, FriendButton, UserName, Avatar }
