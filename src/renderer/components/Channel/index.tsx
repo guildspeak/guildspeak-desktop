@@ -2,12 +2,12 @@ import React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Wrapper, ChannelName, IconButton } from './styles'
 
-interface IProps {
-  readonly id: string
-  readonly name: string
-  readonly channelId: string
-  readonly setChannelId: (channelId: string) => any
-  readonly setChannelName: (channelName: string) => any
+type IProps = {
+  id: string
+  name: string
+  channelId: string
+  setChannelId: (channelId: string) => any
+  setChannelName: (channelName: string) => any
 }
 
 const Channel = ({ id, name, channelId, history, setChannelId }: RouteComponentProps & IProps) => {

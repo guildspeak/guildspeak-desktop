@@ -1,8 +1,8 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import gql from 'graphql-tag'
-import { Mutation } from 'react-apollo'
+import { useMutation } from '@apollo/react-hooks'
 import WelcomeContainer from '../../containers/WelcomeContainer'
-import { withRouter } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import {
   Wrapper,
   RegisterForm,
@@ -26,89 +26,54 @@ const REGISTER = gql`
   }
 `
 
-interface IState {
-  email?: string
-  password?: string
-  username?: string
-}
+const Register = ({ history }: RouteComponentProps) => {
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [username, setUsername] = useState<string>('')
 
-interface Props {
-  token: string
-  store: any
-  history: any
-}
+  const [register, { data, error }] = useMutation(REGISTER)
 
-class Register extends React.Component<Props, IState> {
-  state = {
-    email: '',
-    password: '',
-    username: ''
-  }
-
-  hangleRegister = registerMutation => () => {
+  const hangleRegister = registerMutation => () => {
     registerMutation({
       variables: {
-        email: this.state.email,
-        password: this.state.password,
-        username: this.state.username
+        email,
+        password,
+        username
       }
     })
   }
 
-  handleEmail = e => {
-    this.setState({ email: e.target.value })
+  const handleEmail = e => setEmail(e.target.value)
+  const handlePassword = e => setPassword(e.target.value)
+  const handleUsername = e => setUsername(e.target.value)
+
+  const handleLogin = () => history.push('login')
+
+  if (error) {
+    if (error.toString().includes('unique')) {
+      alert('This username or email is already taken!')
+    } else alert('Unknown error. Check console for more details')
   }
 
-  handleUsername = e => {
-    this.setState({ username: e.target.value })
+  if (data) {
+    return <WelcomeContainer data={data} />
   }
 
-  handlePassword = e => {
-    this.setState({ password: e.target.value })
-  }
-
-  handleLogin = () => {
-    this.props.history.push('login')
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <Mutation mutation={REGISTER}>
-          {(register, { data, error }) => {
-            if (error) {
-              console.error(error)
-              if (error.toString().includes('unique')) {
-                alert('This username or email is already taken!')
-              } else alert('Unknown error. Check console for more details')
-            }
-
-            if (data) {
-              return <WelcomeContainer data={data} />
-            }
-
-            return (
-              <RegisterForm>
-                <RegisterLogo />
-                <Info>Create your Guildspeak account</Info>
-                <UsernameInput onChange={this.handleUsername} placeholder="Username" />
-                <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
-                <PasswordInput
-                  type="password"
-                  onChange={this.handlePassword}
-                  placeholder="Password"
-                />
-                <RegisterButton primary={true} onClick={this.hangleRegister(register)}>
-                  Register
-                </RegisterButton>
-                <BackButton onClick={this.handleLogin}>I have account! Let's log in.</BackButton>
-              </RegisterForm>
-            )
-          }}
-        </Mutation>
-      </Wrapper>
-    )
-  }
+  return (
+    <Wrapper>
+      <RegisterForm>
+        <RegisterLogo />
+        <Info>Create your Guildspeak account</Info>
+        <UsernameInput onChange={handleUsername} placeholder="Username" />
+        <EmailInput type="email" onChange={handleEmail} placeholder="E-mail" />
+        <PasswordInput type="password" onChange={handlePassword} placeholder="Password" />
+        <RegisterButton primary={true} onClick={hangleRegister(register)}>
+          Register
+        </RegisterButton>
+        <BackButton onClick={handleLogin}>I have account! Let's log in.</BackButton>
+      </RegisterForm>
+    </Wrapper>
+  )
 }
 
-export default withRouter(Register as any)
+export default withRouter(Register)

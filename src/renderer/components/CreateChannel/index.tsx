@@ -1,6 +1,6 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import gql from 'graphql-tag'
-import { Mutation } from 'react-apollo'
+import { useMutation } from '@apollo/react-hooks'
 import { Wrapper, CreateButton, NameInput, ChannelInput, StyledModal } from './styles'
 import Button from '../Button'
 
@@ -13,82 +13,54 @@ const CREATE_CHANNEL = gql`
   }
 `
 
-interface IProps {
+interface Props {
   readonly guildId: string
   readonly guildName: string
 }
 
-interface IState {
-  name: string
-  isOpen: boolean
-  opacity: number
+const CreateChannel = ({ guildName, guildId }: Props) => {
+  const [isOpen, setOpen] = useState<boolean>(false)
+  const [opacity, setOpacity] = useState<number>(0)
+  const [name, setName] = useState<string>('')
+
+  const toggleModal = () => setOpen(!isOpen)
+  const afterOpen = () => setOpacity(1)
+  const beforeClose = () => setOpacity(0)
+
+  const handleCreateChannel = createChannel => () => {
+    createChannel({ variables: { name, guildId } })
+    toggleModal()
+  }
+
+  const handleName = e => setName(e.target.value)
+
+  const [createChannel] = useMutation(CREATE_CHANNEL)
+
+  return (
+    <Wrapper>
+      <CreateButton className="material-icons" onClick={toggleModal}>
+        add
+      </CreateButton>
+      <StyledModal
+        isOpen={isOpen}
+        afterOpen={afterOpen}
+        beforeClose={beforeClose}
+        onBackgroundClick={toggleModal}
+        onEscapeKeydown={toggleModal}
+        opacity={opacity}
+      >
+        <div>
+          Create channel for {guildName}
+          <ChannelInput>
+            <NameInput onChange={handleName} placeholder="name" />
+            <Button primary={true} onClick={handleCreateChannel(createChannel)}>
+              Create
+            </Button>
+          </ChannelInput>
+        </div>
+      </StyledModal>
+    </Wrapper>
+  )
 }
 
-class CreateChannel extends React.PureComponent<IProps, IState> {
-  state = {
-    name: '',
-    isOpen: false,
-    opacity: 0
-  }
-
-  toggleModal = () => {
-    this.setState({ isOpen: !this.state.isOpen })
-  }
-
-  afterOpen = () => {
-    setTimeout(() => {
-      this.setState({ opacity: 1 })
-    })
-  }
-
-  beforeClose = () => {
-    return new Promise(resolve => {
-      this.setState({ opacity: 0 })
-      setTimeout(resolve, 200)
-    })
-  }
-
-  handleCreateChannel = createChannel => () => {
-    createChannel({ variables: { name: this.state.name, guildId: this.props.guildId } })
-    this.toggleModal()
-  }
-
-  handleName = e => {
-    this.setState({ name: e.target.value })
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <CreateButton className="material-icons" onClick={this.toggleModal}>
-          add
-        </CreateButton>
-        <StyledModal
-          isOpen={this.state.isOpen}
-          afterOpen={this.afterOpen}
-          beforeClose={this.beforeClose}
-          onBackgroundClick={this.toggleModal}
-          onEscapeKeydown={this.toggleModal}
-          opacity={this.state.opacity}
-        >
-          <Mutation mutation={CREATE_CHANNEL}>
-            {(createChannel, { data, error }) => {
-              return (
-                <div>
-                  Create channel for {this.props.guildName}
-                  <ChannelInput>
-                    <NameInput onChange={this.handleName} placeholder="name" />
-                    <Button primary={true} onClick={this.handleCreateChannel(createChannel)}>
-                      Create
-                    </Button>
-                  </ChannelInput>
-                </div>
-              )
-            }}
-          </Mutation>
-        </StyledModal>
-      </Wrapper>
-    )
-  }
-}
 export default CreateChannel

@@ -1,14 +1,14 @@
-import * as React from 'react'
+import React from 'react'
 import MessageAuthor, { MessageAuthorData } from '../MessageAuthor'
 import MessageTimestamp from '../MessageTimestamp'
 import { Wrapper } from './styles'
 
-interface IProps {
-  readonly author: MessageAuthorData
-  readonly time: string
+type Props = {
+  author: MessageAuthorData
+  time: string
 }
 
-const MessageHeader = ({ author, time }: IProps) => (
+const MessageHeader = ({ author, time }: Props) => (
   <Wrapper>
     <MessageAuthor author={author} />
     <MessageTimestamp time={time} />

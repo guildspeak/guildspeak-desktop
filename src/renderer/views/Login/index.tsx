@@ -1,8 +1,8 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import gql from 'graphql-tag'
-import { Mutation } from 'react-apollo'
+import { useMutation } from '@apollo/react-hooks'
 import WelcomeContainer from '../../containers/WelcomeContainer'
-import { withRouter } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import {
   Wrapper,
   LoginForm,
@@ -26,76 +26,43 @@ const LOGIN = gql`
     }
   }
 `
+const Login = ({ history }: RouteComponentProps) => {
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
-interface IState {
-  email?: string
-  password?: string
+  const [login, { data, error }] = useMutation(LOGIN)
+
+  const handleLogin = loginMutation => () => {
+    loginMutation({ variables: { email, password } })
+  }
+
+  const handleEmail = e => setEmail(e.target.value)
+  const handleRegister = () => history.push('/register')
+  const handlePassword = e => setPassword(e.target.value)
+
+  if (error) {
+    return <ErrorAlert>{error.message}</ErrorAlert>
+  }
+
+  if (data) {
+    return <WelcomeContainer data={data} />
+  }
+
+  return (
+    <Wrapper>
+      <LoginForm>
+        <LoginLogo />
+        <Info>Log in to your Guildspeak account</Info>
+        <EmailInput type="email" onChange={handleEmail} placeholder="E-mail" />
+        <PasswordInput type="password" onChange={handlePassword} placeholder="Password" />
+        <ErrorLogin />
+        <LoginButton primary={true} onClick={handleLogin(login)}>
+          Login
+        </LoginButton>
+        <RegisterButton onClick={handleRegister}>Sign Up</RegisterButton>
+      </LoginForm>
+    </Wrapper>
+  )
 }
 
-interface IProps {
-  readonly history: any
-}
-
-class Login extends React.Component<IProps, IState> {
-  state = {
-    email: '',
-    password: ''
-  }
-
-  handleLogin = loginMutation => () => {
-    loginMutation({ variables: { email: this.state.email, password: this.state.password } })
-  }
-
-  handleEmail = e => {
-    this.setState({ email: e.target.value })
-  }
-
-  handleRegister = () => {
-    this.props.history.push('/register')
-  }
-
-  handlePassword = e => {
-    this.setState({ password: e.target.value })
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <Mutation mutation={LOGIN}>
-          {(login, { data, error }) => {
-            if (error) {
-              return <ErrorAlert>{error.toString()}</ErrorAlert>
-            }
-
-            if (data) {
-              return <WelcomeContainer data={data} />
-            }
-
-            return (
-              <LoginForm>
-                <LoginLogo />
-                <Info>Log in to your Guildspeak account</Info>
-
-                <EmailInput type="email" onChange={this.handleEmail} placeholder="E-mail" />
-                <PasswordInput
-                  type="password"
-                  onChange={this.handlePassword}
-                  placeholder="Password"
-                />
-
-                <ErrorLogin />
-
-                <LoginButton primary={true} onClick={this.handleLogin(login)}>
-                  Login
-                </LoginButton>
-                <RegisterButton onClick={this.handleRegister}>Sign Up</RegisterButton>
-              </LoginForm>
-            )
-          }}
-        </Mutation>
-      </Wrapper>
-    )
-  }
-}
-
-export default withRouter(Login as any)
+export default withRouter(Login)

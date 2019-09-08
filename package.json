@@ -97,6 +97,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.0",
     "@loadable/component": "^5.10.2",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
@@ -114,7 +115,6 @@
     "highlight.js": "^9.15.10",
     "marked": "^0.7.0",
     "react": "^16.9.0",
-    "react-apollo": "^3.1.0",
     "react-dom": "^16.9.0",
     "react-hot-loader": "^4.12.12",
     "react-redux": "^7.1.1",

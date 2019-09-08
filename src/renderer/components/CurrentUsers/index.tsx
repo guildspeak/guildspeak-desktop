@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import gql from 'graphql-tag'
-import { useQuery } from 'react-apollo'
+import { useQuery } from '@apollo/react-hooks'
 import {
   Wrapper,
   Username,
@@ -14,6 +14,10 @@ import { RouteComponentProps } from 'react-router'
 import Loading from '../Loading'
 import Avatar from '../Avatar'
 
+type Props = {
+  guildId: string
+}
+
 const GET_USERS = gql`
   query guild($id: ID!) {
     guild(id: $id) {
@@ -25,11 +29,8 @@ const GET_USERS = gql`
     }
   }
 `
-interface IProps {
-  readonly guildId: string
-}
 
-const CurrentUsers = ({ guildId }: IProps & RouteComponentProps) => {
+const CurrentUsers = ({ guildId }: Props & RouteComponentProps) => {
   const [isOpen, setOpen] = useState<boolean>(false)
   const [opacity, setOpacity] = useState<number>(0)
   const [selectedUser, setSelectedUser] = useState<string>('')

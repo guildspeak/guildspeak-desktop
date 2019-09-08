@@ -1,37 +1,18 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import gql from 'graphql-tag'
-import { Mutation } from 'react-apollo'
+import { useMutation } from '@apollo/react-hooks'
 import { Wrapper, Input, Button, Buttons } from './styles'
 import Editor from 'draft-js-plugins-editor'
 import { EditorState, DraftHandleValue, ContentState } from 'draft-js'
 import 'draft-js/dist/Draft.css'
 import createSingleLinePlugin from 'draft-js-single-line-plugin'
-import createEmojiPlugin from 'draft-js-emoji-plugin'
-import 'draft-js-emoji-plugin/lib/plugin.css'
+
+type Props = {
+  channelId: string
+}
 
 const singleLinePlugin = createSingleLinePlugin({ stripEntities: false })
-const emojiPlugin = createEmojiPlugin({
-  useNativeArt: true,
-  positionSuggestions: settings => {
-    return {
-      // tslint:disable-next-line:prefer-template
-      left: settings.decoratorRect.left - 14 + 'px',
-      // tslint:disable-next-line:prefer-template
-      top: settings.decoratorRect.top - 46 + 'px',
-      display: 'block',
-      transform: 'scale(1) translateY(-100%)',
-      transformOrigin: '1em 0% 0px',
-      transition: 'all 0.25s cubic-bezier(0.3, 1.2, 0.2, 1)',
-      boxShadow: 'none',
-      background: '#2e2e38',
-      backgroundColor: '#2e2e38',
-      color: '#fff'
-    }
-  }
-})
-
-const { EmojiSelect, EmojiSuggestions } = emojiPlugin
-const plugins = [singleLinePlugin, emojiPlugin]
+const plugins = [singleLinePlugin]
 
 const CREATE_MESSAGE = gql`
   mutation createMessage($content: String!, $channelId: ID!) {
@@ -42,72 +23,49 @@ const CREATE_MESSAGE = gql`
   }
 `
 
-interface IState {
-  editorState: EditorState | string
-}
+const MessageInput = ({ channelId }: Props) => {
+  const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty())
+  const [createMessage] = useMutation(CREATE_MESSAGE)
 
-interface IProps {
-  readonly channelId: string
-}
-
-class MessageInput extends React.PureComponent<IProps, IState> {
-  state = {
-    editorState: EditorState.createEmpty()
-  }
-
-  handleReturn = createMessage => (e): DraftHandleValue => {
-    const content = Object.assign(this.state.editorState, {})
+  const handleReturn = createMessage => (e): DraftHandleValue => {
+    const content = editorState
       .getCurrentContent()
       .getPlainText()
       .trim()
     if (content && content.length > 0) {
-      this.setState({
-        editorState: content
-      })
-      createMessage({ variables: { content, channelId: this.props.channelId } })
+      setEditorState((content as unknown) as EditorState)
+      createMessage({ variables: { content, channelId } })
       const newEditorState = EditorState.push(
-        this.state.editorState,
+        editorState,
         ContentState.createFromText(''),
         'remove-range'
       )
 
-      this.setState({
-        editorState: EditorState.moveFocusToEnd(newEditorState)
-      })
+      setEditorState(EditorState.moveFocusToEnd(newEditorState))
       return 'handled'
     }
   }
 
-  handleChange = editorState => {
-    this.setState({ editorState })
-  }
+  const handleChange = editorState => setEditorState(editorState)
 
-  render() {
-    return (
-      <Mutation mutation={CREATE_MESSAGE}>
-        {createMessage => (
-          <Wrapper>
-            <Input>
-              <EmojiSuggestions />
-              <Editor
-                blockRenderMap={singleLinePlugin.blockRenderMap}
-                plugins={plugins}
-                placeholder="write message..."
-                editorState={this.state.editorState}
-                onChange={this.handleChange}
-                handleReturn={this.handleReturn(createMessage)}
-              />
-            </Input>
-            <Buttons>
-              <Button className="material-icons">image</Button>
-              <Button className="material-icons">insert_emoticon</Button>
-            </Buttons>
-            {/* <EmojiSelect /> */}
-          </Wrapper>
-        )}
-      </Mutation>
-    )
-  }
+  return (
+    <Wrapper>
+      <Input>
+        <Editor
+          blockRenderMap={singleLinePlugin.blockRenderMap}
+          plugins={plugins}
+          placeholder="Write message..."
+          editorState={editorState}
+          onChange={handleChange}
+          handleReturn={handleReturn(createMessage)}
+        />
+      </Input>
+      <Buttons>
+        <Button className="material-icons">image</Button>
+        <Button className="material-icons">insert_emoticon</Button>
+      </Buttons>
+    </Wrapper>
+  )
 }
 
 export default MessageInput

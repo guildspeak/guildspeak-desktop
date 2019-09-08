@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
 import gql from 'graphql-tag'
-import { useQuery } from 'react-apollo'
+import { useQuery } from '@apollo/react-hooks'
 import { Wrapper, ChannelsWrapper } from './styles'
 import ChannelContainer from '../../containers/ChannelContainer'
 import { RouteComponentProps } from 'react-router-dom'
 import CreateChannel from '../CreateChannel'
-import CurrentUser from '../CurrentUser'
 import Loading from '../Loading'
+
+type Props = {
+  guildId: string
+}
 
 const GET_GUILD = gql`
   query guild($id: ID!) {
@@ -30,11 +33,7 @@ const CHANNELS_SUBSCRIPTION = gql`
   }
 `
 
-interface IProps {
-  readonly guildId: string
-}
-
-const CurrentGuild = ({ guildId }: IProps & RouteComponentProps) => {
+const CurrentGuild = ({ guildId }: Props & RouteComponentProps) => {
   const { loading, error, data, subscribeToMore } = useQuery(GET_GUILD, {
     variables: { id: guildId }
   })

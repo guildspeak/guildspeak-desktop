@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import Message from '../Message'
 import gql from 'graphql-tag'
-import { useQuery } from 'react-apollo'
+import { useQuery } from '@apollo/react-hooks'
 import { Wrapper, InnerWrapper } from './styles'
 import { RouteComponentProps } from 'react-router'
 import MessageInputContainer from '../../containers/MessageInputContainer'
@@ -12,6 +12,10 @@ import {
   MessageContentWrapper,
   MessageContent
 } from '../Message/styles'
+
+type Props = {
+  channelId: string
+}
 
 const MESSAGE_SUBSCRIPTION = gql`
   subscription channelSubscription($id: ID!) {
@@ -43,11 +47,7 @@ const GET_MESSAGES = gql`
   }
 `
 
-interface IProps {
-  readonly channelId: string
-}
-
-const Messages = ({ channelId }: IProps & RouteComponentProps) => {
+const Messages = ({ channelId }: Props & RouteComponentProps) => {
   const messagesEndRef = useRef(null)
 
   const { loading, error, data, subscribeToMore } = useQuery(GET_MESSAGES, {

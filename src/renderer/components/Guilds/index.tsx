@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import GuildContainer from '../../containers/GuildContainer'
 import gql from 'graphql-tag'
-import { useQuery } from 'react-apollo'
+import { useQuery } from '@apollo/react-hooks'
 import { Wrapper } from './styles'
 import CreateGuildContainer from '../../containers/CreateGuildContainer'
 import Loading from '../Loading'

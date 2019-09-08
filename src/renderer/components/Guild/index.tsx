@@ -1,13 +1,13 @@
-import * as React from 'react'
+import React from 'react'
 import { Wrapper } from './styles'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 
-interface IProps {
-  readonly name: string
-  readonly guildId: string
-  readonly defaultChannelId: string
-  readonly setGuildId: (guildId: string) => void
-  readonly setChannelId: (guildId: string) => void
+type Props = {
+  name: string
+  guildId: string
+  defaultChannelId: string
+  setGuildId: (guildId: string) => void
+  setChannelId: (guildId: string) => void
 }
 
 const Guild = ({
@@ -17,7 +17,7 @@ const Guild = ({
   defaultChannelId,
   setChannelId,
   history
-}: IProps & RouteComponentProps) => {
+}: Props & RouteComponentProps) => {
   const changeGuild = () => {
     setGuildId(guildId)
     setChannelId(defaultChannelId)

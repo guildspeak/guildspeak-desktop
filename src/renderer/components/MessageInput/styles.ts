@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   justify-items: center;
   align-content: center;
   padding: 0px 16px 0px 16px;
-  margin: 0px 16px 0px 16px;
+  margin: 6px 16px 0px 16px;
   box-shadow: 0px 1px 1px #9e80a2, 0px -1px 1px #9e80a2;
   border-radius: 12px;
 `

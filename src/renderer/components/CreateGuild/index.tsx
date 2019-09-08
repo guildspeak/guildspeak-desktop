@@ -1,6 +1,6 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import gql from 'graphql-tag'
-import { Mutation } from 'react-apollo'
+import { useMutation } from '@apollo/react-hooks'
 import { Wrapper, CreateButton, NameInput, StyledModal } from './styles'
 import Button from '../Button'
 
@@ -16,90 +16,57 @@ const CREATE_GUILD = gql`
   }
 `
 
-interface IProps {
-  setGuildId: (guildId) => any
-  setChannelId: (channelId) => any
+interface Props {
+  readonly setGuildId: (guildId: string) => void
+  readonly setChannelId: (channelId: string) => void
 }
 
-interface IState {
-  name: string
-  isOpen: boolean
-  opacity: number
-}
+const CreateGuild = ({ setChannelId, setGuildId }: Props) => {
+  const [isOpen, setOpen] = useState<boolean>(false)
+  const [opacity, setOpacity] = useState<number>(0)
+  const [name, setName] = useState<string>('')
 
-class CreateGuild extends React.PureComponent<IProps, IState> {
-  state = {
-    name: '',
-    isOpen: false,
-    opacity: 0
-  }
+  const toggleModal = () => setOpen(!isOpen)
+  const afterOpen = () => setOpacity(1)
+  const beforeClose = () => setOpacity(0)
 
-  toggleModal = () => {
-    this.setState({ isOpen: !this.state.isOpen })
-  }
+  const handleName = e => setName(e.target.value)
 
-  afterOpen = () => {
-    setTimeout(() => {
-      this.setState({ opacity: 1 })
-    })
-  }
+  const [createGuild] = useMutation(CREATE_GUILD)
 
-  beforeClose = () => {
-    return new Promise(resolve => {
-      this.setState({ opacity: 0 })
-      setTimeout(resolve, 200)
-    })
-  }
-
-  handleCreateGuild = createGuild => async () => {
-    this.toggleModal()
-    const response = await createGuild({ variables: { name: this.state.name } })
+  const handleCreateGuild = createGuild => async () => {
+    toggleModal()
+    const response = await createGuild({ variables: { name } })
     console.log(response.data.createGuild)
-    this.props.setGuildId(response.data.createGuild.id)
-    this.props.setChannelId(response.data.createGuild.channels[0].id)
+    setGuildId(response.data.createGuild.id)
+    setChannelId(response.data.createGuild.channels[0].id)
   }
 
-  handleName = e => {
-    this.setState({ name: e.target.value })
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <CreateButton className="material-icons" onClick={this.toggleModal}>
-          add
-        </CreateButton>
-        <StyledModal
-          isOpen={this.state.isOpen}
-          afterOpen={this.afterOpen}
-          beforeClose={this.beforeClose}
-          onBackgroundClick={this.toggleModal}
-          onEscapeKeydown={this.toggleModal}
-          opacity={this.state.opacity}
-        >
-          <Mutation mutation={CREATE_GUILD}>
-            {(createGuild, { data, error }) => {
-              if (error) {
-              }
-
-              if (data) {
-              }
-              return (
-                <div>
-                  Create your own guild
-                  <NameInput onChange={this.handleName} placeholder="name" />
-                  <div>
-                    <Button primary={true} onClick={this.handleCreateGuild(createGuild)}>
-                      Create
-                    </Button>
-                  </div>
-                </div>
-              )
-            }}
-          </Mutation>
-        </StyledModal>
-      </Wrapper>
-    )
-  }
+  return (
+    <Wrapper>
+      <CreateButton className="material-icons" onClick={toggleModal}>
+        add
+      </CreateButton>
+      <StyledModal
+        isOpen={isOpen}
+        afterOpen={afterOpen}
+        beforeClose={beforeClose}
+        onBackgroundClick={toggleModal}
+        onEscapeKeydown={toggleModal}
+        opacity={opacity}
+      >
+        <div>
+          Create your own guild
+          <NameInput onChange={handleName} placeholder="name" />
+          <div>
+            <Button primary={true} onClick={handleCreateGuild(createGuild)}>
+              Create
+            </Button>
+          </div>
+        </div>
+      </StyledModal>
+    </Wrapper>
+  )
 }
+
 export default CreateGuild

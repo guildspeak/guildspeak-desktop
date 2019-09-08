@@ -3,7 +3,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Wrapper, Username, Buttons, IconButton } from './styles'
 import Status from '../Status'
 import gql from 'graphql-tag'
-import { useQuery } from 'react-apollo'
+import { useQuery } from '@apollo/react-hooks'
 import Loading from '../Loading'
 import Avatar from '../Avatar'
 
