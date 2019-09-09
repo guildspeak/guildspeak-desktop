@@ -1,3 +1,5 @@
+import URL from 'url-parse'
+
 /**
  * Retries promise after error
  * @param fn Promise to retry
@@ -25,4 +27,22 @@ export function retry<T>(
         }, interval)
       })
   })
+}
+
+/**
+ * Checks if URL is safe
+ */
+export function isURLSafe(dangerousURL: string): boolean {
+  if (
+    // eslint-disable-next-line max-len
+    /^((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)$/.test(
+      dangerousURL
+    )
+  ) {
+    const url = URL(dangerousURL, {})
+    if (url.protocol === 'http:') return true
+    if (url.protocol === 'https:') return true
+    return false
+  }
+  return false
 }

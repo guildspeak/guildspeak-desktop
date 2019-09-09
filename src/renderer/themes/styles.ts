@@ -52,6 +52,14 @@ export const style = css`
     caret-color: ${({ theme }) => theme.accentColor};
     overflow: hidden;
   }
+
+  .md-link {
+    color: ${({ theme }) => theme.accentColor};
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `
 
 export const AppWrapper = styled.div`

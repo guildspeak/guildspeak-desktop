@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
-import marked from '../../utils/markdown'
+import richMarkdown from '../../utils/markdown'
 import { MessageAuthorData } from '../MessageAuthor'
 import MessageHeader from '../MessageHeader'
 import {
@@ -40,7 +40,7 @@ const Message = ({ content, author, time }: Props) => {
       <MessageBubble>
         <MessageHeader author={author} time={time} />
         <MessageContentWrapper>
-          <MessageContent dangerouslySetInnerHTML={{ __html: marked(content) }} />
+          <MessageContent>{richMarkdown(content)}</MessageContent>
           <Dropdown ref={wrapperRef}>
             <DropdownButton className="material-icons" onClick={handleOpenCloseDropdown}>
               more_vert
