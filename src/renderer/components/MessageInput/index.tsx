@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import { Wrapper, Input, Button, Buttons } from './styles'
-import { Editor } from 'slate-react'
 import Plain from 'slate-plain-serializer'
 import { Value } from 'slate'
 
@@ -45,14 +44,12 @@ const MessageInput = ({ channelId }: Props) => {
 
   return (
     <Wrapper>
-      <Input>
-        <Editor
-          placeholder="Write message..."
-          value={value}
-          onChange={handleChange}
-          onKeyDown={handleReturn}
-        />
-      </Input>
+      <Input
+        placeholder="Write message..."
+        value={value}
+        onChange={handleChange}
+        onKeyDown={handleReturn}
+      />
       <Buttons>
         <Button className="material-icons">image</Button>
         <Button className="material-icons">insert_emoticon</Button>

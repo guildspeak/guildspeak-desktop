@@ -1,4 +1,5 @@
 import styled from '../../utils/styled-components'
+import { Editor } from 'slate-react'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -11,12 +12,29 @@ export const Wrapper = styled.div`
   border-radius: 12px;
 `
 
-export const Input = styled.div`
+export const Input = styled(Editor)`
+  display: flex;
+  word-wrap: break-word;
+  word-break: break-all;
+  flex: 1;
+  max-height: 150px;
+  overflow-y: auto;
   font-size: 16px;
   padding: 16px 4px 16px 4px;
-  width: 100%;
   border: none;
   border-radius: 8px;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 8px;
+    background-color: #2d2d31;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+    background-color: #44444c;
+  }
 `
 
 export const Button = styled.div`
