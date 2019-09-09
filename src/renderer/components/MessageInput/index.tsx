@@ -30,11 +30,12 @@ const MessageInput = ({ channelId }: Props) => {
     }
     if (event.key === 'Enter') {
       const content = Plain.serialize(editor.value)
-      createMessage({ variables: { content, channelId } })
+      if (content && content.trim().length > 0) {
+        createMessage({ variables: { content, channelId } })
+      }
       setValue(Plain.deserialize(''))
       event.preventDefault()
       setTimeout(() => editor.focus())
-
       return true
     }
     return next()
