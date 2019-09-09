@@ -1,21 +1,21 @@
 import styled, { css } from '../../utils/styled-components'
 
-interface IDropdownMenu {
+type DropdownMenuProps = {
   hidden?: boolean
 }
 
-interface IDropdownItem {
+type DropdownItemMenuProps = {
   hoverColor?: string
 }
 
-const Dropdown = styled.div`
+export const Dropdown = styled.div`
   position: relative;
   color: #eeeeee;
   user-select: none;
   z-index: 9999;
 `
 
-const DropdownMenu = styled.div<IDropdownMenu>`
+export const DropdownMenu = styled.div<DropdownMenuProps>`
   position: absolute;
   left: -150%;
   padding: 0 0;
@@ -32,7 +32,7 @@ const DropdownMenu = styled.div<IDropdownMenu>`
         `};
 `
 
-const DropdownItem = styled.div<IDropdownItem>`
+export const DropdownItem = styled.div<DropdownItemMenuProps>`
   border-radius: 4px;
   padding: 8px;
   font-size: 12px;
@@ -47,5 +47,3 @@ const DropdownItem = styled.div<IDropdownItem>`
     background: #2d2d31;
   }
 `
-
-export { Dropdown, DropdownMenu, DropdownItem }

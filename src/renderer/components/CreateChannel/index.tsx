@@ -4,6 +4,11 @@ import { useMutation } from '@apollo/react-hooks'
 import { Wrapper, CreateButton, NameInput, ChannelInput, StyledModal } from './styles'
 import Button from '../Button'
 
+type Props = {
+  guildId: string
+  guildName: string
+}
+
 const CREATE_CHANNEL = gql`
   mutation createChannel($name: String!, $guildId: ID!) {
     createChannel(name: $name, guildId: $guildId) {
@@ -12,11 +17,6 @@ const CREATE_CHANNEL = gql`
     }
   }
 `
-
-interface Props {
-  readonly guildId: string
-  readonly guildName: string
-}
 
 const CreateChannel = ({ guildName, guildId }: Props) => {
   const [isOpen, setOpen] = useState<boolean>(false)

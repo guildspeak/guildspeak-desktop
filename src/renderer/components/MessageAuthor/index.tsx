@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Wrapper, FriendButton, UserName, StyledModal } from './styles'
 
-export interface MessageAuthorData {
+export type MessageAuthorData = {
   id: string
   username: string
 }
 
-interface Props {
-  readonly author: MessageAuthorData
+type Props = {
+  author: MessageAuthorData
 }
 
 const MessageAuthor = ({ author }: Props) => {

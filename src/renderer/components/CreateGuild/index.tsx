@@ -4,6 +4,11 @@ import { useMutation } from '@apollo/react-hooks'
 import { Wrapper, CreateButton, NameInput, StyledModal } from './styles'
 import Button from '../Button'
 
+type Props = {
+  setGuildId: (guildId: string) => void
+  setChannelId: (channelId: string) => void
+}
+
 const CREATE_GUILD = gql`
   mutation createGuild($name: String!) {
     createGuild(name: $name) {
@@ -15,11 +20,6 @@ const CREATE_GUILD = gql`
     }
   }
 `
-
-interface Props {
-  readonly setGuildId: (guildId: string) => void
-  readonly setChannelId: (channelId: string) => void
-}
 
 const CreateGuild = ({ setChannelId, setGuildId }: Props) => {
   const [isOpen, setOpen] = useState<boolean>(false)

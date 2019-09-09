@@ -1,12 +1,12 @@
 import styled, { css } from '../../utils/styled-components'
 
-interface IButton {
+type Props = {
   primary?: boolean
   color?: string
   background?: string
 }
 
-export default styled.button<IButton>`
+export default styled.button<Props>`
   color: ${props => props.color};
   background: ${props => props.background};
   ${props =>
