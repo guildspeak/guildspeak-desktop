@@ -11,7 +11,6 @@ export const MessageBubble = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  word-break: break-all;
 `
 
 export const MessageContentWrapper = styled.div`
@@ -22,6 +21,8 @@ export const MessageContentWrapper = styled.div`
 export const MessageContent = styled.div`
   margin-right: auto;
   display: flex;
+  text-overflow: ellipsis;
+  word-break: break-all;
 `
 
 export const Divider = styled.div`
