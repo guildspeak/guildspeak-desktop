@@ -19,7 +19,7 @@ const ChannelsWrapper = styled(Scrollbar)`
   overflow-y: auto;
   overflow-x: hidden;
   font-size: 16px;
-  padding: 8px;
+  padding: 16px;
 `
 
 export { Wrapper, ChannelsWrapper }

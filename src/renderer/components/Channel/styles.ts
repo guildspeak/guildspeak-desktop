@@ -1,22 +1,21 @@
 import styled, { css } from '../../utils/styled-components'
 
-const Wrapper = styled.div<{ id?: string; channelId?: string }>`
+const Wrapper = styled.div<{ currentChannelId: string; channelId?: string }>`
   display: flex;
   flex-direction: row;
   cursor: pointer;
-  border: 1px solid #9e80a2;
   border-radius: 24px;
   margin: 0px 0px 8px 0px;
   ${props =>
-    props.channelId === props.id &&
+    props.channelId === props.currentChannelId &&
     css`
-      background: #2d2d31;
+      background: ${({ theme }) => theme.secondaryTextColor};
       color: ${props.theme.textColor};
     `}
 
   &:hover {
     color: ${({ theme }) => theme.textColor};
-    background: #2d2d31;
+    background: ${({ theme }) => theme.secondaryTextColor};
   }
 `
 
@@ -31,11 +30,11 @@ const ChannelName = styled.div`
   text-transform: none;
 `
 
-const IconButton = styled.div<{ id?: string; channelId?: string }>`
+const IconButton = styled.div<{ currentChannelId: string; channelId?: string }>`
   cursor: pointer;
   color: #bdbdbd;
   ${props =>
-    props.channelId === props.id
+    props.channelId === props.currentChannelId
       ? css`
           color: #bdbdbd;
         `

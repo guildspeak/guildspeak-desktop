@@ -10,7 +10,8 @@ import { Dispatch } from 'redux'
 import Guild from '../components/Guild'
 
 const mapStateToProps = (state: RootState, props) => ({
-  ...props
+  ...props,
+  currentGuildId: state.currentGuild.guildId
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<SetCurrentGuildId | SetCurrentChannelId>) => ({

@@ -6,7 +6,7 @@ import Channel from '../components/Channel'
 
 const mapStateToProps = (state: RootState, props) => ({
   ...props,
-  channelId: state.currentGuild.channelId
+  currentChannelId: state.currentGuild.channelId
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<SetCurrentChannelId>) => ({

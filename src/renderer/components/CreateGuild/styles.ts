@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: row;
+  padding: 0px 0px 8px 0px;
 `
 const CreateButton = styled.div`
   display: flex;

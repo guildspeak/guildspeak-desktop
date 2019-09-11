@@ -1,9 +1,10 @@
 import React from 'react'
-import { Wrapper } from './styles'
+import { Wrapper, GuildWrapper, CurrentGuildSelector } from './styles'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 
 type Props = {
   name: string
+  currentGuildId: string
   guildId: string
   defaultChannelId: string
   setGuildId: (guildId: string) => void
@@ -13,6 +14,7 @@ type Props = {
 const Guild = ({
   name,
   guildId,
+  currentGuildId,
   setGuildId,
   defaultChannelId,
   setChannelId,
@@ -25,8 +27,11 @@ const Guild = ({
   }
 
   return (
-    <Wrapper onClick={changeGuild} title={name}>
-      {name.slice(0, 1)}
+    <Wrapper>
+      <GuildWrapper onClick={changeGuild} title={name}>
+        {name.slice(0, 1)}
+      </GuildWrapper>
+      <CurrentGuildSelector guildId={guildId} currentGuildId={currentGuildId} />
     </Wrapper>
   )
 }

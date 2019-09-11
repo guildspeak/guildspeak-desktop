@@ -66,7 +66,7 @@ const CurrentGuild = ({ guildId }: Props & RouteComponentProps) => {
     <Wrapper>
       <ChannelsWrapper>
         {data.guild.channels.map(el => (
-          <ChannelContainer name={el.name} id={el.id} key={el.id} />
+          <ChannelContainer name={el.name} channelId={el.id} key={el.id} />
         ))}
       </ChannelsWrapper>
       <CreateChannel guildId={guildId} guildName={data.guild.name} />
