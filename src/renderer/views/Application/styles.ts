@@ -40,8 +40,7 @@ export const SecondColumn = styled.div`
 `
 
 export const ThirdColumn = styled.div`
-  flex: 0.6;
-  min-width: 180px;
+  width: 224px;
   display: flex;
   position: relative;
   height: 100%;
