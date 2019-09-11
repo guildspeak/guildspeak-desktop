@@ -1,6 +1,6 @@
 import styled from '../../utils/styled-components'
 
-const MainWrapper = styled.div`
+export const MainWrapper = styled.div`
   display: flex;
   position: relative;
   height: 100%;
@@ -9,12 +9,20 @@ const MainWrapper = styled.div`
   padding: 16px;
 `
 
-const Column = styled.div`
+export const Column = styled.div`
   display: flex;
   flex-direction: column;
 `
 
-const Row = styled.div`
+export const TopWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 72px;
+  margin: -12px 0px 0px 0px;
+  align-items: center;
+`
+
+export const Row = styled.div`
   display: flex;
   position: relative;
   height: 100%;
@@ -22,7 +30,7 @@ const Row = styled.div`
   flex-direction: row;
 `
 
-const SecondColumn = styled.div`
+export const SecondColumn = styled.div`
   flex: 3;
   display: flex;
   position: relative;
@@ -31,7 +39,7 @@ const SecondColumn = styled.div`
   flex-direction: column;
 `
 
-const ThirdColumn = styled.div`
+export const ThirdColumn = styled.div`
   flex: 0.6;
   min-width: 180px;
   display: flex;
@@ -41,5 +49,3 @@ const ThirdColumn = styled.div`
   flex-direction: column;
   padding: 0px 0px 8px 0px;
 `
-
-export { Column, Row, MainWrapper, SecondColumn, ThirdColumn }

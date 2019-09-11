@@ -18,8 +18,8 @@ const Channel = ({
   setChannelId
 }: RouteComponentProps & IProps) => {
   const changeChannel = () => {
-    setChannelId(currentChannelId)
-    history.push(`/app/channel/${currentChannelId}`)
+    setChannelId(channelId)
+    history.push(`/app/channel/${channelId}`)
   }
 
   return (

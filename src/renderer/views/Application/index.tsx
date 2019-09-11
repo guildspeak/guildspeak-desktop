@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Sidebar from '../../components/Sidebar'
 import Messages from '../../components/Messages'
 import { Route, withRouter, RouteComponentProps } from 'react-router-dom'
-import { MainWrapper, SecondColumn, ThirdColumn, Row } from './styles'
+import { MainWrapper, SecondColumn, ThirdColumn, Row, TopWrapper } from './styles'
 import CurrentUsersContainer from '../../containers/CurrentUsersContainer'
 import Guilds from '../../components/Guilds'
 
@@ -24,7 +24,9 @@ const Application = ({
 
   return (
     <MainWrapper>
-      <Guilds />
+      <TopWrapper>
+        <Guilds />
+      </TopWrapper>
       {guildId && channelId ? (
         <Row>
           <Sidebar />
