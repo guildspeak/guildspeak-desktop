@@ -1,7 +1,7 @@
 import styled from '../../utils/styled-components'
 import Modal from 'styled-react-modal'
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   user-select: none;
   font-size: 16px;
   display: flex;
@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   padding: 0px 0px 8px 0px;
 `
-const CreateButton = styled.div`
+export const CreateButton = styled.div`
   display: flex;
   height: 48px;
   width: 48px;
@@ -29,7 +29,7 @@ const CreateButton = styled.div`
   font-size: 24px;
 `
 
-const NameInput = styled.input`
+export const NameInput = styled.input`
   background: #2d2d31;
   margin-top: 8px;
   box-sizing: border-box;
@@ -56,4 +56,3 @@ export const StyledModal = Modal.styled`
   border: none;
   border-radius: 8px;
 `
-export { Wrapper, CreateButton, NameInput }

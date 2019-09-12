@@ -1,6 +1,6 @@
 import styled, { css } from '../../utils/styled-components'
 
-const Wrapper = styled.div<{ currentChannelId: string; channelId?: string }>`
+export const Wrapper = styled.div<{ currentChannelId: string; channelId?: string }>`
   display: flex;
   flex-direction: row;
   cursor: pointer;
@@ -19,7 +19,7 @@ const Wrapper = styled.div<{ currentChannelId: string; channelId?: string }>`
   }
 `
 
-const ChannelName = styled.div`
+export const ChannelName = styled.div`
   &::before {
     content: '#';
     color: ${({ theme }) => theme.accentColor};
@@ -30,7 +30,7 @@ const ChannelName = styled.div`
   text-transform: none;
 `
 
-const IconButton = styled.div<{ currentChannelId: string; channelId?: string }>`
+export const IconButton = styled.div<{ currentChannelId: string; channelId?: string }>`
   cursor: pointer;
   color: #bdbdbd;
   ${props =>
@@ -51,5 +51,3 @@ const IconButton = styled.div<{ currentChannelId: string; channelId?: string }>`
   justify-content: center;
   margin-left: auto;
 `
-
-export { Wrapper, ChannelName, IconButton }

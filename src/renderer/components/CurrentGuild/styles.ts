@@ -1,7 +1,7 @@
 import styled from '../../utils/styled-components'
 import { Scrollbar } from '../shared'
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   position: relative;
   height: 100%;
@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   border-radius: 12px;
 `
 
-const ChannelsWrapper = styled(Scrollbar)`
+export const ChannelsWrapper = styled(Scrollbar)`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -21,5 +21,3 @@ const ChannelsWrapper = styled(Scrollbar)`
   font-size: 16px;
   padding: 16px;
 `
-
-export { Wrapper, ChannelsWrapper }

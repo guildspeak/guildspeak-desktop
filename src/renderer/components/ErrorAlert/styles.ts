@@ -1,6 +1,6 @@
 import styled from '../../utils/styled-components'
 
-const ErrorNotify = styled.div`
+export const ErrorNotify = styled.div`
   position: absolute;
   top: 0px;
   width: 100%;
@@ -12,5 +12,3 @@ const ErrorNotify = styled.div`
   overflow: hidden;
   transition: height 0.2s;
 `
-
-export { ErrorNotify }

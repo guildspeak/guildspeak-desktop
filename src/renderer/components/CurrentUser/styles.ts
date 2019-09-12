@@ -1,6 +1,6 @@
 import styled from '../../utils/styled-components'
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   height: 72px;
   display: flex;
   margin-top: auto;
@@ -10,21 +10,19 @@ const Wrapper = styled.div`
   position: relative;
 `
 
-const Username = styled.div`
+export const Username = styled.div`
   display: flex;
   cursor: pointer;
   font-family: 'Francois One', sans-serif;
 `
 
-const IconButton = styled.div`
+export const IconButton = styled.div`
   cursor: pointer;
   user-select: none;
   font-size: 24px;
   color: ${({ theme }) => theme.accentColor};
 `
 
-const Buttons = styled.div`
+export const Buttons = styled.div`
   margin-left: auto;
 `
-
-export { Wrapper, Username, Buttons, IconButton }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Wrapper, FriendButton, UserName, StyledModal } from './styles'
+import { Wrapper, StyledModal } from './styles'
 
 export type MessageAuthorData = {
   id: string
@@ -29,8 +29,7 @@ const MessageAuthor = ({ author }: Props) => {
         onEscapeKeydown={toggleModal}
         opacity={opacity}
       >
-        <UserName>{author.username}</UserName>
-        <FriendButton>Send Friend Request</FriendButton>
+        <div>{author.username}</div>
       </StyledModal>
     </Wrapper>
   )

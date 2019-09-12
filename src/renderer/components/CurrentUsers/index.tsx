@@ -1,15 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-import {
-  Wrapper,
-  Username,
-  FriendButton,
-  InnerWrapper,
-  UserWrapper,
-  UserStatus,
-  StyledModal
-} from './styles'
+import { Wrapper, Username, InnerWrapper, UserWrapper, UserStatus, StyledModal } from './styles'
 import { RouteComponentProps } from 'react-router'
 import Loading from '../Loading'
 import Avatar from '../Avatar'
@@ -74,9 +66,7 @@ const CurrentUsers = ({ guildId }: Props & RouteComponentProps) => {
           onEscapeKeydown={toggleModal}
           opacity={opacity}
         >
-          <Avatar url="https://i.kym-cdn.com/entries/icons/facebook/000/021/950/Pink_guy.jpg" />
           <Username>{selectedUser}</Username>
-          <FriendButton>Send Friend Request</FriendButton>
         </StyledModal>
       </InnerWrapper>
     </Wrapper>

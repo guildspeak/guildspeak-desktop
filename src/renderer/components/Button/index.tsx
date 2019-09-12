@@ -8,18 +8,22 @@ type Props = {
 
 export default styled.button<Props>`
   color: ${props => props.color};
-  background: ${props => props.background};
+  background: ${props => (props.background ? props.background : props.theme.backgroundColor)};
   ${props =>
     props.primary &&
     css`
-      background: #149f98;
+      background: ${({ theme }) => theme.accentColor};
       color: #fff;
-    `} display: flex;
+    `}
+  display: flex;
   border: none;
   border-radius: 4px;
   font-size: 14px;
   padding: 8px;
   cursor: pointer;
+  &:hover {
+    background: ${({ theme }) => theme.secondaryTextColor};
+  }
   &::before,
   &::after {
     content: '';

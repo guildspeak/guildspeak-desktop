@@ -1,7 +1,7 @@
 import styled from '../../utils/styled-components'
 import { Scrollbar } from '../shared'
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   position: relative;
   height: 100%;
@@ -10,12 +10,10 @@ const Wrapper = styled.div`
   padding: 0px 0px 8px 0px;
 `
 
-const InnerWrapper = styled(Scrollbar)`
+export const InnerWrapper = styled(Scrollbar)`
   display: flex;
   flex: 1;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
 `
-
-export { Wrapper, InnerWrapper }

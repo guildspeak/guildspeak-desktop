@@ -1,9 +1,8 @@
 import React, { useEffect, useCallback } from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
-import { Wrapper } from './styles'
-import SettingsList from '../../components/SettingsOptions/index'
+import { Wrapper, Options, BackButton, Description, LogoutButton, SettingsView } from './styles'
 
-const Settings = ({ history, location, match }: RouteComponentProps) => {
+const Settings = ({ history }: RouteComponentProps) => {
   const handleEsc = useCallback((e: KeyboardEvent) => {
     if (e.keyCode === 27) {
       history.push('/app')
@@ -15,9 +14,27 @@ const Settings = ({ history, location, match }: RouteComponentProps) => {
     return () => document.removeEventListener('keydown', handleEsc, false)
   }, [handleEsc])
 
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    history.push('/login')
+  }
+
+  const handleBack = () => {
+    history.push('/app')
+  }
+
   return (
     <Wrapper>
-      <SettingsList history={history} location={location} match={match} />
+      <Options>
+        <BackButton className="material-icons" onClick={handleBack}>
+          arrow_back
+        </BackButton>
+        <Description>User Settings</Description>
+      </Options>
+      <Options>
+        <LogoutButton onClick={handleLogout}>Log Out</LogoutButton>
+      </Options>
+      <SettingsView>hi</SettingsView>
     </Wrapper>
   )
 }
