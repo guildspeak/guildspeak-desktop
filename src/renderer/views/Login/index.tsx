@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import WelcomeContainer from '../../containers/WelcomeContainer'
@@ -11,10 +11,10 @@ import {
   PasswordInput,
   LoginButton,
   RegisterButton,
-  LoginLogo,
-  ErrorLogin
+  LoginLogo
 } from './styles'
 import ErrorAlert from '../../components/ErrorAlert'
+import { Formik, Form, ErrorMessage } from 'formik'
 
 const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -27,18 +27,9 @@ const LOGIN = gql`
   }
 `
 const Login = ({ history }: RouteComponentProps) => {
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
-
   const [login, { data, error }] = useMutation(LOGIN)
 
-  const handleLogin = loginMutation => () => {
-    loginMutation({ variables: { email, password } })
-  }
-
-  const handleEmail = e => setEmail(e.target.value)
   const handleRegister = () => history.push('/register')
-  const handlePassword = e => setPassword(e.target.value)
 
   if (error) {
     return <ErrorAlert>{error.message}</ErrorAlert>
@@ -53,13 +44,41 @@ const Login = ({ history }: RouteComponentProps) => {
       <LoginForm>
         <LoginLogo />
         <Info>Log in to your Guildspeak account</Info>
-        <EmailInput type="email" onChange={handleEmail} placeholder="E-mail" />
-        <PasswordInput type="password" onChange={handlePassword} placeholder="Password" />
-        <ErrorLogin />
-        <LoginButton primary={true} onClick={handleLogin(login)}>
-          Login
-        </LoginButton>
-        <RegisterButton onClick={handleRegister}>Sign Up</RegisterButton>
+
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          validate={values => {
+            const errors = {} as typeof values
+            if (!values.email || !values.password) {
+              errors.email = 'Required'
+              errors.password = 'Required'
+            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+              errors.email = 'Invalid email address'
+            }
+            return errors
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              login({ variables: { email: values.email, password: values.password } })
+
+              setSubmitting(false)
+            }, 400)
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <EmailInput type="email" name="email" placeholder="E-mail" />
+              <ErrorMessage name="email" component="div" />
+              <PasswordInput type="password" name="password" placeholder="Password" />
+              <ErrorMessage name="password" component="div" />
+
+              <LoginButton type="submit" primary={true} disabled={isSubmitting}>
+                Login
+              </LoginButton>
+              <RegisterButton onClick={handleRegister}>Sign Up</RegisterButton>
+            </Form>
+          )}
+        </Formik>
       </LoginForm>
     </Wrapper>
   )

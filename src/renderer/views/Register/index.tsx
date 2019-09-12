@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import WelcomeContainer from '../../containers/WelcomeContainer'
@@ -14,6 +14,7 @@ import {
   BackButton,
   RegisterLogo
 } from './styles'
+import { Formik, Form, ErrorMessage } from 'formik'
 
 const REGISTER = gql`
   mutation register($email: String!, $password: String!, $username: String!) {
@@ -27,25 +28,7 @@ const REGISTER = gql`
 `
 
 const Register = ({ history }: RouteComponentProps) => {
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
-  const [username, setUsername] = useState<string>('')
-
   const [register, { data, error }] = useMutation(REGISTER)
-
-  const hangleRegister = registerMutation => () => {
-    registerMutation({
-      variables: {
-        email,
-        password,
-        username
-      }
-    })
-  }
-
-  const handleEmail = e => setEmail(e.target.value)
-  const handlePassword = e => setPassword(e.target.value)
-  const handleUsername = e => setUsername(e.target.value)
 
   const handleLogin = () => history.push('login')
 
@@ -64,13 +47,50 @@ const Register = ({ history }: RouteComponentProps) => {
       <RegisterForm>
         <RegisterLogo />
         <Info>Create your Guildspeak account</Info>
-        <UsernameInput onChange={handleUsername} placeholder="Username" />
-        <EmailInput type="email" onChange={handleEmail} placeholder="E-mail" />
-        <PasswordInput type="password" onChange={handlePassword} placeholder="Password" />
-        <RegisterButton primary={true} onClick={hangleRegister(register)}>
-          Register
-        </RegisterButton>
-        <BackButton onClick={handleLogin}>I have account! Let's log in.</BackButton>
+
+        <Formik
+          initialValues={{ email: '', password: '', username: '' }}
+          validate={values => {
+            const errors = {} as typeof values
+            if (!values.email || !values.username || !values.password) {
+              errors.email = 'Required'
+              errors.password = 'Required'
+              errors.username = 'Required'
+            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+              errors.email = 'Invalid email address'
+            }
+            return errors
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              register({
+                variables: {
+                  email: values.email,
+                  password: values.password,
+                  username: values.username
+                }
+              })
+              setSubmitting(false)
+            }, 400)
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <EmailInput type="email" name="email" placeholder="E-mail" />
+              <ErrorMessage name="email" component="div" />
+              <UsernameInput type="text" name="username" placeholder="Username" />
+              <ErrorMessage name="username" component="div" />
+              <PasswordInput type="password" name="password" placeholder="Password" />
+              <ErrorMessage name="password" component="div" />
+
+              <RegisterButton type="submit" primary={true} disabled={isSubmitting}>
+                Register
+              </RegisterButton>
+
+              <BackButton onClick={handleLogin}>I have account! Let's log in.</BackButton>
+            </Form>
+          )}
+        </Formik>
       </RegisterForm>
     </Wrapper>
   )

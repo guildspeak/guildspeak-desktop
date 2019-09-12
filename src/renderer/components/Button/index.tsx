@@ -7,13 +7,13 @@ type Props = {
 }
 
 export default styled.button<Props>`
-  color: ${props => props.color};
-  background: ${props => (props.background ? props.background : props.theme.backgroundColor)};
+  color: ${props => props.color || props.theme.textColor};
+  background: ${props => props.background || props.theme.backgroundColor};
   ${props =>
     props.primary &&
     css`
       background: ${({ theme }) => theme.accentColor};
-      color: #fff;
+      color: ${({ theme }) => theme.textColor};
     `}
   display: flex;
   border: none;
@@ -23,6 +23,7 @@ export default styled.button<Props>`
   cursor: pointer;
   &:hover {
     background: ${({ theme }) => theme.secondaryTextColor};
+    color: ${({ theme }) => theme.backgroundColor};
   }
   &::before,
   &::after {

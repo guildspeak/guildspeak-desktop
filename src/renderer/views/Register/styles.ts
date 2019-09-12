@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Button from '../../components/Button'
+import { Field } from 'formik'
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,7 +26,7 @@ const Info = styled.div`
   font-size: 18px;
 `
 
-const Input = styled.input`
+const Input = styled(Field)`
   background: #2d2d31;
   margin-top: 8px;
   box-sizing: border-box;

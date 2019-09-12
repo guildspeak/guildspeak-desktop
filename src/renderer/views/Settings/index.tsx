@@ -25,15 +25,15 @@ const Settings = ({ history }: RouteComponentProps) => {
 
   return (
     <Wrapper>
+      <BackButton className="material-icons" onClick={handleBack}>
+        arrow_back
+      </BackButton>
       <Options>
-        <BackButton className="material-icons" onClick={handleBack}>
-          arrow_back
-        </BackButton>
         <Description>User Settings</Description>
-      </Options>
-      <Options>
+
         <LogoutButton onClick={handleLogout}>Log Out</LogoutButton>
       </Options>
+
       <SettingsView>hi</SettingsView>
     </Wrapper>
   )
