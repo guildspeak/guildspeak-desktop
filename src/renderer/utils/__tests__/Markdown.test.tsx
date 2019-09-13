@@ -14,7 +14,8 @@ plain text
 
 describe('RichMarkdown component', () => {
   it('should render component', () => {
-    render(richMarkdown(md))
+    const { asFragment } = render(richMarkdown(md))
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('should render proper html tag for bold', () => {

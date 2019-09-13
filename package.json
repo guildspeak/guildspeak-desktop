@@ -12,7 +12,7 @@
     "compile-linux": "npm run build && electron-builder -l",
     "compile": "npm run build && electron-builder",
     "lint": "tslint \"src/**/*.ts*\"",
-    "lint-fix": "prettier --write \"src/**/*.ts*\" -&& tslint \"src/**/*.ts*\" --fix",
+    "lint-fix": "prettier --write \"src/**/*.ts?\" -&& tslint \"src/**/*.ts?\" --fix",
     "postinstall": "electron-builder install-app-deps",
     "test": "jest -c jest.config.js"
   },

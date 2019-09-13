@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RichMarkdown component should render component 1`] = `
+<DocumentFragment>
+  <strong>
+    bold
+  </strong>
+  <br />
+  <strong>
+    bold2
+  </strong>
+  <br />
+  <em>
+    italic
+  </em>
+  <br />
+  <em>
+    italic2
+  </em>
+  <br />
+  plain text
+</DocumentFragment>
+`;
