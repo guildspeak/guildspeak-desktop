@@ -9,32 +9,47 @@ import Systembar from '../components/Systembar'
 import client from './client'
 import { style, AppWrapper } from '../themes/styles'
 import { ModalProvider } from 'styled-react-modal'
-import { Wrapper as LoadingWrapper } from '../components/Loading/styles'
 import { ErrorBoundary } from '../utils/hoc'
-import Loading from '../components/Loading'
 import { ThemeProvider, createGlobalStyle } from '../utils/styled-components'
 import darkTheme from '../themes/dark'
+import { Spinner, Center } from '../components/shared'
 
 const GlobalStyle = createGlobalStyle`${style}`
 
 const StartupContainer = loadable(() => import('../containers/StartupContainer'), {
-  fallback: <Loading />
+  fallback: (
+    <Center>
+      <Spinner />
+    </Center>
+  )
 })
 
 const ApplicationContainer = loadable(() => import('../containers/ApplicationContainer'), {
-  fallback: <LoadingWrapper>Starting Guildspeak...</LoadingWrapper>
+  fallback: <Center>Starting Guildspeak...</Center>
 })
 
 const Login = loadable(() => import('../views/Login'), {
-  fallback: <Loading />
+  fallback: (
+    <Center>
+      <Spinner />
+    </Center>
+  )
 })
 
 const Register = loadable(() => import('../views/Register'), {
-  fallback: <Loading />
+  fallback: (
+    <Center>
+      <Spinner />
+    </Center>
+  )
 })
 
 const Settings = loadable(() => import('../views/Settings'), {
-  fallback: <Loading />
+  fallback: (
+    <Center>
+      <Spinner />
+    </Center>
+  )
 })
 
 const App = () => (

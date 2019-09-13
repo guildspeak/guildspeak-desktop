@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 
 const Startup = ({ token, history }: RouteComponentProps & { token: string }) => {

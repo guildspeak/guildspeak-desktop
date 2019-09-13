@@ -5,7 +5,7 @@ import { Wrapper, ChannelsWrapper } from './styles'
 import ChannelContainer from '../../containers/ChannelContainer'
 import { RouteComponentProps } from 'react-router-dom'
 import CreateChannel from '../CreateChannel'
-import Loading from '../Loading'
+import { Center, Spinner } from '../shared'
 
 type Props = {
   guildId: string
@@ -59,8 +59,16 @@ const CurrentGuild = ({ guildId }: Props & RouteComponentProps) => {
     return () => unsubscribe()
   }, [data])
 
-  if (loading) return <Loading />
-  if (error) return <div>Error! {error.message}</div>
+  if (loading) {
+    return (
+      <Wrapper>
+        <Center>
+          <Spinner />
+        </Center>
+      </Wrapper>
+    )
+  }
+  if (error) return <Center>Error! {error.message}</Center>
 
   return (
     <Wrapper>

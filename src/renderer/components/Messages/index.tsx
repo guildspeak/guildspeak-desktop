@@ -5,13 +5,13 @@ import { useQuery } from '@apollo/react-hooks'
 import { Wrapper, InnerWrapper } from './styles'
 import { RouteComponentProps } from 'react-router'
 import MessageInputContainer from '../../containers/MessageInputContainer'
-import Loading from '../Loading'
 import {
   Wrapper as MessageWrapper,
   MessageBubble,
   MessageContentWrapper,
   MessageContent
 } from '../Message/styles'
+import { Center, Spinner } from '../shared'
 
 type Props = {
   channelId: string
@@ -72,8 +72,14 @@ const Messages = ({ channelId }: Props & RouteComponentProps) => {
     }
   }, [data])
 
-  if (loading) return <Loading />
-  if (error) return <div>Error! {error.message}</div>
+  if (loading) {
+    return (
+      <Center>
+        <Spinner />
+      </Center>
+    )
+  }
+  if (error) return <Center>Error! {error.message}</Center>
 
   return (
     <Wrapper>

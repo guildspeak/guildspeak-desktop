@@ -7,8 +7,7 @@ import {
   MessageBubble,
   MessageContent,
   DropdownButton,
-  MessageContentWrapper,
-  Divider
+  MessageContentWrapper
 } from './styles'
 import { DropdownMenu, Dropdown, DropdownItem } from '../Dropdown'
 

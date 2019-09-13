@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
-import { Wrapper, ChannelName, IconButton } from './styles'
+import { Wrapper, ChannelName } from './styles'
 
 type IProps = {
   currentChannelId: string

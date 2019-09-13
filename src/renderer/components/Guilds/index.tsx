@@ -4,7 +4,7 @@ import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import { Wrapper } from './styles'
 import CreateGuildContainer from '../../containers/CreateGuildContainer'
-import Loading from '../Loading'
+import { Spinner, Center } from '../shared'
 
 const GET_GUILDS = gql`
   query guilds {
@@ -49,7 +49,13 @@ const Guilds = () => {
     return () => unsubscribe()
   }, [])
 
-  if (loading) return <Loading />
+  if (loading) {
+    return (
+      <Center>
+        <Spinner />
+      </Center>
+    )
+  }
   if (error) return <div>Error! {error.message}</div>
 
   return (

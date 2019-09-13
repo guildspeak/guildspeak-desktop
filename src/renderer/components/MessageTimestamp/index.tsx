@@ -6,6 +6,8 @@ type Props = {
   time: string
 }
 
-const MessageTimestamp = ({ time }: Props) => <Wrapper>{dayjs(time).fromNow()}</Wrapper>
+const MessageTimestamp = ({ time }: Props) => (
+  <Wrapper title={dayjs(time).toString()}>{dayjs(time).fromNow()}</Wrapper>
+)
 
 export default MessageTimestamp
