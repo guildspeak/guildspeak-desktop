@@ -4,3 +4,4 @@ release/
 .env
 build/
 .awcache
+coverage

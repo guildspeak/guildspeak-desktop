@@ -14,7 +14,8 @@
     "lint": "tslint \"src/**/*.ts?\"",
     "lint-fix": "prettier --write \"src/**/*.ts?\" -&& tslint \"src/**/*.ts?\" --fix",
     "postinstall": "electron-builder install-app-deps",
-    "test": "jest -c jest.config.js"
+    "test": "jest -c jest.config.js",
+    "test-coverage": "npm test -- --coverage"
   },
   "jest": {
     "transform": {
