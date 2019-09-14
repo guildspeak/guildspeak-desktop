@@ -9,7 +9,8 @@ import {
   Wrapper as MessageWrapper,
   MessageBubble,
   MessageContentWrapper,
-  MessageContent
+  MessageContent,
+  Divider
 } from '../Message/styles'
 import { Center, Spinner } from '../shared'
 
@@ -85,8 +86,11 @@ const Messages = ({ channelId }: Props & RouteComponentProps) => {
     <Wrapper>
       <InnerWrapper>
         {data.channel.messages.length > 0 ? (
-          data.channel.messages.map(el => (
-            <Message author={el.author} content={el.content} key={el.id} time={el.createdAt} />
+          data.channel.messages.map((el, index) => (
+            <div key={el.id}>
+              <Message author={el.author} content={el.content} time={el.createdAt} />
+              {data.channel.messages.length !== index + 1 && <Divider />}
+            </div>
           ))
         ) : (
           <MessageWrapper>

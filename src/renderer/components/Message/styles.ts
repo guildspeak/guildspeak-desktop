@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   height: auto;
   flex-direction: column;
-  padding: 16px 16px 0px 16px;
+  padding: 16px 24px 16px 24px;
 `
 
 export const MessageBubble = styled.div`
@@ -26,9 +26,10 @@ export const MessageContent = styled.div`
 `
 
 export const Divider = styled.div`
-  width: 100%;
+  display: flex;
+  margin: 0px 16px;
   height: 1px;
-  background: ${({ theme }) => theme.borderColor};
+  background: #2e282f;
 `
 
 export const DropdownButton = styled.div`

@@ -50,7 +50,6 @@ const Message = ({ content, author, time }: Props) => {
             </DropdownMenu>
           </Dropdown>
         </MessageContentWrapper>
-        {/* <Divider /> */}
       </MessageBubble>
     </Wrapper>
   )
