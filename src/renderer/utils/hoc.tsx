@@ -1,5 +1,5 @@
 import React from 'react'
-import { Wrapper as LoadingWrapper } from '../components/Loading/styles'
+import { Center } from '../components/shared'
 
 export class ErrorBoundary extends React.Component {
   state = { hasError: false }
@@ -10,7 +10,7 @@ export class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return <LoadingWrapper>Loading failed! Please reload.</LoadingWrapper>
+      return <Center>Loading failed! Please reload.</Center>
     }
 
     return this.props.children
