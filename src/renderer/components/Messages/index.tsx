@@ -88,7 +88,12 @@ const Messages = ({ channelId }: Props & RouteComponentProps) => {
         {data.channel.messages.length > 0 ? (
           data.channel.messages.map((el, index) => (
             <div key={el.id}>
-              <Message author={el.author} content={el.content} time={el.createdAt} />
+              <Message
+                messageId={el.id}
+                author={el.author}
+                content={el.content}
+                time={el.createdAt}
+              />
               {data.channel.messages.length !== index + 1 && <Divider />}
             </div>
           ))
