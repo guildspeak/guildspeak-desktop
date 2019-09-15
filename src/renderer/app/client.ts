@@ -22,7 +22,6 @@ const authLink = new ApolloLink((operation, forward) => {
       authorization: token ? `Bearer ${token}` : ''
     }
   })
-  // @ts-ignore
   return forward(operation)
 })
 
