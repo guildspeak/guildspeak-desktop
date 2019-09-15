@@ -5,6 +5,17 @@ import { MarkedOptions } from 'marked'
 import DOMPurify from 'dompurify'
 import { isURLSafe } from '.'
 import { shell } from 'electron'
+import 'highlight.js/styles/atom-one-dark.css'
+import hljs from 'highlight.js/lib/highlight'
+import hljsJavascript from 'highlight.js/lib/languages/javascript'
+import hljsTypescript from 'highlight.js/lib/languages/typescript'
+import hljsCss from 'highlight.js/lib/languages/css'
+import hljsXml from 'highlight.js/lib/languages/xml'
+
+hljs.registerLanguage('javascript', hljsJavascript)
+hljs.registerLanguage('typescript', hljsTypescript)
+hljs.registerLanguage('css', hljsCss)
+hljs.registerLanguage('xml', hljsXml)
 
 export const sanitizeMarkdown = (html: string, dompurifyOptions?) =>
   DOMPurify.sanitize(html, dompurifyOptions)
@@ -16,6 +27,9 @@ export default (markdown: string): ReactElement => {
 
   const compile = marksy({
     createElement: React.createElement,
+    highlight(language, code) {
+      return hljs.highlight(language, code).value
+    },
     elements: {
       h1({ children }) {
         return children
@@ -49,19 +63,6 @@ export default (markdown: string): ReactElement => {
           )
         }
         return children
-      },
-      code({ code }) {
-        return (
-          <code>
-            <pre
-              style={{
-                whiteSpace: 'pre-wrap'
-              }}
-            >
-              {code}
-            </pre>
-          </code>
-        )
       },
       img({ children, src }) {
         if (isURLSafe(src) && isURLSafe(children)) {

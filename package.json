@@ -110,6 +110,7 @@
     "formik": "^1.5.8",
     "graphql": "^14.5.5",
     "graphql-tag": "^2.10.1",
+    "highlight.js": "^9.15.10",
     "immutable": "^4.0.0-rc.12",
     "marked": "^0.7.0",
     "marksy": "^8.0.0",
