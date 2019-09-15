@@ -1,6 +1,6 @@
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { HttpLink } from 'apollo-link-http'
+import { BatchHttpLink } from 'apollo-link-batch-http'
 import { onError } from 'apollo-link-error'
 import { ApolloLink, split } from 'apollo-link'
 import { WebSocketLink } from 'apollo-link-ws'
@@ -40,7 +40,7 @@ const link = split(
     return doc.kind === 'OperationDefinition' && doc.operation === 'subscription'
   },
   wsLink,
-  new HttpLink({
+  new BatchHttpLink({
     uri: `http${USE_SSL}://${URI}`
   })
 )
