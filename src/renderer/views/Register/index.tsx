@@ -15,6 +15,7 @@ import {
   RegisterLogo
 } from './styles'
 import { Formik, Form, ErrorMessage } from 'formik'
+import { Center } from '../../components/shared'
 
 const REGISTER = gql`
   mutation register($email: String!, $password: String!, $username: String!) {
@@ -31,12 +32,6 @@ const Register = ({ history }: RouteComponentProps) => {
   const [register, { data, error }] = useMutation(REGISTER)
 
   const handleLogin = () => history.push('login')
-
-  if (error) {
-    if (error.toString().includes('unique')) {
-      alert('This username or email is already taken!')
-    } else alert('Unknown error. Check console for more details')
-  }
 
   if (data) {
     return <WelcomeContainer data={data} />
@@ -92,6 +87,7 @@ const Register = ({ history }: RouteComponentProps) => {
           )}
         </Formik>
       </RegisterForm>
+      {error && <Center>{error.message}</Center>}
     </Wrapper>
   )
 }

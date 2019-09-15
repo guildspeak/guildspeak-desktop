@@ -15,6 +15,7 @@ import {
 } from './styles'
 import ErrorAlert from '../../components/ErrorAlert'
 import { Formik, Form, ErrorMessage } from 'formik'
+import { Center } from '../../components/shared'
 
 const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -30,10 +31,6 @@ const Login = ({ history }: RouteComponentProps) => {
   const [login, { data, error }] = useMutation(LOGIN)
 
   const handleRegister = () => history.push('/register')
-
-  if (error) {
-    return <ErrorAlert>{error.message}</ErrorAlert>
-  }
 
   if (data) {
     return <WelcomeContainer data={data} />
@@ -80,6 +77,7 @@ const Login = ({ history }: RouteComponentProps) => {
           )}
         </Formik>
       </LoginForm>
+      {error && <Center>{error.message}</Center>}
     </Wrapper>
   )
 }
