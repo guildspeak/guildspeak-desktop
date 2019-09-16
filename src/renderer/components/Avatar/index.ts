@@ -3,7 +3,7 @@ import styled from '../../utils/styled-components'
 export default styled.div<{ url?: string; size?: number }>`
   display: flex;
   height: ${({ size }) => (size ? `${size}px` : '48px')};
-  width: ${({ size }) => (size ? `${size}px` : '48px')};
+  min-width: ${({ size }) => (size ? `${size}px` : '48px')};
   background: ${({ theme, url }) => (url ? `url(${url})` : theme.secondaryTextColor)};
   background-size: cover;
   background-repeat: no-repeat;

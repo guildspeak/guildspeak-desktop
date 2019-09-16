@@ -28,7 +28,7 @@ export const InnerWrapper = styled(Scrollbar)`
 
 export const UserWrapper = styled.div`
   height: 48px;
-  flex: 1;
+  min-width: 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -39,9 +39,38 @@ export const UserWrapper = styled.div`
   border-radius: 45px;
 `
 
+export const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  min-width: 0px;
+`
+
 export const Username = styled.div`
   display: flex;
   font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  & > span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+`
+
+export const ProcessName = styled.span`
+  display: flex;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0px;
+  & > span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `
 
 export const UserStatus = styled(Status)`

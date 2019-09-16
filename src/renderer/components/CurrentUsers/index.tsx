@@ -1,10 +1,21 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-import { Wrapper, Username, InnerWrapper, UserWrapper, UserStatus, StyledModal } from './styles'
+import {
+  Wrapper,
+  Username,
+  InnerWrapper,
+  UserWrapper,
+  UserStatus,
+  StyledModal,
+  ProcessName,
+  TextWrapper
+} from './styles'
 import { RouteComponentProps } from 'react-router'
 import Avatar from '../Avatar'
 import { Center, Spinner } from '../shared'
+import { ipcRenderer } from 'electron'
+import { LOAD_RUNNING_PROCESSES, BackgroundProcess } from '../../../ipc'
 
 type Props = {
   guildId: string
@@ -26,11 +37,41 @@ const CurrentUsers = ({ guildId }: Props & RouteComponentProps) => {
   const [isOpen, setOpen] = useState<boolean>(false)
   const [opacity, setOpacity] = useState<number>(0)
   const [selectedUser, setSelectedUser] = useState<string>('')
+  const [activity, setActivity] = useState<string>('')
 
   const toggleModal = () => setOpen(!isOpen)
   const afterOpen = () => setOpacity(1)
   const beforeClose = () => setOpacity(0)
   const selectCurrentUser = (username: string) => () => setSelectedUser(username)
+
+  const handleMessage = (_event, args: BackgroundProcess[]) => {
+    if (args && args.length > 0) {
+      const backgroundProcessName = args[0].sessionName
+      const backgroundProcessType = args[0].type
+      let currentActivity = ''
+      switch (backgroundProcessType) {
+        default:
+        case 'other':
+          currentActivity = `Doing cool stuff in ${backgroundProcessName}`
+          break
+        case 'game':
+          currentActivity = `Playing ${backgroundProcessName}`
+          break
+        case 'music':
+          currentActivity = `Listening to ${backgroundProcessName}`
+          break
+      }
+
+      setActivity(currentActivity)
+    }
+  }
+
+  useEffect(() => {
+    ipcRenderer.send(LOAD_RUNNING_PROCESSES)
+    ipcRenderer.on(LOAD_RUNNING_PROCESSES, handleMessage)
+
+    return () => ipcRenderer.removeListener(LOAD_RUNNING_PROCESSES, handleMessage)
+  }, [])
 
   const handleEsc = useCallback((e: KeyboardEvent) => {
     if (e.keyCode === 27 && isOpen) {
@@ -63,7 +104,14 @@ const CurrentUsers = ({ guildId }: Props & RouteComponentProps) => {
           <UserWrapper onClick={toggleModal} key={user.id}>
             <Avatar size={36}>{user.username.slice(0, 1)}</Avatar>
             <UserStatus status={user.status} />
-            <Username onClick={selectCurrentUser(user.username)}>{user.username}</Username>
+            <TextWrapper>
+              <Username onClick={selectCurrentUser(user.username)}>
+                <span>{user.username}</span>
+              </Username>
+              <ProcessName>
+                <span title={activity}>{activity}</span>
+              </ProcessName>
+            </TextWrapper>
           </UserWrapper>
         ))}
         <StyledModal

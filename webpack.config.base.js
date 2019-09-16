@@ -37,7 +37,8 @@ const config = {
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js', '.jsx', '.tsx', '.ts', '.json']
-  }
+  },
+  externals: ['ps-list']
 }
 
 function getConfig(...cfg) {

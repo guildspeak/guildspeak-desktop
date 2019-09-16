@@ -37,7 +37,6 @@ const CreateGuild = ({ setChannelId, setGuildId }: Props) => {
   const handleCreateGuild = createGuild => async () => {
     toggleModal()
     const response = await createGuild({ variables: { name } })
-    console.log(response.data.createGuild)
     setGuildId(response.data.createGuild.id)
     setChannelId(response.data.createGuild.channels[0].id)
   }

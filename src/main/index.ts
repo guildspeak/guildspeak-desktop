@@ -1,5 +1,7 @@
-import { app, BrowserWindow, protocol } from 'electron'
+import { app, BrowserWindow, protocol, ipcMain } from 'electron'
 import * as path from 'path'
+import { LOAD_RUNNING_PROCESSES, BackgroundProcess, TaskList } from '../ipc'
+import tasklist from 'tasklist'
 
 let win: BrowserWindow | null
 
@@ -60,4 +62,32 @@ app.on('activate', () => {
   if (win === null) {
     createWindow()
   }
+})
+
+const processesWhiteList: BackgroundProcess[] = [
+  {
+    imageName: 'code',
+    sessionName: 'Visual Studio Code',
+    type: 'other'
+  },
+  {
+    imageName: 'minecraft',
+    sessionName: 'Minecraft',
+    type: 'game'
+  },
+  {
+    imageName: 'spotify',
+    sessionName: 'Spotify',
+    type: 'music'
+  }
+]
+
+ipcMain.on(LOAD_RUNNING_PROCESSES, async (event, args) => {
+  const processes: TaskList[] = await tasklist()
+  const uniqueProcesses = [...new Set(processes)]
+  const detectedProcesses: BackgroundProcess[] | TaskList[] = processesWhiteList.filter(pw =>
+    uniqueProcesses.some(p => p.imageName.toLowerCase() === `${pw.imageName.toLowerCase()}.exe`)
+  )
+
+  win.webContents.send(LOAD_RUNNING_PROCESSES, detectedProcesses)
 })
