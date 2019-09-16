@@ -29,6 +29,7 @@ export const InnerWrapper = styled(Scrollbar)`
 export const UserWrapper = styled.div`
   height: 48px;
   min-width: 0px;
+  width: 224px;
   display: flex;
   flex-direction: row;
   align-items: center;
