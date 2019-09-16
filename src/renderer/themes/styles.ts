@@ -60,6 +60,10 @@ export const style = css`
       text-decoration: underline;
     }
   }
+
+  code {
+    white-space: pre-wrap;
+  }
 `
 
 export const AppWrapper = styled.div`
