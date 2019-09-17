@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Wrapper, ChannelName } from './styles'
 
@@ -6,8 +6,7 @@ type IProps = {
   currentChannelId: string
   name: string
   channelId: string
-  setChannelId: (channelId: string) => any
-  setChannelName: (channelName: string) => any
+  setChannel: (channelId: string, channelName: string) => void
 }
 
 const Channel = ({
@@ -15,19 +14,16 @@ const Channel = ({
   name,
   channelId,
   history,
-  setChannelId
+  setChannel
 }: RouteComponentProps & IProps) => {
   const changeChannel = () => {
-    setChannelId(channelId)
+    setChannel(channelId, name)
     history.push(`/app/channel/${channelId}`)
   }
 
   return (
     <Wrapper currentChannelId={currentChannelId} channelId={channelId} onClick={changeChannel}>
       <ChannelName>{name}</ChannelName>
-      {/* <IconButton currentChannelId={currentChannelId} channelId={channelId} className="material-icons">
-        expand_more
-      </IconButton> */}
     </Wrapper>
   )
 }

@@ -6,7 +6,7 @@ import Button from '../Button'
 
 type Props = {
   setGuildId: (guildId: string) => void
-  setChannelId: (channelId: string) => void
+  setChannel: (channelId: string, channelName: string) => void
 }
 
 const CREATE_GUILD = gql`
@@ -16,12 +16,13 @@ const CREATE_GUILD = gql`
       id
       channels {
         id
+        name
       }
     }
   }
 `
 
-const CreateGuild = ({ setChannelId, setGuildId }: Props) => {
+const CreateGuild = ({ setChannel, setGuildId }: Props) => {
   const [isOpen, setOpen] = useState<boolean>(false)
   const [opacity, setOpacity] = useState<number>(0)
   const [name, setName] = useState<string>('')
@@ -36,9 +37,9 @@ const CreateGuild = ({ setChannelId, setGuildId }: Props) => {
 
   const handleCreateGuild = createGuild => async () => {
     toggleModal()
-    const response = await createGuild({ variables: { name } })
-    setGuildId(response.data.createGuild.id)
-    setChannelId(response.data.createGuild.channels[0].id)
+    const { data } = await createGuild({ variables: { name } })
+    setGuildId(data.createGuild.id)
+    setChannel(data.createGuild.channels[0].id, data.createGuild.channels[0].name)
   }
 
   return (

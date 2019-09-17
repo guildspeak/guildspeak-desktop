@@ -9,6 +9,7 @@ import { Center, Spinner } from '../shared'
 
 type Props = {
   guildId: string
+  currentChannelName: string
 }
 
 const GET_GUILD = gql`
@@ -33,7 +34,7 @@ const CHANNELS_SUBSCRIPTION = gql`
   }
 `
 
-const CurrentGuild = ({ guildId }: Props & RouteComponentProps) => {
+const CurrentGuild = ({ guildId, currentChannelName }: Props & RouteComponentProps) => {
   const { loading, error, data, subscribeToMore } = useQuery(GET_GUILD, {
     variables: { id: guildId }
   })
@@ -58,6 +59,10 @@ const CurrentGuild = ({ guildId }: Props & RouteComponentProps) => {
     })
     return () => unsubscribe()
   }, [data])
+
+  useEffect(() => {
+    document.title = `#${currentChannelName} - Guildspeak`
+  }, [currentChannelName])
 
   if (loading) {
     return (

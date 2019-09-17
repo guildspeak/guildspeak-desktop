@@ -13,6 +13,7 @@ const GET_GUILDS = gql`
       id
       channels {
         id
+        name
       }
     }
   }
@@ -66,6 +67,7 @@ const Guilds = () => {
           name={el.name}
           guildId={el.id}
           defaultChannelId={el.channels[0].id}
+          defaultChannelName={el.channels[0].name}
         />
       ))}
       <CreateGuildContainer />
