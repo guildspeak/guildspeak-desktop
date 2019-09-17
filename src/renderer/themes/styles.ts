@@ -3,6 +3,7 @@ import styled, { css } from '../utils/styled-components'
 const fonts = {
   interRegular: require('../assets/fonts/Inter/Inter-Regular.woff2'),
   interMedium: require('../assets/fonts/Inter/Inter-Medium.woff2'),
+  interLight: require('../assets/fonts/Inter/Inter-Light-BETA.woff2'),
   interItalic: require('../assets/fonts/Inter/Inter-Italic.woff2'),
   interBold: require('../assets/fonts/Inter/Inter-Bold.woff2'),
   interBlack: require('../assets/fonts/Inter/Inter-Black.woff2'),
@@ -22,10 +23,19 @@ export const style = css`
   @font-face {
     font-family: 'Inter';
     font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(${fonts.interLight}) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
     font-weight: 400;
     font-display: swap;
     src: url(${fonts.interRegular}) format('woff2');
   }
+
   @font-face {
     font-family: 'Inter';
     font-style: italic;
@@ -41,6 +51,7 @@ export const style = css`
     font-display: swap;
     src: url(${fonts.interMedium}) format('woff2');
   }
+
   @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -48,6 +59,7 @@ export const style = css`
     font-display: swap;
     src: url(${fonts.interBold}) format('woff2');
   }
+
   @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -55,6 +67,7 @@ export const style = css`
     font-display: swap;
     src: url(${fonts.interSemiBold}) format('woff2');
   }
+
   @font-face {
     font-family: 'Inter';
     font-style: normal;
