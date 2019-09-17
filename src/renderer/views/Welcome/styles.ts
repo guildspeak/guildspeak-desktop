@@ -20,7 +20,6 @@ const Info = styled.div`
   padding: 8px;
   margin: 0;
   cursor: default;
-  font-family: 'Francois One', sans-serif;
   text-transform: uppercase;
   font-size: 18px;
 `

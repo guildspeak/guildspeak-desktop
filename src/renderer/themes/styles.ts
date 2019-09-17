@@ -1,10 +1,13 @@
 import styled, { css } from '../utils/styled-components'
 
 const fonts = {
-  robotoRegular: require('../assets/fonts/Roboto/Roboto-Regular.ttf'),
-  robotoMedium: require('../assets/fonts/Roboto/Roboto-Medium.ttf'),
-  robotoLight: require('../assets/fonts/Roboto/Roboto-Light.ttf'),
-  francoisOneRegular: require('../assets/fonts/Francois_One/FrancoisOne-Regular.ttf')
+  interRegular: require('../assets/fonts/Inter/Inter-Regular.woff2'),
+  interMedium: require('../assets/fonts/Inter/Inter-Medium.woff2'),
+  interItalic: require('../assets/fonts/Inter/Inter-Italic.woff2'),
+  interBold: require('../assets/fonts/Inter/Inter-Bold.woff2'),
+  interBlack: require('../assets/fonts/Inter/Inter-Black.woff2'),
+  interSemiBold: require('../assets/fonts/Inter/Inter-SemiBold.woff2'),
+  interExtraBold: require('../assets/fonts/Inter/Inter-ExtraBold.woff2')
 }
 
 export const style = css`
@@ -17,32 +20,59 @@ export const style = css`
   }
 
   @font-face {
-    font-family: 'Roboto';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    src: url(${fonts.robotoRegular}) format('truetype');
+    font-display: swap;
+    src: url(${fonts.interRegular}) format('woff2');
   }
   @font-face {
-    font-family: 'Roboto';
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(${fonts.interItalic}) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    src: url(${fonts.robotoMedium}) format('truetype');
+    font-display: swap;
+    src: url(${fonts.interMedium}) format('woff2');
   }
   @font-face {
-    font-family: 'Roboto';
+    font-family: 'Inter';
     font-style: normal;
-    font-weight: 300;
-    src: url(${fonts.robotoLight}) format('truetype');
+    font-weight: 700;
+    font-display: swap;
+    src: url(${fonts.interBold}) format('woff2');
   }
   @font-face {
-    font-family: 'Francois One';
+    font-family: 'Inter';
     font-style: normal;
-    font-weight: 400;
-    src: url(${fonts.francoisOneRegular}) format('truetype');
+    font-weight: 600;
+    font-display: swap;
+    src: url(${fonts.interSemiBold}) format('woff2');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url(${fonts.interExtraBold}) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(${fonts.interBlack}) format('woff2');
   }
 
   body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
     width: 100vw;

@@ -25,7 +25,6 @@ export const WrapperItems = styled.div`
 
 export const Title = styled.div`
   -webkit-app-region: drag;
-  font-family: 'Roboto Condensed', sans-serif;
   padding: 4px 0px 0px 4px;
   font-size: 16px;
 `

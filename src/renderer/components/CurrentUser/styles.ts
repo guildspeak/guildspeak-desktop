@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 export const Username = styled.div`
   display: flex;
   cursor: pointer;
-  font-family: 'Francois One', sans-serif;
+ 
 `
 
 export const IconButton = styled.div`
