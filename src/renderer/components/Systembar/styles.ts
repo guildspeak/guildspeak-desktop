@@ -27,13 +27,14 @@ export const Title = styled.div`
   -webkit-app-region: drag;
   padding: 4px 0px 0px 4px;
   font-size: 16px;
+  font-weight: 500;
 `
 
 export const Button = styled.div`
   cursor: pointer;
   -webkit-app-region: no-drag;
   &:hover {
-    background: rgba(255, 255, 255, 0.24);
+    background: ${({ theme }) => theme.secondaryColor};
   }
   font-size: 18px;
   padding: 4px;

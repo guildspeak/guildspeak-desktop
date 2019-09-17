@@ -9,13 +9,13 @@ export const Wrapper = styled.div<{ currentChannelId: string; channelId?: string
   ${props =>
     props.channelId === props.currentChannelId &&
     css`
-      background: ${({ theme }) => theme.secondaryTextColor};
+      background: ${({ theme }) => theme.secondaryColor};
       color: ${props.theme.textColor};
     `}
 
   &:hover {
     color: ${({ theme }) => theme.textColor};
-    background: ${({ theme }) => theme.secondaryTextColor};
+    background: ${({ theme }) => theme.secondaryColor};
   }
 `
 

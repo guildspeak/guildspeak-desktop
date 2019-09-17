@@ -1,15 +1,16 @@
 import Theme from './theme'
 
 export default {
-  backgroundColor: '#ffffff',
+  backgroundColor: '#f6f9f7',
   primaryColor: '#000000',
-  accentColor: '#0095ff',
-  accentHoverColor: '#0095ff3d',
+  accentColor: '#00bd8e',
+  accentHoverColor: '#00cda1',
   textColor: '#000000',
-  secondaryTextColor: '#808080',
-  cardColor: '#f1f1f1',
-  borderColor: '#bdbdbd',
-  positiveColor: '#00936b',
+  secondaryColor: '#e3e6e5',
+  gray: '#e3e6e5',
+  grayDarker: '#d2d5d3',
+  borderColor: '#9e80a2',
+  positiveColor: '#15DEBE',
   negativeColor: '#D50000',
   warningColor: '#F9A825',
   neutralColor: '#969696'

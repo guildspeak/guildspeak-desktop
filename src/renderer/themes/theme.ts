@@ -4,7 +4,9 @@ export default interface Theme {
   readonly accentColor: string
   readonly accentHoverColor: string
   readonly textColor: string
-  readonly secondaryTextColor: string
+  readonly secondaryColor: string
+  readonly gray: string
+  readonly grayDarker: string
   readonly cardColor: string
   readonly borderColor: string
   readonly positiveColor: string

@@ -1,5 +1,5 @@
 import { hot } from 'react-hot-loader/root'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import loadable from '@loadable/component'
 import { Provider } from 'react-redux'
 import { ApolloProvider } from '@apollo/react-hooks'
@@ -12,6 +12,7 @@ import { ModalProvider } from 'styled-react-modal'
 import { ErrorBoundary } from '../utils/hoc'
 import { ThemeProvider, createGlobalStyle } from '../utils/styled-components'
 import darkTheme from '../themes/dark'
+import lightTheme from '../themes/light'
 import { Spinner, Center } from '../components/shared'
 
 const GlobalStyle = createGlobalStyle`${style}`
@@ -52,30 +53,38 @@ const Settings = loadable(() => import('../views/Settings'), {
   )
 })
 
-const App = () => (
-  <ApolloProvider client={client}>
-    <Provider store={store}>
-      <ThemeProvider theme={darkTheme}>
-        <>
-          <GlobalStyle />
-          <AppWrapper>
-            <Systembar />
-            <ModalProvider>
-              <ErrorBoundary>
-                <Router>
-                  <Route path="/" component={StartupContainer} />
-                  <Route path="/app" component={ApplicationContainer} />
-                  <Route path="/login" component={Login} />
-                  <Route path="/register" component={Register} />
-                  <Route path="/settings" component={Settings} />
-                </Router>
-              </ErrorBoundary>
-            </ModalProvider>
-          </AppWrapper>
-        </>
-      </ThemeProvider>
-    </Provider>
-  </ApolloProvider>
-)
+const App = () => {
+  const [prefersDark, setPrefersDark] = useState(true)
+
+  useEffect(() => {
+    setPrefersDark(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  }, [])
+
+  return (
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <ThemeProvider theme={prefersDark ? darkTheme : lightTheme}>
+          <>
+            <GlobalStyle />
+            <AppWrapper>
+              <Systembar />
+              <ModalProvider>
+                <ErrorBoundary>
+                  <Router>
+                    <Route path="/" component={StartupContainer} />
+                    <Route path="/app" component={ApplicationContainer} />
+                    <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register} />
+                    <Route path="/settings" component={Settings} />
+                  </Router>
+                </ErrorBoundary>
+              </ModalProvider>
+            </AppWrapper>
+          </>
+        </ThemeProvider>
+      </Provider>
+    </ApolloProvider>
+  )
+}
 
 export default hot(App)

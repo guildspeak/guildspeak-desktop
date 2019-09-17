@@ -29,16 +29,17 @@ export const Divider = styled.div`
   display: flex;
   margin: 0px 16px;
   height: 1px;
-  background: #2e282f;
+  background: ${({ theme }) => theme.secondaryColor};
 `
 
 export const DropdownButton = styled.div`
   cursor: pointer;
   user-select: none;
   &:hover {
-    background: rgba(255, 255, 255, 0.24);
+    background: ${({ theme }) => theme.secondaryColor};
   }
   font-size: 18px;
   padding: 4px;
   border-radius: 12px;
+  color: ${({ theme }) => theme.primaryColor};
 `

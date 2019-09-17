@@ -10,7 +10,6 @@ type DropdownItemMenuProps = {
 
 export const Dropdown = styled.div`
   position: relative;
-  color: #eeeeee;
   user-select: none;
   z-index: 9999;
 `
@@ -19,8 +18,7 @@ export const DropdownMenu = styled.div<DropdownMenuProps>`
   position: absolute;
   left: -150%;
   padding: 0 0;
-  color: #eeeeee;
-  background: #2d2d31;
+  background: ${({ theme }) => theme.secondaryColor};
   border-radius: 4px;
   ${props =>
     props.hidden
@@ -37,13 +35,12 @@ export const DropdownItem = styled.div<DropdownItemMenuProps>`
   padding: 8px;
   font-size: 12px;
   clear: both;
-  color: #eeeeee;
   white-space: nowrap;
-  background: #2d2d31;
+  background: ${({ theme }) => theme.secondaryColor};
   cursor: pointer;
   &:hover,
   &:focus {
     color: ${props => props.hoverColor || '#14bca3'};
-    background: #2d2d31;
+    background: ${({ theme }) => theme.secondaryColor};
   }
 `

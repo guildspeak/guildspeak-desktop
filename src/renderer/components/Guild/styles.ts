@@ -4,7 +4,7 @@ export const GuildWrapper = styled.div<{ url?: string }>`
   display: flex;
   height: 48px;
   width: 48px;
-  background: ${({ theme, url }) => (url ? `url(${url})` : theme.secondaryTextColor)};
+  background: ${({ theme, url }) => (url ? `url(${url})` : theme.secondaryColor)};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

@@ -22,7 +22,7 @@ export default styled.button<Props>`
   padding: 8px;
   cursor: pointer;
   &:hover {
-    background: ${({ theme }) => theme.secondaryTextColor};
+    background: ${({ theme }) => theme.secondaryColor};
     color: ${({ theme }) => theme.backgroundColor};
   }
   &::before,

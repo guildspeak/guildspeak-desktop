@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   user-select: none;
   font-size: 16px;
-  box-shadow: 0px 1px 1px #9e80a2;
+  box-shadow: 0px 1px 1px ${({ theme }) => theme.borderColor};
   border-radius: 12px;
 `
 

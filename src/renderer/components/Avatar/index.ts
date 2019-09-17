@@ -4,7 +4,7 @@ export default styled.div<{ url?: string; size?: number }>`
   display: flex;
   height: ${({ size }) => (size ? `${size}px` : '48px')};
   min-width: ${({ size }) => (size ? `${size}px` : '48px')};
-  background: ${({ theme, url }) => (url ? `url(${url})` : theme.secondaryTextColor)};
+  background: ${({ theme, url }) => (url ? `url(${url})` : theme.secondaryColor)};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

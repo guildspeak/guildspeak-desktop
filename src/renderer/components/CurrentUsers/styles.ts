@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   min-height: 0px;
   user-select: none;
   flex-direction: column;
-  box-shadow: 0.25px 0.5px 0px #9e80a2;
+  box-shadow: 0.25px 0.5px 0px ${({ theme }) => theme.borderColor};
   border-radius: 12px;
 `
 
@@ -36,7 +36,7 @@ export const UserWrapper = styled.div`
   padding: 8px;
   position: relative;
   cursor: pointer;
-  background: ${({ theme }) => theme.borderColor};
+  background: ${({ theme }) => theme.grayDarker};
   border-radius: 45px;
 `
 
