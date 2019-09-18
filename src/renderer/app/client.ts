@@ -28,7 +28,10 @@ const authLink = new ApolloLink((operation, forward) => {
 const wsLink = new WebSocketLink({
   uri: `ws${USE_SSL}://${URI}/`,
   options: {
-    reconnect: true
+    reconnect: true,
+    connectionParams: {
+      token: localStorage.getItem('token') || null
+    }
   }
 })
 

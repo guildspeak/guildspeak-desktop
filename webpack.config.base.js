@@ -38,7 +38,7 @@ const config = {
     modules: ['node_modules'],
     extensions: ['.js', '.jsx', '.tsx', '.ts', '.json']
   },
-  externals: ['ps-list']
+  externals: ['tasklist']
 }
 
 function getConfig(...cfg) {
