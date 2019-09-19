@@ -5,7 +5,7 @@ import { Wrapper, CreateButton, NameInput, StyledModal } from './styles'
 import Button from '../Button'
 
 type Props = {
-  setGuildId: (guildId: string) => void
+  setGuild: (guildId: string, guildName: string) => void
   setChannel: (channelId: string, channelName: string) => void
 }
 
@@ -22,7 +22,7 @@ const CREATE_GUILD = gql`
   }
 `
 
-const CreateGuild = ({ setChannel, setGuildId }: Props) => {
+const CreateGuild = ({ setChannel, setGuild }: Props) => {
   const [isOpen, setOpen] = useState<boolean>(false)
   const [opacity, setOpacity] = useState<number>(0)
   const [name, setName] = useState<string>('')
@@ -38,7 +38,7 @@ const CreateGuild = ({ setChannel, setGuildId }: Props) => {
   const handleCreateGuild = createGuild => async () => {
     toggleModal()
     const { data } = await createGuild({ variables: { name } })
-    setGuildId(data.createGuild.id)
+    setGuild(data.createGuild.id, data.createGuild.name)
     setChannel(data.createGuild.channels[0].id, data.createGuild.channels[0].name)
   }
 

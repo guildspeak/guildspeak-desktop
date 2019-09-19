@@ -4,7 +4,6 @@ import Status from '../Status'
 import Modal from 'styled-react-modal'
 
 export const Wrapper = styled.div`
-  padding: 12px;
   display: flex;
   position: relative;
   height: 100%;
@@ -20,10 +19,23 @@ export const InnerWrapper = styled(Scrollbar)`
   user-select: none;
   flex-direction: row;
   position: relative;
+  padding: 8px;
   height: 100%;
   min-height: 0px;
   overflow-y: auto;
   overflow-x: hidden;
+`
+
+export const CurrentGuildWrapper = styled.div`
+  min-width: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  background: ${({ theme }) => theme.secondaryColor};
+  border-radius: 12px 12px 0px 0px;
+  margin: 0px 0px 8px 0px;
 `
 
 export const UserWrapper = styled.div`
@@ -34,7 +46,6 @@ export const UserWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 8px;
-  position: relative;
   cursor: pointer;
   background: ${({ theme }) => theme.grayDarker};
   border-radius: 45px;
@@ -75,8 +86,8 @@ export const ProcessName = styled.span`
 `
 
 export const UserStatus = styled(Status)`
-  left: 33px;
-  top: 32px;
+  left: 44px;
+  top: 47px;
 `
 
 export const StyledModal = Modal.styled`

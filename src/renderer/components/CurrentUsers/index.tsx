@@ -9,7 +9,8 @@ import {
   UserStatus,
   StyledModal,
   ProcessName,
-  TextWrapper
+  TextWrapper,
+  CurrentGuildWrapper
 } from './styles'
 import { RouteComponentProps } from 'react-router'
 import Avatar from '../Avatar'
@@ -20,6 +21,7 @@ import { isUserOnline } from '../../utils'
 
 type Props = {
   guildId: string
+  guildName: string
 }
 
 const GET_USERS = gql`
@@ -35,7 +37,7 @@ const GET_USERS = gql`
   }
 `
 
-const CurrentUsers = ({ guildId }: Props & RouteComponentProps) => {
+const CurrentUsers = ({ guildId, guildName }: Props & RouteComponentProps) => {
   const [isOpen, setOpen] = useState<boolean>(false)
   const [opacity, setOpacity] = useState<number>(0)
   const [selectedUser, setSelectedUser] = useState<string>('')
@@ -101,6 +103,10 @@ const CurrentUsers = ({ guildId }: Props & RouteComponentProps) => {
 
   return (
     <Wrapper>
+      <CurrentGuildWrapper>
+        {guildName}
+        <div className="material-icons">expand_more</div>
+      </CurrentGuildWrapper>
       <InnerWrapper>
         {data.guild.users.map(user => (
           <UserWrapper onClick={toggleModal} key={user.id}>

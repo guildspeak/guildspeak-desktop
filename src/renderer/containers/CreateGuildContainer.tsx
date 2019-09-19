@@ -3,8 +3,8 @@ import { RootState } from '../reducers'
 import {
   SetCurrentChannel,
   setCurrentChannel,
-  SetCurrentGuildId,
-  setCurrentGuildId
+  SetCurrentGuild,
+  setCurrentGuild
 } from '../actions/currentGuildActions'
 import { Dispatch } from 'redux'
 import CreateGuild from '../components/CreateGuild'
@@ -13,8 +13,8 @@ const mapStateToProps = (state: RootState, props) => ({
   ...props
 })
 
-const mapDispatchToProps = (dispatch: Dispatch<SetCurrentGuildId | SetCurrentChannel>) => ({
-  setGuildId: guildId => dispatch(setCurrentGuildId(guildId)),
+const mapDispatchToProps = (dispatch: Dispatch<SetCurrentGuild | SetCurrentChannel>) => ({
+  setGuild: (guildId: string, guildName: string) => dispatch(setCurrentGuild(guildId, guildName)),
   setChannel: (channelId: string, channelName: string) =>
     dispatch(setCurrentChannel(channelId, channelName))
 })

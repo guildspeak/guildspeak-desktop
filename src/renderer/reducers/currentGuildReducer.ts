@@ -2,18 +2,20 @@ import { Reducer } from 'redux'
 
 import {
   CurrentGuildActions,
-  SET_CURRENT_GUILD_ID,
+  SET_CURRENT_GUILD,
   SET_CURRENT_CHANNEL
 } from '../actions/currentGuildActions'
 
-export interface CurrentGuildState {
-  readonly guildId: string
-  readonly channelId: string
-  readonly channelName: string
+export type CurrentGuildState = {
+  guildId: string
+  guildName: string
+  channelId: string
+  channelName: string
 }
 
 const defaultState: CurrentGuildState = {
   guildId: localStorage.getItem('currentGuildId') || null,
+  guildName: localStorage.getItem('currentGuildName') || null,
   channelId: localStorage.getItem('currentChannelId') || null,
   channelName: localStorage.getItem('currentChannelName') || null
 }
@@ -23,11 +25,13 @@ export const currentGuildReducer: Reducer<CurrentGuildState> = (
   action: CurrentGuildActions
 ) => {
   switch (action.type) {
-    case SET_CURRENT_GUILD_ID: {
+    case SET_CURRENT_GUILD: {
       localStorage.setItem('currentGuildId', action.payload.guildId)
+      localStorage.setItem('currentGuildName', action.payload.guildName)
       return {
         ...state,
-        guildId: action.payload.guildId
+        guildId: action.payload.guildId,
+        guildName: action.payload.guildName
       }
     }
     case SET_CURRENT_CHANNEL: {

@@ -8,7 +8,7 @@ type Props = {
   guildId: string
   defaultChannelId: string
   defaultChannelName: string
-  setGuildId: (guildId: string) => void
+  setGuild: (guildId: string, guildName: string) => void
   setChannel: (channelId: string, channelName: string) => void
 }
 
@@ -16,14 +16,14 @@ const Guild = ({
   name,
   guildId,
   currentGuildId,
-  setGuildId,
+  setGuild,
   defaultChannelId,
   defaultChannelName,
   setChannel,
   history
 }: Props & RouteComponentProps) => {
   const changeGuild = () => {
-    setGuildId(guildId)
+    setGuild(guildId, name)
     setChannel(defaultChannelId, defaultChannelName)
     history.push(`/app/channel/${defaultChannelId}`)
   }

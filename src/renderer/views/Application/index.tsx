@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react'
 import Sidebar from '../../components/Sidebar'
 import Messages from '../../components/Messages'
-import { Route, withRouter, RouteComponentProps } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { MainWrapper, SecondColumn, ThirdColumn, Row, TopWrapper } from './styles'
 import CurrentUsersContainer from '../../containers/CurrentUsersContainer'
 import Guilds from '../../components/Guilds'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import dayjs from 'dayjs'
+
+type Props = {
+  channelId: string
+  guildId: string
+}
 
 const UPDATE_USER_STATUS = gql`
   mutation updateUserStatus($lastSeen: DateTime!) {
@@ -17,23 +22,8 @@ const UPDATE_USER_STATUS = gql`
   }
 `
 
-const renderMessages = params => (
-  // @ts-ignore
-  <Messages key={params.match.params.channelId} channelId={params.match.params.channelId} />
-)
-
-const Application = ({
-  channelId,
-  guildId,
-  history
-}: RouteComponentProps & { channelId: string; guildId: string }) => {
+const Application = ({ channelId, guildId }: Props & RouteComponentProps) => {
   const [updateUserStatus] = useMutation(UPDATE_USER_STATUS)
-
-  useEffect(() => {
-    if (guildId && channelId) {
-      history.push(`/app/channel/${channelId}`)
-    }
-  }, [channelId])
 
   const updateStatus = () => {
     if (!document.hidden && document.visibilityState === 'visible' && navigator.onLine) {
@@ -55,9 +45,11 @@ const Application = ({
         <Row>
           <Sidebar />
           <SecondColumn>
-            <Route path="/app/channel/:channelId" render={renderMessages} />
+            <Messages channelId={channelId} />
           </SecondColumn>
-          <ThirdColumn>{guildId && channelId && <CurrentUsersContainer />}</ThirdColumn>
+          <ThirdColumn>
+            <CurrentUsersContainer />
+          </ThirdColumn>
         </Row>
       ) : (
         <Row>Create or select Guild</Row>

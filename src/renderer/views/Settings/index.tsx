@@ -15,7 +15,7 @@ const Settings = ({ history }: RouteComponentProps) => {
   }, [handleEsc])
 
   const handleLogout = () => {
-    localStorage.removeItem('token')
+    localStorage.clear()
     history.push('/login')
   }
 

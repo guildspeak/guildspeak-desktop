@@ -48,7 +48,7 @@ const GET_MESSAGES = gql`
   }
 `
 
-const Messages = ({ channelId }: Props & RouteComponentProps) => {
+const Messages = ({ channelId }: Props) => {
   const messagesEndRef = useRef(null)
 
   const { loading, error, data, subscribeToMore } = useQuery(GET_MESSAGES, {
