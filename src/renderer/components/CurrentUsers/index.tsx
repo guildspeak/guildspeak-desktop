@@ -16,6 +16,7 @@ import Avatar from '../Avatar'
 import { Center, Spinner } from '../shared'
 import { ipcRenderer } from 'electron'
 import { LOAD_RUNNING_PROCESSES, BackgroundProcess } from '../../../ipc'
+import { isUserOnline } from '../../utils'
 
 type Props = {
   guildId: string
@@ -28,7 +29,7 @@ const GET_USERS = gql`
       users {
         id
         username
-        status
+        lastSeen
       }
     }
   }
@@ -104,7 +105,7 @@ const CurrentUsers = ({ guildId }: Props & RouteComponentProps) => {
         {data.guild.users.map(user => (
           <UserWrapper onClick={toggleModal} key={user.id}>
             <Avatar size={36}>{user.username.slice(0, 1)}</Avatar>
-            <UserStatus status={user.status} />
+            <UserStatus isOnline={isUserOnline(user.lastSeen)} />
             <TextWrapper>
               <Username onClick={selectCurrentUser(user.username)}>
                 <span>{user.username}</span>

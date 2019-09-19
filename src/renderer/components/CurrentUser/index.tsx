@@ -6,12 +6,13 @@ import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import Avatar from '../Avatar'
 import { Center, Spinner } from '../shared'
+import { isUserOnline } from '../../utils'
 
 const GET_ME = gql`
   query {
     me {
       username
-      status
+      lastSeen
     }
   }
 `
@@ -37,7 +38,7 @@ const CurrentUser = ({ history }: RouteComponentProps) => {
   return (
     <Wrapper>
       <Avatar>{data.me.username.slice(0, 1)}</Avatar>
-      <Status status={data.me.status} />
+      <Status isOnline={isUserOnline(data.me.lastSeen)} />
       <Username>{data.me.username}</Username>
       <Buttons>
         <IconButton onClick={handleSettings} className="material-icons">

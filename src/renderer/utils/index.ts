@@ -1,4 +1,5 @@
 import URL from 'url-parse'
+import dayjs from 'dayjs'
 
 /**
  * Retries promise after error
@@ -45,4 +46,8 @@ export function isURLSafe(dangerousURL: string): boolean {
     return false
   }
   return false
+}
+
+export const isUserOnline = (lastSeen: string): boolean => {
+  return dayjs(lastSeen).isBefore(dayjs(dayjs().toISOString()).add(30, 'second'))
 }

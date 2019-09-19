@@ -5,6 +5,17 @@ import { Route, withRouter, RouteComponentProps } from 'react-router-dom'
 import { MainWrapper, SecondColumn, ThirdColumn, Row, TopWrapper } from './styles'
 import CurrentUsersContainer from '../../containers/CurrentUsersContainer'
 import Guilds from '../../components/Guilds'
+import gql from 'graphql-tag'
+import { useMutation } from '@apollo/react-hooks'
+import dayjs from 'dayjs'
+
+const UPDATE_USER_STATUS = gql`
+  mutation updateUserStatus($lastSeen: DateTime!) {
+    updateUserStatus(lastSeen: $lastSeen) {
+      lastSeen
+    }
+  }
+`
 
 const renderMessages = params => (
   // @ts-ignore
@@ -16,11 +27,24 @@ const Application = ({
   guildId,
   history
 }: RouteComponentProps & { channelId: string; guildId: string }) => {
+  const [updateUserStatus] = useMutation(UPDATE_USER_STATUS)
+
   useEffect(() => {
     if (guildId && channelId) {
       history.push(`/app/channel/${channelId}`)
     }
   }, [channelId])
+
+  const updateStatus = () => {
+    if (!document.hidden && document.visibilityState === 'visible' && navigator.onLine) {
+      updateUserStatus({ variables: { lastSeen: dayjs().toISOString() } })
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('visibilitychange', updateStatus)
+    return () => document.removeEventListener('visibilitychange', updateStatus)
+  }, [updateStatus])
 
   return (
     <MainWrapper>
