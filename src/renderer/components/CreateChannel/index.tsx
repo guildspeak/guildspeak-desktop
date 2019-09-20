@@ -37,7 +37,7 @@ const CreateChannel = ({ guildName, guildId }: Props) => {
   const [createChannel] = useMutation(CREATE_CHANNEL)
 
   return (
-    <Wrapper>
+    <Wrapper title="Create new channel">
       <CreateButton className="material-icons" onClick={toggleModal}>
         add
       </CreateButton>

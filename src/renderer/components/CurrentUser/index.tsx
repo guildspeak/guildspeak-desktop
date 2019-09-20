@@ -42,7 +42,7 @@ const CurrentUser = ({ history }: RouteComponentProps) => {
       <Status isOnline={isUserOnline(data.me.lastSeen)} title={dayjs(data.me.lastSeen).fromNow()} />
       <Username>{data.me.username}</Username>
       <Buttons>
-        <IconButton onClick={handleSettings} className="material-icons">
+        <IconButton title="Settings" onClick={handleSettings} className="material-icons">
           settings
         </IconButton>
       </Buttons>
