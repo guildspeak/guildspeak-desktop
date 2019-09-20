@@ -1,4 +1,5 @@
 import styled from '../../utils/styled-components'
+import logo from '../../assets/img/icon-gradient-transparent.svg'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ export const WrapperLine = styled.div`
 export const WrapperItems = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   -webkit-app-region: drag;
 `
 
@@ -28,6 +30,14 @@ export const Title = styled.div`
   padding: 4px 0px 0px 4px;
   font-size: 16px;
   font-weight: 500;
+`
+
+export const Logo = styled.div`
+  -webkit-app-region: drag;
+  margin: 3px 2px 0px 4px;
+  width: 16px;
+  height: 16px;
+  background-image: url(${logo});
 `
 
 export const Button = styled.div`

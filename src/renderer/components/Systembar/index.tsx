@@ -1,6 +1,15 @@
 import React from 'react'
 import { remote } from 'electron'
-import { Wrapper, Title, Button, Buttons, CloseButton, WrapperLine, WrapperItems } from './styles'
+import {
+  Wrapper,
+  Title,
+  Button,
+  Buttons,
+  CloseButton,
+  WrapperLine,
+  WrapperItems,
+  Logo
+} from './styles'
 
 const Systembar = () => {
   const minimize = () => {
@@ -26,6 +35,7 @@ const Systembar = () => {
     <Wrapper>
       <WrapperLine />
       <WrapperItems>
+        <Logo />
         <Title>GUILDSPEAK</Title>
         <Buttons>
           <Button className="material-icons" onClick={minimize}>
