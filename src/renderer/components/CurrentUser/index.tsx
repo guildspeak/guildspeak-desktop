@@ -7,6 +7,7 @@ import { useQuery } from '@apollo/react-hooks'
 import Avatar from '../Avatar'
 import { Center, Spinner } from '../shared'
 import { isUserOnline } from '../../utils'
+import dayjs from 'dayjs'
 
 const GET_ME = gql`
   query {
@@ -38,7 +39,7 @@ const CurrentUser = ({ history }: RouteComponentProps) => {
   return (
     <Wrapper>
       <Avatar>{data.me.username.slice(0, 1)}</Avatar>
-      <Status isOnline={isUserOnline(data.me.lastSeen)} />
+      <Status isOnline={isUserOnline(data.me.lastSeen)} title={dayjs(data.me.lastSeen).fromNow()} />
       <Username>{data.me.username}</Username>
       <Buttons>
         <IconButton onClick={handleSettings} className="material-icons">

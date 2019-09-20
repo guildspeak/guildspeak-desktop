@@ -18,6 +18,7 @@ import { Center, Spinner } from '../shared'
 import { ipcRenderer } from 'electron'
 import { LOAD_RUNNING_PROCESSES, BackgroundProcess } from '../../../ipc'
 import { isUserOnline } from '../../utils'
+import dayjs from 'dayjs'
 
 type Props = {
   guildId: string
@@ -111,7 +112,10 @@ const CurrentUsers = ({ guildId, guildName }: Props & RouteComponentProps) => {
         {data.guild.users.map(user => (
           <UserWrapper onClick={toggleModal} key={user.id}>
             <Avatar size={36}>{user.username.slice(0, 1)}</Avatar>
-            <UserStatus isOnline={isUserOnline(user.lastSeen)} />
+            <UserStatus
+              isOnline={isUserOnline(user.lastSeen)}
+              title={dayjs(user.lastSeen).fromNow()}
+            />
             <TextWrapper>
               <Username onClick={selectCurrentUser(user.username)}>
                 <span>{user.username}</span>
