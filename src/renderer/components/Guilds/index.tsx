@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { Wrapper } from './styles'
 import CreateGuildContainer from '../../containers/CreateGuildContainer'
 import { Spinner, Center } from '../shared'
+import JoinGuildContainer from '../../containers/JoinGuildContainer'
 
 const GET_GUILDS = gql`
   query guilds {
@@ -70,6 +71,7 @@ const Guilds = () => {
           defaultChannelName={el.channels[0].name}
         />
       ))}
+      <JoinGuildContainer />
       <CreateGuildContainer />
     </Wrapper>
   )

@@ -43,7 +43,7 @@ const CreateGuild = ({ setChannel, setGuild }: Props) => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper title="Create new Guild">
       <CreateButton className="material-icons" onClick={toggleModal}>
         add
       </CreateButton>

@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   flex-direction: row;
   padding: 0px 0px 8px 0px;
 `
-export const CreateButton = styled.div`
+export const JoinButton = styled.div`
   display: flex;
   height: 48px;
   width: 48px;
@@ -19,13 +19,12 @@ export const CreateButton = styled.div`
     border: 2px solid ${({ theme }) => theme.accentHoverColor};
     transition: all 0.25s ease-in-out;
   }
-  color: ${({ theme }) => theme.accentColor};
   border-radius: 48px;
   margin: 0px 8px 0px 0px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-weight: 600;
   font-size: 24px;
 `
 

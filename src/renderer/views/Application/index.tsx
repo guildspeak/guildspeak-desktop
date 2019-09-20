@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
-import Sidebar from '../../components/Sidebar'
 import Messages from '../../components/Messages'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
-import { MainWrapper, SecondColumn, ThirdColumn, Row, TopWrapper } from './styles'
+import { MainWrapper, SecondColumn, ThirdColumn, Row, TopWrapper, Sidebar } from './styles'
 import CurrentUsersContainer from '../../containers/CurrentUsersContainer'
+import CurrentGuildContainer from '../../containers/CurrentGuildContainer'
+import CurrentUser from '../../components/CurrentUser'
 import Guilds from '../../components/Guilds'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
@@ -43,7 +44,10 @@ const Application = ({ channelId, guildId }: Props & RouteComponentProps) => {
       </TopWrapper>
       {guildId && channelId ? (
         <Row>
-          <Sidebar />
+          <Sidebar>
+            <CurrentGuildContainer />
+            <CurrentUser />
+          </Sidebar>
           <SecondColumn>
             <Messages channelId={channelId} />
           </SecondColumn>
@@ -52,7 +56,12 @@ const Application = ({ channelId, guildId }: Props & RouteComponentProps) => {
           </ThirdColumn>
         </Row>
       ) : (
-        <Row>Create or select Guild</Row>
+        <Row>
+          <Sidebar>
+            <CurrentUser />
+          </Sidebar>
+          Create or select Guild
+        </Row>
       )}
     </MainWrapper>
   )

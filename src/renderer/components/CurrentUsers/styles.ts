@@ -5,7 +5,6 @@ import Modal from 'styled-react-modal'
 
 export const Wrapper = styled.div`
   display: flex;
-  position: relative;
   height: 100%;
   min-height: 0px;
   user-select: none;
@@ -17,8 +16,7 @@ export const Wrapper = styled.div`
 export const InnerWrapper = styled(Scrollbar)`
   display: flex;
   user-select: none;
-  flex-direction: row;
-  position: relative;
+  flex-direction: column;
   padding: 8px;
   height: 100%;
   min-height: 0px;
@@ -41,11 +39,12 @@ export const CurrentGuildWrapper = styled.div`
 export const UserWrapper = styled.div`
   height: 52px;
   min-width: 0px;
-  width: 224px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: relative;
   padding: 8px;
+  margin: 0px 0px 12px 0px;
   cursor: pointer;
   background: ${({ theme }) => theme.grayDarker};
   border-radius: 45px;
@@ -86,8 +85,8 @@ export const ProcessName = styled.span`
 `
 
 export const UserStatus = styled(Status)`
-  left: 44px;
-  top: 47px;
+  left: 34px;
+  top: 37px;
 `
 
 export const StyledModal = Modal.styled`

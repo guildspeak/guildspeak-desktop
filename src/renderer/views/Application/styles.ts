@@ -30,6 +30,15 @@ export const Row = styled.div`
   flex-direction: row;
 `
 
+export const Sidebar = styled.div`
+  display: flex;
+  width: 224px;
+  position: relative;
+  height: 100%;
+  min-height: 0px;
+  flex-direction: column;
+`
+
 export const SecondColumn = styled.div`
   flex: 3;
   display: flex;

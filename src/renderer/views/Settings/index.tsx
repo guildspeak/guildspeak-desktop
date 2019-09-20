@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Wrapper, Options, BackButton, Description, LogoutButton, SettingsView } from './styles'
+import client from '../../app/client'
 
 const Settings = ({ history }: RouteComponentProps) => {
   const handleEsc = useCallback((e: KeyboardEvent) => {
@@ -14,8 +15,9 @@ const Settings = ({ history }: RouteComponentProps) => {
     return () => document.removeEventListener('keydown', handleEsc, false)
   }, [handleEsc])
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     localStorage.clear()
+    await client.clearStore()
     history.push('/login')
   }
 
