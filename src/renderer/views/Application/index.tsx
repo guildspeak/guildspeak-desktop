@@ -28,7 +28,7 @@ const Application = ({ channelId, guildId }: Props & RouteComponentProps) => {
 
   const updateStatus = () => {
     if (!document.hidden && document.visibilityState === 'visible' && navigator.onLine) {
-      updateUserStatus({ variables: { lastSeen: dayjs().toISOString() } })
+      return updateUserStatus({ variables: { lastSeen: dayjs().toISOString() } })
     }
   }
 
@@ -36,6 +36,11 @@ const Application = ({ channelId, guildId }: Props & RouteComponentProps) => {
     document.addEventListener('visibilitychange', updateStatus)
     return () => document.removeEventListener('visibilitychange', updateStatus)
   }, [updateStatus])
+
+  useEffect(() => {
+    const interval = setInterval(updateStatus, 30000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <MainWrapper>
