@@ -14,7 +14,4 @@ const mapDispatchToProps = (dispatch: Dispatch<SetCurrentChannel>) => ({
     dispatch(setCurrentChannel(channelId, channelName))
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Channel)
+export default connect(mapStateToProps, mapDispatchToProps)(Channel)

@@ -20,7 +20,4 @@ const mapDispatchToProps = (dispatch: Dispatch<SetCurrentGuild | SetCurrentChann
     dispatch(setCurrentChannel(channelId, channelName))
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Guild)
+export default connect(mapStateToProps, mapDispatchToProps)(Guild)

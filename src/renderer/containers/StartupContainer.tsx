@@ -12,7 +12,4 @@ const mapDispatchToProps = (dispatch: Dispatch<SetTokenAction>) => ({
   setToken: token => dispatch(setToken(token))
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Startup)
+export default connect(mapStateToProps, mapDispatchToProps)(Startup)
